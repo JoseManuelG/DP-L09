@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2016 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+
+	<definition name="lessor/list" extends="master.page">	
+		<put-attribute name="title" value="Catálogo de arrendadores" />
+		<put-attribute name="body" value="/views/lessor/list.jsp" />
+	</definition>
+	<definition name="lessor/view" extends="master.page">	
+		<put-attribute name="title" value="Perfil de arrendador" />
+		<put-attribute name="body" value="/views/lessor/view.jsp" />
+	</definition>
+	<definition name="lessor/myProfile" extends="master.page">	
+		<put-attribute name="title" value="Su Perfil" />
+		<put-attribute name="body" value="/views/lessor/view.jsp" />
+	</definition>
+	<definition name="lessor/edit" extends="master.page">	
+		<put-attribute name="title" value="Editar perfil" />
+		<put-attribute name="body" value="/views/lessor/edit.jsp" />
+	</definition>	
+	
+	<definition name="lessor/fee" extends="master.page">	
+		<put-attribute name="title" value="Cuota pendiente" />
+		<put-attribute name="body" value="/views/lessor/fee.jsp" />
+	</definition>
+	
+</tiles-definitions>
