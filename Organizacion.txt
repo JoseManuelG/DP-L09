@@ -1,0 +1,37 @@
+Formación:
+	- Asistencia a clase (08/03/2017) (1 tarea, que cada uno se impute su tiempo) (Tiempo est. 1.833 x 6) [1 hora 50 minutos por miembro de 		grupo]
+
+Reuniones:
+	- Con el ing. de requisitos/ cliente:
+		- Viernes 	(10/03/2017) (Tiempo est.: 0.375 x 6) [Entre 15 y 30 minutos por miembro de grupo]
+		- Miercoles (15/03/2017) (Tiempo est.: 0.375 x 6)
+		- Viernes	(17/03/2017) (Tiempo est.: 0.375 x 6)
+		- Miercoles	(22/03/2017) (Tiempo est.: 0.375 x 6)
+		- Viernes	(24/03/2017) (Tiempo est.: 0.375 x 6)
+	- Del equipo de desarrollo (Estimados a una hora por reunion y miembro de grupo)
+		- Semana 1 (Fecha por determinar, turno de mañana) (retroactive de la anterior e inicio de la siguiente) (Tiempo est.: 2 x 6) 				[Reunion doble]
+		- Semana 2 (Fecha por determinar, turno de tarde)
+		- Semana 3 (Fecha por determinar, turno de mañana)
+		- Reunion de entrega y retroactive (27 y/o 28 /03/2017, turno de tarde)
+ 
+Desarrollo(Tiempos por estimar, cosas a concretar despues de recibir la clase de teoria):
+	- Informe de costes (Preferiblemente que se encargue otro esta vez, a partir de lo que ya hizo acha, para pulir posibles errores). [1 persona]
+	- Determinar documentación a entregar. (Análisis de las tareas y especificación de donde hace falta un documento aparte o comentarios en el código ya producido. [1 persona]
+	- Preparación y mejora del codigo de la entrega anterior (Para hacer test de los funcionales necesitamos que todo el requisito funcional se contemple en capa de servicios. Hay que pasar codigo de la capa de controladores a servicios y comentar todo lo que se considete necesario en el apartado anterior. Si se estima oportuno, también se podrían aplicar algunas de las tareas marcadas como extras en la entrega anterior). [2 personas]
+	- Test de funcionalidad (a ajustar despues de la clase de teoria):
+		- Elegir un caso de uso que tenga requisitos de listado y edicion para hacer un minimo de 10 test que cubran todos los casos 				posibles. [1 o 2 personas].
+		- Realizar por lo menos 2 test (uno positivo y otro negativo) del resto de casos de uso. [de 2 a 4 personas]
+	- Cambios en el proyecto:
+		- Realizar posibles cambios derivados de los test o mejoras propuestas en el proyecto.
+		- Una vez cerrado el proyecto, producir nuevo UML y script para preproduccion 
+	- A+: Buscar framework para hacer test de controladores, hacer al menos 1 test de controladores y documentarlo en un informe de 1000 			palabras [1 persona]
+Revisión (Se extendera el apartado conforme cerrando tareas de desarrollo):
+	- Revision del informe de costes.		
+	- Revision de test.
+	- Revision general del proyecto BnB.
+	- Revision del A+.
+
+Entrega:
+	- Empaquetado.
+	- Subida.
+	- Descarga y comprobacion.
