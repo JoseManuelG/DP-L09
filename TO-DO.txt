@@ -2,6 +2,19 @@ UML:
  - El codigo de internacionalizacion debe ser optativo para el telefono: ^(\+([0-9][0-9][0-9]))?([0-9A-Za-z])+$
  - No debemos tener relaciones 1 a mucho con la direccionalidad cortada en el 1.
  - Faltan multiplicidades en commentable desde comment y en user account desde actor.
+ - Doble relación de mensajes con actor
+ - Añadir vat al configuration
+ - (Al final) actualizar conceptual
+ - Añadir rangos a las coordenadas del trip
 
+Dominio:
+ - Añadir vat al configuration
+ - Doble relación de mensajes con actor
+ - Añadir rangos a las coordenadas del trip
+
+Discutir:
+ - Cuando un customer se borra la cuenta se borran los trips?
+ - Cuando un customer se borra la cuenta se borran los applies?
+ - Se deberían poder borrar los trips?
 
 ------------------------------ARREGLADO------------------------------
