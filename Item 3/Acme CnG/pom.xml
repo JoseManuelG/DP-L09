@@ -18,7 +18,7 @@
 	<!-- Artifact identification and properties -->
 
 	<groupId>Design-and-Testing</groupId>
-	<artifactId>Sample-Project</artifactId>
+	<artifactId>Acme-CnG-Project</artifactId>
 	<version>1.8</version>
 	<packaging>war</packaging>
 	
@@ -28,9 +28,9 @@
 
 	<!-- Indexing information -->
 
-	<name>Sample Project</name>
-	<url>http://www.sample-project.com</url>
-	<description>This is D&amp;T's sample project.</description>
+	<name>Acme CnG</name>
+	<url>http://www.acme.com</url>
+	<description>Acme CnG project.</description>
 	
 	<!-- Build commands -->
 

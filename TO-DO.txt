@@ -1,0 +1,7 @@
+UML:
+ - El codigo de internacionalizacion debe ser optativo para el telefono: ^(\+([0-9][0-9][0-9]))?([0-9A-Za-z])+$
+ - No debemos tener relaciones 1 a mucho con la direccionalidad cortada en el 1.
+ - Faltan multiplicidades en commentable desde comment y en user account desde actor.
+
+
+------------------------------ARREGLADO------------------------------
