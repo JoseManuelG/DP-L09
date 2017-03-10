@@ -1,7 +1,12 @@
+A discutir:
+ - ¿Se puede hacer apply sobre un trip propio?
+
 JAVA:
  - Quitar cascades de tips y applies desde customer.
  - Doble relación de mensajes con actor
  - Añadir rangos a las coordenadas del trip
+
+UML:
  - (Al final) actualizar conceptual
 
 

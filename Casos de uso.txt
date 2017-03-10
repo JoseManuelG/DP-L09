@@ -1,0 +1,67 @@
+An actor who is not authenticated must be able to:
+
+	Watch a welcome page with a banner that publicises Acme Car’n go! and a button to
+	register as a customer or to login.
+
+		Register:	
+		- configurationService.getBanner()
+		- customerService.create()
+		- /Se rellena el formulario/
+		- customerService.save()
+
+		Login creado por defecto en plantilla.
+	
+
+An actor who is authenticated must be able to:
+
+	Post a comment on another actor, on an offer, or a request.
+	Exchange messages with other actors.
+	List the messages that he or she’s got and reply to them.
+	List the messages that he or she’s got and forward them.
+	Erase his or her messages, which requires previous confirmation.
+
+
+An actor who is authenticated as a customer must be able to:
+	
+	Post an offer in which he or she advertises that he’s going to move from a place to
+	another place and would like to share his or her car with someone else.
+
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de customer y sucedidos de un deslogueo*/	
+		Post offer:
+		- tripService.createOffer() /*debería llamar a tripService.create(boolean isOffer) con boolean isOffer = true*/
+		- /*Rellena formulario*/
+		- tripService.save()
+
+		Post a request in which he or she informs that he or she wishes to move from a
+		place to another one and would like to find someone with whom he or she can share
+		the trip.
+		
+		Post request:
+		- tripService.createOffer() /*debería llamar a tripService.create(boolean isOffer) con boolean isOffer = false*/
+		- /*Rellena formulario*/
+		- tripService.save()
+
+		Apply for an offer or a request, which must be accepted by the customer who post-
+		ed it. Applications can be pending, accepted, or denied.
+
+		Apply:
+		- applyService.create(int tripId) /*estado por defecto a pendiente, se hace save de repo desde esta acción*/
+		
+		Accept:
+		- tripService.acceptApply(int applyId) /*se hace save de repo desde esta acción*/
+		
+		Deny:
+		- tripService.denyApply(int applyId) /*se hace save de repo desde esta acción*/
+
+		Search for offers and requests using a single keyword that must appear somewhere
+		in their titles, descriptions, or places.
+
+		Sarch:
+		- /*Se rellena formulario*/
+		- tripService.findByKeyword(String keyword)
+		
+
+		
+
+		
+
