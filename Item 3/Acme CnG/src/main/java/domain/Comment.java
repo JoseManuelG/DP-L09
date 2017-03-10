@@ -6,10 +6,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
@@ -28,6 +26,7 @@ public class Comment extends DomainEntity {
 	private String	text;
 	private int		stars;
 	private Date	postMoment;
+	private boolean	banned;
 
 
 	@NotBlank
@@ -71,6 +70,14 @@ public class Comment extends DomainEntity {
 		this.postMoment = dateCreation;
 	}
 
+	public boolean getBanned() {
+		return this.banned;
+	}
+
+	public void setBanned(final boolean banned) {
+		this.banned = banned;
+	}
+
 
 	// Relationships ----------------------------------------------------------
 
@@ -78,26 +85,19 @@ public class Comment extends DomainEntity {
 	private Commentable	commentable;
 
 
-	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	public Customer getSender() {
+	public Customer getCustomer() {
 		return this.customer;
 	}
 
-	public void setSender(final Customer sender) {
-		this.customer = sender;
+	public void setCustomer(final Customer customer) {
+		this.customer = customer;
 	}
 
-	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	public Commentable getRecipient() {
+	public Commentable getCommentable() {
 		return this.commentable;
 	}
 
-	public void setRecipient(final Commentable recipient) {
-		this.commentable = recipient;
+	public void setCommentable(final Commentable commentable) {
+		this.commentable = commentable;
 	}
-
 }

@@ -11,20 +11,20 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Apply extends DomainEntity {
+public class Application extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	aplicattion;
+	private String	status;
 
 
 	@Pattern(regexp = "^PENDING$|^ACCEPTED$|^DENIED$")
-	public String getAplicattion() {
-		return this.aplicattion;
+	public String getStatus() {
+		return this.status;
 	}
 
-	public void setAplicattion(final String aplicattion) {
-		this.aplicattion = aplicattion;
+	public void setStatus(final String status) {
+		this.status = status;
 	}
 
 
@@ -34,9 +34,8 @@ public class Apply extends DomainEntity {
 	private Trip		trip;
 
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Customer getCustomer() {
 		return this.customer;
 	}

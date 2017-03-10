@@ -1,21 +1,20 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,7 +33,8 @@ public class Trip extends Commentable {
 	private Double	originLon;
 	private Double	destinationLat;
 	private Double	destinationLon;
-	private boolean	isOffer;
+	private String	type;
+	private boolean	banned;
 
 
 	@NotBlank
@@ -88,6 +88,7 @@ public class Trip extends Commentable {
 		this.destination = destination;
 	}
 
+	@Range(min = -90, max = 90)
 	public Double getOriginLat() {
 		return this.originLat;
 	}
@@ -96,6 +97,7 @@ public class Trip extends Commentable {
 		this.originLat = originLat;
 	}
 
+	@Range(min = -180, max = 180)
 	public Double getOriginLon() {
 		return this.originLon;
 	}
@@ -104,6 +106,7 @@ public class Trip extends Commentable {
 		this.originLon = originLon;
 	}
 
+	@Range(min = -90, max = 90)
 	public Double getDestinationLat() {
 		return this.destinationLat;
 	}
@@ -112,6 +115,7 @@ public class Trip extends Commentable {
 		this.destinationLat = destinationLat;
 	}
 
+	@Range(min = -180, max = 180)
 	public Double getDestinationLon() {
 		return this.destinationLon;
 	}
@@ -120,41 +124,37 @@ public class Trip extends Commentable {
 		this.destinationLon = destinationLon;
 	}
 
-	public boolean getIsOffer() {
-		return this.isOffer;
+	@Pattern(regexp = "^OFFER$|^REQUEST$")
+	public String getType() {
+		return this.type;
 	}
 
-	public void setIsOffer(final boolean isOffer) {
-		this.isOffer = isOffer;
+	public void setType(final String type) {
+		this.type = type;
+	}
+
+	public boolean getBanned() {
+		return this.banned;
+	}
+
+	public void setBanned(final boolean banned) {
+		this.banned = banned;
 	}
 
 
 	// Relationships ----------------------------------------------------------
 
-	private Customer			customer;
-	private Collection<Apply>	applies;
+	private Customer	customer;
 
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Customer getCustomer() {
 		return this.customer;
 	}
 
 	public void setCustomer(final Customer customer) {
 		this.customer = customer;
-	}
-
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy = "apply", cascade = CascadeType.REMOVE)
-	public Collection<Apply> getApplies() {
-		return this.applies;
-	}
-
-	public void setApplies(final Collection<Apply> applies) {
-		this.applies = applies;
 	}
 
 }

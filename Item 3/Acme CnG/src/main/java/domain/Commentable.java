@@ -11,17 +11,6 @@ public abstract class Commentable extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private boolean	banned;
-
-
-	public boolean getBanned() {
-		return this.banned;
-	}
-
-	public void setBanned(final boolean banned) {
-		this.banned = banned;
-	}
-
 	// Relationships ----------------------------------------------------------
 
 }

@@ -1,15 +1,12 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,8 +23,8 @@ public class Message extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	sender;
-	private String	recipient;
+	private String	senderName;
+	private String	recipientName;
 	private Date	sendingMoment;
 	private String	title;
 	private String	text;
@@ -35,22 +32,22 @@ public class Message extends DomainEntity {
 
 	@NotBlank
 	@SafeHtml
-	public String getSender() {
-		return this.sender;
+	public String getSenderName() {
+		return this.senderName;
 	}
 
-	public void setSender(final String sender) {
-		this.sender = sender;
+	public void setSenderName(final String senderName) {
+		this.senderName = senderName;
 	}
 
 	@NotBlank
 	@SafeHtml
-	public String getRecipient() {
-		return this.recipient;
+	public String getRecipientName() {
+		return this.recipientName;
 	}
 
-	public void setRecipient(final String recipient) {
-		this.recipient = recipient;
+	public void setRecipientName(final String recipientName) {
+		this.recipientName = recipientName;
 	}
 
 	@NotNull
@@ -88,30 +85,28 @@ public class Message extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<Attachment>	attachments;
-	private Actor					actor;
+	private Actor	sender;
+	private Actor	recipient;
 
 
-	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "message", cascade = CascadeType.REMOVE)
-	public Collection<Attachment> getAttachments() {
-		return this.attachments;
+	@ManyToOne(optional = true)
+	public Actor getSender() {
+		return this.sender;
 	}
 
-	public void setAttachments(final Collection<Attachment> attachments) {
-		this.attachments = attachments;
+	public void setSender(final Actor sender) {
+		this.sender = sender;
 	}
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
-	public Actor getActor() {
-		return this.actor;
+	@ManyToOne(optional = true)
+	public Actor getRecipient() {
+		return this.recipient;
 	}
 
-	public void setActor(final Actor actor) {
-		this.actor = actor;
+	public void setRecipient(final Actor recipient) {
+		this.recipient = recipient;
 	}
 
 }

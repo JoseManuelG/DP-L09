@@ -1,11 +1,3 @@
-A discutir:
- - ¿Se puede hacer apply sobre un trip propio?
-
-JAVA:
- - Quitar cascades de tips y applies desde customer.
- - Doble relación de mensajes con actor
- - Añadir rangos a las coordenadas del trip
-
 UML:
  - (Al final) actualizar conceptual
 
@@ -22,3 +14,7 @@ UML:
  - El codigo de internacionalizacion debe ser optativo para el telefono: ^(\+([0-9][0-9][0-9]))?([0-9A-Za-z])+$(ARREGLADO)
  - No debemos tener relaciones 1 a mucho con la direccionalidad cortada en el 1.(ARREGLADO)
  - Faltan multiplicidades en commentable desde comment y en user account desde actor.(ARREGLADO)
+ - ¿Se puede hacer apply sobre un trip propio? (NO)
+ - Quitar cascades de tips y applies desde customer. (ARREGLADO)
+ - Doble relación de mensajes con actor. (ARREGLADO)
+ - Añadir rangos a las coordenadas del trip. (ARREGLADO)
