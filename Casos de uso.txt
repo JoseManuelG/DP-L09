@@ -1,5 +1,4 @@
-An actor who is not authenticated must be able to:
-	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de actor y sucedidos de un deslogueo*/	
+An actor who is not authenticated must be able to:	
 
 	Watch a welcome page with a banner that publicises Acme Car’n go! and a button to
 	register as a customer or to login.
@@ -14,6 +13,7 @@ An actor who is not authenticated must be able to:
 	
 
 An actor who is authenticated must be able to:
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de actor y sucedidos de un deslogueo*/
 
 	Post a comment on another actor, on an offer, or a request.
 
@@ -24,6 +24,26 @@ An actor who is authenticated must be able to:
 			- commentService.create(int commentableId)
 			-/* Rellena formulario para comentar */
 			- commentService.save(Comment comment) /*se hace save de repo desde esta acción*/
+
+An actor who is authenticated as an administrator must be able to:
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de admin y sucedidos de un deslogueo*/	
+	
+Ban a comment that he or she finds inappropriate. Such comments must not be
+	displayed to a general audience, only to the administrators and the actor who post-
+	ed it.
+	
+		List comments?:
+			- commentService.findAll()
+
+		Ban comment:
+			- /*List*/
+			- commentService.findOne(int commentId) /* display? se podria poner el boton al lado de cada comment si no necesitan display */
+			- commentService.banComment(int commentId) /*se hace save de repo desde esta acción*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+An actor who is authenticated must be able to:
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de actor y sucedidos de un deslogueo*/
 
 	Exchange messages with other actors.
 		
@@ -77,6 +97,7 @@ An actor who is authenticated must be able to:
 			- /* Peticion de borrado */
 			- messageService.delete(int messageId)
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 An actor who is authenticated as a customer must be able to:
 	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de customer y sucedidos de un deslogueo*/	
@@ -102,7 +123,7 @@ An actor who is authenticated as a customer must be able to:
 	ed it. Applications can be pending, accepted, or denied.
 
 		Apply:
-		- applyService.create(int tripId) /*estado por defecto a pendiente, se hace save de repo desde esta acción*/
+		- applicationService.create(int tripId) /*estado por defecto a pendiente, se hace save de repo desde esta acción*/
 		
 		Accept:
 		- tripService.acceptApply(int applyId) /*se hace save de repo desde esta acción*/
@@ -138,18 +159,10 @@ An actor who is authenticated as an administrator must be able to:
 			- tripService.findOne(int tripId) /* display */
 			- tripService.banTrip(int tripId) /*se hace save de repo desde esta acción*/
 
-	Ban a comment that he or she finds inappropriate. Such comments must not be
-	displayed to a general audience, only to the administrators and the actor who post-
-	ed it.
-	
-		List comments?:
-			- commentService.findAll()
 
-		Ban comment:
-			- /*List*/
-			- commentService.findOne(int commentId) /* display? se podria poner el boton al lado de cada comment si no necesitan display */
-			- commentService.banComment(int commentId) /*se hace save de repo desde esta acción*/
 
+
+/////////////////////////////////////////////QUERIES/////////////////////////////////////////////s
 	Display a dashboard with the following information:
 		Ratio of offers versus requests.
 		Average number of offers and request per customer.
