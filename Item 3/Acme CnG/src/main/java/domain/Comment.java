@@ -6,8 +6,10 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
@@ -85,6 +87,9 @@ public class Comment extends DomainEntity {
 	private Commentable	commentable;
 
 
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
 	public Customer getCustomer() {
 		return this.customer;
 	}
@@ -93,6 +98,9 @@ public class Comment extends DomainEntity {
 		this.customer = customer;
 	}
 
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
 	public Commentable getCommentable() {
 		return this.commentable;
 	}
