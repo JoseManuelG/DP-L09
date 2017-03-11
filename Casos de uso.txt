@@ -1,13 +1,14 @@
 An actor who is not authenticated must be able to:
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de actor y sucedidos de un deslogueo*/	
 
 	Watch a welcome page with a banner that publicises Acme Car’n go! and a button to
 	register as a customer or to login.
 
 		Register:	
-		- configurationService.getBanner()
-		- customerService.create()
-		- /Se rellena el formulario/
-		- customerService.save()
+			- configurationService.getBanner()
+			- customerService.create()
+			- /Se rellena el formulario/
+			- customerService.save() /*se hace save de repo desde esta acción*/
 
 		Login creado por defecto en plantilla.
 	
@@ -15,34 +16,90 @@ An actor who is not authenticated must be able to:
 An actor who is authenticated must be able to:
 
 	Post a comment on another actor, on an offer, or a request.
+
+		Post:
+			- actorService.findAll() /*¿Listar actores para encontrar a quien postear, o hacerlo desde otros servicios? si se lista:*/
+			- actorService.findOne(int actorId)		/*Display actor*/
+			-/* Pide formulario para comentar */
+			- commentService.create(int commentableId)
+			-/* Rellena formulario para comentar */
+			- commentService.save(Comment comment) /*se hace save de repo desde esta acción*/
+
 	Exchange messages with other actors.
+		
+		Write:
+			Opcion 1:
+			- actorService.findAll() /*¿Listar actores para encontrar a quien postear, o hacerlo desde otros servicios? si se lista:*/
+			- actorService.findOne(int actorId)		/*Display actor*/
+			-/* Pide formulario para escribir mensaje */
+			Opcion 2:
+			-/* Pide formulario para escribir mensaje */
+			- actorService.findAll() /* Mostrar en un desplegable en formulario todos los posibles actores para que elija a quien enviarlo*/
+			Comun a las opciones anteriores:
+			- messageService.create(int receipementId)
+			- /* Rellena formulario */
+			- messageServie.save(Message message) /* Este metodo debe hacer dos copias y guardar una al emisor y otra al receptor*//*se hace save de repo desde esta acción*/
+		
+
 	List the messages that he or she’s got and reply to them.
 	List the messages that he or she’s got and forward them.
+
+		List received messages:
+			- messageService.findReceivedFromPrincipal()
+
+		Reply:
+			- List received messages
+			- messageService.findOne(int messageId) /* display*/
+			- /* Pide formulario para responder */
+			- messageService.replay(int messageId) /* Basicamente una llamada a create con receipementId el actor emisor del messageId*/
+			- /* Rellena formulario */
+			- messageServie.save(Message message) /* Este metodo debe hacer dos copias y guardar una al emisor y otra al receptor*//*se hace save de repo desde esta acción*/
+
+		Forward: ¿Hacer de nuevo copiar para el emisor del reenvio, que ya tenia una copia?
+			- List received messages
+			- messageService.findOne(int messageId) /* display*/
+			- /* Pide formulario para responder. Se elige actor al que enviar segun una de las dos opciones de caso de uso Write */
+			- messageService.forward(int messageId) /* Basicamente una llamada a create y despues seteo de los atributos del messageId en el nuevo*/
+			- /* Rellena formulario */
+			Opcion 1:
+			- messageServie.save(Message message) /* Este metodo debe hacer dos copias y guardar una al emisor y otra al receptor*//*se hace save de repo desde esta acción*/
+			Opcion 2:
+			- messageService.saveForward(Message message /* Metodo alternativo para guardar solo la copia al que se le envia, ya que el que la envia ya tiene copia *//*se hace save de repo desde esta acción*/
+
 	Erase his or her messages, which requires previous confirmation.
+
+		List sent messages:
+			- messageService.findSentFromPrincipal()
+
+		Erase:
+			- Listar recibidos o enviados.
+			- messageService.findOne(int messageId) /* display*/
+			- /* Peticion de borrado */
+			- messageService.delete(int messageId)
 
 
 An actor who is authenticated as a customer must be able to:
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de customer y sucedidos de un deslogueo*/	
 	
 	Post an offer in which he or she advertises that he’s going to move from a place to
 	another place and would like to share his or her car with someone else.
 
-	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de customer y sucedidos de un deslogueo*/	
 		Post offer:
-		- tripService.createOffer() /*debería llamar a tripService.create(boolean isOffer) con boolean isOffer = true*/
-		- /*Rellena formulario*/
-		- tripService.save()
+			- tripService.createOffer() /*debería llamar a tripService.create(boolean isOffer) con boolean isOffer = true*/
+			- /*Rellena formulario*/
+			- tripService.save() /*se hace save de repo desde esta acción*/
 
-		Post a request in which he or she informs that he or she wishes to move from a
-		place to another one and would like to find someone with whom he or she can share
-		the trip.
+	Post a request in which he or she informs that he or she wishes to move from a
+	place to another one and would like to find someone with whom he or she can share
+	the trip.
 		
 		Post request:
-		- tripService.createOffer() /*debería llamar a tripService.create(boolean isOffer) con boolean isOffer = false*/
-		- /*Rellena formulario*/
-		- tripService.save()
+			- tripService.createOffer() /*debería llamar a tripService.create(boolean isOffer) con boolean isOffer = false*/
+			- /*Rellena formulario*/
+			- tripService.save() /*se hace save de repo desde esta acción*/
 
-		Apply for an offer or a request, which must be accepted by the customer who post-
-		ed it. Applications can be pending, accepted, or denied.
+	Apply for an offer or a request, which must be accepted by the customer who post-
+	ed it. Applications can be pending, accepted, or denied.
 
 		Apply:
 		- applyService.create(int tripId) /*estado por defecto a pendiente, se hace save de repo desde esta acción*/
@@ -53,15 +110,64 @@ An actor who is authenticated as a customer must be able to:
 		Deny:
 		- tripService.denyApply(int applyId) /*se hace save de repo desde esta acción*/
 
-		Search for offers and requests using a single keyword that must appear somewhere
-		in their titles, descriptions, or places.
+	Search for offers and requests using a single keyword that must appear somewhere
+	in their titles, descriptions, or places.
 
 		Sarch:
 		- /*Se rellena formulario*/
 		- tripService.findByKeyword(String keyword)
-		
 
 		
+An actor who is authenticated as an administrator must be able to:
+	/*Todos los casos de uso puesto a continuación irían precedidos de un logueo de admin y sucedidos de un deslogueo*/	
 
-		
+	Change the banner that the system shows on the welcome page.
+		- configurationService.getBanner()
+		- /*Rellena formulario*/
+		- configurationService.saveBanner()
+
+	Ban an offer or a request that he or she finds inappropriate. Such offers and re-
+	quests must not be displayed to a general audience, only to the administrators and
+	the customer who posted it.
+	
+		List offers and requests:
+			- tripService.findAll()
+	
+		Ban offer or request:
+			- /*List*/
+			- tripService.findOne(int tripId) /* display */
+			- tripService.banTrip(int tripId) /*se hace save de repo desde esta acción*/
+
+	Ban a comment that he or she finds inappropriate. Such comments must not be
+	displayed to a general audience, only to the administrators and the actor who post-
+	ed it.
+	
+		List comments?:
+			- commentService.findAll()
+
+		Ban comment:
+			- /*List*/
+			- commentService.findOne(int commentId) /* display? se podria poner el boton al lado de cada comment si no necesitan display */
+			- commentService.banComment(int commentId) /*se hace save de repo desde esta acción*/
+
+	Display a dashboard with the following information:
+		Ratio of offers versus requests.
+		Average number of offers and request per customer.
+		Average number of applications per offer or request.
+		The customer who has more applications accepted.
+		The customer who has more applications denied.
+
+	Display a dashboard with the following information.
+		Average number of comments per actor, offer, or request.
+		Average number of comments posted by administrators and customers.
+		The actors who have posted ±10% the average number of comments per ac-
+		tor.
+
+	Display a dashboard with the following information:
+		The minimum, the average, and the maximum number of messages sent per
+		actor.
+		The minimum, the average, and the maximum number of messages received
+		per actor.
+		The actors who have sent more messages.
+		The actors who have got more messages.
 
