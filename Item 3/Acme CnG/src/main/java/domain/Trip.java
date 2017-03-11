@@ -148,7 +148,7 @@ public class Trip extends Commentable {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "apply", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "trip", cascade = CascadeType.REMOVE)
 	public Collection<Apply> getApplies() {
 		return this.applies;
 	}

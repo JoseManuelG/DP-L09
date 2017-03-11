@@ -15,16 +15,16 @@ public class Apply extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	aplicattion;
+	private String	application;
 
 
 	@Pattern(regexp = "^PENDING$|^ACCEPTED$|^DENIED$")
-	public String getAplicattion() {
-		return this.aplicattion;
+	public String getApplication() {
+		return this.application;
 	}
 
-	public void setAplicattion(final String aplicattion) {
-		this.aplicattion = aplicattion;
+	public void setApplication(final String application) {
+		this.application = application;
 	}
 
 
