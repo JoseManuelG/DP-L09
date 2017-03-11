@@ -83,19 +83,19 @@ public class Comment extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Customer	customer;
+	private Actor		actor;
 	private Commentable	commentable;
 
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	public Customer getCustomer() {
-		return this.customer;
+	public Actor getActor() {
+		return this.actor;
 	}
 
-	public void setCustomer(final Customer customer) {
-		this.customer = customer;
+	public void setActor(final Actor actor) {
+		this.actor = actor;
 	}
 
 	@NotNull
