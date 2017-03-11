@@ -1,0 +1,154 @@
+########################################################
+LAS QUERIES DE COUNT SIN WHERE NI NADA ESTAN EN REPOSITORIO DEFINIDAS IGUALQ UE EL FINDALL, ETC
+########################################################
+LAS QUERIES QUE DEVUELVEN UNA LISTA PARA QUEDARSE CON EL PRIMERO EN JAVA TIENE QUE DEVOLVER LIST,NO COLLECTION NI SET
+########################################################
+
+Parte C:
+
+01 - Ratio of offers versus requests.
+
+	select count(t) from Trip t where t.type='OFFER'
+
+	divivido entre
+
+	select count(t) from Trip t where t.type='REQUEST'
+
+(para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
+
+02 - Average number of offers and request per customer.
+
+	select count(t) from Trip t where t.type='OFFER'
+
+	divivido entre
+
+	select count(c) from Customer c
+
+	y
+
+	select count(t) from Trip t where t.type='REQUEST'
+
+	divivido entre
+
+	select count(c) from Customer c
+
+(para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
+
+03 - Average number of applications per offer or request.
+
+	select count(a) from Application a
+
+	divivido entre
+
+	select count(t) from Trip t
+
+(para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
+
+04 - The customer who has more applications accepted.
+
+	select a.customer from Application a where a.status='ACCEPTED' group by a.customer order by count(a) desc
+	
+	y quedarse con el primero
+
+05 - The customer who has more applications denied.
+
+	select a.customer from Application a where a.status='DENIED' group by a.customer order by count(a) desc
+
+	y quedarse con el primero
+
+(En queries 04 y 05 comprobar que el order by count funciona correctamente, que en teoría lo hace, comprobar con :
+	select count(a), a.customer from Application a where a.status='ACCEPTED' group by a.customer order by count(a) desc		)
+
+
+Parte B:
+
+06 - Average number of comments per actor, offer, or request.
+
+	select count(c) from Comment c
+
+	dividido entre la suma de las siguientes dos queries
+
+	select count(a) from Actor a
+
+	select count(t) from Trip t
+
+(para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
+
+07 - Average number of comments posted by administrators and customers.
+
+	select count(c) from Comment c
+
+	dividido entre
+
+	select count(a) from Actor a
+
+(para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
+
+08 - The actors who have posted ±10% the average number of comments per actor.
+
+	select c.actor from Comment c where (select count(c2) from Comment c2 where c.actor.id=c2.actor.id)>?1*0.9 and (select count(c3) from Comment c3 where c.actor.id=c3.actor.id)<?1*1.1 group by c.actor.id
+
+	en ?1 se le pasa la media de comments por actor obtenida en la query 07
+
+(Comprobacion hecha con la siguiente query porque no había comments aun:
+	select count(t), t.customer from Trip t where (select count(t2) from Trip t2 where t.customer.id=t2.customer.id)>6*0.9 and (select count(t2) from Trip t2 where t.customer.id=t2.customer.id)<6*1.1 group by t.customer.id				)
+
+
+Parte A:
+
+09 - The minimum, the average, and the maximum number of messages sent per actor.
+
+	-avg:
+
+	select count(m) from Message m where m.sender is not null
+
+	dividido entre
+
+	select count(a) from Actor a
+
+	-min
+
+	select count(m) from Message m where m.sender is not null group by m.sender.id order by count(m) asc
+
+	y quedarse con el primero
+
+	-max
+
+	select count(m) from Message m where m.sender is not null group by m.sender.id order by count(m) desc
+
+	y quedarse con el primero
+
+10 - The minimum, the average, and the maximum number of messages received per actor.
+
+	-avg:
+
+	select count(m) from Message m where m.recipient is not null
+
+	dividido entre
+
+	select count(a) from Actor a
+
+	-min
+
+	select count(m) from Message m where m.recipient is not null group by m.recipient.id order by count(m) asc
+
+	y quedarse con el primero
+
+	-max
+
+	select count(m) from Message m where m.recipient is not null group by m.recipient.id order by count(m) desc
+
+	y quedarse con el primero
+
+11 - The actors who have sent more messages.
+
+	select m.sender from Message m where m.sender is not null group by m.sender order by count(m) desc
+
+	y quedarse con el primero
+
+12 - The actors who have got more messages.
+
+	select m.recipient from Message m where m.recipient is not null group by m.recipient order by count(m) desc
+
+	y quedarse con el primero
+
