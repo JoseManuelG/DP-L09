@@ -5,10 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
 import domain.Actor;
@@ -25,6 +26,9 @@ public class MessageService {
 		//Supported Services--------------------------------------------------------------------
 		@Autowired
 		private Actorservice actorService;
+
+		@Autowired
+		private Validator validator;
 		
 		
 		//Simple CRUD methods------------------------------------------------------------
@@ -73,15 +77,14 @@ public class MessageService {
 
 			Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
 			Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
-
-		//	Assert.isNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
+			Assert.isNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
 			
 			/*TODO
 			 * Creamos copia del mensaje en un segundo mensaje poniendole el isCopy a true y guardariamos ambos;
 			 * 
 			 */
 			
-			message.setSendingMoment(new Date(System.currentTimeMillis()-1000));
+
 			Message copyMessage = copyMessage(message);
 			result=messageRepository.save(message);
 			messageRepository.save(copyMessage);
@@ -100,9 +103,9 @@ public class MessageService {
 			result.setText(message.getText());
 			result.setTitle(message.getTitle());
 			result.setSendingMoment(message.getSendingMoment());
-			
-			
 			//result.setIsCopy(true);
+			
+			
 			return result;
 		}
 		//Devuelve los mensajes que ha enviado el actor
@@ -111,9 +114,18 @@ public class MessageService {
 			return result;
 		}
 
-		//Devuelve los mensajes que ha recivido el actor	
+		//Devuelve los mensajes que ha recibido el actor	
 		public List<Message> findReceivedMessageOfActor(int recipientId){
 			List<Message> result = messageRepository.findReceivedMessageOfActor(recipientId);
 			return result;
 	}
+		
+		public Message reconstruct(Message message, BindingResult binding) {
+			Message result= this.create(message.getRecipient());
+			result.setText(message.getText());
+			result.setTitle(message.getTitle());
+			result.setSendingMoment(new Date(System.currentTimeMillis()-1000));
+			validator.validate(result, binding);
+			
+		}
 }
