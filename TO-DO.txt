@@ -1,10 +1,6 @@
 QUERIES:
  - Cambiar queries de mensaje para que consideren el boolean, de forma que no se repitan (ya que cada mensaje consta de dos copias) 
 
-UML:
- - (Al final) actualizar conceptual
-
-
 
 ------------------------------ARREGLADO------------------------------
 
@@ -21,3 +17,4 @@ UML:
  - Quitar cascades de tips y applies desde customer. (ARREGLADO)
  - Doble relación de mensajes con actor. (ARREGLADO)
  - Añadir rangos a las coordenadas del trip. (ARREGLADO)
+ - (Al final) actualizar conceptual (ARREGLADO)
