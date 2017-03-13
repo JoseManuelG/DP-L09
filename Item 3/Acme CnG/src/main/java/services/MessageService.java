@@ -78,6 +78,9 @@ public class MessageService {
 			Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
 			Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
 			Assert.isNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
+			Actor sender = actorService.findByPrincipal();
+
+			Assert.isTrue(sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
 			
 			/*TODO
 			 * Creamos copia del mensaje en un segundo mensaje poniendole el isCopy a true y guardariamos ambos;
@@ -120,10 +123,10 @@ public class MessageService {
 			return result;
 	}
 		
-		public Message reconstruct(Message message, BindingResult binding) {
-			Message result= this.create(message.getRecipient());
-			result.setText(message.getText());
-			result.setTitle(message.getTitle());
+		public Message reconstruct(MessageForm messageForm, BindingResult binding) {
+			Message result= this.create(messageForm.getRecipient());
+			result.setText(messageForm.getText());
+			result.setTitle(messageForm.getTitle());
 			result.setSendingMoment(new Date(System.currentTimeMillis()-1000));
 			validator.validate(result, binding);
 			
