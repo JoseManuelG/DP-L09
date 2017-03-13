@@ -114,6 +114,7 @@
 		<property name="text" value="Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message2Administrator1" class="domain.Message">
@@ -124,6 +125,7 @@
 		<property name="text" value="Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas." />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message3Administrator1" class="domain.Message">
@@ -134,6 +136,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del coalescent lingues." />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message4Administrator1" class="domain.Message">
@@ -144,6 +147,7 @@
 		<property name="text" value="Iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message5Administrator1" class="domain.Message">
@@ -154,6 +158,7 @@
 		<property name="text" value="Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. " />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message6Administrator1" class="domain.Message">
@@ -164,6 +169,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message1Customer1" class="domain.Message">
@@ -174,6 +180,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer1" />
 		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message2Customer1" class="domain.Message">
@@ -184,6 +191,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer1" />
 		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message3Customer1" class="domain.Message">
@@ -194,6 +202,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer1" />
 		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message4Customer1" class="domain.Message">
@@ -204,6 +213,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer1" />
 		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message5Customer1" class="domain.Message">
@@ -214,6 +224,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer1" />
 		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message6Customer1" class="domain.Message">
@@ -224,6 +235,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer1" />
 		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message1Customer2" class="domain.Message">
@@ -234,116 +246,7 @@
 		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
 		<property name="sender" ref="customer2" />
 		<property name="recipient" ref="customer1" />
-	</bean>
-	
-	<bean id="message2Customer2" class="domain.Message">
-		<property name="senderName" value="Keir Caelan" />
-		<property name="recipientName" value="Layne Ozzie" />
-		<property name="sendingMoment" value="11/03/2013 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer2" />
-		<property name="recipient" ref="administrator1" />
-	</bean>
-	
-	<bean id="message3Customer2" class="domain.Message">
-		<property name="senderName" value="Keir Caelan" />
-		<property name="recipientName" value="Randall Corey" />
-		<property name="sendingMoment" value="11/08/2013 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer2" />
-		<property name="recipient" ref="customer3" />
-	</bean>
-	
-	<bean id="message4Customer2" class="domain.Message">
-		<property name="senderName" value="Keir Caelan" />
-		<property name="recipientName" value="Jude Ellis" />
-		<property name="sendingMoment" value="11/09/2015 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer2" />
-		<property name="recipient" ref="customer4" />
-	</bean>
-	
-	<bean id="message5Customer2" class="domain.Message">
-		<property name="senderName" value="Keir Caelan" />
-		<property name="recipientName" value="Henry Winton" />
-		<property name="sendingMoment" value="11/09/2016 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer2" />
-		<property name="recipient" ref="customer5" />
-	</bean>
-	
-	<bean id="message6Customer2" class="domain.Message">
-		<property name="senderName" value="Keir Caelan" />
-		<property name="recipientName" value="Hubert Harding" />
-		<property name="sendingMoment" value="06/09/2016 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer2" />
-		<property name="recipient" ref="customer6" />
-	</bean>
-	
-	<bean id="message1Customer3" class="domain.Message">
-		<property name="senderName" value="Randall Corey" />
-		<property name="recipientName" value="Tobin Lovell" />
-		<property name="sendingMoment" value="06/01/2014 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer3" />
-		<property name="recipient" ref="customer1" />
-	</bean>
-	
-	<bean id="message2Customer3" class="domain.Message">
-		<property name="senderName" value="Randall Corey" />
-		<property name="recipientName" value="Keir Caelan" />
-		<property name="sendingMoment" value="06/02/2014 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer3" />
-		<property name="recipient" ref="customer2" />
-	</bean>
-	
-	<bean id="message3Customer3" class="domain.Message">
-		<property name="senderName" value="Randall Corey" />
-		<property name="recipientName" value="Layne Ozzie" />
-		<property name="sendingMoment" value="06/03/2014 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer3" />
-		<property name="recipient" ref="administrator1" />
-	</bean>
-	
-	<bean id="message4Customer3" class="domain.Message">
-		<property name="senderName" value="Randall Corey" />
-		<property name="recipientName" value="Jude Ellis" />
-		<property name="sendingMoment" value="06/03/2015 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer3" />
-		<property name="recipient" ref="customer4" />
-	</bean>
-	
-	<bean id="message5Customer3" class="domain.Message">
-		<property name="senderName" value="Randall Corey" />
-		<property name="recipientName" value="Henry Winton" />
-		<property name="sendingMoment" value="06/03/2016 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer3" />
-		<property name="recipient" ref="customer5" />
-	</bean>
-	
-	<bean id="message6Customer3" class="domain.Message">
-		<property name="senderName" value="Randall Corey" />
-		<property name="recipientName" value="Hubert Harding" />
-		<property name="sendingMoment" value="01/09/2016 10:22" />
-		<property name="title" value="Maecenas nec odio" />
-		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
-		<property name="sender" ref="customer3" />
-		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message1Customer4" class="domain.Message">
@@ -354,6 +257,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer4" />
 		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message2Customer4" class="domain.Message">
@@ -364,6 +268,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer4" />
 		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message3Customer4" class="domain.Message">
@@ -374,6 +279,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer4" />
 		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message4Customer4" class="domain.Message">
@@ -384,6 +290,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer4" />
 		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message5Customer4" class="domain.Message">
@@ -394,6 +301,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer4" />
 		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message6Customer4" class="domain.Message">
@@ -404,6 +312,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer4" />
 		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message1Customer5" class="domain.Message">
@@ -414,6 +323,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
 		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message2Customer5" class="domain.Message">
@@ -424,6 +334,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
 		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message3Customer5" class="domain.Message">
@@ -434,6 +345,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
 		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message4Customer5" class="domain.Message">
@@ -444,6 +356,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
 		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message5Customer5" class="domain.Message">
@@ -454,6 +367,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
 		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message6Customer5" class="domain.Message">
@@ -464,6 +378,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
 		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message1Customer6" class="domain.Message">
@@ -474,6 +389,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer6" />
 		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message2Customer6" class="domain.Message">
@@ -484,6 +400,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer6" />
 		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message3Customer6" class="domain.Message">
@@ -494,6 +411,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer6" />
 		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message4Customer6" class="domain.Message">
@@ -504,6 +422,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer6" />
 		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message5Customer6" class="domain.Message">
@@ -514,6 +433,7 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer6" />
 		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="true" />
 	</bean>
 	
 	<bean id="message6Customer6" class="domain.Message">
@@ -524,9 +444,353 @@
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer6" />
 		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="true" />
 	</bean>
 	
-	<!-- Attachment -->
+	<!-- Message Copies -->
+	
+	<bean id="message1Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Tobin Lovell" />
+		<property name="sendingMoment" value="04/04/2016 11:45" />
+		<property name="title" value="Sed ut perspiciatis" />
+		<property name="text" value="Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message2Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Keir Caelan" />
+		<property name="sendingMoment" value="01/01/2016 10:22" />
+		<property name="title" value="Y, viéndole don Quijote de aquella manera" />
+		<property name="text" value="Sábete, Sancho, que no es un hombre más que otro si no hace más que otro. Todas estas borrascas que nos suceden son señales de que presto ha de serenar el tiempo y han de sucedernos bien las cosas." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message3Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Randall Corey" />
+		<property name="sendingMoment" value="05/05/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del coalescent lingues." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message4Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Jude Ellis" />
+		<property name="sendingMoment" value="05/05/2015 10:22" />
+		<property name="title" value="Sed ut perspiciatis unde omnis" />
+		<property name="text" value="Iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message5Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Henry Winton" />
+		<property name="sendingMoment" value="05/05/2014 10:22" />
+		<property name="title" value="Aenean vulputate eleifend tellus" />
+		<property name="text" value="Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. " />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message6Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Hubert Harding" />
+		<property name="sendingMoment" value="05/05/2013 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message1Customer1Copy" class="domain.Message">
+		<property name="senderName" value="Tobin Lovell" />
+		<property name="recipientName" value="Layne Ozzie" />
+		<property name="sendingMoment" value="05/05/2013 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer1" />
+		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message2Customer1Copy" class="domain.Message">
+		<property name="senderName" value="Tobin Lovell" />
+		<property name="recipientName" value="Keir Caelan" />
+		<property name="sendingMoment" value="11/06/2013 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer1" />
+		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message3Customer1Copy" class="domain.Message">
+		<property name="senderName" value="Tobin Lovell" />
+		<property name="recipientName" value="Randall Corey" />
+		<property name="sendingMoment" value="11/07/2014 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer1" />
+		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message4Customer1Copy" class="domain.Message">
+		<property name="senderName" value="Tobin Lovell" />
+		<property name="recipientName" value="Jude Ellis" />
+		<property name="sendingMoment" value="11/08/2015 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer1" />
+		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message5Customer1Copy" class="domain.Message">
+		<property name="senderName" value="Tobin Lovell" />
+		<property name="recipientName" value="Henry Winton" />
+		<property name="sendingMoment" value="11/09/2016 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer1" />
+		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message6Customer1Copy" class="domain.Message">
+		<property name="senderName" value="Tobin Lovell" />
+		<property name="recipientName" value="Hubert Harding" />
+		<property name="sendingMoment" value="11/10/2016 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer1" />
+		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message1Customer2Copy" class="domain.Message">
+		<property name="senderName" value="Keir Caelan" />
+		<property name="recipientName" value="Tobin Lovell" />
+		<property name="sendingMoment" value="11/02/2013 10:22" />
+		<property name="title" value="Maecenas nec odio" />
+		<property name="text" value="Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt." />
+		<property name="sender" ref="customer2" />
+		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message1Customer4Copy" class="domain.Message">
+		<property name="senderName" value="Jude Ellis" />
+		<property name="recipientName" value="Tobin Lovell" />
+		<property name="sendingMoment" value="01/02/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer4" />
+		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message2Customer4Copy" class="domain.Message">
+		<property name="senderName" value="Jude Ellis" />
+		<property name="recipientName" value="Keir Caelan" />
+		<property name="sendingMoment" value="01/03/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer4" />
+		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message3Customer4Copy" class="domain.Message">
+		<property name="senderName" value="Jude Ellis" />
+		<property name="recipientName" value="Randall Corey" />
+		<property name="sendingMoment" value="02/09/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer4" />
+		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message4Customer4Copy" class="domain.Message">
+		<property name="senderName" value="Jude Ellis" />
+		<property name="recipientName" value="Layne Ozzie" />
+		<property name="sendingMoment" value="02/10/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer4" />
+		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message5Customer4Copy" class="domain.Message">
+		<property name="senderName" value="Jude Ellis" />
+		<property name="recipientName" value="Henry Winton" />
+		<property name="sendingMoment" value="02/10/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer4" />
+		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message6Customer4Copy" class="domain.Message">
+		<property name="senderName" value="Jude Ellis" />
+		<property name="recipientName" value="Hubert Harding" />
+		<property name="sendingMoment" value="02/10/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer4" />
+		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message1Customer5Copy" class="domain.Message">
+		<property name="senderName" value="Henry Winton" />
+		<property name="recipientName" value="Tobin Lovell" />
+		<property name="sendingMoment" value="02/10/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer5" />
+		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message2Customer5Copy" class="domain.Message">
+		<property name="senderName" value="Henry Winton" />
+		<property name="recipientName" value="Keir Caelan" />
+		<property name="sendingMoment" value="02/11/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer5" />
+		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message3Customer5Copy" class="domain.Message">
+		<property name="senderName" value="Henry Winton" />
+		<property name="recipientName" value="Randall Corey" />
+		<property name="sendingMoment" value="06/11/2014 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer5" />
+		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message4Customer5Copy" class="domain.Message">
+		<property name="senderName" value="Henry Winton" />
+		<property name="recipientName" value="Jude Ellis" />
+		<property name="sendingMoment" value="06/11/2015 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer5" />
+		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message5Customer5Copy" class="domain.Message">
+		<property name="senderName" value="Henry Winton" />
+		<property name="recipientName" value="Layne Ozzie" />
+		<property name="sendingMoment" value="06/12/2015 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer5" />
+		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message6Customer5Copy" class="domain.Message">
+		<property name="senderName" value="Henry Winton" />
+		<property name="recipientName" value="Hubert Harding" />
+		<property name="sendingMoment" value="06/12/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer5" />
+		<property name="recipient" ref="customer6" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message1Customer6Copy" class="domain.Message">
+		<property name="senderName" value="Hubert Harding" />
+		<property name="recipientName" value="Tobin Lovell" />
+		<property name="sendingMoment" value="01/01/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer6" />
+		<property name="recipient" ref="customer1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message2Customer6Copy" class="domain.Message">
+		<property name="senderName" value="Hubert Harding" />
+		<property name="recipientName" value="Keir Caelan" />
+		<property name="sendingMoment" value="01/02/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer6" />
+		<property name="recipient" ref="customer2" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message3Customer6Copy" class="domain.Message">
+		<property name="senderName" value="Hubert Harding" />
+		<property name="recipientName" value="Randall Corey" />
+		<property name="sendingMoment" value="03/03/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer6" />
+		<property name="recipient" ref="customer3" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message4Customer6Copy" class="domain.Message">
+		<property name="senderName" value="Hubert Harding" />
+		<property name="recipientName" value="Jude Ellis" />
+		<property name="sendingMoment" value="04/04/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer6" />
+		<property name="recipient" ref="customer4" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message5Customer6Copy" class="domain.Message">
+		<property name="senderName" value="Hubert Harding" />
+		<property name="recipientName" value="Henry Winton" />
+		<property name="sendingMoment" value="06/05/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer6" />
+		<property name="recipient" ref="customer5" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	<bean id="message6Customer6Copy" class="domain.Message">
+		<property name="senderName" value="Hubert Harding" />
+		<property name="recipientName" value="Layne Ozzie" />
+		<property name="sendingMoment" value="06/06/2016 10:22" />
+		<property name="title" value="Li Europan lingues" />
+		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
+		<property name="sender" ref="customer6" />
+		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+<!-- Attachment -->
 	
 	<bean id="attachment1Message1Administrator1" class="domain.Attachment">
 		<property name="name" value="AttachmentName1" />
@@ -995,402 +1259,6 @@
 		<property name="name" value="AttachmentName6" />
 		<property name="url" value="http://www.attachmentName6.com" />
 		<property name="message" ref="message1Customer2" />
-	</bean>
-	
-	<bean id="attachment1Message2Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message2Customer2" />
-	</bean>
-	
-	<bean id="attachment2Message2Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message2Customer2" />
-	</bean>
-	
-	<bean id="attachment3Message2Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message2Customer2" />
-	</bean>
-	
-	<bean id="attachment4Message2Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message2Customer2" />
-	</bean>
-	
-	<bean id="attachment5Message2Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message2Customer2" />
-	</bean>
-	
-	<bean id="attachment6Message2Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message2Customer2" />
-	</bean>
-	
-	<bean id="attachment1Message3Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message3Customer2" />
-	</bean>
-	
-	<bean id="attachment2Message3Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message3Customer2" />
-	</bean>
-	
-	<bean id="attachment3Message3Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message3Customer2" />
-	</bean>
-	
-	<bean id="attachment4Message3Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message3Customer2" />
-	</bean>
-	
-	<bean id="attachment5Message3Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message3Customer2" />
-	</bean>
-	
-	<bean id="attachment6Message3Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message3Customer2" />
-	</bean>
-	
-	<bean id="attachment1Message4Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message4Customer2" />
-	</bean>
-	
-	<bean id="attachment2Message4Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message4Customer2" />
-	</bean>
-	
-	<bean id="attachment3Message4Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message4Customer2" />
-	</bean>
-	
-	<bean id="attachment4Message4Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message4Customer2" />
-	</bean>
-	
-	<bean id="attachment5Message4Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message4Customer2" />
-	</bean>
-	
-	<bean id="attachment6Message4Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message4Customer2" />
-	</bean>
-	
-	<bean id="attachment1Message5Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message5Customer2" />
-	</bean>
-	
-	<bean id="attachment2Message5Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message5Customer2" />
-	</bean>
-	
-	<bean id="attachment3Message5Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message5Customer2" />
-	</bean>
-	
-	<bean id="attachment4Message5Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message5Customer2" />
-	</bean>
-	
-	<bean id="attachment5Message5Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message5Customer2" />
-	</bean>
-	
-	<bean id="attachment6Message5Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message5Customer2" />
-	</bean>
-	
-	<bean id="attachment1Message6Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message6Customer2" />
-	</bean>
-	
-	<bean id="attachment2Message6Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message6Customer2" />
-	</bean>
-	
-	<bean id="attachment3Message6Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message6Customer2" />
-	</bean>
-	
-	<bean id="attachment4Message6Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message6Customer2" />
-	</bean>
-	
-	<bean id="attachment5Message6Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message6Customer2" />
-	</bean>
-	
-	<bean id="attachment6Message6Customer2" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message6Customer2" />
-	</bean>
-	
-	<bean id="attachment1Message1Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message1Customer3" />
-	</bean>
-	
-	<bean id="attachment2Message1Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message1Customer3" />
-	</bean>
-	
-	<bean id="attachment3Message1Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message1Customer3" />
-	</bean>
-	
-	<bean id="attachment4Message1Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message1Customer3" />
-	</bean>
-	
-	<bean id="attachment5Message1Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message1Customer3" />
-	</bean>
-	
-	<bean id="attachment6Message1Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message1Customer3" />
-	</bean>
-	
-	<bean id="attachment1Message2Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message2Customer3" />
-	</bean>
-	
-	<bean id="attachment2Message2Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message2Customer3" />
-	</bean>
-	
-	<bean id="attachment3Message2Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message2Customer3" />
-	</bean>
-	
-	<bean id="attachment4Message2Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message2Customer3" />
-	</bean>
-	
-	<bean id="attachment5Message2Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message2Customer3" />
-	</bean>
-	
-	<bean id="attachment6Message2Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message2Customer3" />
-	</bean>
-	
-	<bean id="attachment1Message3Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message3Customer3" />
-	</bean>
-	
-	<bean id="attachment2Message3Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message3Customer3" />
-	</bean>
-	
-	<bean id="attachment3Message3Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message3Customer3" />
-	</bean>
-	
-	<bean id="attachment4Message3Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message3Customer3" />
-	</bean>
-	
-	<bean id="attachment5Message3Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message3Customer3" />
-	</bean>
-	
-	<bean id="attachment6Message3Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message3Customer3" />
-	</bean>
-	
-	<bean id="attachment1Message4Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message4Customer3" />
-	</bean>
-	
-	<bean id="attachment2Message4Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message4Customer3" />
-	</bean>
-	
-	<bean id="attachment3Message4Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message4Customer3" />
-	</bean>
-	
-	<bean id="attachment4Message4Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message4Customer3" />
-	</bean>
-	
-	<bean id="attachment5Message4Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message4Customer3" />
-	</bean>
-	
-	<bean id="attachment6Message4Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message4Customer3" />
-	</bean>
-	
-	<bean id="attachment1Message5Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message5Customer3" />
-	</bean>
-	
-	<bean id="attachment2Message5Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message5Customer3" />
-	</bean>
-	
-	<bean id="attachment3Message5Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message5Customer3" />
-	</bean>
-	
-	<bean id="attachment4Message5Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message5Customer3" />
-	</bean>
-	
-	<bean id="attachment5Message5Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message5Customer3" />
-	</bean>
-	
-	<bean id="attachment6Message5Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message5Customer3" />
-	</bean>
-	
-	<bean id="attachment1Message6Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName1" />
-		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message6Customer3" />
-	</bean>
-	
-	<bean id="attachment2Message6Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName2" />
-		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message6Customer3" />
-	</bean>
-	
-	<bean id="attachment3Message6Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName3" />
-		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message6Customer3" />
-	</bean>
-	
-	<bean id="attachment4Message6Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName4" />
-		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message6Customer3" />
-	</bean>
-	
-	<bean id="attachment5Message6Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName5" />
-		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message6Customer3" />
-	</bean>
-	
-	<bean id="attachment6Message6Customer3" class="domain.Attachment">
-		<property name="name" value="AttachmentName6" />
-		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message6Customer3" />
 	</bean>
 	
 	<bean id="attachment1Message1Customer4" class="domain.Attachment">
@@ -2041,7 +1909,1124 @@
 		<property name="message" ref="message6Customer6" />
 	</bean>
 	
+	<!-- Attachment Copies -->
 	
+	<bean id="attachment1Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment1Message2Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message2Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message2Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message2Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message2Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message2Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message2Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message2Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message2Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message2Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message2Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message2Administrator1" />
+	</bean>
+	
+	<bean id="attachment1Message3Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message3Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message3Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message3Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message3Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message3Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message3Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message3Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message3Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message3Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message3Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message3Administrator1" />
+	</bean>
+	
+	<bean id="attachment1Message4Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message4Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message4Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message4Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message4Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message4Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message4Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message4Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message4Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message4Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message4Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message4Administrator1" />
+	</bean>
+	
+	<bean id="attachment1Message5Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message5Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message5Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message5Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message5Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message5Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message5Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message5Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message5Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message5Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message5Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message5Administrator1" />
+	</bean>
+	
+	<bean id="attachment1Message6Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message6Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message6Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message6Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message6Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message6Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message6Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message6Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message6Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message6Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message6Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message6Administrator1" />
+	</bean>
+	
+	
+	<bean id="attachment1Message1Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Customer1" />
+	</bean>
+	
+	<bean id="attachment2Message1Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Customer1" />
+	</bean>
+	
+	<bean id="attachment3Message1Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Customer1" />
+	</bean>
+	
+	<bean id="attachment4Message1Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Customer1" />
+	</bean>
+	
+	<bean id="attachment5Message1Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Customer1" />
+	</bean>
+	
+	<bean id="attachment6Message1Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Customer1" />
+	</bean>
+	
+	<bean id="attachment1Message2Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message2Customer1" />
+	</bean>
+	
+	<bean id="attachment2Message2Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message2Customer1" />
+	</bean>
+	
+	<bean id="attachment3Message2Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message2Customer1" />
+	</bean>
+	
+	<bean id="attachment4Message2Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message2Customer1" />
+	</bean>
+	
+	<bean id="attachment5Message2Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message2Customer1" />
+	</bean>
+	
+	<bean id="attachment6Message2Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message2Customer1" />
+	</bean>
+	
+	<bean id="attachment1Message3Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message3Customer1" />
+	</bean>
+	
+	<bean id="attachment2Message3Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message3Customer1" />
+	</bean>
+	
+	<bean id="attachment3Message3Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message3Customer1" />
+	</bean>
+	
+	<bean id="attachment4Message3Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message3Customer1" />
+	</bean>
+	
+	<bean id="attachment5Message3Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message3Customer1" />
+	</bean>
+	
+	<bean id="attachment6Message3Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message3Customer1" />
+	</bean>
+	
+	<bean id="attachment1Message4Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message4Customer1" />
+	</bean>
+	
+	<bean id="attachment2Message4Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message4Customer1" />
+	</bean>
+	
+	<bean id="attachment3Message4Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message4Customer1" />
+	</bean>
+	
+	<bean id="attachment4Message4Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message4Customer1" />
+	</bean>
+	
+	<bean id="attachment5Message4Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message4Customer1" />
+	</bean>
+	
+	<bean id="attachment6Message4Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message4Customer1" />
+	</bean>
+	
+	<bean id="attachment1Message5Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message5Customer1" />
+	</bean>
+	
+	<bean id="attachment2Message5Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message5Customer1" />
+	</bean>
+	
+	<bean id="attachment3Message5Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message5Customer1" />
+	</bean>
+	
+	<bean id="attachment4Message5Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message5Customer1" />
+	</bean>
+	
+	<bean id="attachment5Message5Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message5Customer1" />
+	</bean>
+	
+	<bean id="attachment6Message5Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message5Customer1" />
+	</bean>
+	
+	<bean id="attachment1Message6Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message6Customer1" />
+	</bean>
+	
+	<bean id="attachment2Message6Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message6Customer1" />
+	</bean>
+	
+	<bean id="attachment3Message6Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message6Customer1" />
+	</bean>
+	
+	<bean id="attachment4Message6Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message6Customer1" />
+	</bean>
+	
+	<bean id="attachment5Message6Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message6Customer1" />
+	</bean>
+	
+	<bean id="attachment6Message6Customer1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message6Customer1" />
+	</bean>
+	
+	<bean id="attachment1Message1Customer2Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Customer2" />
+	</bean>
+	
+	<bean id="attachment2Message1Customer2Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Customer2" />
+	</bean>
+	
+	<bean id="attachment3Message1Customer2Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Customer2" />
+	</bean>
+	
+	<bean id="attachment4Message1Customer2Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Customer2" />
+	</bean>
+	
+	<bean id="attachment5Message1Customer2Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Customer2" />
+	</bean>
+	
+	<bean id="attachment6Message1Customer2Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Customer2" />
+	</bean>
+	
+	<bean id="attachment1Message1Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Customer4" />
+	</bean>
+	
+	<bean id="attachment2Message1Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Customer4" />
+	</bean>
+	
+	<bean id="attachment3Message1Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Customer4" />
+	</bean>
+	
+	<bean id="attachment4Message1Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Customer4" />
+	</bean>
+	
+	<bean id="attachment5Message1Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Customer4" />
+	</bean>
+	
+	<bean id="attachment6Message1Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Customer4" />
+	</bean>
+	
+	<bean id="attachment1Message2Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message2Customer4" />
+	</bean>
+	
+	<bean id="attachment2Message2Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message2Customer4" />
+	</bean>
+	
+	<bean id="attachment3Message2Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message2Customer4" />
+	</bean>
+	
+	<bean id="attachment4Message2Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message2Customer4" />
+	</bean>
+	
+	<bean id="attachment5Message2Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message2Customer4" />
+	</bean>
+	
+	<bean id="attachment6Message2Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message2Customer4" />
+	</bean>
+	
+	<bean id="attachment1Message3Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message3Customer4" />
+	</bean>
+	
+	<bean id="attachment2Message3Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message3Customer4" />
+	</bean>
+	
+	<bean id="attachment3Message3Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message3Customer4" />
+	</bean>
+	
+	<bean id="attachment4Message3Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message3Customer4" />
+	</bean>
+	
+	<bean id="attachment5Message3Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message3Customer4" />
+	</bean>
+	
+	<bean id="attachment6Message3Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message3Customer4" />
+	</bean>
+	
+	<bean id="attachment1Message4Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message4Customer4" />
+	</bean>
+	
+	<bean id="attachment2Message4Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message4Customer4" />
+	</bean>
+	
+	<bean id="attachment3Message4Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message4Customer4" />
+	</bean>
+	
+	<bean id="attachment4Message4Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message4Customer4" />
+	</bean>
+	
+	<bean id="attachment5Message4Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message4Customer4" />
+	</bean>
+	
+	<bean id="attachment6Message4Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message4Customer4" />
+	</bean>
+	
+	<bean id="attachment1Message5Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message5Customer4" />
+	</bean>
+	
+	<bean id="attachment2Message5Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message5Customer4" />
+	</bean>
+	
+	<bean id="attachment3Message5Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message5Customer4" />
+	</bean>
+	
+	<bean id="attachment4Message5Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message5Customer4" />
+	</bean>
+	
+	<bean id="attachment5Message5Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message5Customer4" />
+	</bean>
+	
+	<bean id="attachment6Message5Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message5Customer4" />
+	</bean>
+	
+	<bean id="attachment1Message6Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message6Customer4" />
+	</bean>
+	
+	<bean id="attachment2Message6Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message6Customer4" />
+	</bean>
+	
+	<bean id="attachment3Message6Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message6Customer4" />
+	</bean>
+	
+	<bean id="attachment4Message6Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message6Customer4" />
+	</bean>
+	
+	<bean id="attachment5Message6Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message6Customer4" />
+	</bean>
+	
+	<bean id="attachment6Message6Customer4Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message6Customer4" />
+	</bean>
+	
+	<bean id="attachment1Message1Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Customer5" />
+	</bean>
+	
+	<bean id="attachment2Message1Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Customer5" />
+	</bean>
+	
+	<bean id="attachment3Message1Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Customer5" />
+	</bean>
+	
+	<bean id="attachment4Message1Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Customer5" />
+	</bean>
+	
+	<bean id="attachment5Message1Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Customer5" />
+	</bean>
+	
+	<bean id="attachment6Message1Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Customer5" />
+	</bean>
+	
+	<bean id="attachment1Message2Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message2Customer5" />
+	</bean>
+	
+	<bean id="attachment2Message2Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message2Customer5" />
+	</bean>
+	
+	<bean id="attachment3Message2Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message2Customer5" />
+	</bean>
+	
+	<bean id="attachment4Message2Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message2Customer5" />
+	</bean>
+	
+	<bean id="attachment5Message2Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message2Customer5" />
+	</bean>
+	
+	<bean id="attachment6Message2Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message2Customer5" />
+	</bean>
+	
+	<bean id="attachment1Message3Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message3Customer5" />
+	</bean>
+	
+	<bean id="attachment2Message3Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message3Customer5" />
+	</bean>
+	
+	<bean id="attachment3Message3Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message3Customer5" />
+	</bean>
+	
+	<bean id="attachment4Message3Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message3Customer5" />
+	</bean>
+	
+	<bean id="attachment5Message3Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message3Customer5" />
+	</bean>
+	
+	<bean id="attachment6Message3Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message3Customer5" />
+	</bean>
+	
+	<bean id="attachment1Message4Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message4Customer5" />
+	</bean>
+	
+	<bean id="attachment2Message4Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message4Customer5" />
+	</bean>
+	
+	<bean id="attachment3Message4Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message4Customer5" />
+	</bean>
+	
+	<bean id="attachment4Message4Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message4Customer5" />
+	</bean>
+	
+	<bean id="attachment5Message4Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message4Customer5" />
+	</bean>
+	
+	<bean id="attachment6Message4Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message4Customer5" />
+	</bean>
+	
+	<bean id="attachment1Message5Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message5Customer5" />
+	</bean>
+	
+	<bean id="attachment2Message5Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message5Customer5" />
+	</bean>
+	
+	<bean id="attachment3Message5Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message5Customer5" />
+	</bean>
+	
+	<bean id="attachment4Message5Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message5Customer5" />
+	</bean>
+	
+	<bean id="attachment5Message5Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message5Customer5" />
+	</bean>
+	
+	<bean id="attachment6Message5Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message5Customer5" />
+	</bean>
+	
+	<bean id="attachment1Message6Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message6Customer5" />
+	</bean>
+	
+	<bean id="attachment2Message6Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message6Customer5" />
+	</bean>
+	
+	<bean id="attachment3Message6Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message6Customer5" />
+	</bean>
+	
+	<bean id="attachment4Message6Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message6Customer5" />
+	</bean>
+	
+	<bean id="attachment5Message6Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message6Customer5" />
+	</bean>
+	
+	<bean id="attachment6Message6Customer5Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message6Customer5" />
+	</bean>
+	
+	<bean id="attachment1Message1Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Customer6" />
+	</bean>
+	
+	<bean id="attachment2Message1Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Customer6" />
+	</bean>
+	
+	<bean id="attachment3Message1Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Customer6" />
+	</bean>
+	
+	<bean id="attachment4Message1Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Customer6" />
+	</bean>
+	
+	<bean id="attachment5Message1Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Customer6" />
+	</bean>
+	
+	<bean id="attachment6Message1Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Customer6" />
+	</bean>
+	
+	<bean id="attachment1Message2Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message2Customer6" />
+	</bean>
+	
+	<bean id="attachment2Message2Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message2Customer6" />
+	</bean>
+	
+	<bean id="attachment3Message2Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message2Customer6" />
+	</bean>
+	
+	<bean id="attachment4Message2Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message2Customer6" />
+	</bean>
+	
+	<bean id="attachment5Message2Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message2Customer6" />
+	</bean>
+	
+	<bean id="attachment6Message2Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message2Customer6" />
+	</bean>
+	
+	<bean id="attachment1Message3Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message3Customer6" />
+	</bean>
+	
+	<bean id="attachment2Message3Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message3Customer6" />
+	</bean>
+	
+	<bean id="attachment3Message3Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message3Customer6" />
+	</bean>
+	
+	<bean id="attachment4Message3Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message3Customer6" />
+	</bean>
+	
+	<bean id="attachment5Message3Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message3Customer6" />
+	</bean>
+	
+	<bean id="attachment6Message3Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message3Customer6" />
+	</bean>
+	
+	<bean id="attachment1Message4Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message4Customer6" />
+	</bean>
+	
+	<bean id="attachment2Message4Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message4Customer6" />
+	</bean>
+	
+	<bean id="attachment3Message4Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message4Customer6" />
+	</bean>
+	
+	<bean id="attachment4Message4Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message4Customer6" />
+	</bean>
+	
+	<bean id="attachment5Message4Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message4Customer6" />
+	</bean>
+	
+	<bean id="attachment6Message4Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message4Customer6" />
+	</bean>
+	
+	<bean id="attachment1Message5Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message5Customer6" />
+	</bean>
+	
+	<bean id="attachment2Message5Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message5Customer6" />
+	</bean>
+	
+	<bean id="attachment3Message5Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message5Customer6" />
+	</bean>
+	
+	<bean id="attachment4Message5Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message5Customer6" />
+	</bean>
+	
+	<bean id="attachment5Message5Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message5Customer6" />
+	</bean>
+	
+	<bean id="attachment6Message5Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message5Customer6" />
+	</bean>
+	
+	<bean id="attachment1Message6Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message6Customer6" />
+	</bean>
+	
+	<bean id="attachment2Message6Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message6Customer6" />
+	</bean>
+	
+	<bean id="attachment3Message6Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message6Customer6" />
+	</bean>
+	
+	<bean id="attachment4Message6Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message6Customer6" />
+	</bean>
+	
+	<bean id="attachment5Message6Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message6Customer6" />
+	</bean>
+	
+	<bean id="attachment6Message6Customer6Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message6Customer6" />
+	</bean>
 	
 	<!-- Customer -->
 	
