@@ -28,6 +28,7 @@ public class Message extends DomainEntity {
 	private Date	sendingMoment;
 	private String	title;
 	private String	text;
+	private boolean	isSender;
 
 
 	@NotBlank
@@ -80,6 +81,14 @@ public class Message extends DomainEntity {
 
 	public void setText(final String text) {
 		this.text = text;
+	}
+
+	public boolean getIsSender() {
+		return this.isSender;
+	}
+
+	public void setIsSender(final boolean isSender) {
+		this.isSender = isSender;
 	}
 
 
