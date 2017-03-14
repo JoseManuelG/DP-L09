@@ -3101,10 +3101,6 @@
 		<property name="departureTime" value="02/12/2017 16:35" />
 		<property name="origin" value="Mairena del Alcor" />
 		<property name="destination" value="El Viso del Alcor" />
-		<property name="originLat" value="37.3453150" />
-		<property name="originLon" value="-5.7420074" />
-		<property name="destinationLat" value="37.3453150320114" />
-		<property name="destinationLon" value="-5.7420074227" />
 		<property name="type" value="OFFER" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer1" />
@@ -3146,10 +3142,6 @@
 		<property name="departureTime" value="18/05/2017 16:35" />
 		<property name="origin" value="Estepa" />
 		<property name="destination" value="Arahal" />
-		<property name="originLat" value="37.3111634666469" />
-		<property name="originLon" value="-4.8829713892" />
-		<property name="destinationLat" value="37.186351500" />
-		<property name="destinationLon" value="-5.5549192837" />
 		<property name="type" value="OFFER" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer1" />
@@ -3161,10 +3153,6 @@
 		<property name="departureTime" value="18/06/2017 16:35" />
 		<property name="origin" value="Arahal" />
 		<property name="destination" value="Coripe" />
-		<property name="originLat" value="37.186351500" />
-		<property name="originLon" value="-5.5549192837" />
-		<property name="destinationLat" value="36.996366733" />
-		<property name="destinationLon" value="-5.3983720636" />
 		<property name="type" value="OFFER" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer1" />
@@ -3184,173 +3172,6 @@
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer2" />
 	</bean>
-	
-	<bean id="trip2Customer2" class="domain.Trip">
-		<property name="title" value="TripTitle2" />
-		<property name="description" value="TripDescription2" />
-		<property name="departureTime" value="14/02/2017 16:35" />
-		<property name="origin" value="Mairena del Alcor" />
-		<property name="destination" value="El Viso del Alcor" />
-		<property name="originLat" value="37.3453150" />
-		<property name="originLon" value="-5.7420074" />
-		<property name="destinationLat" value="37.3453150320114" />
-		<property name="destinationLon" value="-5.7420074227" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer2" />
-	</bean>
-	
-	<bean id="trip3Customer2" class="domain.Trip">
-		<property name="title" value="TripTitle3" />
-		<property name="description" value="TripDescription3" />
-		<property name="departureTime" value="16/02/2017 16:35" />
-		<property name="origin" value="El Viso del Alcor" />
-		<property name="destination" value="El Cuervo" />
-		<property name="originLat" value="37.3453150320114" />
-		<property name="originLon" value="-5.7420074227" />
-		<property name="destinationLat" value="36.869244" />
-		<property name="destinationLon" value="-6.0124504" />
-		<property name="type" value="REQUEST" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer2" />
-	</bean>
-	
-	<bean id="trip4Customer2" class="domain.Trip">
-		<property name="title" value="TripTitle4" />
-		<property name="description" value="TripDescription4" />
-		<property name="departureTime" value="18/04/2017 16:35" />
-		<property name="origin" value="El Cuervo" />
-		<property name="destination" value="Estepa" />
-		<property name="originLat" value="36.869244" />
-		<property name="originLon" value="-6.0124504" />
-		<property name="destinationLat" value="37.3111634666469" />
-		<property name="destinationLon" value="-4.8829713892" />
-		<property name="type" value="REQUEST" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer2" />
-	</bean>
-	
-	<bean id="trip5Customer2" class="domain.Trip">
-		<property name="title" value="TripTitle5" />
-		<property name="description" value="TripDescription5" />
-		<property name="departureTime" value="18/05/2017 16:35" />
-		<property name="origin" value="Estepa" />
-		<property name="destination" value="Arahal" />
-		<property name="originLat" value="37.3111634666469" />
-		<property name="originLon" value="-4.8829713892" />
-		<property name="destinationLat" value="37.186351500" />
-		<property name="destinationLon" value="-5.5549192837" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer2" />
-	</bean>
-	
-	<bean id="trip6Customer2" class="domain.Trip">
-		<property name="title" value="TripTitle6" />
-		<property name="description" value="TripDescription6" />
-		<property name="departureTime" value="18/06/2017 16:35" />
-		<property name="origin" value="Arahal" />
-		<property name="destination" value="Coripe" />
-		<property name="originLat" value="37.186351500" />
-		<property name="originLon" value="-5.5549192837" />
-		<property name="destinationLat" value="36.996366733" />
-		<property name="destinationLon" value="-5.3983720636" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer2" />
-	</bean>
-	
-	
-	<bean id="trip1Customer3" class="domain.Trip">
-		<property name="title" value="TripTitle1" />
-		<property name="description" value="TripDescription1" />
-		<property name="departureTime" value="12/02/2017 16:35" />
-		<property name="origin" value="Sevilla" />
-		<property name="destination" value="Mairena del Alcor" />
-		<property name="originLat" value="37.382300" />
-		<property name="originLon" value="-5.9731700" />
-		<property name="destinationLat" value="37.3453150" />
-		<property name="destinationLon" value="-5.7420074" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer3" />
-	</bean>
-	
-	<bean id="trip2Customer3" class="domain.Trip">
-		<property name="title" value="TripTitle2" />
-		<property name="description" value="TripDescription2" />
-		<property name="departureTime" value="14/02/2017 16:35" />
-		<property name="origin" value="Mairena del Alcor" />
-		<property name="destination" value="El Viso del Alcor" />
-		<property name="originLat" value="37.3453150" />
-		<property name="originLon" value="-5.7420074" />
-		<property name="destinationLat" value="37.3453150320114" />
-		<property name="destinationLon" value="-5.7420074227" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer3" />
-	</bean>
-	
-	<bean id="trip3Customer3" class="domain.Trip">
-		<property name="title" value="TripTitle3" />
-		<property name="description" value="TripDescription3" />
-		<property name="departureTime" value="16/02/2017 16:35" />
-		<property name="origin" value="El Viso del Alcor" />
-		<property name="destination" value="El Cuervo" />
-		<property name="originLat" value="37.3453150320114" />
-		<property name="originLon" value="-5.7420074227" />
-		<property name="destinationLat" value="36.869244" />
-		<property name="destinationLon" value="-6.0124504" />
-		<property name="type" value="REQUEST" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer3" />
-	</bean>
-	
-	<bean id="trip4Customer3" class="domain.Trip">
-		<property name="title" value="TripTitle4" />
-		<property name="description" value="TripDescription4" />
-		<property name="departureTime" value="18/04/2017 16:35" />
-		<property name="origin" value="El Cuervo" />
-		<property name="destination" value="Estepa" />
-		<property name="originLat" value="36.869244" />
-		<property name="originLon" value="-6.0124504" />
-		<property name="destinationLat" value="37.3111634666469" />
-		<property name="destinationLon" value="-4.8829713892" />
-		<property name="type" value="REQUEST" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer3" />
-	</bean>
-	
-	<bean id="trip5Customer3" class="domain.Trip">
-		<property name="title" value="TripTitle5" />
-		<property name="description" value="TripDescription5" />
-		<property name="departureTime" value="18/05/2017 16:35" />
-		<property name="origin" value="Estepa" />
-		<property name="destination" value="Arahal" />
-		<property name="originLat" value="37.3111634666469" />
-		<property name="originLon" value="-4.8829713892" />
-		<property name="destinationLat" value="37.186351500" />
-		<property name="destinationLon" value="-5.5549192837" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer3" />
-	</bean>
-	
-	<bean id="trip6Customer3" class="domain.Trip">
-		<property name="title" value="TripTitle6" />
-		<property name="description" value="TripDescription6" />
-		<property name="departureTime" value="18/06/2017 16:35" />
-		<property name="origin" value="Arahal" />
-		<property name="destination" value="Coripe" />
-		<property name="originLat" value="37.186351500" />
-		<property name="originLon" value="-5.5549192837" />
-		<property name="destinationLat" value="36.996366733" />
-		<property name="destinationLon" value="-5.3983720636" />
-		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
-		<property name="customer" ref="customer3" />
-	</bean>
-	
 	
 	<bean id="trip1Customer4" class="domain.Trip">
 		<property name="title" value="TripTitle1" />
@@ -3373,8 +3194,6 @@
 		<property name="departureTime" value="14/02/2017 16:35" />
 		<property name="origin" value="Mairena del Alcor" />
 		<property name="destination" value="El Viso del Alcor" />
-		<property name="originLat" value="37.3453150" />
-		<property name="originLon" value="-5.7420074" />
 		<property name="destinationLat" value="37.3453150320114" />
 		<property name="destinationLon" value="-5.7420074227" />
 		<property name="type" value="OFFER" />
@@ -3405,8 +3224,6 @@
 		<property name="destination" value="Estepa" />
 		<property name="originLat" value="36.869244" />
 		<property name="originLon" value="-6.0124504" />
-		<property name="destinationLat" value="37.3111634666469" />
-		<property name="destinationLon" value="-4.8829713892" />
 		<property name="type" value="REQUEST" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer4" />
@@ -3451,8 +3268,6 @@
 		<property name="destination" value="Mairena del Alcor" />
 		<property name="originLat" value="37.382300" />
 		<property name="originLon" value="-5.9731700" />
-		<property name="destinationLat" value="37.3453150" />
-		<property name="destinationLon" value="-5.7420074" />
 		<property name="type" value="OFFER" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer5" />
@@ -3479,8 +3294,6 @@
 		<property name="departureTime" value="16/02/2017 16:35" />
 		<property name="origin" value="El Viso del Alcor" />
 		<property name="destination" value="El Cuervo" />
-		<property name="originLat" value="37.3453150320114" />
-		<property name="originLon" value="-5.7420074227" />
 		<property name="destinationLat" value="36.869244" />
 		<property name="destinationLon" value="-6.0124504" />
 		<property name="type" value="REQUEST" />
@@ -3494,10 +3307,6 @@
 		<property name="departureTime" value="18/04/2017 16:35" />
 		<property name="origin" value="El Cuervo" />
 		<property name="destination" value="Estepa" />
-		<property name="originLat" value="36.869244" />
-		<property name="originLon" value="-6.0124504" />
-		<property name="destinationLat" value="37.3111634666469" />
-		<property name="destinationLon" value="-4.8829713892" />
 		<property name="type" value="REQUEST" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer5" />
@@ -3555,10 +3364,6 @@
 		<property name="departureTime" value="14/02/2017 16:35" />
 		<property name="origin" value="Mairena del Alcor" />
 		<property name="destination" value="El Viso del Alcor" />
-		<property name="originLat" value="37.3453150" />
-		<property name="originLon" value="-5.7420074" />
-		<property name="destinationLat" value="37.3453150320114" />
-		<property name="destinationLon" value="-5.7420074227" />
 		<property name="type" value="OFFER" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer6" />
@@ -3609,7 +3414,7 @@
 		<property name="customer" ref="customer6" />
 	</bean>
 	
-	<bean id="trip6Customer6" class="domain.Trip">
+	<bean id="trip6NoCustomer" class="domain.Trip">
 		<property name="title" value="TripTitle6" />
 		<property name="description" value="TripDescription6" />
 		<property name="departureTime" value="18/06/2017 16:35" />
@@ -3621,7 +3426,7 @@
 		<property name="destinationLon" value="-5.3983720636" />
 		<property name="type" value="OFFER" />
 		<property name="banned" value="false" />
-		<property name="customer" ref="customer6" />
+		<property name="customer"><null/></property>
 	</bean>
 	
 	
@@ -3629,220 +3434,106 @@
 	
 	<!-- Apply -->
 	
-	<bean id="apply1Customer1Trip1" class="domain.Application">
+	<bean id="apply1Customer1Trip1Customer2" class="domain.Application">
 		<property name="status" value="PENDING" />
 		<property name="customer" ref="customer1" />
-		<property name="trip" ref="trip1Customer1" />
-	</bean>
-	
-	<bean id="apply1Customer1Trip2" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer1" />
-		<property name="trip" ref="trip2Customer1" />
-	</bean>
-	
-	<bean id="apply1Customer1Trip3" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer1" />
-		<property name="trip" ref="trip3Customer1" />
-	</bean>
-	
-	<bean id="apply1Customer1Trip4" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer1" />
-		<property name="trip" ref="trip4Customer1" />
-	</bean>
-	
-	<bean id="apply1Customer1Trip5" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer1" />
-		<property name="trip" ref="trip5Customer1" />
-	</bean>
-	
-	<bean id="apply1Customer1Trip6" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer1" />
-		<property name="trip" ref="trip6Customer1" />
-	</bean>
-
-	<bean id="apply1Customer2Trip1" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer2" />
 		<property name="trip" ref="trip1Customer2" />
 	</bean>
 	
-	<bean id="apply1Customer2Trip2" class="domain.Application">
+	<bean id="apply1Customer1Trip2Customer4" class="domain.Application">
 		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer2" />
-		<property name="trip" ref="trip2Customer2" />
-	</bean>
-	
-	<bean id="apply1Customer2Trip3" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer2" />
-		<property name="trip" ref="trip3Customer2" />
-	</bean>
-	
-	<bean id="apply1Customer2Trip4" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer2" />
-		<property name="trip" ref="trip4Customer2" />
-	</bean>
-	
-	<bean id="apply1Customer2Trip5" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer2" />
-		<property name="trip" ref="trip5Customer2" />
-	</bean>
-	
-	<bean id="apply1Customer2Trip6" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer2" />
-		<property name="trip" ref="trip6Customer2" />
-	</bean>
-	
-	<bean id="apply1Customer3Trip1" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer3" />
-		<property name="trip" ref="trip1Customer3" />
-	</bean>
-	
-	<bean id="apply1Customer3Trip2" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer3" />
-		<property name="trip" ref="trip2Customer3" />
-	</bean>
-	
-	<bean id="apply1Customer3Trip3" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer3" />
-		<property name="trip" ref="trip3Customer3" />
-	</bean>
-	
-	<bean id="apply1Customer3Trip4" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer3" />
-		<property name="trip" ref="trip4Customer3" />
-	</bean>
-	
-	<bean id="apply1Customer3Trip5" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer3" />
-		<property name="trip" ref="trip5Customer3" />
-	</bean>
-	
-	<bean id="apply1Customer3Trip6" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer3" />
-		<property name="trip" ref="trip6Customer3" />
-	</bean>
-	
-	<bean id="apply1Customer4Trip1" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer4" />
+		<property name="customer" ref="customer1" />
 		<property name="trip" ref="trip1Customer4" />
 	</bean>
 	
-	<bean id="apply1Customer4Trip2" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer4" />
-		<property name="trip" ref="trip2Customer4" />
-	</bean>
-	
-	<bean id="apply1Customer4Trip3" class="domain.Application">
+	<bean id="apply1Customer1Trip1Customer5" class="domain.Application">
 		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer4" />
-		<property name="trip" ref="trip3Customer4" />
-	</bean>
-	
-	<bean id="apply1Customer4Trip4" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer4" />
-		<property name="trip" ref="trip4Customer4" />
-	</bean>
-	
-	<bean id="apply1Customer4Trip5" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer4" />
-		<property name="trip" ref="trip5Customer4" />
-	</bean>
-	
-	<bean id="apply1Customer4Trip6" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer4" />
-		<property name="trip" ref="trip6Customer4" />
-	</bean>
-	
-	<bean id="apply1Customer5Trip1" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer5" />
+		<property name="customer" ref="customer1" />
 		<property name="trip" ref="trip1Customer5" />
 	</bean>
 	
-	<bean id="apply1Customer5Trip2" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer5" />
-		<property name="trip" ref="trip2Customer5" />
-	</bean>
-	
-	<bean id="apply1Customer5Trip3" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer5" />
-		<property name="trip" ref="trip3Customer5" />
-	</bean>
-	
-	<bean id="apply1Customer5Trip4" class="domain.Application">
+	<bean id="apply1Customer1Trip1Customer6" class="domain.Application">
 		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer5" />
-		<property name="trip" ref="trip4Customer5" />
-	</bean>
-	
-	<bean id="apply1Customer5Trip5" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer5" />
-		<property name="trip" ref="trip5Customer5" />
-	</bean>
-	
-	<bean id="apply1Customer5Trip6" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer5" />
-		<property name="trip" ref="trip6Customer5" />
-	</bean>
-	
-	<bean id="apply1Customer6Trip1" class="domain.Application">
-		<property name="status" value="PENDING" />
-		<property name="customer" ref="customer6" />
+		<property name="customer" ref="customer1" />
 		<property name="trip" ref="trip1Customer6" />
 	</bean>
 	
-	<bean id="apply1Customer6Trip2" class="domain.Application">
+	<bean id="apply1Customer2Trip1Customer1" class="domain.Application">
+		<property name="status" value="PENDING" />
+		<property name="customer" ref="customer2" />
+		<property name="trip" ref="trip1Customer1" />
+	</bean>
+	
+	<bean id="apply1Customer4Trip1Customer1" class="domain.Application">
+		<property name="status" value="PENDING" />
+		<property name="customer" ref="customer4" />
+		<property name="trip" ref="trip1Customer1" />
+	</bean>
+	
+	<bean id="apply2Customer4Trip1Customer1" class="domain.Application">
 		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer6" />
-		<property name="trip" ref="trip2Customer6" />
+		<property name="customer" ref="customer4" />
+		<property name="trip" ref="trip1Customer1" />
 	</bean>
 	
-	<bean id="apply1Customer6Trip3" class="domain.Application">
+	<bean id="apply3Customer4Trip1Customer1" class="domain.Application">
 		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer6" />
-		<property name="trip" ref="trip3Customer6" />
+		<property name="customer" ref="customer4" />
+		<property name="trip" ref="trip1Customer1" />
 	</bean>
 	
-	<bean id="apply1Customer6Trip4" class="domain.Application">
+	<bean id="apply4Customer4Trip1Customer1" class="domain.Application">
+		<property name="status" value="PENDING" />
+		<property name="customer" ref="customer4" />
+		<property name="trip" ref="trip1Customer1" />
+	</bean>
+	
+	<bean id="apply5Customer4Trip1Customer1" class="domain.Application">
+		<property name="status" value="ACCEPTED" />
+		<property name="customer" ref="customer4" />
+		<property name="trip" ref="trip1Customer1" />
+	</bean>
+	
+	<bean id="apply6Customer4Trip1Customer1" class="domain.Application">
+		<property name="status" value="DENIED" />
+		<property name="customer" ref="customer4" />
+		<property name="trip" ref="trip1Customer1" />
+	</bean>
+	
+	<bean id="apply1Customer5Trip1Customer2" class="domain.Application">
+		<property name="status" value="PENDING" />
+		<property name="customer" ref="customer5" />
+		<property name="trip" ref="trip1Customer2" />
+	</bean>
+	
+	<bean id="apply2Customer5Trip1Customer2" class="domain.Application">
+		<property name="status" value="ACCEPTED" />
+		<property name="customer" ref="customer5" />
+		<property name="trip" ref="trip1Customer2" />
+	</bean>
+	
+	<bean id="apply3Customer5Trip1Customer2" class="domain.Application">
+		<property name="status" value="DENIED" />
+		<property name="customer" ref="customer5" />
+		<property name="trip" ref="trip1Customer2" />
+	</bean>
+	
+	<bean id="apply4Customer5Trip1Customer2" class="domain.Application">
+		<property name="status" value="PENDING" />
+		<property name="customer" ref="customer5" />
+		<property name="trip" ref="trip1Customer2" />
+	</bean>
+	
+	<bean id="apply1Customer6Trip1Customer1" class="domain.Application">
 		<property name="status" value="PENDING" />
 		<property name="customer" ref="customer6" />
-		<property name="trip" ref="trip4Customer6" />
+		<property name="trip" ref="trip1Customer1" />
 	</bean>
 	
-	<bean id="apply1Customer6Trip5" class="domain.Application">
-		<property name="status" value="ACCEPTED" />
-		<property name="customer" ref="customer6" />
-		<property name="trip" ref="trip5Customer6" />
-	</bean>
-	
-	<bean id="apply1Customer6Trip6" class="domain.Application">
-		<property name="status" value="DENIED" />
-		<property name="customer" ref="customer6" />
-		<property name="trip" ref="trip6Customer6" />
+	<bean id="apply1NoCustomerTrip1Customer1" class="domain.Application">
+		<property name="status" value="PENDING" />
+		<property name="customer"><null/></property>
+		<property name="trip" ref="trip1Customer1" />
 	</bean>
 	
 	<!-- Administrator -->
@@ -3859,6 +3550,128 @@
 	
 	<bean id="configuration" class="domain.Configuration">
 		<property name="banner" value="http://acme-cng.com/media/images/logo.jpg"/>
+	</bean>	
+	
+	<!-- Comment -->
+
+	<bean id="comment1Administrator1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="administrator1"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment1Customer1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer1"/>
+		<property name="commentable" ref="administrator1"/>
+	</bean>	
+
+	<bean id="comment2Customer1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="true"/>
+		<property name="actor" ref="customer1"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment3Customer1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer1"/>
+		<property name="commentable" ref="trip1Customer2"/>
+	</bean>	
+
+	<bean id="comment4Customer1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer1"/>
+		<property name="commentable" ref="trip1Customer4"/>
+	</bean>	
+
+	<bean id="comment5Customer1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer1"/>
+		<property name="commentable" ref="customer2"/>
+	</bean>	
+
+	<bean id="comment6Customer1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer1"/>
+		<property name="commentable" ref="customer3"/>
+	</bean>	
+
+	<bean id="comment1Customer2" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="true"/>
+		<property name="actor" ref="customer2"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment2Customer2" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer2"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment3Customer2" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer2"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment4Customer2" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer2"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment1Customer3" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="trip1Customer1"/>
 	</bean>	
 	
 </beans>
