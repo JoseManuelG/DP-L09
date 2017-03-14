@@ -100,7 +100,7 @@ Parte A:
 
 	-avg:
 
-	select count(m) from Message m where m.sender is not null
+	select count(m) from Message m where m.isSender=true and m.sender is not null
 
 	dividido entre
 
@@ -108,13 +108,13 @@ Parte A:
 
 	-min
 
-	select count(m) from Message m where m.sender is not null group by m.sender.id order by count(m) asc
+	select count(m) from Message m where m.isSender=true m.sender is not null group by m.sender.id order by count(m) asc
 
 	y quedarse con el primero
 
 	-max
 
-	select count(m) from Message m where m.sender is not null group by m.sender.id order by count(m) desc
+	select count(m) from Message m where m.isSender=true m.sender is not null group by m.sender.id order by count(m) desc
 
 	y quedarse con el primero
 
@@ -122,7 +122,7 @@ Parte A:
 
 	-avg:
 
-	select count(m) from Message m where m.recipient is not null
+	select count(m) from Message m where m.isSender=false m.recipient is not null
 
 	dividido entre
 
@@ -130,25 +130,25 @@ Parte A:
 
 	-min
 
-	select count(m) from Message m where m.recipient is not null group by m.recipient.id order by count(m) asc
+	select count(m) from Message m where m.isSender=false m.recipient is not null group by m.recipient.id order by count(m) asc
 
 	y quedarse con el primero
 
 	-max
 
-	select count(m) from Message m where m.recipient is not null group by m.recipient.id order by count(m) desc
+	select count(m) from Message m where m.isSender=false m.recipient is not null group by m.recipient.id order by count(m) desc
 
 	y quedarse con el primero
 
 11 - The actors who have sent more messages.
 
-	select m.sender from Message m where m.sender is not null group by m.sender order by count(m) desc
+	select m.sender from Message m where m.isSender=true m.sender is not null group by m.sender order by count(m) desc
 
 	y quedarse con el primero
 
 12 - The actors who have got more messages.
 
-	select m.recipient from Message m where m.recipient is not null group by m.recipient order by count(m) desc
+	select m.recipient from Message m where m.isSender=false m.recipient is not null group by m.recipient order by count(m) desc
 
 	y quedarse con el primero
 
