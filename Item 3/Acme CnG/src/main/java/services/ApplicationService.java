@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.validation.Validator;
 
 import repositories.ApplicationRepository;
 import domain.Application;
@@ -26,9 +25,6 @@ public class ApplicationService {
 	
 	@Autowired
 	private CustomerService customerService;
-	
-	@Autowired
-	private Validator validator;
 	
 	
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -101,6 +97,13 @@ public class ApplicationService {
 		return result;
 		
 	}
+	
+	public Collection<Application> findAllApplicationsByTrip(int tripId){
+		Collection<Application> result;
+		result = applicationRepository.findAllApplicationsByTripId(tripId);
+		return result;
+	}
+	
 	
 
 }

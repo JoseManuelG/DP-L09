@@ -19,4 +19,11 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	
 	@Query("select t from Trip t where t.type='REQUEST'")
 	Collection<Trip> findAllRequests();
+
+	@Query("select t from Trip t where t.type='OFFER' and t.customer.id=?1")
+	Collection<Trip> findAllOffersByPrincipalId(int customerId);
+
+	@Query("select t from Trip t where t.type='REQUEST' and t.customer.id=?1")
+	Collection<Trip> findAllRequestsByPrincipalId(int customerId);
+
 }

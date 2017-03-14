@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.TripRepository;
+import domain.Customer;
 import domain.Trip;
 
 @Service
@@ -160,6 +161,21 @@ public class TripService {
 				result = tripRepository.findAllRequests();
 				return result;
 			}
+			
+			public Collection<Trip> findAllOffersByPrincipal(){
+				Collection<Trip> result;
+				Customer customer = customerService.findCustomerByPrincipal();
+				result = tripRepository.findAllOffersByPrincipalId(customer.getId());
+				return result;
+			}
+			
+			public Collection<Trip> findAllRequestsByPrincipal(){
+				Collection<Trip> result;
+				Customer customer = customerService.findCustomerByPrincipal();
+				result = tripRepository.findAllRequestsByPrincipalId(customer.getId());
+				return result;
+			}
+			
 
 
 }
