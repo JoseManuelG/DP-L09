@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
 import domain.Actor;
+import domain.Attachment;
 import domain.Message;
 
 @Service
@@ -26,12 +27,14 @@ public class MessageService {
 		//Supported Services--------------------------------------------------------------------
 		@Autowired
 		private Actorservice actorService;
+		@Autowired
+		private AttachmentService attachmentService;
 
 		@Autowired
 		private Validator validator;
 		
 		
-		//Simple CRUD methods------------------------------------------------------------
+		//Simple CRUD methods------------------------------------------------------------------
 		public Message create(Actor recipient){
 			Message result = new Message();
 			
@@ -40,11 +43,8 @@ public class MessageService {
 			Actor sender = actorService.findByPrincipal();
 			result.setSender(sender);
 			result.setSenderName(sender.getName());
-			
-			
-			
-			//TODO Falta el booleano isCopy
-			//result.setIsCopy(false);
+	
+			result.setIsSender(false);
 			return result;
 		}
 		
@@ -67,30 +67,33 @@ public class MessageService {
 		
 		
 		
-		public Message save(Message message){
+		public Message save(Message message,Collection<Attachment> attachments){
 			Message result;
-			Assert.isNull(message.getRecipient(),"El mensaje debe tener un destinatario");
-			Assert.isNull(message.getRecipient().getName(),"El mensaje debe tener el nombre del destinatario");
-			Assert.hasText(message.getRecipient().getName(),"El mensaje debe tener el nombre del destinatario");
-			Assert.isNull(message.getSender(),"El mensaje debe tener un remitente");
-			Assert.hasText(message.getSender().getName(),"El mensaje debe tener el nombre del remitente");
+			Message copyMessage;
+			Message savedCopyMessage;
+			
+			
+			Assert.notNull(message.getRecipient()			,"El mensaje debe tener un destinatario");
+			Assert.notNull(message.getRecipient().getName()	,"El mensaje debe tener el nombre del destinatario");
+			Assert.hasText(message.getRecipient().getName()	,"El mensaje debe tener el nombre del destinatario");
+			Assert.notNull(message.getSender()				,"El mensaje debe tener un remitente");
+			Assert.hasText(message.getSender().getName()	,"El mensaje debe tener el nombre del remitente");
 
-			Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
-			Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
-			Assert.isNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
+			Assert.hasText(message.getText()				,"El mensaje debe tener un cuerpo");
+			Assert.hasText(message.getTitle()				,"El mensaje debe tener un titulo");
+			Assert.notNull(message.getSendingMoment()		,"El mensaje debe tener la fecha de envio");
 			Actor sender = actorService.findByPrincipal();
 
-			Assert.isTrue(sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
+			Assert.isTrue(!sender.equals(message.getSender()),"El remitente debe ser el mismo que esta conectado");
 			
-			/*TODO
-			 * Creamos copia del mensaje en un segundo mensaje poniendole el isCopy a true y guardariamos ambos;
-			 * 
-			 */
-			
+			 // Creamos copia del mensaje en un segundo mensaje poniendole;
+			 
 
-			Message copyMessage = copyMessage(message);
+			copyMessage = copyMessage(message);
 			result=messageRepository.save(message);
-			messageRepository.save(copyMessage);
+			attachmentService.AñadirAttachments(attachments, result);
+			savedCopyMessage=messageRepository.save(copyMessage);
+			attachmentService.AñadirAttachments(attachments, savedCopyMessage);
 			return result;
 		}
 		
@@ -106,19 +109,23 @@ public class MessageService {
 			result.setText(message.getText());
 			result.setTitle(message.getTitle());
 			result.setSendingMoment(message.getSendingMoment());
-			//result.setIsCopy(true);
+			result.setIsSender(true);
 			
 			
 			return result;
 		}
+		
+		//Other Bussnisnes methods------------------------------------------------------------
 		//Devuelve los mensajes que ha enviado el actor
-		public List<Message> findSendedMessageOfActor(int senderId){
+		public List<Message> findSendedMessageOfPrincipal(){
+			int senderId = actorService.findByPrincipal().getId();
 			List<Message> result = messageRepository.findSendedMessageOfActor(senderId);
 			return result;
 		}
 
 		//Devuelve los mensajes que ha recibido el actor	
-		public List<Message> findReceivedMessageOfActor(int recipientId){
+		public List<Message> findReceivedMessageOfPrincipal(){
+			int recipientId = actorService.findByPrincipal().getId();
 			List<Message> result = messageRepository.findReceivedMessageOfActor(recipientId);
 			return result;
 	}

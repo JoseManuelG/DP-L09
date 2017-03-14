@@ -16,10 +16,10 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 	
 	
 	//Find all the sended messages for a given actor
-	@Query("select m from Message m where m.sender_id=?1 & isCopy=false")
+	@Query("select m from Message m where m.sender_id=?1 & isSender=true")
 	public List<Message> findSendedMessageOfActor(int senderId);
 
 	//Find all the received messages for a given actor
-	@Query("select m from Message m where m.recipient_id=?1 & isCopy=true")
+	@Query("select m from Message m where m.recipient_id=?1 & isSender=false")
 	public List<Message> findReceivedMessageOfActor(int recipientId);
 }
