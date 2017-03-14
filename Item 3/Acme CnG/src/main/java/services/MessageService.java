@@ -15,6 +15,7 @@ import repositories.MessageRepository;
 import domain.Actor;
 import domain.Attachment;
 import domain.Message;
+import forms.MessageForm;
 
 @Service
 @Transactional
@@ -47,12 +48,7 @@ public class MessageService {
 			result.setIsSender(false);
 			return result;
 		}
-		
-		
-		//no se si es necesario el findAll, porque apra las listas se usará querys
-		public Collection<Message> findAll(){
-			return messageRepository.findAll();
-		}
+
 		
 		public Message findOne(Integer messageId){
 			
@@ -85,8 +81,9 @@ public class MessageService {
 			Actor sender = actorService.findByPrincipal();
 
 			Assert.isTrue(!sender.equals(message.getSender()),"El remitente debe ser el mismo que esta conectado");
+			Assert.isTrue(message.getId()==0				,"No puedes editar un mensaje");
 			
-			 // Creamos copia del mensaje en un segundo mensaje poniendole;
+			 // Creamos copia del mensaje en un segundo mensaje;
 			 
 
 			copyMessage = copyMessage(message);
@@ -115,6 +112,16 @@ public class MessageService {
 			return result;
 		}
 		
+		
+		public void delete(Message message){
+			Collection<Attachment> attachments;
+			Assert.isNull(message, "El objeto no puede ser nulo");
+			Assert.isTrue(message.getId()==0,"El objeto no puede tener id 0");
+			
+			attachmentService.deleteAttachmentsOfMessage(message);			
+			messageRepository.delete(message);
+			
+		}
 		//Other Bussnisnes methods------------------------------------------------------------
 		//Devuelve los mensajes que ha enviado el actor
 		public List<Message> findSendedMessageOfPrincipal(){

@@ -13,4 +13,7 @@ public interface AttachmentRepository extends JpaRepository<Attachment, Integer>
 	@Query("select a from Attachment a where a.message_id=?1")
 	public List<Attachment> findAttachmentsOfMessage(int messageId);
 
+	@Query("delete a from Attachment a where a.message_id=?1")
+	public void deleteAttachmentsOfMessage(int messageId);
+
 }

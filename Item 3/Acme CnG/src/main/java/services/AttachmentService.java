@@ -68,4 +68,8 @@ public class AttachmentService {
 				}
 				
 			}
+			public void deleteAttachmentsOfMessage(Message message){
+				attachmentRepository.deleteAttachmentsOfMessage(message.getId());
+			}
+
 }
