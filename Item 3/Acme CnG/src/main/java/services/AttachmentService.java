@@ -67,8 +67,9 @@ public class AttachmentService {
 
 	}
 
-	public void deleteAttachmentsOfMessage(final Message message) {
-		this.attachmentRepository.deleteAttachmentsOfMessage(message.getId());
-	}
+	//TODO: no funciona la query, hay que hacerlo de otra forma
+	//	public void deleteAttachmentsOfMessage(final Message message) {
+	//		this.attachmentRepository.deleteAttachmentsOfMessage(message.getId());
+	//	}
 
 }

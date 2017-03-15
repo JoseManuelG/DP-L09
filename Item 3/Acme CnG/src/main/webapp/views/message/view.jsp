@@ -18,32 +18,45 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <spring:message code="message.from"/>:
-<jstl:out value="${message.senderName}"/><br/>
+<jstl:out value="${res.senderName}"/><br/>
 
 <spring:message code="message.for"/>:
-<jstl:out value="${message.recipientName}"/><br/>
+<jstl:out value="${res.recipientName}"/><br/>
 
 <spring:message code="message.sendingMoment"/>:
-<jstl:out value="${message.sendingMoment}"/><br/>
+<jstl:out value="${res.sendingMoment}"/><br/>
 
 <spring:message code="message.title"/>:
-<jstl:out value="${message.title}"/><br/>
+<jstl:out value="${res.title}"/><br/>
 
 <fieldset>
 	<legend><spring:message code="message.text"/></legend>
-	<jstl:out value="${message.text}"/>
+	<jstl:out value="${res.text}"/>
 </fieldset><br/>
 
-<jstl:if test="${message.sender!=null}">
-	<a href="message/actor/reply.do?messageId=${row.id}">
+<jstl:if test="${attachments.size()!=0}">
+	<display:table pagesize="5" class="displaytag" keepStatus="false"
+		name="attachments" requestURI="${requestURI}" id="row">
+		
+		<acme:column sorteable="false" code="message.attachment.name" path="name"/>
+		
+		<display:column>
+			<a href="${row.url}">${row.url}</a>
+		</display:column>
+		
+	</display:table>
+</jstl:if>
+
+<jstl:if test="${res.sender!=null}">
+	<a href="message/actor/reply.do?messageId=${res.id}">
 		<spring:message code="message.reply"/>
 	</a> | 
 </jstl:if>
 
-<a href="message/actor/forward.do?messageId=${row.id}">
+<a href="message/actor/forward.do?messageId=${res.id}">
 	<spring:message code="message.forward"/>
 </a> | 
 
-<a href="message/actor/delete.do?messageId=${row.id}">
+<a href="message/actor/delete.do?messageId=${res.id}">
 	<spring:message code="message.delete"/>
 </a>

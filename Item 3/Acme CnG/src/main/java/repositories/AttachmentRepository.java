@@ -10,11 +10,12 @@ import domain.Attachment;
 
 public interface AttachmentRepository extends JpaRepository<Attachment, Integer> {
 
-	//Find all the sended messages for a given actor
-	@Query("select a from Attachment a where a.message_id=?1")
+	//Find all the sendt messages for a given actor
+	@Query("select a from Attachment a where a.message.id=?1")
 	public List<Attachment> findAttachmentsOfMessage(int messageId);
 
-	@Query("delete a from Attachment a where a.message_id=?1")
-	public void deleteAttachmentsOfMessage(int messageId);
+	//TODO: no funciona la uqery
+	//@Query("delete a from Attachment a where a.message.id=?1")
+	//public void deleteAttachmentsOfMessage(int messageId);
 
 }

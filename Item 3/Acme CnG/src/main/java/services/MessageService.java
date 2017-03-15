@@ -50,10 +50,10 @@ public class MessageService {
 		return result;
 	}
 
-	public Message findOne(final Integer messageId) {
+	public Message findOne(final int messageId) {
 
-		Assert.isNull(messageId, "No Puedes Encontrar un mensaje sin ID");
-		Assert.isTrue(messageId <= 0, "La Id no es valida");
+		//Assert.isNull(messageId, "No Puedes Encontrar un mensaje sin ID");
+		//Assert.isTrue(messageId <= 0, "La Id no es valida");
 
 		final Message result = this.messageRepository.findOne(messageId);
 
@@ -112,15 +112,16 @@ public class MessageService {
 		Assert.isNull(message, "El objeto no puede ser nulo");
 		Assert.isTrue(message.getId() == 0, "El objeto no puede tener id 0");
 
-		this.attachmentService.deleteAttachmentsOfMessage(message);
+		//TODO: no funciona el metodo
+		//this.attachmentService.deleteAttachmentsOfMessage(message);
 		this.messageRepository.delete(message);
 
 	}
 	//Other Bussnisnes methods------------------------------------------------------------
 	//Devuelve los mensajes que ha enviado el actor
-	public List<Message> findSendedMessageOfPrincipal() {
+	public List<Message> findSentMessageOfPrincipal() {
 		final int senderId = this.actorService.findActorByPrincipal().getId();
-		final List<Message> result = this.messageRepository.findSendedMessageOfActor(senderId);
+		final List<Message> result = this.messageRepository.findSentMessageOfActor(senderId);
 		return result;
 	}
 
