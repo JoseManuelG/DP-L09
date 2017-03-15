@@ -62,6 +62,7 @@ Parte C:
 
 Parte B:
 
+//seria comentarios entre actor//offer//request por separado.
 06 - Average number of comments per actor, offer, or request.
 
 	select count(c) from Comment c
@@ -84,6 +85,7 @@ Parte B:
 
 (para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
 
+//a revisar en reunión
 08 - The actors who have posted ±10% the average number of comments per actor.
 
 	select c.actor from Comment c where (select count(c2) from Comment c2 where c.actor.id=c2.actor.id)>?1*0.9 and (select count(c3) from Comment c3 where c.actor.id=c3.actor.id)<?1*1.1 group by c.actor.id
@@ -108,13 +110,13 @@ Parte A:
 
 	-min
 
-	select count(m) from Message m where m.isSender=true m.sender is not null group by m.sender.id order by count(m) asc
+	select count(m) from Message m where m.isSender=true and m.sender is not null group by m.sender.id order by count(m) asc
 
 	y quedarse con el primero
 
 	-max
 
-	select count(m) from Message m where m.isSender=true m.sender is not null group by m.sender.id order by count(m) desc
+	select count(m) from Message m where m.isSender=true and m.sender is not null group by m.sender.id order by count(m) desc
 
 	y quedarse con el primero
 
@@ -122,7 +124,7 @@ Parte A:
 
 	-avg:
 
-	select count(m) from Message m where m.isSender=false m.recipient is not null
+	select count(m) from Message m where m.isSender=false and m.recipient is not null
 
 	dividido entre
 
@@ -130,25 +132,25 @@ Parte A:
 
 	-min
 
-	select count(m) from Message m where m.isSender=false m.recipient is not null group by m.recipient.id order by count(m) asc
+	select count(m) from Message m where m.isSender=false and m.recipient is not null group by m.recipient.id order by count(m) asc
 
 	y quedarse con el primero
 
 	-max
 
-	select count(m) from Message m where m.isSender=false m.recipient is not null group by m.recipient.id order by count(m) desc
+	select count(m) from Message m where m.isSender=false and m.recipient is not null group by m.recipient.id order by count(m) desc
 
 	y quedarse con el primero
 
 11 - The actors who have sent more messages.
 
-	select m.sender from Message m where m.isSender=true m.sender is not null group by m.sender order by count(m) desc
+	select m.sender from Message m where m.isSender=true and m.sender is not null group by m.sender order by count(m) desc
 
 	y quedarse con el primero
 
 12 - The actors who have got more messages.
 
-	select m.recipient from Message m where m.isSender=false m.recipient is not null group by m.recipient order by count(m) desc
+	select m.recipient from Message m where m.isSender=false and m.recipient is not null group by m.recipient order by count(m) desc
 
 	y quedarse con el primero
 
