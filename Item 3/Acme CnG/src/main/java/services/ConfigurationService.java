@@ -22,14 +22,11 @@ public class ConfigurationService {
 	//Supported Services--------------------------------------------------------------------
 
 	@Autowired
-	private TripService				tripService;
-
-	@Autowired
 	private CustomerService			customerService;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
-	public Configuration create(final int tripId) {
+	public Configuration create() {
 		final Configuration result = new Configuration();
 
 		return result;

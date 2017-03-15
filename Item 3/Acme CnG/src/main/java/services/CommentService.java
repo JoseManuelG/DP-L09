@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,9 @@ import org.springframework.util.Assert;
 
 import repositories.CommentRepository;
 import domain.Actor;
+import domain.Administrator;
 import domain.Comment;
+import domain.Commentable;
 
 @Service
 @Transactional
@@ -31,15 +34,22 @@ public class CommentService {
 	@Autowired
 	private ActorService		actorService;
 
+	@Autowired
+	private CommentableService	commentableService;
+
 
 	//Simple CRUD methods-------------------------------------------------------------------
-	public Comment create() {
+	public Comment create(final int commentableId) {
 		final Comment result = new Comment();
 		Actor actor;
+		final Commentable commentable;
 
+		commentable = this.commentableService.findOne(commentableId);
 		actor = this.actorService.findActorByPrincipal();
+
 		result.setActor(actor);
 		result.setBanned(false);
+		result.setCommentable(commentable);
 
 		return result;
 	}
@@ -60,8 +70,14 @@ public class CommentService {
 
 	public Comment save(final Comment comment) {
 		Comment result;
+		Date currentMoment;
 
-		Assert.notNull(comment, "La solicitud no puede ser nula");
+		currentMoment = new Date(System.currentTimeMillis() - 100);
+
+		Assert.notNull(comment, "El comentario no puede ser nulo");
+
+		comment.setPostMoment(currentMoment);
+		comment.setBanned(false);
 
 		result = this.commentRepository.save(comment);
 
@@ -81,6 +97,26 @@ public class CommentService {
 		Collection<Comment> result;
 		result = this.commentRepository.findUnbannedCommentsByCommentableId(commentableId);
 		return result;
+	}
+
+	public Comment banComment(final int commentId) {
+		Comment comment, result;
+		Actor actor;
+
+		actor = this.actorService.findActorByPrincipal();
+
+		Assert.isTrue(actor instanceof Administrator, "Solo el administrador puede banear comentarios");
+
+		comment = this.findOne(commentId);
+
+		Assert.isTrue(!comment.getBanned(), "No puedes banear dos veces el mismo comentario");
+
+		comment.setBanned(true);
+
+		result = this.save(comment);
+
+		return result;
+
 	}
 
 }
