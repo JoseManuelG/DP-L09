@@ -48,6 +48,8 @@
 		<security:intercept-url pattern="/message/actor/received.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/actor/sent.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/actor/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/actor/write.do" access="isAuthenticated()" />
+		
 		<security:intercept-url pattern="/trip/view.do" access="isAuthenticated()" />
 		
 		

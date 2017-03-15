@@ -59,8 +59,8 @@ public class AttachmentService {
 		return result;
 	}
 
-	public void AñadirAttachments(final Collection<Attachment> attacments, final Message message) {
-		for (final Attachment a : attacments) {
+	public void AñadirAttachments(final Collection<Attachment> attachments, final Message message) {
+		for (final Attachment a : attachments) {
 			a.setMessage(message);
 			this.save(a);
 		}

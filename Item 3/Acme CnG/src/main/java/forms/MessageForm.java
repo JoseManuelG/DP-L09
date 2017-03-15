@@ -48,8 +48,8 @@ public class MessageForm {
 	public void addAttachmentSpace() {
 		this.attachments.add(null);
 	}
-	//Metodo para eliminar un attachment especifico del formulario
-	public void removeAttachmentSpace(final int attachmentIndex) {
-		this.attachments.remove(attachmentIndex);
+	//Metodo para eliminar el ultimo attachment del formulario
+	public void removeAttachmentSpace() {
+		this.attachments.removeLast();
 	}
 }

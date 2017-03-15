@@ -45,6 +45,19 @@ public class MessageService {
 		final Actor sender = this.actorService.findActorByPrincipal();
 		result.setSender(sender);
 		result.setSenderName(sender.getName());
+		result.setSendingMoment(new Date(System.currentTimeMillis() - 100));
+
+		result.setIsSender(false);
+		return result;
+	}
+
+	public Message create() {
+		final Message result = new Message();
+
+		final Actor sender = this.actorService.findActorByPrincipal();
+		result.setSender(sender);
+		result.setSenderName(sender.getName());
+		result.setSendingMoment(new Date(System.currentTimeMillis() - 100));
 
 		result.setIsSender(false);
 		return result;
@@ -136,7 +149,6 @@ public class MessageService {
 		final Message result = this.create(messageForm.getRecipient());
 		result.setText(messageForm.getText());
 		result.setTitle(messageForm.getTitle());
-		result.setSendingMoment(new Date(System.currentTimeMillis() - 1000));
 		this.validator.validate(result, binding);
 		return result;
 
