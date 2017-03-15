@@ -27,20 +27,6 @@ public class TripCustomerController extends AbstractController {
 
 
 	// List ---------------------------------------------------------------
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView display() {
-		ModelAndView result;
-		Collection<Trip> trips;
-
-		trips = this.tripService.findAllOffersByPrincipal();
-
-		result = new ModelAndView("trip/list/my/offers");
-		result.addObject("trips", trips);
-
-		return result;
-	}
-
-	// List ---------------------------------------------------------------
 	@RequestMapping(value = "/list/my/offers", method = RequestMethod.GET)
 	public ModelAndView listOffers() {
 		ModelAndView result;
@@ -186,4 +172,5 @@ public class TripCustomerController extends AbstractController {
 		return result;
 
 	}
+
 }

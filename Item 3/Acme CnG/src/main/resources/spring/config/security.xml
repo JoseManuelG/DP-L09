@@ -48,10 +48,26 @@
 		<security:intercept-url pattern="/message/actor/received.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/actor/sent.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message/actor/view.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/trip/view.do" access="isAuthenticated()" />
+		
 		
 		<!-- Administrator -->
 		
 		<!-- Customer -->
+				
+		<security:intercept-url pattern="/application/customer/apply.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/application/customer/accept.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/application/customer/deny.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/list/my/offers" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/list/my/requests" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/search" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/search/offers" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/search/requests" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/create/offer" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/create/request" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/list/my/offers" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/edit" access="hasRole('CUSTOMER')" />
+		
 		
 		<!--NONE -->
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
