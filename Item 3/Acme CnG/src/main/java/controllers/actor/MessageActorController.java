@@ -52,7 +52,7 @@ public class MessageActorController extends AbstractController {
 	}
 
 	// Methods -----------------------------------------------------------------		
-	//TODO: rEQUEST URI
+
 	@RequestMapping(value = "/received", method = RequestMethod.GET)
 	public ModelAndView received() {
 		ModelAndView result;
@@ -62,6 +62,7 @@ public class MessageActorController extends AbstractController {
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", res);
+		result.addObject("requestURI", "message/actor/received.do");
 
 		return result;
 	}
@@ -75,6 +76,7 @@ public class MessageActorController extends AbstractController {
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", res);
+		result.addObject("requestURI", "message/actor/sent.do");
 
 		return result;
 	}
@@ -91,6 +93,7 @@ public class MessageActorController extends AbstractController {
 		result = new ModelAndView("message/view");
 		result.addObject("res", res);
 		result.addObject("attachments", att);
+		result.addObject("requestURI", "message/actor/view.do?messageId=" + messageId);
 
 		return result;
 	}
@@ -167,6 +170,7 @@ public class MessageActorController extends AbstractController {
 		result.addObject("actors", actors);
 		result.addObject("messageForm", messageForm);
 		result.addObject("message", message);
+		result.addObject("requestURI", "message/actor/write.do");
 
 		return result;
 	}

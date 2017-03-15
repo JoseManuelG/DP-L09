@@ -66,20 +66,31 @@ public class MessageService {
 		Message copyMessage;
 		Message savedCopyMessage;
 
+		//TODO: el assert de getSender sobra porque se pone el principal desde el servicio,
+		// y no lo puede modificar de ninguna forma el usuario, y los dos del final igual,
+		// no pueden ser modificados por el usuario, los hace el servicio, el que si que hace
+		// falta es el de notNull recipient porque eso es lo que se puede cambiar en la vista
+
 		Assert.notNull(message.getRecipient(), "El mensaje debe tener un destinatario");
-		Assert.notNull(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
-		Assert.hasText(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
+		//		Es recipientName del message no el name del recipient, aun asi esto lo hace el @NotNull y @NotBlank
+		//		Assert.notNull(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
+		//		Assert.hasText(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
 
 		Assert.notNull(message.getSender(), "El mensaje debe tener un remitente");
-		Assert.notNull(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
-		Assert.hasText(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
+		//		Es senderName del message no el name del sender, aun asi esto lo hace el @NotNull y @NotBlank
+		//		Assert.notNull(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
+		//		Assert.hasText(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
 
-		Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
-		Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
-		Assert.notNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
+		//		Esto lo hace el @NotBlank
+		//		Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
+		//		Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
+
+		//		Esto lo hace el @NotNull
+		//		Assert.notNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
 		final Actor sender = this.actorService.findActorByPrincipal();
 
-		Assert.isTrue(!sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
+		// tenia un ! delante de sender y estaba petando por eso, porque comprobaba lo contrario
+		Assert.isTrue(sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
 		Assert.isTrue(message.getId() == 0, "No puedes editar un mensaje");
 
 		// Creamos copia del mensaje en un segundo mensaje;

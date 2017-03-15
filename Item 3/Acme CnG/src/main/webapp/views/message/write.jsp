@@ -26,16 +26,16 @@
 	<form:label path="recipient"><spring:message code="message.for" /></form:label>	
 	<form:select path="recipient">
 		<jstl:forEach items="${actors}"  var="actor">
-			<form:option value="${actor}">
+			<form:option value="${actor.id}">
 				<jstl:out value="${actor.name} ${actor.surname} (${actor.userAccount.username})"/>
 			</form:option>
 		</jstl:forEach>
 	</form:select>
 	<form:errors path="recipient" cssClass="error" />
 	
-
+	<br/>
 	ATTACHMENTS
-	
+	<br/>
 	
 	<br/>
 	<acme:submit code="message.save" name="save" />
