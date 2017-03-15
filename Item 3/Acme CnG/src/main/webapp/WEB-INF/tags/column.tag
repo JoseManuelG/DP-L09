@@ -12,6 +12,7 @@
 
 <%-- Taglibs --%>
 
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
@@ -21,7 +22,13 @@
 <%@ attribute name="code" required="true" %>
 <%@ attribute name="sorteable" required="true" %>
 
+<%@ attribute name="highlight" required="false" %>
+
+<jstl:if test="${highlight == null}">
+	<jstl:set var="highlight" value="false" />
+</jstl:if>
+
 <%-- Definition --%>
 	
 <spring:message code="${code}" var="codeName" />
-<display:column property="${path}" title="${codeName}" sortable="${sorteable}" />
+<display:column property="${path}" title="${codeName}" sortable="${sorteable}" style="color: red"/>

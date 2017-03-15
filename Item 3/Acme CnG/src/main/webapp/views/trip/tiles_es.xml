@@ -17,13 +17,33 @@
 <tiles-definitions>
 
 	<definition name="trip/create/offer" extends="master.page">
-		<put-attribute name="title" value="New offer" />
+		<put-attribute name="title" value="Nueva oferta" />
 		<put-attribute name="body" value="/views/trip/edit.jsp" />
 	</definition>
 
 	<definition name="trip/create/request" extends="master.page">
-		<put-attribute name="title" value="New offer" />
+		<put-attribute name="title" value="Nueva petición" />
 		<put-attribute name="body" value="/views/trip/edit.jsp" />
+	</definition>
+
+	<definition name="trip/list/my/offers" extends="master.page">
+		<put-attribute name="title" value="Mis ofertas" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/list/my/request" extends="master.page">
+		<put-attribute name="title" value="Mis peticiones" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/search" extends="master.page">
+		<put-attribute name="title" value="Búsqueda" />
+		<put-attribute name="body" value="/views/trip/search.jsp" />
+	</definition>
+
+	<definition name="trip/search/list" extends="master.page">
+		<put-attribute name="title" value="Resultados de la búsqueda" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
 	</definition>
 
 </tiles-definitions>

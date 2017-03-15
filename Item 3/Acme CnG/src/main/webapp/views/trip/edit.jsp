@@ -17,6 +17,8 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="trip/customer/edit.do" modelAttribute="trip">
+
+	<form:hidden path="type"/>
 	
 	<acme:textbox code="trip.title" path="title"/>
 	<acme:textbox code="trip.description" path="description"/>

@@ -11,90 +11,58 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-
-
-<jstl:if test="${lessor!=null}">
-	<p>
-		<spring:message code="property.dashboard.prefix"/> 
-		<jstl:out value="${lessor.name}"/> <jstl:out value="${lessor.surname}"/> 
-		<jstl:choose>
-			<jstl:when test="${queryNumber==1}"><spring:message code="property.dashboard.sufix1"/></jstl:when>
-			<jstl:when test="${queryNumber==2}"><spring:message code="property.dashboard.sufix2"/></jstl:when>
-			<jstl:when test="${queryNumber==3}"><spring:message code="property.dashboard.sufix3"/></jstl:when>
-			<jstl:when test="${queryNumber==4}"><spring:message code="property.dashboard.sufix4"/></jstl:when>
-			<jstl:when test="${queryNumber==5}"><spring:message code="property.dashboard.sufix5"/></jstl:when>
-			<jstl:otherwise/>
-		</jstl:choose>
-	</p>
-</jstl:if>
-
-
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="properties" requestURI="${requestURI}" id="row">
+	name="trips" requestURI="${requestURI}" id="row">
 	
 	<!-- Action links -->
-	<security:authorize access="hasRole('LESSOR')">
-	<jstl:if test="${requestURI == 'property/lessor/myProperties.do'}">
-			<spring:message code="property.edit.property" var="editHeader" />
-			<display:column title="${editHeader}">
-				<a href="property/lessor/edit.do?propertyId=${row.id}">
-				<spring:message	code="property.edit" />
-				</a>
-				
-			</display:column>
-	</jstl:if>
-	</security:authorize>
-	<spring:message code="property.view.title" var="viewTitleHeader" />
+	
+	<spring:message code="trip.view.title" var="viewTitleHeader" />
 	<display:column title="${viewTitleHeader}">
-			<a href="property/view.do?propertyId=${row.id}">
-				<spring:message	code="property.view" />
+			<a href="trip/view.do?tripId=${row.id}">
+				<spring:message	code="trip.view" />
 			</a>
 	</display:column>
-	<jstl:if test="${requestURI == 'property/list.do'}">
-	    <spring:message code="property.view.lessor" var="viewTitleHeader" />
+<%-- 	<jstl:if test="${requestURI == 'trip/list.do'}"> --%>
+	    <spring:message code="trip.view.customer" var="viewTitleHeader" />
 	    <display:column title="${viewTitleHeader}">
-	      <a href="lessor/view.do?lessorId=${row.lessor.id}">
-	      <spring:message  code="property.view" />
-	    </a>
-	      
+	      <a href="customer/view.do?customerId=${row.customer.id}">
+	      <spring:message  code="trip.view" />
+	   	  </a>
 	    </display:column>
-  	</jstl:if>
+<%--   	</jstl:if> --%>
 
 	<!-- Attributes -->
 	
-	<spring:message code="property.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="false" />
-	
-	<spring:message code="property.rate" var="rateHeader" />
-	<display:column property="rate" title="${rateHeader}" sortable="false" />
-	
-	<spring:message code="property.description" var="descriptionHeader" />
-	<display:column property="description" title="${descriptionHeader}" sortable="false" />
-
-	<spring:message code="property.address" var="addressHeader" />
-	<display:column property="address" title="${addressHeader}" sortable="false" />
-	
-	<jstl:if test="${lessor==null}">
-		<spring:message code="property.number" var="numberHeader" />
-		<display:column title="${numberHeader}" sortable="false">
-			<jstl:out value="${row.books.size()}"/>
-		</display:column>
+	<jstl:if test="${!requestURI.contains('trip/customer/list/my'}">
+		<acme:column sorteable="false" code="trip.type" path="type" highlight="${row.banned}"/>	
 	</jstl:if>
+	<acme:column sorteable="false" code="trip.title" path="title" highlight="${row.banned}"/>
+	<acme:column sorteable="false" code="trip.origin" path="origin" highlight="${row.banned}"/>
+	<acme:column sorteable="false" code="trip.destination" path="destination" highlight="${row.banned}"/>
+	<acme:column sorteable="false" code="trip.departure.time" path="departureTime" highlight="${row.banned}"/>
 	
+	<security:authorize access="hasRole('CUSTOMER')">	
+		<spring:message code="trip.apply.title" var="applyTitleHeader" />
+		<display:column title="${applyTitleHeader}">
+			<a href="trip/customer/apply.do?tripId=${row.id}">
+				<spring:message	code="trip.apply" />
+			</a>
+		</display:column>
+	</security:authorize>
 	
 </display:table>
 
-<jstl:if test="${lessor!=null}">
-	<p>
-		<acme:cancel url="dashboard/administrator/lessors.do" code="property.back"/>
-	</p>
-</jstl:if>
-
-<security:authorize access="hasRole('LESSOR')">
-	<a href="property/lessor/create.do">
-	      <spring:message  code="property.new" />
+<security:authorize access="hasRole('CUSTOMER')">
+	<a href="trip/customer/create/offer.do">
+	      <spring:message  code="trip.new.offer" />
+	</a>
+</security:authorize>
+&nbsp;
+<security:authorize access="hasRole('CUSTOMER')">
+	<a href="trip/customer/create/request.do">
+	      <spring:message  code="trip.new.request" />
 	</a>
 </security:authorize>
 
