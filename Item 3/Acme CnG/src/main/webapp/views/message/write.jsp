@@ -20,15 +20,13 @@
 
 <form:form action="message/actor/write.do" modelAttribute="messageForm">
 
-	<form:hidden path="type"/>
-	
 	<acme:textbox code="message.title" path="title"/>
 	<acme:textbox code="message.text" path="text"/>
 
 	<form:label path="recipient"><spring:message code="message.for" /></form:label>	
 	<form:select path="recipient">
 		<jstl:forEach items="${actors}"  var="actor">
-			<form:option value="${actor.id}">
+			<form:option value="${actor}">
 				<jstl:out value="${actor.name} ${actor.surname} (${actor.userAccount.username})"/>
 			</form:option>
 		</jstl:forEach>
@@ -39,6 +37,7 @@
 	ATTACHMENTS
 	
 	
+	<br/>
 	<acme:submit code="message.save" name="save" />
 	
 	<acme:submit code="message.addAttachment" name="addAttachment" />

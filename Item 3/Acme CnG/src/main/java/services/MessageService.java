@@ -51,18 +51,6 @@ public class MessageService {
 		return result;
 	}
 
-	public Message create() {
-		final Message result = new Message();
-
-		final Actor sender = this.actorService.findActorByPrincipal();
-		result.setSender(sender);
-		result.setSenderName(sender.getName());
-		result.setSendingMoment(new Date(System.currentTimeMillis() - 100));
-
-		result.setIsSender(false);
-		return result;
-	}
-
 	public Message findOne(final int messageId) {
 
 		//Assert.isNull(messageId, "No Puedes Encontrar un mensaje sin ID");
@@ -150,6 +138,10 @@ public class MessageService {
 		result.setText(messageForm.getText());
 		result.setTitle(messageForm.getTitle());
 		this.validator.validate(result, binding);
+
+		for (final Attachment a : messageForm.getAttachments())
+			this.validator.validate(a, binding);
+
 		return result;
 
 	}
