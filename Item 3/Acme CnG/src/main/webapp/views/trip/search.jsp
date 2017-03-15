@@ -20,6 +20,11 @@
 
 	<p><spring:message code="trip.search.text"/></p>
 	<acme:textbox code="trip.search.keyword" path="keyword"/>
+	<form:select path="search.type">
+		<form:option value="Offers"/>
+		<form:option value="Requests"/>
+	</form:select>
+	<form:errors path="search.type"/>
 	
 	<acme:submit code="trip.search" name="search" />
 	<acme:cancel code="trip.cancel" url="" />

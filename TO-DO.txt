@@ -1,4 +1,6 @@
 
+ - 6 queries para sacar trips 3 de offer y 3 de request. No baneados no pasados de fecha, todos, todos los tuyos.
+ - Crear comentarios en el populate hasta que la media (query dashborad) de entera o cercana.
 
 ------------------------------ARREGLADO------------------------------
 

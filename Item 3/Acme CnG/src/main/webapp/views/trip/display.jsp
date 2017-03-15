@@ -31,8 +31,6 @@
 		<spring:message code="trip.customer.deleted"/>
 </jstl:if>
 <br>
-<spring:message  code="trip.type" />: <jstl:out value="${trip.type}" />
-<br>
 <spring:message  code="trip.title" />: <jstl:out value="${trip.title}" />
 <br>
 <spring:message  code="trip.description" />: <jstl:out value="${trip.description}"/>
@@ -68,7 +66,26 @@
 	<display:table pagesize="5" excludedParams="*" class="displaytag" 
 	name="aplications"  uid="aplication" requestURI="${requestURI}">
 		
-<!-- 	TODO  -->
+		<display:column>
+		    <a href="customer/view.do?customerId=${row.customer.id}">
+		    <spring:message code="trip.view" />
+		   	</a>
+	   	</display:column>
+		<acme:column sorteable="false" code="trip.application.status" path="status"/>
+		
+		<spring:message code="trip.application.accept.title" var="acceptTitleHeader" />
+		<display:column title="${acceptTitleHeader}">
+			<a href="trip/customer/accept/application.do?applicationId=${row.id}">
+				<spring:message	code="trip.application.accept" />
+			</a>
+		</display:column>
+		
+		<spring:message code="trip.application.deny.title" var="denyTitleHeader" />
+		<display:column title="${denyTitleHeader}">
+			<a href="trip/customer/deny/application.do?applicationId=${row.id}">
+				<spring:message	code="trip.application.deny" />
+			</a>
+		</display:column>
 		
 	</display:table>
 </jstl:if>

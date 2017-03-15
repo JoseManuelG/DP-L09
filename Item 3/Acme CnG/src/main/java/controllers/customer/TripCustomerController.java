@@ -27,6 +27,20 @@ public class TripCustomerController extends AbstractController {
 
 
 	// List ---------------------------------------------------------------
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView display() {
+		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findAllOffersByPrincipal();
+
+		result = new ModelAndView("trip/list/my/offers");
+		result.addObject("trips", trips);
+
+		return result;
+	}
+
+	// List ---------------------------------------------------------------
 	@RequestMapping(value = "/list/my/offers", method = RequestMethod.GET)
 	public ModelAndView listOffers() {
 		ModelAndView result;
@@ -70,13 +84,30 @@ public class TripCustomerController extends AbstractController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST, params = "search")
 	public ModelAndView search(final SearchForm form, final BindingResult binding) {
 		ModelAndView result;
+		String type;
 
-		result = new ModelAndView("redirect: /trip/customer/search/list.do?keyword=" + form.getKeyword());
+		//Selecciona tiles para el título según sea offer o request:
+		type = form.getType().toLowerCase();
+
+		result = new ModelAndView("redirect: /trip/customer/search/" + type + ".do?keyword=" + form.getKeyword());
 
 		return result;
 	}
 
-	@RequestMapping(value = "/search/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/search/offers", method = RequestMethod.GET)
+	public ModelAndView listOffers(@RequestParam final String keyword) {
+		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findByKeyWord(keyword);
+
+		result = new ModelAndView("trip/search/list");
+		result.addObject("trips", trips);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/search/requests", method = RequestMethod.GET)
 	public ModelAndView listRequests(@RequestParam final String keyword) {
 		ModelAndView result;
 		Collection<Trip> trips;
