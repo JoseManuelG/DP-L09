@@ -62,16 +62,28 @@ Parte C:
 
 Parte B:
 
-//seria comentarios entre actor//offer//request por separado.
 06 - Average number of comments per actor, offer, or request.
 
-	select count(c) from Comment c
+	por actor:
+	select count(c) from Comment c where c.commentable.class = Customer or c.commentable.class = Administrator
 
-	dividido entre la suma de las siguientes dos queries
+	dividido entre:
 
 	select count(a) from Actor a
 
-	select count(t) from Trip t
+	por offer:
+	select count(c) from Comment c where c.commentable.class = Trip and c.commentable.type='OFFER'
+
+	dividido entre:
+
+	select count(t) from Trip t where t.type='OFFER'
+
+	por request:
+	select count(c) from Comment c where c.commentable.class = Trip and c.commentable.type='REQUEST'
+
+	dividido entre:
+
+	select count(t) from Trip t where t.type='REQUEST'
 
 (para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
 
@@ -85,7 +97,6 @@ Parte B:
 
 (para la division uno de los dos tiene que ser double, comprobar que el denominador no es 0)
 
-//a revisar en reunión
 08 - The actors who have posted ±10% the average number of comments per actor.
 
 	select c.actor from Comment c where (select count(c2) from Comment c2 where c.actor.id=c2.actor.id)>?1*0.9 and (select count(c3) from Comment c3 where c.actor.id=c3.actor.id)<?1*1.1 group by c.actor.id

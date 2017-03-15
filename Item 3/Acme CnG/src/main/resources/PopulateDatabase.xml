@@ -3090,7 +3090,7 @@
 		<property name="originLon" value="-5.9731700" />
 		<property name="destinationLat" value="37.3453150" />
 		<property name="destinationLon" value="-5.7420074" />
-		<property name="type" value="OFFER" />
+		<property name="type" value="REQUEST" />
 		<property name="banned" value="false" />
 		<property name="customer" ref="customer1" />
 	</bean>
