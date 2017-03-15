@@ -42,7 +42,7 @@ public class MessageService {
 
 		result.setRecipient(recipient);
 		result.setRecipientName(recipient.getName());
-		final Actor sender = this.actorService.findByPrincipal();
+		final Actor sender = this.actorService.findActorByPrincipal();
 		result.setSender(sender);
 		result.setSenderName(sender.getName());
 
@@ -68,13 +68,15 @@ public class MessageService {
 		Assert.notNull(message.getRecipient(), "El mensaje debe tener un destinatario");
 		Assert.notNull(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
 		Assert.hasText(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
+
 		Assert.notNull(message.getSender(), "El mensaje debe tener un remitente");
+		Assert.notNull(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
 		Assert.hasText(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
 
 		Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
 		Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
 		Assert.notNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
-		final Actor sender = this.actorService.findByPrincipal();
+		final Actor sender = this.actorService.findActorByPrincipal();
 
 		Assert.isTrue(!sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
 		Assert.isTrue(message.getId() == 0, "No puedes editar un mensaje");
@@ -106,7 +108,7 @@ public class MessageService {
 	}
 
 	public void delete(final Message message) {
-		final Collection<Attachment> attachments;
+
 		Assert.isNull(message, "El objeto no puede ser nulo");
 		Assert.isTrue(message.getId() == 0, "El objeto no puede tener id 0");
 
@@ -117,14 +119,14 @@ public class MessageService {
 	//Other Bussnisnes methods------------------------------------------------------------
 	//Devuelve los mensajes que ha enviado el actor
 	public List<Message> findSendedMessageOfPrincipal() {
-		final int senderId = this.actorService.findByPrincipal().getId();
+		final int senderId = this.actorService.findActorByPrincipal().getId();
 		final List<Message> result = this.messageRepository.findSendedMessageOfActor(senderId);
 		return result;
 	}
 
 	//Devuelve los mensajes que ha recibido el actor	
 	public List<Message> findReceivedMessageOfPrincipal() {
-		final int recipientId = this.actorService.findByPrincipal().getId();
+		final int recipientId = this.actorService.findActorByPrincipal().getId();
 		final List<Message> result = this.messageRepository.findReceivedMessageOfActor(recipientId);
 		return result;
 	}
@@ -135,6 +137,7 @@ public class MessageService {
 		result.setTitle(messageForm.getTitle());
 		result.setSendingMoment(new Date(System.currentTimeMillis() - 1000));
 		this.validator.validate(result, binding);
+		return result;
 
 	}
 }
