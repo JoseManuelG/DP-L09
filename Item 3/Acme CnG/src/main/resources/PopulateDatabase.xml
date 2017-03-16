@@ -32,7 +32,7 @@
 
 	<bean id="userAccountCustomer1" class="security.UserAccount">
 		<property name="username" value="customer1" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password" value="ffbc4675f864e0e9aab8bdf7a0437010" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -44,7 +44,7 @@
 	
 	<bean id="userAccountCustomer2" class="security.UserAccount">
 		<property name="username" value="customer2" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password" value="5ce4d191fd14ac85a1469fb8c29b7a7b" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -56,7 +56,7 @@
 	
 	<bean id="userAccountCustomer3" class="security.UserAccount">
 		<property name="username" value="customer3" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password" value="033f7f6121501ae98285ad77f216d5e7" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -68,7 +68,7 @@
 	
 	<bean id="userAccountCustomer4" class="security.UserAccount">
 		<property name="username" value="customer4" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password" value="55feb130be438e686ad6a80d12dd8f44" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -80,7 +80,7 @@
 	
 	<bean id="userAccountCustomer5" class="security.UserAccount">
 		<property name="username" value="customer5" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password" value="9e8486cdd435beda9a60806dd334d964" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -92,7 +92,7 @@
 	
 	<bean id="userAccountCustomer6" class="security.UserAccount">
 		<property name="username" value="customer6" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+		<property name="password" value="dbaa8bd25e06cc641f5406027c026e8b" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">

@@ -54,6 +54,7 @@ public class TripController extends AbstractController {
 		result.addObject("trip", trip);
 		result.addObject("applications", applications);
 		result.addObject("isOwner", isOwner);
+		result.addObject("requestURI", "trip/view.do?id=" + trip.getId());
 
 		return result;
 	}

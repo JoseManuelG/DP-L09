@@ -66,15 +66,18 @@ public class TripService {
 		Trip result;
 
 		Assert.notNull(trip, "El viaje no puede ser nulo");
+		////////No necesario: nunca se va a llegar al save si las etiquetas
+		////////tienen errores, y si llegara, fallaria el repo.save
 		Assert.hasText(trip.getTitle(), "El viaje debe tener un título");
 		Assert.hasText(trip.getDescription(), "El viaje debe tener una descripción");
 		Assert.notNull(trip.getDepartureTime(), "El viaje debe tener un momento de salida");
 		Assert.hasText(trip.getOrigin(), "El viaje debe tener un lugar de salida");
 		Assert.hasText(trip.getDestination(), "El viaje debe tener un lugar de llegada");
+		Assert.notNull(trip.getType(), "El viaje debe ser de algún tipo");
+		//////////////////////////////////////////////////////////
 		Assert.isTrue((trip.getOriginLat() == null && trip.getOriginLon() == null) || ((!(trip.getOriginLat() == null) && !(trip.getOriginLon() == null))), "Si se definen las coordenadas del lugar de salida, se deben definir ambas");
 		Assert.isTrue((trip.getDestinationLat() == null && trip.getDestinationLon() == null) || ((!(trip.getDestinationLat() == null) && !(trip.getDestinationLon() == null))), "Si se definen las coordenadas del lugar de llegada, se deben definir ambas");
-		Assert.notNull(trip.getType(), "El viaje debe ser de algún tipo");
-
+		//TODO: la fecha debe ser posterior a ahora.
 		result = this.tripRepository.save(trip);
 		return result;
 	}
@@ -89,18 +92,25 @@ public class TripService {
 	//Other Business methods-------------------------------------------------------------------
 
 	public Trip reconstruct(final Trip trip, final BindingResult bindingResult) {
-		Trip result, original;
+		Trip result;
+		// El trip no se puede modificar, por tanto siempre viene con id 0. 
+		// Al pasar esto nos podemos ahorrar el preguntar por la id, o incluso meter la id
+		// como hidden en la vista. El customer tampoco se pasa por hidden, lo setea el
+		// construct con el create. Para el metodo ban no se reconstruye el trip, se pasa 
+		// solo la id del trip al metodo y este se encarga de buscarlo modificarlo y guardarlo.
+		//		final Trip original;
 
-		if (trip.getId() == 0)
-			result = this.create();
-		else {
-			original = this.tripRepository.findOne(trip.getId());
-			result = new Trip();
-			result.setBanned(original.getBanned());
-		}
-		result.setCustomer(trip.getCustomer());
+		//		if (trip.getId() == 0)
+		result = this.create();
+		//		else {
+		//			original = this.tripRepository.findOne(trip.getId());
+		//			result = new Trip();
+		//			result.setBanned(original.getBanned());
+		//		}
+		//		result.setCustomer(trip.getCustomer());
 		result.setDepartureTime(trip.getDepartureTime());
 		result.setDescription(trip.getDescription());
+		result.setDestination(trip.getDestination());
 		result.setDestinationLat(trip.getDestinationLat());
 		result.setDestinationLon(trip.getDestinationLon());
 		result.setOrigin(trip.getOrigin());

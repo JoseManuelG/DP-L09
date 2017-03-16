@@ -135,6 +135,7 @@ public class TripCustomerController extends AbstractController {
 	public ModelAndView save(final Trip trip, final BindingResult binding) {
 		ModelAndView result = null;
 		Trip tripResult;
+		String type;
 
 		tripResult = this.tripService.reconstruct(trip, binding);
 		if (binding.hasErrors()) {
@@ -143,7 +144,8 @@ public class TripCustomerController extends AbstractController {
 		} else
 			try {
 				this.tripService.save(tripResult);
-				result = new ModelAndView("redirect:/"); //TODO donde mandar despues de crear
+				type = tripResult.getType().toLowerCase();
+				result = new ModelAndView("redirect:/trip/customer/list/my/" + type + "s.do");
 			} catch (final IllegalArgumentException exception) {
 				result = this.createEditModelAndView(trip, exception.getMessage());
 			}

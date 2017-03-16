@@ -55,7 +55,7 @@
 <br>
 
 <security:authorize access="hasRole('CUSTOMER')">	
-	<a href="trip/customer/apply.do?tripId=${trip.id}">
+	<a href="application/customer/apply.do?tripId=${trip.id}">
 		<spring:message	code="trip.apply" />
 	</a>
 </security:authorize>
@@ -64,27 +64,21 @@
 
 <h2><spring:message  code="trip.applications" />:</h2>
 	<display:table pagesize="5" excludedParams="*" class="displaytag" 
-	name="aplications"  uid="aplication" requestURI="${requestURI}">
+	name="applications" id="row" requestURI="${requestURI}">
 		
 		<display:column>
 		    <a href="customer/view.do?customerId=${row.customer.id}">
-		    <spring:message code="trip.view" />
-		   	</a>
+		    <spring:message code="trip.view" /></a>
 	   	</display:column>
 		<acme:column sorteable="false" code="trip.application.status" path="status"/>
 		
-		<spring:message code="trip.application.accept.title" var="acceptTitleHeader" />
-		<display:column title="${acceptTitleHeader}">
-			<a href="trip/customer/accept/application.do?applicationId=${row.id}">
-				<spring:message	code="trip.application.accept" />
-			</a>
-		</display:column>
-		
-		<spring:message code="trip.application.deny.title" var="denyTitleHeader" />
-		<display:column title="${denyTitleHeader}">
-			<a href="trip/customer/deny/application.do?applicationId=${row.id}">
-				<spring:message	code="trip.application.deny" />
-			</a>
+		<display:column>
+			<jstl:if test="${row.status eq 'PENDING'}">
+				<a href="application/customer/accept.do?applicationId=${row.id}">
+				<spring:message	code="trip.application.accept" /></a> |
+				<a href="application/customer/deny.do?applicationId=${row.id}">
+				<spring:message	code="trip.application.deny" /></a>
+			</jstl:if>
 		</display:column>
 		
 	</display:table>
