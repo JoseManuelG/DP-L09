@@ -131,7 +131,7 @@ public class MessageActorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/write", method = RequestMethod.GET, params = "addAttachment")
+	@RequestMapping(value = "/write", method = RequestMethod.POST, params = "addAttachment")
 	public ModelAndView addAttachment(final MessageForm messageForm) {
 		ModelAndView result;
 
@@ -142,7 +142,7 @@ public class MessageActorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/write", method = RequestMethod.GET, params = "removeAttachment")
+	@RequestMapping(value = "/write", method = RequestMethod.POST, params = "removeAttachment")
 	public ModelAndView removeAttachment(final MessageForm messageForm) {
 		ModelAndView result;
 
