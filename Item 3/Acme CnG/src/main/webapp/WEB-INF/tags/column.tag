@@ -28,7 +28,14 @@
 	<jstl:set var="highlight" value="false" />
 </jstl:if>
 
+<jstl:if test="${highlight}">
+	<jstl:set var="style" value="color: red" />
+</jstl:if>
+
+<jstl:if test="${!highlight}">
+	<jstl:set var="style" value="" />
+</jstl:if>
 <%-- Definition --%>
 	
 <spring:message code="${code}" var="codeName" />
-<display:column property="${path}" title="${codeName}" sortable="${sorteable}" style="color: red"/>
+<display:column property="${path}" title="${codeName}" sortable="${sorteable}" style="${style}"/>

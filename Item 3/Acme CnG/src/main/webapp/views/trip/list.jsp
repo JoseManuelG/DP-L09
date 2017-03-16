@@ -35,13 +35,10 @@
 
 	<!-- Attributes -->
 	
-	<jstl:if test="${!requestURI.contains('trip/customer/list/my'}">
-		<acme:column sorteable="false" code="trip.type" path="type" highlight="${row.banned}"/>	
-	</jstl:if>
 	<acme:column sorteable="false" code="trip.title" path="title" highlight="${row.banned}"/>
 	<acme:column sorteable="false" code="trip.origin" path="origin" highlight="${row.banned}"/>
 	<acme:column sorteable="false" code="trip.destination" path="destination" highlight="${row.banned}"/>
-	<acme:column sorteable="false" code="trip.departure.time" path="departureTime" highlight="${row.banned}"/>
+	<acme:column sorteable="false" code="trip.departureTime" path="departureTime" highlight="${row.banned}"/>
 	
 	<security:authorize access="hasRole('CUSTOMER')">	
 		<spring:message code="trip.apply.title" var="applyTitleHeader" />

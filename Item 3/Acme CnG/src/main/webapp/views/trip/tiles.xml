@@ -31,7 +31,7 @@
 		<put-attribute name="body" value="/views/trip/list.jsp" />
 	</definition>
 
-	<definition name="trip/list/my/request" extends="master.page">
+	<definition name="trip/list/my/requests" extends="master.page">
 		<put-attribute name="title" value="My requests" />
 		<put-attribute name="body" value="/views/trip/list.jsp" />
 	</definition>
@@ -48,12 +48,12 @@
 
 	<definition name="trip/view/offer" extends="master.page">
 		<put-attribute name="title" value="Display offer" />
-		<put-attribute name="body" value="/views/trip/view.jsp" />
+		<put-attribute name="body" value="/views/trip/display.jsp" />
 	</definition>
 
 	<definition name="trip/view/request" extends="master.page">
 		<put-attribute name="title" value="Display request" />
-		<put-attribute name="body" value="/views/trip/view.jsp" />
+		<put-attribute name="body" value="/views/trip/display.jsp" />
 	</definition>
 
 </tiles-definitions>

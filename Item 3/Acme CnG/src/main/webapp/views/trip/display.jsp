@@ -22,12 +22,12 @@
 	<spring:message code="trip.banned"/>
 	<br>
 </jstl:if>
-<jstl:if test="${trip.custommer != null}">
-	<a href="customer/view.do?customerId=${trip.custommer.id}">
-	<jstl:out value="trip.custommer.name"/>&nbsp;<jstl:out value="trip.custommer.surname"/>
+<jstl:if test="${trip.customer != null}">
+	<a href="customer/view.do?customerId=${trip.customer.id}">
+	<jstl:out value="${trip.customer.name}"/>&nbsp;<jstl:out value="${trip.customer.surname}"/>
 	</a>
 </jstl:if>
-<jstl:if test="${trip.custommer == null}">
+<jstl:if test="${trip.customer == null}">
 		<spring:message code="trip.customer.deleted"/>
 </jstl:if>
 <br>
@@ -55,7 +55,7 @@
 <br>
 
 <security:authorize access="hasRole('CUSTOMER')">	
-	<a href="trip/customer/apply.do?tripId=${row.id}">
+	<a href="trip/customer/apply.do?tripId=${trip.id}">
 		<spring:message	code="trip.apply" />
 	</a>
 </security:authorize>

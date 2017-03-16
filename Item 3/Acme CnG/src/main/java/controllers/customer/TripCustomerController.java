@@ -36,23 +36,23 @@ public class TripCustomerController extends AbstractController {
 
 		result = new ModelAndView("trip/list/my/offers");
 		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/customer/list/my/offers.do");
 
 		return result;
 	}
-
 	@RequestMapping(value = "/list/my/requests", method = RequestMethod.GET)
 	public ModelAndView listRequests() {
 		ModelAndView result;
 		Collection<Trip> trips;
 
-		trips = this.tripService.findAllOffersByPrincipal();
+		trips = this.tripService.findAllRequestsByPrincipal();
 
 		result = new ModelAndView("trip/list/my/requests");
 		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/customer/list/my/requests.do");
 
 		return result;
 	}
-
 	// Search ---------------------------------------------------------------
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView search() {
@@ -75,7 +75,7 @@ public class TripCustomerController extends AbstractController {
 		//Selecciona tiles para el título según sea offer o request:
 		type = form.getType().toLowerCase();
 
-		result = new ModelAndView("redirect: /trip/customer/search/" + type + ".do?keyword=" + form.getKeyword());
+		result = new ModelAndView("redirect:/trip/customer/search/" + type + ".do?keyword=" + form.getKeyword());
 
 		return result;
 	}
@@ -89,6 +89,7 @@ public class TripCustomerController extends AbstractController {
 
 		result = new ModelAndView("trip/search/list");
 		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/customer/search/offers.do");
 
 		return result;
 	}
@@ -102,6 +103,7 @@ public class TripCustomerController extends AbstractController {
 
 		result = new ModelAndView("trip/search/list");
 		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/customer/search/requests.do");
 
 		return result;
 	}
@@ -141,7 +143,7 @@ public class TripCustomerController extends AbstractController {
 		} else
 			try {
 				this.tripService.save(tripResult);
-				result = new ModelAndView("redirect: /"); //TODO donde mandar despues de crear
+				result = new ModelAndView("redirect:/"); //TODO donde mandar despues de crear
 			} catch (final IllegalArgumentException exception) {
 				result = this.createEditModelAndView(trip, exception.getMessage());
 			}

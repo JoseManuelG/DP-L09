@@ -58,6 +58,7 @@
 		<security:intercept-url pattern="/application/customer/apply.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/application/customer/accept.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/application/customer/deny.do" access="hasRole('CUSTOMER')" />
+		
 		<security:intercept-url pattern="/trip/customer/list/my/offers.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/trip/customer/list/my/requests.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/trip/customer/search.do" access="hasRole('CUSTOMER')" />
@@ -65,7 +66,7 @@
 		<security:intercept-url pattern="/trip/customer/search/requests.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/trip/customer/create/offer.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/trip/customer/create/request.do" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/trip/customer/edit" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/trip/customer/edit.do" access="hasRole('CUSTOMER')" />
 		
 		
 		<!--NONE -->

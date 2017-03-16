@@ -19,12 +19,18 @@
 <form:form action="trip/customer/search.do" modelAttribute="searchForm">
 
 	<p><spring:message code="trip.search.text"/></p>
-	<acme:textbox code="trip.search.keyword" path="keyword"/>
-	<form:select path="search.type">
-		<form:option value="Offers"/>
-		<form:option value="Requests"/>
+
+	<form:label path="type">
+		<spring:message code="trip.type" />
+	</form:label>
+	<form:select path="type">
+		<form:option value="offers"><spring:message code="trip.search.offer"/></form:option>
+		<form:option value="requests"><spring:message code="trip.search.request"/></form:option>
 	</form:select>
-	<form:errors path="search.type"/>
+	<form:errors path="type"/>
+	<br>
+	
+	<acme:textbox code="trip.search.keyword" path="keyword"/>
 	
 	<acme:submit code="trip.search" name="search" />
 	<acme:cancel code="trip.cancel" url="" />

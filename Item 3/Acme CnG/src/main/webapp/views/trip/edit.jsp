@@ -25,7 +25,7 @@
 	<acme:textbox code="trip.origin" path="origin"/>
 	<acme:textbox code="trip.originLat" path="originLat"/>
 	<acme:textbox code="trip.originLon" path="originLon"/>
-	<acme:textbox code="trip.destination" path="origin"/>
+	<acme:textbox code="trip.destination" path="destination"/>
 	<acme:textbox code="trip.destinationLat" path="destinationLat"/>
 	<acme:textbox code="trip.destinationLon" path="destinationLon"/>
 	<acme:textbox code="trip.departureTime" path="departureTime" placeholder="dd/mm/aaaa hh:mm"/>
