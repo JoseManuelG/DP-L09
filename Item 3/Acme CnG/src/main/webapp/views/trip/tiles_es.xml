@@ -36,6 +36,16 @@
 		<put-attribute name="body" value="/views/trip/list.jsp" />
 	</definition>
 
+	<definition name="trip/list/offers" extends="master.page">
+		<put-attribute name="title" value="Todas las ofertas" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/list/requests" extends="master.page">
+		<put-attribute name="title" value="Todas las peticiones" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
 	<definition name="trip/search" extends="master.page">
 		<put-attribute name="title" value="Búsqueda" />
 		<put-attribute name="body" value="/views/trip/search.jsp" />

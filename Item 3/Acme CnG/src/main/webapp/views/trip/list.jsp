@@ -43,8 +43,16 @@
 	<security:authorize access="hasRole('CUSTOMER')">	
 		<spring:message code="trip.apply.title" var="applyTitleHeader" />
 		<display:column title="${applyTitleHeader}">
-			<a href="trip/customer/apply.do?tripId=${row.id}">
+			<a href="application/customer/apply.do?tripId=${row.id}">
 				<spring:message	code="trip.apply" />
+			</a>
+		</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMINISTRATOR')">	
+		<display:column>
+			<a href="trip/administrator/ban.do?tripId=${row.id}">
+				<spring:message	code="trip.ban" />
 			</a>
 		</display:column>
 	</security:authorize>

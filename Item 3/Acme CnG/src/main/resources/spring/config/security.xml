@@ -54,6 +54,9 @@
 		
 		
 		<!-- Administrator -->
+		<security:intercept-url pattern="/trip/administrator/list/offers.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/trip/administrator/list/requests.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/trip/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
 		
 		<!-- Customer -->
 				
