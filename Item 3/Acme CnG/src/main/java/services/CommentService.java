@@ -26,12 +26,6 @@ public class CommentService {
 	//Supported Services--------------------------------------------------------------------
 
 	@Autowired
-	private TripService			tripService;
-
-	@Autowired
-	private CustomerService		customerService;
-
-	@Autowired
 	private ActorService		actorService;
 
 	@Autowired
@@ -99,6 +93,11 @@ public class CommentService {
 		return result;
 	}
 
+	public Collection<Comment> findBannedCommentsByCommentable(final int commentableId, final int miId) {
+		Collection<Comment> result;
+		result = this.commentRepository.findBannedCommentsByCommentableId(commentableId, miId);
+		return result;
+	}
 	public Comment banComment(final int commentId) {
 		Comment comment, result;
 		Actor actor;
