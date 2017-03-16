@@ -48,8 +48,8 @@ public class AttachmentService {
 	}
 
 	public void delete(final Attachment attachment) {
-		Assert.isNull(attachment, "El objeto no puede ser nulo");
-		Assert.isTrue(attachment.getId() == 0, "El objeto no puede tener id 0");
+		Assert.notNull(attachment, "El objeto no puede ser nulo");
+		Assert.isTrue(attachment.getId() != 0, "El objeto no puede tener id 0");
 		this.attachmentRepository.delete(attachment);
 
 	}

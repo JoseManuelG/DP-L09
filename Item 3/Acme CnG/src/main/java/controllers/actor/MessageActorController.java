@@ -98,6 +98,17 @@ public class MessageActorController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam final int messageId) {
+		ModelAndView result;
+
+		this.messageService.delete(messageId);
+
+		result = new ModelAndView("redirect:/");
+
+		return result;
+	}
+
 	@RequestMapping(value = "/reply", method = RequestMethod.GET)
 	public ModelAndView reply(@RequestParam final int messageId) {
 		ModelAndView result;

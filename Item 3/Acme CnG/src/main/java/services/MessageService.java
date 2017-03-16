@@ -113,10 +113,15 @@ public class MessageService {
 		return result;
 	}
 
-	public void delete(final Message message) {
+	public void delete(final int messageId) {
 
-		Assert.isNull(message, "El objeto no puede ser nulo");
-		Assert.isTrue(message.getId() == 0, "El objeto no puede tener id 0");
+		//en vez de pasar message pasas la id para no tocar en el controlador, y en el findOne
+		//ya se hacen los asserts, ademas he añadido un assert para comprobar que el mensaje es
+		//su copia ya sea la de enviado cuando eres el que envia o al recibido
+		final Message message = this.findOne(messageId);
+
+		Assert.notNull(message);
+		Assert.isTrue((message.getSender().equals(this.actorService.findActorByPrincipal()) && message.getIsSender()) || message.getRecipient().equals(this.actorService.findActorByPrincipal()) && !message.getIsSender());
 
 		this.attachmentService.deleteAttachmentsOfMessage(message);
 		this.messageRepository.delete(message);
