@@ -26,7 +26,7 @@ public class ApplicationCustomerController extends AbstractController {
 		ModelAndView result;
 
 		this.applicationService.create(tripId);
-		result = new ModelAndView("redirect: /trip/customer/view.do?tripId=" + tripId);
+		result = new ModelAndView("redirect:/trip/view.do?tripId=" + tripId);
 
 		return result;
 
@@ -40,7 +40,7 @@ public class ApplicationCustomerController extends AbstractController {
 
 		application = this.applicationService.findOne(applicationId);
 		this.applicationService.acceptApply(applicationId);
-		result = new ModelAndView("redirect: /trip/customer/view.do?tripId=" + application.getTrip().getId());
+		result = new ModelAndView("redirect:/trip/view.do?tripId=" + application.getTrip().getId());
 
 		return result;
 
@@ -53,7 +53,7 @@ public class ApplicationCustomerController extends AbstractController {
 
 		application = this.applicationService.findOne(applicationId);
 		this.applicationService.denyApply(applicationId);
-		result = new ModelAndView("redirect: /trip/customer/view.do?tripId=" + application.getTrip().getId());
+		result = new ModelAndView("redirect:/trip/view.do?tripId=" + application.getTrip().getId());
 
 		return result;
 
