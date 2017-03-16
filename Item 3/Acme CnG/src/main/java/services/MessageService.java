@@ -45,6 +45,7 @@ public class MessageService {
 		final Actor sender = this.actorService.findActorByPrincipal();
 		result.setSender(sender);
 		result.setSenderName(sender.getName());
+		result.setSendingMoment(new Date(System.currentTimeMillis() - 100));
 
 		result.setIsSender(false);
 		return result;
@@ -52,42 +53,43 @@ public class MessageService {
 
 	public Message findOne(final int messageId) {
 
-		//Assert.isNull(messageId, "No Puedes Encontrar un mensaje sin ID");
-		//Assert.isTrue(messageId <= 0, "La Id no es valida");
+		Assert.notNull(messageId, "No Puedes Encontrar un mensaje sin ID");
+		Assert.isTrue(messageId >= 0, "La Id no es valida");
 
 		final Message result = this.messageRepository.findOne(messageId);
 
 		return result;
 	}
-
 	public Message save(final Message message, final Collection<Attachment> attachments) {
 		Message result;
 		Message copyMessage;
 		Message savedCopyMessage;
 
+		//TODO: el assert de getSender sobra porque se pone el principal desde el servicio,
+		// y no lo puede modificar de ninguna forma el usuario, y los dos del final igual,
+		// no pueden ser modificados por el usuario, los hace el servicio, el que si que hace
+		// falta es el de notNull recipient porque eso es lo que se puede cambiar en la vista
+
+		//Respuesta:
+		//Igualmente no puedes saber desde donde se va a llamar al metodo, 
+		//es por lo que no veo mal revisarlo.
+
 		Assert.notNull(message.getRecipient(), "El mensaje debe tener un destinatario");
-		Assert.notNull(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
-		Assert.hasText(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
 
 		Assert.notNull(message.getSender(), "El mensaje debe tener un remitente");
-		Assert.notNull(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
-		Assert.hasText(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
 
-		Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
-		Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
-		Assert.notNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
 		final Actor sender = this.actorService.findActorByPrincipal();
 
-		Assert.isTrue(!sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
+		Assert.isTrue(sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
 		Assert.isTrue(message.getId() == 0, "No puedes editar un mensaje");
 
 		// Creamos copia del mensaje en un segundo mensaje;
 
 		copyMessage = this.copyMessage(message);
 		result = this.messageRepository.save(message);
-		this.attachmentService.AñadirAttachments(attachments, result);
+		this.attachmentService.addAttachments(attachments, result);
 		savedCopyMessage = this.messageRepository.save(copyMessage);
-		this.attachmentService.AñadirAttachments(attachments, savedCopyMessage);
+		this.attachmentService.addAttachments(attachments, savedCopyMessage);
 		return result;
 	}
 
@@ -112,8 +114,7 @@ public class MessageService {
 		Assert.isNull(message, "El objeto no puede ser nulo");
 		Assert.isTrue(message.getId() == 0, "El objeto no puede tener id 0");
 
-		//TODO: no funciona el metodo
-		//this.attachmentService.deleteAttachmentsOfMessage(message);
+		this.attachmentService.deleteAttachmentsOfMessage(message);
 		this.messageRepository.delete(message);
 
 	}
@@ -136,9 +137,16 @@ public class MessageService {
 		final Message result = this.create(messageForm.getRecipient());
 		result.setText(messageForm.getText());
 		result.setTitle(messageForm.getTitle());
-		result.setSendingMoment(new Date(System.currentTimeMillis() - 1000));
 		this.validator.validate(result, binding);
+
+		for (final Attachment a : messageForm.getAttachments())
+			this.validator.validate(a, binding);
+
 		return result;
 
+	}
+
+	public List<Message> findAllMessageOfActor(final int ActorId) {
+		return this.messageRepository.findAllMessageOfActor(ActorId);
 	}
 }

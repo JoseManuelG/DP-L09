@@ -1,21 +1,37 @@
 
- - 6 queries para sacar trips 3 de offer y 3 de request. No baneados no pasados de fecha, todos, todos los tuyos.
- - Crear comentarios en el populate hasta que la media (query dashborad) de entera o cercana.
+- 6 queries para sacar trips 3 de offer y 3 de request. No baneados no pasados de fecha, todos, todos los tuyos.
+ 
+- Crear comentarios en el populate hasta que la media (query dashborad) de mayor o igual que 10.
 
+
+- Problema: en message/write no se pude meter (a priori) los attachments porque es modelattribute messageForm y el path para el nombre del attachment deberia de ser algo asi como path="attachments[0].name" etc, pero no funciona
 ------------------------------ARREGLADO------------------------------
 
- - Cambiar queries de mensaje para que consideren el boolean, de forma que no se repitan (ya que cada mensaje consta de dos copias) (ARREGLADO)
- - Cuando un customer se borra la cuenta se borran los trips? (NO)
- - Cuando un customer se borra la cuenta se borran los applies? (NO)
- - Se deberían poder borrar los trips? (NO)
- - Añadir vat al configuration (NO PROCEDE)
- - Añadir rangos a las coordenadas del trip (ARREGLADO)
- - Doble relación de mensajes con actor (ARREGLADO)
- - El codigo de internacionalizacion debe ser optativo para el telefono: ^(\+([0-9][0-9][0-9]))?([0-9A-Za-z])+$(ARREGLADO)
- - No debemos tener relaciones 1 a mucho con la direccionalidad cortada en el 1.(ARREGLADO)
- - Faltan multiplicidades en commentable desde comment y en user account desde actor.(ARREGLADO)
- - ¿Se puede hacer apply sobre un trip propio? (NO)
+ 
+- Cambiar queries de mensaje para que consideren el boolean, de forma que no se repitan (ya que cada mensaje consta de dos copias) (ARREGLADO)
+ 
+- Cuando un customer se borra la cuenta se borran los trips? (NO)
+ 
+- Cuando un customer se borra la cuenta se borran los applies? (NO)
+ 
+- Se deberían poder borrar los trips? (NO)
+ 
+- Añadir vat al configuration (NO PROCEDE)
+ 
+- Añadir rangos a las coordenadas del trip (ARREGLADO)
+
+- Doble relación de mensajes con actor (ARREGLADO)
+ 
+- El codigo de internacionalizacion debe ser optativo para el telefono: ^(\+([0-9][0-9][0-9]))?([0-9A-Za-z])+$(ARREGLADO)
+ 
+- No debemos tener relaciones 1 a mucho con la direccionalidad cortada en el 1.(ARREGLADO)
+ 
+- Faltan multiplicidades en commentable desde comment y en user account desde actor.(ARREGLADO)
+ 
+- ¿Se puede hacer apply sobre un trip propio? (NO)
  - Quitar cascades de tips y applies desde customer. (ARREGLADO)
- - Doble relación de mensajes con actor. (ARREGLADO)
+ 
+- Doble relación de mensajes con actor. (ARREGLADO)
  - Añadir rangos a las coordenadas del trip. (ARREGLADO)
- - (Al final) actualizar conceptual (ARREGLADO)
+ 
+- (Al final) actualizar conceptual (ARREGLADO)
