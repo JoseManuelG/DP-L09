@@ -61,6 +61,7 @@ public class MessageService {
 
 		return result;
 	}
+
 	public Message save(final Message message, final Collection<Attachment> attachments) {
 		Message result;
 		Message copyMessage;
@@ -87,13 +88,15 @@ public class MessageService {
 		// Creamos copia del mensaje en un segundo mensaje;
 
 		copyMessage = this.copyMessage(message);
+		//Se almacena el mensaje original y sus attachments
 		result = this.messageRepository.save(message);
 		this.attachmentService.addAttachments(attachments, result);
+		//Se almacena el mensaje copia y sus attachments
 		savedCopyMessage = this.messageRepository.save(copyMessage);
 		this.attachmentService.addAttachments(attachments, savedCopyMessage);
 		return result;
 	}
-
+	//Simplemente crea un mensaje nuevo y le settea todos los datos del mensaje de entrada menos el isSender.
 	private Message copyMessage(final Message message) {
 		final Message result = new Message();
 
@@ -155,11 +158,17 @@ public class MessageService {
 	public MessageForm forwardMessage(final Message message) {
 		final MessageForm result = new MessageForm();
 		final LinkedList<Attachment> attachments = new LinkedList<Attachment>();
-		attachments.addAll(this.attachmentService.findAttachmentsOfMessage(message));
+
+		attachments.addAll(this.attachmentService.copyAttachments(message));
 		result.setText(message.getText());
 		result.setTitle(message.getTitle());
 		result.setAttachments(attachments);
 		return result;
-
+	}
+	//Para responder el mensaje, 
+	public MessageForm replyMessage(final int actorId) {
+		final MessageForm result = new MessageForm();
+		result.setRecipient(this.actorService.findOne(actorId));
+		return result;
 	}
 }

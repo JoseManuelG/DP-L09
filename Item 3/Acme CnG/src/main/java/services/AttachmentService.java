@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +55,12 @@ public class AttachmentService {
 	}
 
 	//Other Bussnisnes methods------------------------------------------------------------
+	//Devuelve la lista de Attachments de un mensaje dado
 	public List<Attachment> findAttachmentsOfMessage(final Message message) {
 		final List<Attachment> result = this.attachmentRepository.findAttachmentsOfMessage(message.getId());
 		return result;
 	}
-
+	//Guarda los attachments setteandolos al mensaje dado, AVISO: el mensaje debe estar almacenado ya en base de datos si no la ID seria 0.
 	public void addAttachments(final Collection<Attachment> attachments, final Message message) {
 		final Attachment attachment = this.create(message);
 		for (final Attachment a : attachments) {
@@ -69,6 +71,19 @@ public class AttachmentService {
 
 	}
 
+	//Devuelve una colleción con copias de los attachments de un mensaje, se podria coger los attachments por query en vez de pedirlos como entrada.
+	public Collection<Attachment> copyAttachments(final Message message) {
+		final Attachment attachment = this.create(message);
+		final LinkedList<Attachment> result = new LinkedList<Attachment>();
+		for (final Attachment a : this.attachmentRepository.findAttachmentsOfMessage(message.getId())) {
+			attachment.setName(a.getName());
+			attachment.setUrl(a.getUrl());
+			result.add(attachment);
+		}
+		return result;
+
+	}
+	//Borra los attachments de un mensaje, se debe llamar antes de borrar el mensaje para evitar problemas de persistencia
 	public void deleteAttachmentsOfMessage(final Message message) {
 		final List<Attachment> aux = this.findAttachmentsOfMessage(message);
 		for (final Attachment attachment : aux)
