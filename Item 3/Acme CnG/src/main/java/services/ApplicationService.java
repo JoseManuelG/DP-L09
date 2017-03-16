@@ -37,7 +37,6 @@ public class ApplicationService {
 		//TODO: Hacer save.
 		return result;
 	}
-
 	public Collection<Application> findAll() {
 		return this.applicationRepository.findAll();
 	}

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationService;
 import controllers.AbstractController;
+import controllers.TripController;
 import domain.Application;
 
 @Controller
@@ -19,14 +20,22 @@ public class ApplicationCustomerController extends AbstractController {
 	@Autowired
 	private ApplicationService	applicationService;
 
+	// Controllers -------------------------------------------------------------
+	@Autowired
+	private TripController		tripController;
+
 
 	// Apply ---------------------------------------------------------------
 	@RequestMapping(value = "/apply", method = RequestMethod.GET)
 	public ModelAndView apply(final int tripId) {
 		ModelAndView result;
 
-		this.applicationService.create(tripId);
-		result = new ModelAndView("redirect:/trip/view.do?tripId=" + tripId);
+		try {
+			this.applicationService.create(tripId);
+			result = new ModelAndView("redirect:/trip/view.do?tripId=" + tripId);
+		} catch (final IllegalArgumentException e) {
+			result = this.tripController.createViewModelAndView(tripId, e.getMessage());
+		}
 
 		return result;
 

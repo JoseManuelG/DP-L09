@@ -35,6 +35,23 @@ public class TripController extends AbstractController {
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public ModelAndView display(final int tripId) {
 		ModelAndView result;
+
+		result = this.createViewModelAndView(tripId);
+
+		return result;
+	}
+
+	// Ancillary methods --------------------------------------------------------
+	protected ModelAndView createViewModelAndView(final int tripId) {
+		ModelAndView result;
+
+		result = this.createViewModelAndView(tripId, null);
+
+		return result;
+	}
+
+	public ModelAndView createViewModelAndView(final int tripId, final String message) {
+		ModelAndView result;
 		Trip trip;
 		Collection<Application> applications;
 		Boolean isOwner;
@@ -55,7 +72,9 @@ public class TripController extends AbstractController {
 		result.addObject("applications", applications);
 		result.addObject("isOwner", isOwner);
 		result.addObject("requestURI", "trip/view.do?tripId=" + trip.getId());
+		result.addObject("message", message);
 
 		return result;
+
 	}
 }

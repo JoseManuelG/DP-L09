@@ -51,9 +51,11 @@
 	
 	<security:authorize access="hasRole('ADMINISTRATOR')">	
 		<display:column>
-			<a href="trip/administrator/ban.do?tripId=${row.id}">
-				<spring:message	code="trip.ban" />
-			</a>
+			<jstl:if test="${!row.banned}">
+				<a href="trip/administrator/ban.do?tripId=${row.id}">
+					<spring:message	code="trip.ban" />
+				</a>
+			</jstl:if>
 		</display:column>
 	</security:authorize>
 	
