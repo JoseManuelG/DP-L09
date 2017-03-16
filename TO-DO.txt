@@ -6,10 +6,10 @@
 
 -Cambiar populate para que haya messages con 1 attachment
 - Problema: en message/write no se pude meter (a priori) los attachments porque es modelattribute messageForm y el path para el nombre del attachment deberia de ser algo asi como path="attachments[0].name" etc, pero no funciona
--Añadir asserts en view emssage, reply y forward para no poder usar mensajes de otros(Dani)
 ------------------------------ARREGLADO------------------------------
 
  
+-Añadir asserts en view emssage, reply y forward para no poder usar mensajes de otros(Dani) (ARREGLADO)
 - Cambiar queries de mensaje para que consideren el boolean, de forma que no se repitan (ya que cada mensaje consta de dos copias) (ARREGLADO)
  
 - Cuando un customer se borra la cuenta se borran los trips? (NO)

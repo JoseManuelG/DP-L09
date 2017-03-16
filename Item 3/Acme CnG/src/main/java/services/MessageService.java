@@ -58,6 +58,10 @@ public class MessageService {
 		Assert.isTrue(messageId >= 0, "La Id no es valida");
 
 		final Message result = this.messageRepository.findOne(messageId);
+		//añadido  assert para comprobar que el mensaje es suyo,
+		//su copia ya sea la de enviado cuando eres el que envia o al recibido
+		//el findOne se usa en view, reply, forward... etc asi que cubre todo
+		Assert.isTrue((result.getSender().equals(this.actorService.findActorByPrincipal()) && result.getIsSender()) || result.getRecipient().equals(this.actorService.findActorByPrincipal()) && !result.getIsSender());
 
 		return result;
 	}
@@ -116,12 +120,10 @@ public class MessageService {
 	public void delete(final int messageId) {
 
 		//en vez de pasar message pasas la id para no tocar en el controlador, y en el findOne
-		//ya se hacen los asserts, ademas he añadido un assert para comprobar que el mensaje es
-		//su copia ya sea la de enviado cuando eres el que envia o al recibido
+		//ya se hacen los asserts
 		final Message message = this.findOne(messageId);
 
 		Assert.notNull(message);
-		Assert.isTrue((message.getSender().equals(this.actorService.findActorByPrincipal()) && message.getIsSender()) || message.getRecipient().equals(this.actorService.findActorByPrincipal()) && !message.getIsSender());
 
 		this.attachmentService.deleteAttachmentsOfMessage(message);
 		this.messageRepository.delete(message);
