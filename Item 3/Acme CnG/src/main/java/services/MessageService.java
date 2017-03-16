@@ -3,6 +3,7 @@ package services;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,5 +149,17 @@ public class MessageService {
 
 	public List<Message> findAllMessageOfActor(final int ActorId) {
 		return this.messageRepository.findAllMessageOfActor(ActorId);
+	}
+	//Basicamente te hace el MessageForm relleno del mensaje que has pasado, luego en la vista seleccionarias a quien mandarselo 
+	//y despues pasarias el mensaje al save
+	public MessageForm forwardMessage(final Message message) {
+		final MessageForm result = new MessageForm();
+		final LinkedList<Attachment> attachments = new LinkedList<Attachment>();
+		attachments.addAll(this.attachmentService.findAttachmentsOfMessage(message));
+		result.setText(message.getText());
+		result.setTitle(message.getTitle());
+		result.setAttachments(attachments);
+		return result;
+
 	}
 }
