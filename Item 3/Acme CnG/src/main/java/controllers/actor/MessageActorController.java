@@ -157,11 +157,15 @@ public class MessageActorController extends AbstractController {
 	public ModelAndView write(final MessageForm messageForm, final BindingResult bindingResult) {
 		ModelAndView result;
 		Message message;
+		String error;
 
 		message = this.messageService.reconstruct(messageForm, bindingResult);
-		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(messageForm);
-		else
+		if (bindingResult.hasErrors()) {
+			error = null;
+			if (bindingResult.hasFieldErrors("url"))
+				error = "message.url.error";
+			result = this.createEditModelAndView(messageForm, error);
+		} else
 			try {
 				this.messageService.save(message, messageForm.getAttachments());
 				result = new ModelAndView("redirect:sent.do");
@@ -171,7 +175,6 @@ public class MessageActorController extends AbstractController {
 
 		return result;
 	}
-
 	///////////////////////////////////////////
 
 	protected ModelAndView createEditModelAndView(final MessageForm messageForm) {

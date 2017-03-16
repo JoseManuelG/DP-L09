@@ -143,9 +143,11 @@ public class MessageService {
 		result.setTitle(messageForm.getTitle());
 		this.validator.validate(result, binding);
 
-		for (final Attachment a : messageForm.getAttachments())
-			this.validator.validate(a, binding);
-
+		if (!binding.hasErrors())
+			for (final Attachment a : messageForm.getAttachments()) {
+				a.setMessage(result);
+				this.validator.validate(a, binding);
+			}
 		return result;
 
 	}

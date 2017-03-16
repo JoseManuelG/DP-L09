@@ -34,10 +34,11 @@
 	<form:errors path="recipient" cssClass="error" />
 	
 	<br/>
-	ATTACHMENTS
-	<br/>
+	<jstl:forEach items="${messageForm.attachments}"  var="attachment" varStatus="i">
+		<acme:textbox code="message.attachment.name" path="attachments[${i.index}].name"/>
+		<acme:textbox code="message.attachment.url" path="attachments[${i.index}].url"/>
+	</jstl:forEach>
 	
-	<br/>
 	<acme:submit code="message.save" name="save" />
 	
 	<acme:submit code="message.addAttachment" name="addAttachment" />
