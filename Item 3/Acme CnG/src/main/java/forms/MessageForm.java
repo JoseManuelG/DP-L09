@@ -46,7 +46,9 @@ public class MessageForm {
 	}
 	//Metodo para añadir un nuevo espacio que rellenar el formulario
 	public void addAttachmentSpace() {
-		this.attachments.add(null);
+		//añadia un null y le he puesto que añada una ttachment vacio porque añadir 
+		//null no tiene mucho sentido
+		this.attachments.add(new Attachment());
 	}
 	//Metodo para eliminar el ultimo attachment del formulario
 	public void removeAttachmentSpace() {

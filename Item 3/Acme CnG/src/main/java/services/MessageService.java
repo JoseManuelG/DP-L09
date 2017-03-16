@@ -155,7 +155,10 @@ public class MessageService {
 	}
 	//Basicamente te hace el MessageForm relleno del mensaje que has pasado, luego en la vista seleccionarias a quien mandarselo 
 	//y despues pasarias el mensaje al save
-	public MessageForm forwardMessage(final Message message) {
+	public MessageForm forwardMessage(final int messageId) {
+		//Lo he cambiado para que pida messageId en vez de message para no tener que 
+		//hacer en controlador cosas de servicios 
+		final Message message = this.findOne(messageId);
 		final MessageForm result = new MessageForm();
 		final LinkedList<Attachment> attachments = new LinkedList<Attachment>();
 
@@ -166,9 +169,13 @@ public class MessageService {
 		return result;
 	}
 	//Para responder el mensaje, 
-	public MessageForm replyMessage(final int actorId) {
+	public MessageForm replyMessage(final int messageId) {
+		//Lo he cambiado para que pida messageId en vez de actorId para no tener que 
+		//hacer en controlador cosas de servicios
 		final MessageForm result = new MessageForm();
-		result.setRecipient(this.actorService.findOne(actorId));
+		final Message message = this.findOne(messageId);
+		final Actor recipient = this.actorService.findOne(message.getRecipient().getId());
+		result.setRecipient(recipient);
 		return result;
 	}
 }

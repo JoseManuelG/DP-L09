@@ -98,6 +98,28 @@ public class MessageActorController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/reply", method = RequestMethod.GET)
+	public ModelAndView reply(@RequestParam final int messageId) {
+		ModelAndView result;
+		MessageForm messageForm;
+
+		messageForm = this.messageService.replyMessage(messageId);
+		result = this.createEditModelAndView(messageForm);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/forward", method = RequestMethod.GET)
+	public ModelAndView forward(@RequestParam final int messageId) {
+		ModelAndView result;
+		MessageForm messageForm;
+
+		messageForm = this.messageService.forwardMessage(messageId);
+		result = this.createEditModelAndView(messageForm);
+
+		return result;
+	}
+
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public ModelAndView write() {
 		ModelAndView result;
