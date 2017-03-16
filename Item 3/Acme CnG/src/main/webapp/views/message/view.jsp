@@ -36,7 +36,7 @@
 
 <jstl:if test="${attachments.size()!=0}">
 	<display:table pagesize="5" class="displaytag" keepStatus="false"
-		name="attachments" requestURI="${requestURI}" id="row">
+		name="attachments" requestURI="${requestURI}" id="row" excludedParams="*">
 		
 		<acme:column sorteable="false" code="message.attachment.name" path="name"/>
 		

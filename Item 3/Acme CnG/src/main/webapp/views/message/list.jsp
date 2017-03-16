@@ -18,7 +18,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="messages" requestURI="${requestURI}" id="row">
+	name="messages" requestURI="${requestURI}" id="row" excludedParams="*">
 
 	<acme:column sorteable="true" code="message.title" path="title"/>
 	

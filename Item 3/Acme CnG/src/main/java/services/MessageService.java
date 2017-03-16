@@ -174,7 +174,7 @@ public class MessageService {
 		//hacer en controlador cosas de servicios
 		final MessageForm result = new MessageForm();
 		final Message message = this.findOne(messageId);
-		final Actor recipient = this.actorService.findOne(message.getRecipient().getId());
+		final Actor recipient = this.actorService.findOne(message.getSender().getId());
 		result.setRecipient(recipient);
 		return result;
 	}
