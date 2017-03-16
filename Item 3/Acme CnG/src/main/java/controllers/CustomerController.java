@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.CommentService;
 import services.CustomerService;
 import domain.Comment;
@@ -24,6 +25,9 @@ public class CustomerController extends AbstractController {
 	private CustomerService	customerService;
 
 	@Autowired
+	private ActorService	actorService;
+
+	@Autowired
 	private CommentService	commentService;
 
 
@@ -34,9 +38,14 @@ public class CustomerController extends AbstractController {
 		Customer customer;
 		Collection<Comment> unBannedComments;
 		Collection<Comment> bannedComments;
+		Collection<Comment> allBannedComments;
+		Boolean isAdmin = false;
+		if (this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().equals("ADMINISTRATOR"))
+			isAdmin = true;
 
 		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(id);
 		bannedComments = this.commentService.findBannedCommentsByCommentable(id, this.customerService.findCustomerByPrincipal().getId());
+		allBannedComments = this.commentService.findBannedCommentsByCommentable(id);
 
 		customer = this.customerService.findOne(id);
 
@@ -44,10 +53,11 @@ public class CustomerController extends AbstractController {
 		result.addObject("customer", customer);
 		result.addObject("unBannedComments", unBannedComments);
 		result.addObject("bannedComments", bannedComments);
+		result.addObject("allBannedComments", allBannedComments);
+		result.addObject("isAdmin", isAdmin);
 
 		return result;
 	}
-
 	@RequestMapping(value = "/myProfile", method = RequestMethod.GET)
 	public ModelAndView myProfile() {
 		ModelAndView result;

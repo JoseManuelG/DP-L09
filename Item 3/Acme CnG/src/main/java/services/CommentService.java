@@ -98,6 +98,11 @@ public class CommentService {
 		result = this.commentRepository.findBannedCommentsByCommentableId(commentableId, miId);
 		return result;
 	}
+	public Collection<Comment> findBannedCommentsByCommentable(final int id) {
+		Collection<Comment> result;
+		result = this.commentRepository.findBannedCommentsByCommentableId(id);
+		return result;
+	}
 	public Comment banComment(final int commentId) {
 		Comment comment, result;
 		Actor actor;
