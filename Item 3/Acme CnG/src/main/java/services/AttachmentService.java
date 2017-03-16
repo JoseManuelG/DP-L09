@@ -59,17 +59,21 @@ public class AttachmentService {
 		return result;
 	}
 
-	public void AñadirAttachments(final Collection<Attachment> attachments, final Message message) {
+	public void addAttachments(final Collection<Attachment> attachments, final Message message) {
+		final Attachment attachment = this.create(message);
 		for (final Attachment a : attachments) {
-			a.setMessage(message);
-			this.save(a);
+			attachment.setName(a.getName());
+			attachment.setUrl(a.getUrl());
+			this.save(attachment);
 		}
 
 	}
 
-	//TODO: no funciona la query, hay que hacerlo de otra forma
-	//	public void deleteAttachmentsOfMessage(final Message message) {
-	//		this.attachmentRepository.deleteAttachmentsOfMessage(message.getId());
-	//	}
+	public void deleteAttachmentsOfMessage(final Message message) {
+		final List<Attachment> aux = this.findAttachmentsOfMessage(message);
+		for (final Attachment attachment : aux)
+			this.delete(attachment);
+
+	}
 
 }

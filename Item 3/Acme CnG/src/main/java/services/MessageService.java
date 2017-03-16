@@ -53,14 +53,13 @@ public class MessageService {
 
 	public Message findOne(final int messageId) {
 
-		//Assert.isNull(messageId, "No Puedes Encontrar un mensaje sin ID");
-		//Assert.isTrue(messageId <= 0, "La Id no es valida");
+		Assert.notNull(messageId, "No Puedes Encontrar un mensaje sin ID");
+		Assert.isTrue(messageId >= 0, "La Id no es valida");
 
 		final Message result = this.messageRepository.findOne(messageId);
 
 		return result;
 	}
-
 	public Message save(final Message message, final Collection<Attachment> attachments) {
 		Message result;
 		Message copyMessage;
@@ -71,25 +70,16 @@ public class MessageService {
 		// no pueden ser modificados por el usuario, los hace el servicio, el que si que hace
 		// falta es el de notNull recipient porque eso es lo que se puede cambiar en la vista
 
+		//Respuesta:
+		//Igualmente no puedes saber desde donde se va a llamar al metodo, 
+		//es por lo que no veo mal revisarlo.
+
 		Assert.notNull(message.getRecipient(), "El mensaje debe tener un destinatario");
-		//		Es recipientName del message no el name del recipient, aun asi esto lo hace el @NotNull y @NotBlank
-		//		Assert.notNull(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
-		//		Assert.hasText(message.getRecipient().getName(), "El mensaje debe tener el nombre del destinatario");
 
 		Assert.notNull(message.getSender(), "El mensaje debe tener un remitente");
-		//		Es senderName del message no el name del sender, aun asi esto lo hace el @NotNull y @NotBlank
-		//		Assert.notNull(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
-		//		Assert.hasText(message.getSender().getName(), "El mensaje debe tener el nombre del remitente");
 
-		//		Esto lo hace el @NotBlank
-		//		Assert.hasText(message.getText(), "El mensaje debe tener un cuerpo");
-		//		Assert.hasText(message.getTitle(), "El mensaje debe tener un titulo");
-
-		//		Esto lo hace el @NotNull
-		//		Assert.notNull(message.getSendingMoment(), "El mensaje debe tener la fecha de envio");
 		final Actor sender = this.actorService.findActorByPrincipal();
 
-		// tenia un ! delante de sender y estaba petando por eso, porque comprobaba lo contrario
 		Assert.isTrue(sender.equals(message.getSender()), "El remitente debe ser el mismo que esta conectado");
 		Assert.isTrue(message.getId() == 0, "No puedes editar un mensaje");
 
@@ -97,9 +87,9 @@ public class MessageService {
 
 		copyMessage = this.copyMessage(message);
 		result = this.messageRepository.save(message);
-		this.attachmentService.AñadirAttachments(attachments, result);
+		this.attachmentService.addAttachments(attachments, result);
 		savedCopyMessage = this.messageRepository.save(copyMessage);
-		this.attachmentService.AñadirAttachments(attachments, savedCopyMessage);
+		this.attachmentService.addAttachments(attachments, savedCopyMessage);
 		return result;
 	}
 
@@ -124,8 +114,7 @@ public class MessageService {
 		Assert.isNull(message, "El objeto no puede ser nulo");
 		Assert.isTrue(message.getId() == 0, "El objeto no puede tener id 0");
 
-		//TODO: no funciona el metodo
-		//this.attachmentService.deleteAttachmentsOfMessage(message);
+		this.attachmentService.deleteAttachmentsOfMessage(message);
 		this.messageRepository.delete(message);
 
 	}
@@ -155,5 +144,9 @@ public class MessageService {
 
 		return result;
 
+	}
+
+	public List<Message> findAllMessageOfActor(final int ActorId) {
+		return this.messageRepository.findAllMessageOfActor(ActorId);
 	}
 }
