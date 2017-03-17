@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.TripRepository;
+import security.LoginService;
 import domain.Customer;
 import domain.Trip;
 
@@ -26,6 +28,9 @@ public class TripService {
 
 	@Autowired
 	private CustomerService	customerService;
+	
+	@Autowired
+	private LoginService loginService;
 
 	@Autowired
 	private Validator		validator;
@@ -52,12 +57,21 @@ public class TripService {
 		return this.tripRepository.findAll();
 	}
 
+	@SuppressWarnings("static-access")
 	public Trip findOne(final Integer tripId) {
 
-		Assert.notNull(tripId, "No Puedes Encontrar un viaje sin ID");
-		Assert.isTrue(tripId > 0, "La Id no es valida");
-
-		final Trip result = this.tripRepository.findOne(tripId);
+		Assert.notNull(tripId, "trip.error.id.null");
+		Assert.isTrue(tripId > 0, "trip.error.id.invalid");
+		
+		Trip result = null;
+		
+		final Trip aux = this.tripRepository.findOne(tripId);
+		String loggedAuthority = loginService.getPrincipal().getAuthorities().iterator().next().getAuthority();
+		if((aux.getBanned() == true && loggedAuthority=="ADMINISTRATOR")){
+			result = aux;
+		}else if(aux.getBanned()==true && customerService.findCustomerByPrincipal().equals(aux.getCustomer())){
+			result = aux;
+		}
 
 		return result;
 	}
@@ -65,26 +79,27 @@ public class TripService {
 	public Trip save(final Trip trip) {
 		Trip result;
 
-		Assert.notNull(trip, "El viaje no puede ser nulo");
+		Assert.notNull(trip, "trip.error.null");
 		////////No necesario: nunca se va a llegar al save si las etiquetas
 		////////tienen errores, y si llegara, fallaria el repo.save
-		Assert.hasText(trip.getTitle(), "El viaje debe tener un título");
-		Assert.hasText(trip.getDescription(), "El viaje debe tener una descripción");
-		Assert.notNull(trip.getDepartureTime(), "El viaje debe tener un momento de salida");
-		Assert.hasText(trip.getOrigin(), "El viaje debe tener un lugar de salida");
-		Assert.hasText(trip.getDestination(), "El viaje debe tener un lugar de llegada");
-		Assert.notNull(trip.getType(), "El viaje debe ser de algún tipo");
+		Assert.hasText(trip.getTitle(), "trip.error.title.notext");
+		Assert.hasText(trip.getDescription(), "trip.error.description.notext");
+		Assert.notNull(trip.getDepartureTime(), "trip.error.departureTime.null");
+		Assert.hasText(trip.getOrigin(), "trip.error.origin.notext");
+		Assert.hasText(trip.getDestination(), "trip.error.destination.notext");
+		Assert.notNull(trip.getType(), "trip.error.type.null");
 		//////////////////////////////////////////////////////////
-		Assert.isTrue((trip.getOriginLat() == null && trip.getOriginLon() == null) || ((!(trip.getOriginLat() == null) && !(trip.getOriginLon() == null))), "Si se definen las coordenadas del lugar de salida, se deben definir ambas");
-		Assert.isTrue((trip.getDestinationLat() == null && trip.getDestinationLon() == null) || ((!(trip.getDestinationLat() == null) && !(trip.getDestinationLon() == null))), "Si se definen las coordenadas del lugar de llegada, se deben definir ambas");
-		//TODO: la fecha debe ser posterior a ahora.
+		Assert.isTrue((trip.getOriginLat() == null && trip.getOriginLon() == null) || ((!(trip.getOriginLat() == null) && !(trip.getOriginLon() == null))), "trip.error.originCoords");
+		Assert.isTrue((trip.getDestinationLat() == null && trip.getDestinationLon() == null) || ((!(trip.getDestinationLat() == null) && !(trip.getDestinationLon() == null))), "trip.error.destinationCoords");
+		Date actualDate= new Date();
+		Assert.isTrue(trip.getDepartureTime().after(actualDate), "trip.date.error");
 		result = this.tripRepository.save(trip);
 		return result;
 	}
 
 	public void delete(final Trip trip) {
-		Assert.notNull(trip, "El viaje no puede ser nulo");
-		Assert.isTrue(this.tripRepository.exists(trip.getId()), "El viaje debe estar en base de datos antes de borrarlo");
+		Assert.notNull(trip, "trip.error.null");
+		Assert.isTrue(this.tripRepository.exists(trip.getId()), "trip.error.id.notsaved");
 
 		this.tripRepository.delete(trip);
 	}
@@ -141,14 +156,57 @@ public class TripService {
 		return result;
 	}
 
-	public Collection<Trip> findByKeyWord(final String keyword) {
+	public Collection<Trip> findAllOffersByKeyWord(final String keyword) {
 		Collection<Trip> result;
 
-		result = this.tripRepository.findByKeyWord(keyword);
+		result = this.tripRepository.findAllOffersByKeyWord(keyword);
 
 		return result;
 
 	}
+	public Collection<Trip> findAllRequestsByKeyWord(final String keyword) {
+		Collection<Trip> result;
+
+		result = this.tripRepository.findAllRequestsByKeyWord(keyword);
+
+		return result;
+
+	}
+	
+	public Collection<Trip> findAllMyOffersByKeyWord(final String keyword) {
+		Collection<Trip> result;
+		int customerId = customerService.findCustomerByPrincipal().getId();
+		result = this.tripRepository.findAllMyOffersByKeyWord(keyword,customerId);
+
+		return result;
+
+	}
+	
+	public Collection<Trip> findAllMyRequestsByKeyWord(final String keyword) {
+		Collection<Trip> result;
+		int customerId = customerService.findCustomerByPrincipal().getId();
+		result = this.tripRepository.findAllMyRequestsByKeyWord(keyword,customerId);
+
+		return result;
+
+	}
+	
+	public Collection<Trip> findAllValidOffersByKeyWord(final String keyword) {
+		Collection<Trip> result;
+		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
+
+		return result;
+
+	}
+	
+	public Collection<Trip> findAllValidROffersByKeyWord(final String keyword) {
+		Collection<Trip> result;
+		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
+
+		return result;
+
+	}
+	
 
 	public void banTrip(final int tripId) {
 		final Trip aux = this.tripRepository.findOne(tripId);

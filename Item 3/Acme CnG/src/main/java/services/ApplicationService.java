@@ -30,11 +30,11 @@ public class ApplicationService {
 
 	//Simple CRUD methods-------------------------------------------------------------------
 	public Application create(final int tripId) {
-		final Application result = new Application();
-		result.setTrip(this.tripService.findOne(tripId));
-		result.setCustomer(this.customerService.findCustomerByPrincipal());
-		result.setStatus("PENDING");
-		//TODO: Hacer save.
+		final Application aux = new Application();
+		aux.setTrip(this.tripService.findOne(tripId));
+		aux.setCustomer(this.customerService.findCustomerByPrincipal());
+		aux.setStatus("PENDING");
+		Application result = this.save(aux);
 		return result;
 	}
 	public Collection<Application> findAll() {
