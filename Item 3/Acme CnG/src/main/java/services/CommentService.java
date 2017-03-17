@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CommentRepository;
 import domain.Actor;
@@ -31,6 +33,9 @@ public class CommentService {
 	@Autowired
 	private CommentableService	commentableService;
 
+	@Autowired
+	private Validator			validator;
+
 
 	//Simple CRUD methods-------------------------------------------------------------------
 	public Comment create(final int commentableId) {
@@ -44,7 +49,7 @@ public class CommentService {
 		result.setActor(actor);
 		result.setBanned(false);
 		result.setCommentable(commentable);
-
+		result.setPostMoment(new Date(System.currentTimeMillis() - 100));
 		return result;
 	}
 
@@ -123,4 +128,14 @@ public class CommentService {
 
 	}
 
+	public Comment reconstruct(final Comment comment, final BindingResult binding) {
+		final Comment result = this.create(comment.getCommentable().getId());
+		result.setText(comment.getText());
+		result.setTitle(comment.getTitle());
+		result.setStars(comment.getStars());
+
+		this.validator.validate(result, binding);
+
+		return result;
+	}
 }

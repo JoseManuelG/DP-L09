@@ -34,7 +34,7 @@ public class CustomerController extends AbstractController {
 
 	// List ---------------------------------------------------------------
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public ModelAndView view(@RequestParam final int id) {
+	public ModelAndView view(@RequestParam final int customerId) {
 		ModelAndView result;
 		Customer customer;
 		Collection<Comment> unBannedComments;
@@ -44,11 +44,11 @@ public class CustomerController extends AbstractController {
 		if (this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().equals("ADMINISTRATOR"))
 			isAdmin = true;
 
-		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(id);
-		bannedComments = this.commentService.findBannedCommentsByCommentable(id, this.customerService.findCustomerByPrincipal().getId());
-		allBannedComments = this.commentService.findBannedCommentsByCommentable(id);
+		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(customerId);
+		bannedComments = this.commentService.findBannedCommentsByCommentable(customerId, this.customerService.findCustomerByPrincipal().getId());
+		allBannedComments = this.commentService.findBannedCommentsByCommentable(customerId);
 
-		customer = this.customerService.findOne(id);
+		customer = this.customerService.findOne(customerId);
 
 		result = new ModelAndView("customer/view");
 		result.addObject("customer", customer);
