@@ -19,7 +19,8 @@
 
 <form:form action="${requestURI}" modelAttribute="comment">
 	
-
+	<form:hidden path="comment.commentable"/>
+	
 	<acme:textbox code="comment.title" path="comment.title"/>
 	
 	<acme:password code="comment.stars" path="comment.stars"/>

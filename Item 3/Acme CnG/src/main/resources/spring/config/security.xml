@@ -87,6 +87,11 @@
 		<security:intercept-url pattern="/customer/view.do" access="hasAnyRole('ADMINISTRATOR','CUSTOMER')" />
 		
 		
+		<!-- Comment -->
+		
+		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
+		
+		
 		
 		<!--NONE -->
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

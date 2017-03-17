@@ -58,7 +58,7 @@
 
 	</display:table>
 </jstl:if>
-	<a href="comment/create.do?comentableId=${customer.id }">
+	<a href="comment/create.do?commentableId=${customer.id }">
 	      <spring:message  code="comment.create" />
 	</a>
 	
