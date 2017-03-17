@@ -61,7 +61,7 @@ public class CustomerController extends AbstractController {
 	@RequestMapping(value = "/myProfile", method = RequestMethod.GET)
 	public ModelAndView myProfile() {
 		ModelAndView result;
-		result = this.view(this.customerService.findCustomerByPrincipal().getId());
+		result = new ModelAndView("customer/view" + this.customerService.findCustomerByPrincipal().getId());
 		return result;
 	}
 

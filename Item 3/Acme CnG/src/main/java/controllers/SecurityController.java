@@ -52,15 +52,12 @@ public class SecurityController extends AbstractController {
 		ModelAndView result;
 		final Customer customer = this.customerService.reconstruct(actorForm, binding);
 		if (binding.hasErrors())
-			result = this.createRegisterModelAndView(actorForm, "security.password.error");
+			result = this.createRegisterModelAndView(actorForm, "security.commit.error");
 		else if (!actorForm.getUserAccount().getPassword().equals(actorForm.getConfirmPassword()))
 			result = this.createRegisterModelAndView(actorForm, "security.password.error");
-		else if (!((boolean) actorForm.getAcepted())) {
+		else if (!((boolean) actorForm.getAcepted()))
 			result = this.createRegisterModelAndView(actorForm, "security.terms.error");
-			result = new ModelAndView();
-			result.addObject(actorForm);
-			result.addObject("message", "security.password.error");
-		} else
+		else
 			try {
 				this.customerService.save(customer);
 				result = new ModelAndView("redirect:/");

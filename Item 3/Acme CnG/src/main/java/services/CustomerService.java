@@ -17,6 +17,7 @@ import repositories.CustomerRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import security.UserAccountRepository;
 import domain.Customer;
 import forms.ActorForm;
 
@@ -27,12 +28,15 @@ public class CustomerService {
 	//Managed Repository--------------------------------------------------------------------
 
 	@Autowired
-	private CustomerRepository	customerRepository;
+	private CustomerRepository		customerRepository;
+
+	@Autowired
+	private UserAccountRepository	userAccountRepository;
 
 	// Supporting Services --------------------------------------
 
 	@Autowired
-	private Validator			validator;
+	private Validator				validator;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -45,6 +49,7 @@ public class CustomerService {
 		Customer result;
 
 		Assert.notNull(customer, "customer.error.null");
+		customer.setUserAccount(this.userAccountRepository.save(customer.getUserAccount()));
 		result = this.customerRepository.save(customer);
 		Assert.notNull(result, "customer.error.commit");
 
@@ -74,7 +79,7 @@ public class CustomerService {
 		userAccount.setPassword(actorForm.getUserAccount().getPassword());
 		final Collection<Authority> authorities = new ArrayList<Authority>();
 		final Authority authority = new Authority();
-		authority.setAuthority(actorForm.getTypeOfActor());
+		authority.setAuthority("CUSTOMER");
 		authorities.add(authority);
 		userAccount.setAuthorities(authorities);
 

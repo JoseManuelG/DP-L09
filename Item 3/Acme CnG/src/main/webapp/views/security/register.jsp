@@ -31,9 +31,7 @@
 	<acme:textbox code="security.register.surname" path="surname"/>
 	
 	<acme:textbox code="security.register.email" path="email"/>
-	
-	<acme:textbox code="security.register.picture" path="picture"/>
-	
+		
 	<acme:textbox code="security.register.phone" path="phone"/>
 	
 	<a target="_blank" href="law/terms-conditions.do">

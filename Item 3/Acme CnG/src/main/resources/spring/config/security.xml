@@ -40,9 +40,10 @@
 
 		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
-		<security:intercept-url pattern="/customer/view.do" access="permitAll" />
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/security/register.do" access="permitAll" />
 		
 		<!-- Actor -->
 				
@@ -56,6 +57,7 @@
 		
 		<security:intercept-url pattern="/trip/view.do" access="isAuthenticated()" />
 		
+		<security:intercept-url pattern="/customer/view.do" access="isAuthenticated()" />
 		
 		<!-- Administrator -->
 		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
@@ -85,7 +87,7 @@
 		
 		<!--NONE -->
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
-		<security:intercept-url pattern="/security/register.do" access="hasRole('NONE')" />
+		
 		
 		<security:form-login 
 			login-page="/security/login.do"
