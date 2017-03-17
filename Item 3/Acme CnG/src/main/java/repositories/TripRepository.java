@@ -1,3 +1,4 @@
+
 package repositories;
 
 import java.util.Collection;
@@ -16,7 +17,7 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 
 	@Query("select t from Trip t where t.type='OFFER'")
 	Collection<Trip> findAllOffers();
-	
+
 	@Query("select t from Trip t where t.type='REQUEST'")
 	Collection<Trip> findAllRequests();
 
@@ -25,5 +26,17 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 
 	@Query("select t from Trip t where t.type='REQUEST' and t.customer.id=?1")
 	Collection<Trip> findAllRequestsByPrincipalId(int customerId);
+
+	//01 - Ratio of offers versus requests. Part1
+	@Query("select count(t) from Trip t where t.type='OFFER'")
+	Double countAllOffers();
+
+	//01 - Ratio of offers versus requests. Part2
+	@Query("select count(t) from Trip t where t.type='REQUEST'")
+	Double countAllRequests();
+
+	//03 - Average number of applications per offer or request.
+	@Query("select count(t) from Trip t")
+	Double countAllTrips();
 
 }

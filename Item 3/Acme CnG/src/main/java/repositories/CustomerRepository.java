@@ -1,3 +1,4 @@
+
 package repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 	@Query("select c from Customer c where c.userAccount.id = ?1")
 	Customer findByUserAccountId(int id);
+
+	//02 - Average number of offers and request per customer.
+	@Query("select count(c) from Customer c")
+	Double countAllCustomers();
 
 }
