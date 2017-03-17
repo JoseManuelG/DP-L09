@@ -28,9 +28,9 @@ public class TripService {
 
 	@Autowired
 	private CustomerService	customerService;
-	
+
 	@Autowired
-	private LoginService loginService;
+	private LoginService	loginService;
 
 	@Autowired
 	private Validator		validator;
@@ -62,18 +62,17 @@ public class TripService {
 
 		Assert.notNull(tripId, "trip.error.id.null");
 		Assert.isTrue(tripId > 0, "trip.error.id.invalid");
-		
+
 		Trip result = null;
-		
+
 		final Trip aux = this.tripRepository.findOne(tripId);
-		String loggedAuthority = loginService.getPrincipal().getAuthorities().iterator().next().getAuthority();
-		if((aux.getBanned() == true && loggedAuthority=="ADMINISTRATOR")){
+		final String loggedAuthority = this.loginService.getPrincipal().getAuthorities().iterator().next().getAuthority();
+		if ((aux.getBanned() == true && loggedAuthority == "ADMINISTRATOR"))
 			result = aux;
-		}else if(aux.getBanned()== true && customerService.findCustomerByPrincipal().equals(aux.getCustomer())){
+		else if (aux.getBanned() == true && this.customerService.findCustomerByPrincipal().equals(aux.getCustomer()))
 			result = aux;
-		}else if(aux.getBanned()== false){
-			result=aux;
-		}
+		else if (aux.getBanned() == false)
+			result = aux;
 
 		return result;
 	}
@@ -93,7 +92,7 @@ public class TripService {
 		//////////////////////////////////////////////////////////
 		Assert.isTrue((trip.getOriginLat() == null && trip.getOriginLon() == null) || ((!(trip.getOriginLat() == null) && !(trip.getOriginLon() == null))), "trip.error.originCoords");
 		Assert.isTrue((trip.getDestinationLat() == null && trip.getDestinationLon() == null) || ((!(trip.getDestinationLat() == null) && !(trip.getDestinationLon() == null))), "trip.error.destinationCoords");
-		Date actualDate= new Date();
+		final Date actualDate = new Date();
 		Assert.isTrue(trip.getDepartureTime().after(actualDate), "trip.date.error");
 		result = this.tripRepository.save(trip);
 		return result;
@@ -174,8 +173,7 @@ public class TripService {
 		return result;
 
 	}
-	
-	
+
 	public Collection<Trip> findAllValidOffersByKeyWord(final String keyword) {
 		Collection<Trip> result;
 		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
@@ -183,7 +181,7 @@ public class TripService {
 		return result;
 
 	}
-	
+
 	public Collection<Trip> findAllValidRequestsByKeyWord(final String keyword) {
 		Collection<Trip> result;
 		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
@@ -191,7 +189,6 @@ public class TripService {
 		return result;
 
 	}
-	
 
 	public void banTrip(final int tripId) {
 		final Trip aux = this.tripRepository.findOne(tripId);
@@ -222,6 +219,45 @@ public class TripService {
 		Collection<Trip> result;
 		final Customer customer = this.customerService.findCustomerByPrincipal();
 		result = this.tripRepository.findAllRequestsByPrincipalId(customer.getId());
+		return result;
+	}
+
+	//01 - Ratio of offers versus requests
+	public Double ratioOffersVsRequests() {
+		Double result, res1, res2;
+		res1 = this.tripRepository.countAllOffers();
+		res2 = this.tripRepository.countAllRequests();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = res1 / res2;
+		else
+			result = 0.0;
+		return result;
+	}
+
+	//02 - Average number of offers per customer.
+	public Double avgOfferPerCustomer() {
+		Double result, res1, res2;
+		res1 = this.tripRepository.countAllOffers();
+		res2 = this.customerService.count();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = res1 / res2;
+		else
+			result = 0.0;
+		return result;
+	}
+
+	//02 - Average number of requests per customer.
+	public Double avgRequestsPerCustomer() {
+		Double result, res1, res2;
+		res1 = this.tripRepository.countAllOffers();
+		res2 = this.customerService.count();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = res1 / res2;
+		else
+			result = 0.0;
 		return result;
 	}
 
