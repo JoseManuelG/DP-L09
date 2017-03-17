@@ -79,8 +79,8 @@
 		<security:intercept-url pattern="/trip/customer/create/request.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/trip/customer/edit.do" access="hasRole('CUSTOMER')" />
 		
-		<security:intercept-url pattern="/customer/myProfile.do" access="hasRole('CUSTOMER','ADMINISTRATOR')" />
-		<security:intercept-url pattern="/customer/view.do" access="hasRole('ADMINISTRATOR','CUSTOMER')" />
+		<security:intercept-url pattern="/customer/myProfile.do" access="hasAnyRole('CUSTOMER','ADMINISTRATOR')" />
+		<security:intercept-url pattern="/customer/view.do" access="hasAnyRole('ADMINISTRATOR','CUSTOMER')" />
 		
 		
 		

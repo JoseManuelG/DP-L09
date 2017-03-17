@@ -50,7 +50,7 @@ public class CustomerController extends AbstractController {
 
 		customer = this.customerService.findOne(id);
 
-		result = new ModelAndView("/view");
+		result = new ModelAndView("customer/view");
 		result.addObject("customer", customer);
 		result.addObject("unBannedComments", unBannedComments);
 		result.addObject("bannedComments", bannedComments);
@@ -62,7 +62,7 @@ public class CustomerController extends AbstractController {
 	@RequestMapping(value = "/myProfile", method = RequestMethod.GET)
 	public ModelAndView myProfile() {
 		ModelAndView result;
-		result = new ModelAndView("customer/view" + this.customerService.findCustomerByPrincipal().getId());
+		result = new ModelAndView("customer/view.do?id=" + this.customerService.findCustomerByPrincipal().getId());
 		return result;
 	}
 
