@@ -85,7 +85,7 @@ public class TripCustomerController extends AbstractController {
 		ModelAndView result;
 		Collection<Trip> trips;
 
-		trips = this.tripService.findByKeyWord(keyword);
+		trips = this.tripService.findAllValidOffersByKeyWord(keyword);
 
 		result = new ModelAndView("trip/search/list");
 		result.addObject("trips", trips);
@@ -99,7 +99,7 @@ public class TripCustomerController extends AbstractController {
 		ModelAndView result;
 		Collection<Trip> trips;
 
-		trips = this.tripService.findByKeyWord(keyword);
+		trips = this.tripService.findAllValidRequestsByKeyWord(keyword);
 
 		result = new ModelAndView("trip/search/list");
 		result.addObject("trips", trips);
