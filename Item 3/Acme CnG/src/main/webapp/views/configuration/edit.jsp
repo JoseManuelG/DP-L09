@@ -16,7 +16,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="trip/customer/edit.do" modelAttribute="configuration">
+<form:form action="configuration/administrator/edit.do" modelAttribute="configuration">
 
 	<acme:textbox code="configuration.banner" path="banner"/>
 	
