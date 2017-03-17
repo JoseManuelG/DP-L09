@@ -28,11 +28,11 @@ public class LawController extends AbstractController {
 
 	// Index ------------------------------------------------------------------		
 
-	@RequestMapping(value = "/register")
+	@RequestMapping(value = "/terms-conditions")
 	public ModelAndView terms() {
 		ModelAndView result;
 
-		result = new ModelAndView("law/register");
+		result = new ModelAndView("law/terms-conditions");
 		result.addObject(new ActorForm());
 
 		return result;
