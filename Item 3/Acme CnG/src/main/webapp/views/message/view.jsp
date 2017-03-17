@@ -38,10 +38,18 @@
 	<display:table pagesize="5" class="displaytag" keepStatus="false"
 		name="attachments" requestURI="${requestURI}" id="row" excludedParams="*">
 		
-		<acme:column sorteable="false" code="message.attachment.name" path="name"/>
-		
-		<display:column>
-			<a href="${row.url}">${row.url}</a>
+		<spring:message code="message.attachments" var="varAttachments" />
+		<display:column title="${varAttachments}" sortable="false">
+			<a href="${row.url}">
+				<jstl:choose>
+					<jstl:when test="${row.name.equals('')}">
+						${row.url}
+					</jstl:when>
+					<jstl:otherwise>
+						${row.name}
+					</jstl:otherwise>
+				</jstl:choose>
+			</a>
 		</display:column>
 		
 	</display:table>
