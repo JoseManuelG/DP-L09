@@ -44,8 +44,8 @@ public class ApplicationService {
 	public Application findOne(final Integer applicationId) {
 
 		// He cambiado las condiciones porque estaban al revés.
-		Assert.notNull(applicationId, "No puedes encontrar una solicitud sin ID");
-		Assert.isTrue(applicationId > 0, "La Id no es válida");
+		Assert.notNull(applicationId, "application.error.id.null");
+		Assert.isTrue(applicationId > 0, "application.error.id.invalid");
 
 		final Application result = this.applicationRepository.findOne(applicationId);
 
@@ -55,16 +55,16 @@ public class ApplicationService {
 	public Application save(final Application application) {
 		Application result;
 
-		Assert.notNull(application, "La soicitud no puede ser nula");
-		Assert.isTrue(application.getStatus().equals("PENDING") || application.getStatus().equals("ACCEPTED") || application.getStatus().equals("DENIED"), "La solicitud debe tener un estado válido");
+		Assert.notNull(application, "application.error.null");
+		Assert.isTrue(application.getStatus().equals("PENDING") || application.getStatus().equals("ACCEPTED") || application.getStatus().equals("DENIED"), "application.error.status.invalid");
 
 		result = this.applicationRepository.save(application);
 		return result;
 	}
 
 	public void delete(final Application application) {
-		Assert.notNull(application, "La solicitud no puede ser nula");
-		Assert.isTrue(this.applicationRepository.exists(application.getId()), "La solicitud debe estar en la base de datos antes de borrarla");
+		Assert.notNull(application, "application.error.null");
+		Assert.isTrue(this.applicationRepository.exists(application.getId()), "application.error.id.notsaved");
 
 		this.applicationRepository.delete(application);
 	}
