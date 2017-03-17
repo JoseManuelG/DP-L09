@@ -28,6 +28,9 @@
 		<bean class="converters.CustomerToStringConverter" />
 		<bean class="converters.StringToCustomerConverter" />
 		
+		<bean class="converters.CommentableToStringConverter" />
+		<bean class="converters.StringToCommentableConverter" />
+		
 		<bean class="converters.CommentToStringConverter" />
 		<bean class="converters.StringToCommentConverter" />
 	</util:list>

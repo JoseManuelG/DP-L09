@@ -19,13 +19,13 @@
 
 <form:form action="${requestURI}" modelAttribute="comment">
 	
-	<form:hidden path="comment.commentable"/>
+	<form:hidden path="commentable"/>
 	
-	<acme:textbox code="comment.title" path="comment.title"/>
+	<acme:textbox code="comment.title" path="title"/>
 	
-	<acme:password code="comment.stars" path="comment.stars"/>
+	<acme:textbox code="comment.stars" path="stars"/>
 	
-	<acme:password code="comment.text" path="comment.text"/>
+	<acme:textbox code="comment.text" path="text"/>
 	
 	<acme:submit code="comment.save" name="save"/>
 	
