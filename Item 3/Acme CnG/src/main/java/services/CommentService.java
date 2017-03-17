@@ -93,6 +93,10 @@ public class CommentService {
 		this.commentRepository.delete(comment);
 	}
 
+	public Long count() {
+		return this.commentRepository.count();
+	}
+
 	//Other Business methods-------------------------------------------------------------------
 
 	public Collection<Comment> findUnbannedCommentsByCommentable(final int commentableId) {
@@ -181,6 +185,27 @@ public class CommentService {
 			result = res1 / res2;
 		else
 			result = 0.0;
+		return result;
+	}
+
+	//07 - Average number of comments posted by administrators and customers.
+	public Double avgCommentsByActors() {
+		Long res1, res2;
+		Double result;
+
+		res1 = this.count();
+		res2 = this.actorService.count();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = (double) (res1 / res2);
+		else
+			result = 0.0;
+		return result;
+	}
+
+	public Collection<Actor> averageActorWritingComments() {
+		Collection<Actor> result;
+		result = this.commentRepository.averageActorWritingComments();
 		return result;
 	}
 }
