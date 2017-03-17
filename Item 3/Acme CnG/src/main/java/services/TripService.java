@@ -69,8 +69,10 @@ public class TripService {
 		String loggedAuthority = loginService.getPrincipal().getAuthorities().iterator().next().getAuthority();
 		if((aux.getBanned() == true && loggedAuthority=="ADMINISTRATOR")){
 			result = aux;
-		}else if(aux.getBanned()==true && customerService.findCustomerByPrincipal().equals(aux.getCustomer())){
+		}else if(aux.getBanned()== true && customerService.findCustomerByPrincipal().equals(aux.getCustomer())){
 			result = aux;
+		}else if(aux.getBanned()== false){
+			result=aux;
 		}
 
 		return result;
