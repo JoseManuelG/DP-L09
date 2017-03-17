@@ -173,23 +173,6 @@ public class TripService {
 
 	}
 	
-	public Collection<Trip> findAllMyOffersByKeyWord(final String keyword) {
-		Collection<Trip> result;
-		int customerId = customerService.findCustomerByPrincipal().getId();
-		result = this.tripRepository.findAllMyOffersByKeyWord(keyword,customerId);
-
-		return result;
-
-	}
-	
-	public Collection<Trip> findAllMyRequestsByKeyWord(final String keyword) {
-		Collection<Trip> result;
-		int customerId = customerService.findCustomerByPrincipal().getId();
-		result = this.tripRepository.findAllMyRequestsByKeyWord(keyword,customerId);
-
-		return result;
-
-	}
 	
 	public Collection<Trip> findAllValidOffersByKeyWord(final String keyword) {
 		Collection<Trip> result;
@@ -199,7 +182,7 @@ public class TripService {
 
 	}
 	
-	public Collection<Trip> findAllValidROffersByKeyWord(final String keyword) {
+	public Collection<Trip> findAllValidRequestsByKeyWord(final String keyword) {
 		Collection<Trip> result;
 		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
 
