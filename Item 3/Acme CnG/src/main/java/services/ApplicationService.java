@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.ApplicationRepository;
 import domain.Application;
+import domain.Customer;
 
 @Service
 @Transactional
@@ -116,4 +118,13 @@ public class ApplicationService {
 			result = 0.0;
 		return result;
 	}
+
+	public Customer actorReceivedMoreMessages() {
+		List<Customer> customers;
+		final Customer result;
+		customers = this.applicationRepository.customerWithMoreApplicationsAccepted();
+		result = customers.iterator().next();
+		return result;
+	}
+
 }

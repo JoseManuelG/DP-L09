@@ -2,6 +2,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,9 +23,9 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 
 	//04 - The customer who has more applications accepted.
 	@Query("select a.customer from Application a where a.status='ACCEPTED' group by a.customer order by count(a) desc")
-	Collection<Customer> customerWithMoreApplicationsAccepted();
+	List<Customer> customerWithMoreApplicationsAccepted();
 
 	//05 - The customer who has more applications denied.
 	@Query("select a.customer from Application a where a.status='DENIED' group by a.customer order by count(a) desc")
-	Collection<Customer> customerWithMoreApplicationsDenied();
+	List<Customer> customerWithMoreApplicationsDenied();
 }
