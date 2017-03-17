@@ -40,8 +40,8 @@ public class ConfigurationService {
 
 	public Configuration findOne(final Integer configurationId) {
 
-		Assert.isNull(configurationId, "No puedes encontrar una solicitud sin ID");
-		Assert.isTrue(configurationId <= 0, "La Id no es válida");
+		Assert.notNull(configurationId, "No puedes encontrar una solicitud sin ID");
+		Assert.isTrue(configurationId > 0, "La Id no es válida");
 
 		final Configuration result = this.configurationRepository.findOne(configurationId);
 
@@ -59,4 +59,11 @@ public class ConfigurationService {
 
 	//Other Business methods-------------------------------------------------------------------
 
+	public Configuration findOne() {
+		Configuration result;
+
+		result = this.findAll().iterator().next();
+
+		return result;
+	}
 }
