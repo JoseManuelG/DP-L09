@@ -105,6 +105,10 @@ public class TripService {
 		this.tripRepository.delete(trip);
 	}
 
+	public Long count() {
+		return this.tripRepository.count();
+	}
+
 	//Other Business methods-------------------------------------------------------------------
 
 	public Trip reconstruct(final Trip trip, final BindingResult bindingResult) {
@@ -237,7 +241,8 @@ public class TripService {
 
 	//02 - Average number of offers per customer.
 	public Double avgOfferPerCustomer() {
-		Double result, res1, res2;
+		Double result, res1;
+		Long res2;
 		res1 = this.tripRepository.countAllOffers();
 		res2 = this.customerService.count();
 
@@ -250,8 +255,9 @@ public class TripService {
 
 	//02 - Average number of requests per customer.
 	public Double avgRequestsPerCustomer() {
-		Double result, res1, res2;
-		res1 = this.tripRepository.countAllOffers();
+		Double result, res1;
+		Long res2;
+		res1 = this.tripRepository.countAllRequests();
 		res2 = this.customerService.count();
 
 		if (res1 != null && res2 != null && res2 > 0)

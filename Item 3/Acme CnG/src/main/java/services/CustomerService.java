@@ -62,6 +62,10 @@ public class CustomerService {
 		return result;
 	}
 
+	public Long count() {
+		return this.customerRepository.count();
+	}
+
 	//Other Business methods-------------------------------------------------------------------
 
 	public Customer findCustomerByPrincipal() {
