@@ -119,10 +119,19 @@ public class ApplicationService {
 		return result;
 	}
 
-	public Customer actorReceivedMoreMessages() {
+	//04 - The customer who has more applications accepted.
+	public Customer customerWithMoreApplicationsAccepted() {
 		List<Customer> customers;
 		final Customer result;
 		customers = this.applicationRepository.customerWithMoreApplicationsAccepted();
+		result = customers.iterator().next();
+		return result;
+	}
+
+	public Customer customerWithMoreApplicationsDenied() {
+		List<Customer> customers;
+		final Customer result;
+		customers = this.applicationRepository.customerWithMoreApplicationsDenied();
 		result = customers.iterator().next();
 		return result;
 	}

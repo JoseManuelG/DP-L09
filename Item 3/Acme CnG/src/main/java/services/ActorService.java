@@ -47,6 +47,9 @@ public class ActorService {
 		return this.actorRepository.findAll();
 	}
 
+	public Long count() {
+		return this.actorRepository.count();
+	}
 	// other business methods --------------------------------------
 
 	public Actor findActorByPrincipal() {

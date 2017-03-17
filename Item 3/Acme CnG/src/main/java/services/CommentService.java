@@ -34,6 +34,9 @@ public class CommentService {
 	private CommentableService	commentableService;
 
 	@Autowired
+	private TripService			tripService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -136,6 +139,48 @@ public class CommentService {
 
 		this.validator.validate(result, binding);
 
+		return result;
+	}
+
+	//06 - Average number of comments per actor,
+	public Double avgCommentsPerActor() {
+		Double result, res1;
+		Long res2;
+		res1 = this.commentRepository.countAllCommentsPerActors();
+		res2 = this.actorService.count();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = 1.0 * res1 / res2;
+		else
+			result = 0.0;
+		return result;
+	}
+
+	//06 - Average number of comments per offer
+	public Double avgCommentsPerOffer() {
+		Double result, res1, res2;
+
+		res1 = this.commentRepository.countAllCommentsPerOffers();
+		res2 = this.tripService.offersAmount();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = res1 / res2;
+		else
+			result = 0.0;
+		return result;
+	}
+
+	//06 - Average number of comments per request
+	public Double avgCommentsPerRequest() {
+		Double result, res1, res2;
+
+		res1 = this.commentRepository.countAllCommentsPerRequests();
+		res2 = this.tripService.requestsAmount();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = res1 / res2;
+		else
+			result = 0.0;
 		return result;
 	}
 }

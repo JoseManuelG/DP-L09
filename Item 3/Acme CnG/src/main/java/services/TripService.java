@@ -267,4 +267,12 @@ public class TripService {
 		return result;
 	}
 
+	public Double offersAmount() {
+		return this.tripRepository.countAllOffers();
+	}
+
+	public Double requestsAmount() {
+		return this.tripRepository.countAllRequests();
+	}
+
 }
