@@ -1,7 +1,6 @@
 
 package repositories;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,30 +32,30 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 
 	//09 - The minimum, the average, and the maximum number of messages sent per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null")
-	Collection<Message> minMessagesSentPerActor();
+	List<Double> minMessagesSentPerActor();
 
 	//09 - The minimum, the average, and the maximum number of messages sent per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null group by m.sender.id order by count(m) desc")
-	Collection<Message> maxMessagesSentPerActor();
+	List<Double> maxMessagesSentPerActor();
 
-	//10 - The minimum, the average, and the maximum number of messages sent per actor. Part1
+	//10 - The minimum, the average, and the maximum number of messages received per actor. Part1
 	@Query("select count(m) from Message m where m.isSender=false and m.recipient is not null")
 	Double avgMessagesReceivedPerActor();
 
-	//10 - The minimum, the average, and the maximum number of messages sent per actor. Part2
+	//10 - The minimum, the average, and the maximum number of messages received per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=false and m.recipient is not null group by m.recipient.id order by count(m) asc")
-	Collection<Message> minMessagesReceivedPerActor();
+	List<Double> minMessagesReceivedPerActor();
 
-	//10 - The minimum, the average, and the maximum number of messages sent per actor. Part2
+	//10 - The minimum, the average, and the maximum number of messages received per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=false and m.recipient is not null group by m.recipient.id order by count(m) desc")
-	Collection<Message> maxMessagesReceivedPerActor();
+	List<Double> maxMessagesReceivedPerActor();
 
 	//11 - The actors who have sent more messages.
 	@Query("select m.sender from Message m where m.isSender=true and m.sender is not null group by m.sender order by count(m) desc")
-	Collection<Actor> actorSentMoreMessages();
+	List<Actor> actorSentMoreMessages();
 
 	//12 - The actors who have received more messages.
 	@Query("select m.recipient from Message m where m.isSender=false and m.recipient is not null group by m.recipient order by count(m) desc")
-	Collection<Actor> actorReceivedMoreMessages();
+	List<Actor> actorReceivedMoreMessages();
 
 }

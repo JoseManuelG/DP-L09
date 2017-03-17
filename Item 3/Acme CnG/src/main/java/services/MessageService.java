@@ -187,4 +187,75 @@ public class MessageService {
 		result.setRecipient(recipient);
 		return result;
 	}
+
+	//09 - The average of messages sent per actor.
+
+	public Double avgMessagesSentPerActor() {
+		Double result;
+		result = this.messageRepository.avgMessagesSentPerActor();
+		return result;
+	}
+
+	//09 - The min of messages sent per actor. 
+
+	public Double minMessagesSentPerActor() {
+		List<Double> messages;
+		final Double result;
+		messages = this.messageRepository.minMessagesSentPerActor();
+		result = messages.iterator().next();
+		return result;
+	}
+
+	//09 - The maximum number of messages sent per actor
+	public Double maxMessagesSentPerActor() {
+		List<Double> messages;
+		final Double result;
+		messages = this.messageRepository.maxMessagesSentPerActor();
+		result = messages.iterator().next();
+		return result;
+	}
+
+	//10 - The average of messages sent per actor.
+
+	public Double avgMessagesReceivedPerActor() {
+		Double result;
+		result = this.messageRepository.avgMessagesReceivedPerActor();
+		return result;
+	}
+
+	//10 - The minimum of messages sent per actor.
+	public Double minMessagesReceivedPerActor() {
+		List<Double> messages;
+		final Double result;
+		messages = this.messageRepository.minMessagesReceivedPerActor();
+		result = messages.iterator().next();
+		return result;
+	}
+	//10 - The maximum number of messages sent per actor. Part2
+	public Double maxMessagesReceivedPerActor() {
+		List<Double> messages;
+		final Double result;
+		messages = this.messageRepository.maxMessagesReceivedPerActor();
+		result = messages.iterator().next();
+		return result;
+	}
+
+	//11 - The actors who have sent more messages.
+	public Actor actorSentMoreMessages() {
+		List<Actor> actors;
+		final Actor result;
+		actors = this.messageRepository.actorSentMoreMessages();
+		result = actors.iterator().next();
+		return result;
+	}
+
+	//12 - The actors who have received more messages.
+	public Actor actorReceivedMoreMessages() {
+		List<Actor> actors;
+		final Actor result;
+		actors = this.messageRepository.actorSentMoreMessages();
+		result = actors.iterator().next();
+		return result;
+	}
+
 }
