@@ -47,6 +47,7 @@
 					<security:authorize access="hasRole('ADMINISTRATOR')">
 					<li><a href="trip/administrator/list/offers.do"><spring:message code="master.page.trip.offers" /></a></li>
 					<li><a href="trip/administrator/list/requests.do"><spring:message code="master.page.trip.requests" /></a></li>
+					<li><a href="configuration/administrator/edit.do"><spring:message code="master.page.configuration.banner" /></a></li>
 					</security:authorize>
 					<li><a href="message/actor/received.do"><spring:message code="master.page.message.received" /></a></li>
 					<li><a href="message/actor/sent.do"><spring:message code="master.page.message.sent" /></a></li>
