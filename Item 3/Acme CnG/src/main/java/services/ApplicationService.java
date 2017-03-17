@@ -69,6 +69,10 @@ public class ApplicationService {
 		this.applicationRepository.delete(application);
 	}
 
+	public Long count() {
+		return this.applicationRepository.count();
+	}
+
 	//Other Business methods-------------------------------------------------------------------
 
 	public Application acceptApply(final int applyId) {
@@ -99,4 +103,17 @@ public class ApplicationService {
 		return result;
 	}
 
+	//03 - Average number of applications per offer or request.
+	public Double avgRequestsPerCustomer() {
+		Double result;
+		Long res1, res2;
+		res1 = this.count();
+		res2 = this.tripService.count();
+
+		if (res1 != null && res2 != null && res2 > 0)
+			result = 1.0 * res1 / res2;
+		else
+			result = 0.0;
+		return result;
+	}
 }
