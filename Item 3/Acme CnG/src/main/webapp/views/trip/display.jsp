@@ -64,19 +64,19 @@
 
 <h2><spring:message  code="trip.applications" />:</h2>
 	<display:table pagesize="5" excludedParams="*" class="displaytag" 
-	name="applications" id="row" requestURI="${requestURI}">
+	name="applications" uid="application" requestURI="${requestURI}">
 		
 		<display:column>
-		    <a href="customer/view.do?customerId=${row.customer.id}">
+		    <a href="customer/view.do?customerId=${application.customer.id}">
 		    <spring:message code="trip.view" /></a>
 	   	</display:column>
 		<acme:column sorteable="false" code="trip.application.status" path="status"/>
 		
 		<display:column>
-			<jstl:if test="${row.status eq 'PENDING'}">
-				<a href="application/customer/accept.do?applicationId=${row.id}">
+			<jstl:if test="${application.status eq 'PENDING'}">
+				<a href="application/customer/accept.do?applicationId=${application.id}">
 				<spring:message	code="trip.application.accept" /></a> |
-				<a href="application/customer/deny.do?applicationId=${row.id}">
+				<a href="application/customer/deny.do?applicationId=${application.id}">
 				<spring:message	code="trip.application.deny" /></a>
 			</jstl:if>
 		</display:column>
