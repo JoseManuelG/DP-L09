@@ -52,7 +52,7 @@ public class SecurityController extends AbstractController {
 		ModelAndView result;
 		final Customer customer = this.customerService.reconstruct(actorForm, binding);
 		if (binding.hasErrors())
-			result = this.createRegisterModelAndView(actorForm, "security.commit.error");
+			result = this.createRegisterModelAndView(actorForm);
 		else if (!actorForm.getUserAccount().getPassword().equals(actorForm.getConfirmPassword()))
 			result = this.createRegisterModelAndView(actorForm, "security.password.error");
 		else if (!((boolean) actorForm.getAcepted()))
@@ -69,6 +69,14 @@ public class SecurityController extends AbstractController {
 		return result;
 	}
 	// Ancillary methods ------------------------------------------------------
+
+	private ModelAndView createRegisterModelAndView(final ActorForm actorForm) {
+		ModelAndView result;
+
+		result = this.createRegisterModelAndView(actorForm, null);
+
+		return result;
+	}
 
 	private ModelAndView createRegisterModelAndView(final ActorForm actorForm, final String string) {
 		ModelAndView result;
