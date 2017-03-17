@@ -37,11 +37,12 @@ public class SecurityController extends AbstractController {
 
 	// Register ------------------------------------------------------------------		
 
-	@RequestMapping(value = "/terms-conditions", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView register() {
 		ModelAndView result;
-
-		result = new ModelAndView("law/terms-conditions");
+		final ActorForm actorForm = new ActorForm();
+		result = new ModelAndView("security/register");
+		result.addObject(actorForm);
 
 		return result;
 	}

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.ConfigurationRepository;
 import domain.Configuration;
@@ -22,7 +24,7 @@ public class ConfigurationService {
 	//Supported Services--------------------------------------------------------------------
 
 	@Autowired
-	private CustomerService			customerService;
+	private Validator				validator;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -63,6 +65,21 @@ public class ConfigurationService {
 		Configuration result;
 
 		result = this.findAll().iterator().next();
+
+		return result;
+	}
+
+	public Configuration reconstruct(final Configuration configuration, final BindingResult binding) {
+		Configuration result, original;
+
+		original = this.findOne();
+
+		result = new Configuration();
+		result.setBanner(configuration.getBanner());
+		result.setId(original.getId());
+		result.setVersion(original.getVersion());
+
+		this.validator.validate(result, binding);
 
 		return result;
 	}

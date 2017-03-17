@@ -3549,7 +3549,7 @@
 	<!-- Configuration 	-->
 	
 	<bean id="configuration" class="domain.Configuration">
-		<property name="banner" value="http://acme-cng.com/media/images/logo.jpg"/>
+		<property name="banner" value="https://www.edrawsoft.com/template/homepage-banner.png"/>
 	</bean>	
 	
 	<!-- Comment -->
