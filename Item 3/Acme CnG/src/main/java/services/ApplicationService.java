@@ -34,7 +34,7 @@ public class ApplicationService {
 		aux.setTrip(this.tripService.findOne(tripId));
 		aux.setCustomer(this.customerService.findCustomerByPrincipal());
 		aux.setStatus("PENDING");
-		Application result = this.save(aux);
+		final Application result = this.save(aux);
 		return result;
 	}
 	public Collection<Application> findAll() {
