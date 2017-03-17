@@ -24,6 +24,12 @@
 		-->
 		<bean class="converters.ActorToStringConverter" />
 		<bean class="converters.StringToActorConverter" />
+		
+		<bean class="converters.CustomerToStringConverter" />
+		<bean class="converters.StringToCustomerConverter" />
+		
+		<bean class="converters.CommentToStringConverter" />
+		<bean class="converters.StringToCommentConverter" />
 	</util:list>
 	
 </beans>
