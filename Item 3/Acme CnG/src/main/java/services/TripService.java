@@ -200,7 +200,7 @@ public class TripService {
 
 	}
 
-	public void banTrip(final int tripId) {
+	public Trip banTrip(final int tripId) {
 		Actor actor;
 
 		actor = this.actorService.findActorByPrincipal();
@@ -211,10 +211,10 @@ public class TripService {
 
 		aux.setBanned(true);
 
-		this.tripRepository.save(aux);
+		return this.tripRepository.save(aux);
 	}
 
-	public void unbanTrip(final int tripId) {
+	public Trip unbanTrip(final int tripId) {
 		Actor actor;
 
 		actor = this.actorService.findActorByPrincipal();
@@ -225,7 +225,7 @@ public class TripService {
 
 		aux.setBanned(false);
 
-		this.tripRepository.save(aux);
+		return this.tripRepository.save(aux);
 	}
 
 	public Collection<Trip> findAllOffers() {

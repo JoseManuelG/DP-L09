@@ -57,9 +57,10 @@ public class TripAdministratorController extends AbstractController {
 	public ModelAndView deny(final int tripId) {
 		ModelAndView result;
 		String type;
+		Trip trip;
 
-		type = this.tripService.findOne(tripId).getType().toLowerCase();
-		this.tripService.banTrip(tripId);
+		trip = this.tripService.banTrip(tripId);
+		type = trip.getType().toLowerCase();
 		result = new ModelAndView("redirect:/trip/administrator/list/" + type + "s.do");
 
 		return result;
@@ -70,9 +71,10 @@ public class TripAdministratorController extends AbstractController {
 	public ModelAndView unban(final int tripId) {
 		ModelAndView result;
 		String type;
+		Trip trip;
 
-		type = this.tripService.findOne(tripId).getType().toLowerCase();
-		this.tripService.unbanTrip(tripId);
+		trip = this.tripService.unbanTrip(tripId);
+		type = trip.getType().toLowerCase();
 		result = new ModelAndView("redirect:/trip/administrator/list/" + type + "s.do");
 
 		return result;
