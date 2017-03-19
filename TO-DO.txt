@@ -1,16 +1,15 @@
 -B+ tree de todos los servicios
 
--El search de trip solo busca request independientemente si eliges offers o resquests
-
 -En los commentarios de customer y trip, faltan columnas para banear o desbanear, y los autores
 
--Crear display de adminsitrator o cambiar al vista de view customer a view actor y acabamos antes
+-Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes
 
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
 
 
 ------------------------------ARREGLADO------------------------------
 
+-El search de trip solo busca request independientemente si eliges offers o resquests(ARREGLADO)
  - Crear comentarios en el populate hasta que la media (query dashborad) de mayor o igual que 10.(ARREGLADO)
 -Cambiar populate para que haya messages con 1 attachment(ARREGLADO)
 - Problema: en message/write no se pude meter (a priori) los attachments porque es modelattribute messageForm y el path para el nombre del attachment deberia de ser algo asi como path="attachments[0].name" etc, pero no funciona(ARREGLADO)

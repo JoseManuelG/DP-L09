@@ -180,7 +180,7 @@ public class TripService {
 
 	public Collection<Trip> findAllValidOffersByKeyWord(final String keyword) {
 		Collection<Trip> result;
-		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
+		result = this.tripRepository.findAllValidOffersByKeyWord(keyword);
 
 		return result;
 
