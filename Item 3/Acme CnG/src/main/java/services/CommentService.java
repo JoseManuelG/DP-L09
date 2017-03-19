@@ -46,6 +46,7 @@ public class CommentService {
 		Actor actor;
 		final Commentable commentable;
 
+		this.commentableService.findAll();
 		commentable = this.commentableService.findOne(commentableId);
 		actor = this.actorService.findActorByPrincipal();
 
