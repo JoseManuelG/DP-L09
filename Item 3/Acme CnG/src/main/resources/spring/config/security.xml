@@ -90,6 +90,8 @@
 		<!-- Comment -->
 		
 		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comment/ban.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/comment/disBan.do" access="hasRole('ADMINISTRATOR')" />
 		
 		
 		
