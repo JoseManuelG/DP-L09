@@ -65,6 +65,6 @@
 	<spring:message code="message.forward"/>
 </a> | 
 
-<a href="message/actor/delete.do?messageId=${res.id}">
+<a href="message/actor/delete.do?messageId=${res.id}" onclick="return confirm('<spring:message code="confirm.delete" />')">
 	<spring:message code="message.delete"/>
 </a>
