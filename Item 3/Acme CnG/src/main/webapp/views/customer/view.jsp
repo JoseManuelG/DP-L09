@@ -108,6 +108,11 @@
 		requestURI="${requestURI}" id="row" uid="allBannedComments">
 
 		<!-- Action links -->
+	   	<display:column title=" ">
+	   		<a href="comment/disBan.do?commentId=${allBannedComments.id}">
+	   		 <spring:message code="customer.comment.disBanComment"/>
+	  	 	</a>
+	  	</display:column>
 		<spring:message code="customer.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
 	      <a href="customer/view.do?customerId=${allBannedComments.commentable.id}">

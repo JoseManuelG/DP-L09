@@ -63,8 +63,8 @@ public class CommentService {
 
 	public Comment findOne(final Integer commentId) {
 
-		Assert.isNull(commentId, "No puedes encontrar una solicitud sin ID");
-		Assert.isTrue(commentId <= 0, "La Id no es válida");
+		//		Assert.isNull(commentId, "No puedes encontrar una solicitud sin ID");
+		//		Assert.isTrue(commentId <= 0, "La Id no es válida");
 
 		final Comment result = this.commentRepository.findOne(commentId);
 
@@ -124,13 +124,13 @@ public class CommentService {
 
 		Assert.isTrue(actor instanceof Administrator, "Solo el administrador puede banear comentarios");
 
-		comment = this.findOne(commentId);
+		comment = this.commentRepository.findOne(commentId);
 
 		Assert.isTrue(!comment.getBanned(), "No puedes banear dos veces el mismo comentario");
 
 		comment.setBanned(true);
 
-		result = this.save(comment);
+		result = this.commentRepository.save(comment);
 
 		return result;
 
@@ -138,11 +138,11 @@ public class CommentService {
 	public Comment disbanComment(final int commentId) {
 		Comment comment, result;
 
-		comment = this.findOne(commentId);
+		comment = this.commentRepository.findOne(commentId);
 
 		comment.setBanned(false);
 
-		result = this.save(comment);
+		result = this.commentRepository.save(comment);
 
 		return result;
 
