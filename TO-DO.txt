@@ -2,15 +2,11 @@
 
 -Crear Delete de customer en el que antes de borrar customer en sus trips, applications se les quite el customer, los mensajes suyos se borren, y en los que el es sender o recipient, pero no son suyos se les cambie el sender o recipient a null segun sea. En principio que lso admins no se puedan borrar.
 
--Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes
-
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
 
--banear trip peta, y no hay unban trip
-
-
 ------------------------------ARREGLADO------------------------------
-
+-Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
+-banear trip peta, y no hay unban trip(ARREGLADO)
 -El search de trip solo busca request independientemente si eliges offers o resquests(ARREGLADO)
  - Crear comentarios en el populate hasta que la media (query dashborad) de mayor o igual que 10.(ARREGLADO)
 -Cambiar populate para que haya messages con 1 attachment(ARREGLADO)
