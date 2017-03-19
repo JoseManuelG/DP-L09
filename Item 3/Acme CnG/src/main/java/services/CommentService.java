@@ -135,7 +135,18 @@ public class CommentService {
 		return result;
 
 	}
+	public Comment disbanComment(final int commentId) {
+		Comment comment, result;
 
+		comment = this.findOne(commentId);
+
+		comment.setBanned(false);
+
+		result = this.save(comment);
+
+		return result;
+
+	}
 	public Comment reconstruct(final Comment comment, final BindingResult binding) {
 		final Comment result = this.create(comment.getCommentable().getId());
 		result.setText(comment.getText());

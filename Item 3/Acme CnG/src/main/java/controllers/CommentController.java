@@ -35,7 +35,7 @@ public class CommentController extends AbstractController {
 		super();
 	}
 
-	// Register ------------------------------------------------------------------		
+	// Create ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create(@RequestParam final int commentableId) {
@@ -63,6 +63,27 @@ public class CommentController extends AbstractController {
 
 		return result;
 	}
+
+	// Ban 	-------------------------------------------------------------------
+
+	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	public ModelAndView ban(@RequestParam final int commentId) {
+		ModelAndView result;
+		this.commentService.banComment(commentId);
+		result = new ModelAndView("redirect:/");
+		return result;
+	}
+
+	// DisBan 	-------------------------------------------------------------------
+
+	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	public ModelAndView disBan(@RequestParam final int commentId) {
+		ModelAndView result;
+		this.commentService.disbanComment(commentId);
+		result = new ModelAndView("redirect:/");
+		return result;
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	private ModelAndView createCommentModelAndView(final Comment comment) {
