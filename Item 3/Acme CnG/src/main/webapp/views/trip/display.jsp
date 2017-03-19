@@ -90,7 +90,13 @@
 		requestURI="${requestURI}" id="row" uid="unBannedComments">
 
 		<!-- Action links -->
-
+		<spring:message code="customer.comment.name" var="actorName" />
+	    <display:column title="${actorName}">
+	      <a href="customer/view.do?customerId=${unBannedComments.commentable.id}">
+	   	  <jstl:out value="${unBannedComments.actor.name}"/>
+	   	  <jstl:out value="${unBannedComments.actor.surname}"/>
+	   	  </a>
+	    </display:column>
 		<!-- Attributes -->
 
 		<acme:column sorteable="true" code="customer.comment.title" path="title" />
@@ -117,7 +123,13 @@
 		requestURI="${requestURI}" id="row" uid="bannedComments">
 
 		<!-- Action links -->
-
+		<spring:message code="customer.comment.name" var="actorName" />
+	    <display:column title="${actorName}">
+	      <a href="customer/view.do?customerId=${bannedComments.commentable.id}">
+	   	  <jstl:out value="${bannedComments.actor.name}"/>
+	   	  <jstl:out value="${bannedComments.actor.surname}"/>
+	   	  </a>
+	    </display:column>
 		<!-- Attributes -->
 		<acme:column sorteable="true" code="customer.comment.title" path="title" />
 
@@ -137,7 +149,13 @@
 		requestURI="${requestURI}" id="row" uid="allBannedComments">
 
 		<!-- Action links -->
-
+		<spring:message code="customer.comment.name" var="actorName" />
+	    <display:column title="${actorName}">
+	      <a href="customer/view.do?customerId=${allBannedComments.commentable.id}">
+	   	  <jstl:out value="${allBannedComments.actor.name}"/>
+	   	  <jstl:out value="${allBannedComments.actor.surname}"/>
+	   	  </a>
+	    </display:column>
 		<!-- Attributes -->
 		<acme:column sorteable="true" code="customer.comment.title" path="title" />
 

@@ -76,7 +76,7 @@ public class CommentController extends AbstractController {
 
 	// DisBan 	-------------------------------------------------------------------
 
-	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	@RequestMapping(value = "/disBan", method = RequestMethod.GET)
 	public ModelAndView disBan(@RequestParam final int commentId) {
 		ModelAndView result;
 		this.commentService.disbanComment(commentId);
