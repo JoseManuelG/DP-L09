@@ -80,8 +80,8 @@ public class CustomerService {
 		this.applicationService.deleteCustomer(customer);
 		this.tripService.deleteCustomer(customer);
 		this.messageService.deleteCustomer(customer);
-
 		this.customerRepository.delete(customer);
+		this.userAccountRepository.delete(customer.getUserAccount().getId());
 
 	}
 	//Other Business methods-------------------------------------------------------------------

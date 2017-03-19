@@ -36,6 +36,9 @@
 :
 <jstl:out value="${actor.phone}" />
 <br>
+<jstl:if test="${!isAdmin }">
+	<a href="actor/delete.do"><spring:message code="actor.delete"/></a>
+</jstl:if>
 <h2><spring:message  code="actor.comments" />:</h2>
 <jstl:if test="${!unBannedComments.isEmpty()}">
 	<display:table pagesize="5" class="displaytag1" name="unBannedComments"

@@ -87,6 +87,8 @@
 		<security:intercept-url pattern="/trip/customer/create/request.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/trip/customer/edit.do" access="hasRole('CUSTOMER')" />
 		
+		<security:intercept-url pattern="/actor/delete.do" access="hasRole('CUSTOMER')" />
+		
 		
 		
 		

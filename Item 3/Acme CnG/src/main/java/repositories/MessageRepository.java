@@ -21,6 +21,14 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 	@Query("select m from Message m where m.recipient.id=?1 and m.isSender=false")
 	public List<Message> findReceivedMessageOfActor(int recipientId);
 
+	//Find all the sended CopyMessages for a given actor
+	@Query("select m from Message m where m.sender.id=?1 and m.isSender=false")
+	public List<Message> findSentMessageOfActor2(int senderId);
+
+	//Find all the received CopyMessages for a given actor
+	@Query("select m from Message m where m.recipient.id=?1 and m.isSender=true")
+	public List<Message> findReceivedMessageOfActor2(int recipientId);
+
 	//No probado en vista, pero por queryDataBase.java funciona
 	//Find all messages for a given actor
 	@Query("select m from Message m where m.recipient.id=?1 or m.sender.id=?1")

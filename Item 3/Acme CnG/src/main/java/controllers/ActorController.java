@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.CommentService;
+import services.CustomerService;
 import domain.Actor;
 import domain.Comment;
 
@@ -26,6 +27,9 @@ public class ActorController extends AbstractController {
 
 	@Autowired
 	private CommentService	commentService;
+
+	@Autowired
+	private CustomerService	customerService;
 
 
 	// List ---------------------------------------------------------------
@@ -60,6 +64,14 @@ public class ActorController extends AbstractController {
 	public ModelAndView myProfile() {
 		ModelAndView result;
 		result = this.view(this.actorService.findActorByPrincipal().getId());
+		return result;
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete() {
+		ModelAndView result;
+		this.customerService.delete();
+		result = new ModelAndView("redirect:/");
 		return result;
 	}
 

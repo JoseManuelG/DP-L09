@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.util.Assert;
 
 import repositories.AttachmentRepository;
 import domain.Attachment;
+import domain.Customer;
 import domain.Message;
 
 @Service
@@ -88,6 +90,13 @@ public class AttachmentService {
 		final List<Attachment> aux = this.findAttachmentsOfMessage(message);
 		for (final Attachment attachment : aux)
 			this.delete(attachment);
+
+	}
+
+	public void deleteCustomer(final Customer customer) {
+		final Collection<Attachment> attachments = new ArrayList<Attachment>();
+		attachments.addAll(this.attachmentRepository.findAttachmentsOfCustomerDeleting(customer.getId()));
+		this.attachmentRepository.delete(attachments);
 
 	}
 

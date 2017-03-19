@@ -265,10 +265,23 @@ public class MessageService {
 
 	public void deleteCustomer(final Customer customer) {
 		final Collection<Message> messages = new ArrayList<Message>();
+		final Collection<Message> messages2 = new ArrayList<Message>();
 		messages.addAll(this.messageRepository.findSentMessageOfActor(customer.getId()));
 		messages.addAll(this.messageRepository.findReceivedMessageOfActor(customer.getId()));
+		this.attachmentService.deleteCustomer(customer);
 		this.messageRepository.delete(messages);
-
+		messages.clear();
+		messages2.addAll(this.messageRepository.findReceivedMessageOfActor2(customer.getId()));
+		for (final Message message : messages2) {
+			message.setRecipient(null);
+			messages.add(message);
+		}
+		messages2.addAll(this.messageRepository.findSentMessageOfActor2(customer.getId()));
+		for (final Message message : messages2) {
+			message.setSender(null);
+			messages.add(message);
+		}
+		this.messageRepository.save(messages);
 	}
 
 }
