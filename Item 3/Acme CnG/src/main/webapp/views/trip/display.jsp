@@ -90,6 +90,13 @@
 		requestURI="${requestURI}" id="row" uid="unBannedComments">
 
 		<!-- Action links -->
+		<jstl:if test="${isAdmin}">
+	   	  <display:column title=" ">
+	    	  <a href="comment/ban.do?commentId=${unBannedComments.id}">
+	   		  <spring:message code="customer.comment.banComment"/>
+	  	 	  </a>
+	  	  </display:column>
+	    </jstl:if>
 		<spring:message code="customer.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
 	      <a href="customer/view.do?customerId=${unBannedComments.commentable.id}">
@@ -149,6 +156,11 @@
 		requestURI="${requestURI}" id="row" uid="allBannedComments">
 
 		<!-- Action links -->
+		<display:column title=" ">
+	   		<a href="comment/disBan.do?commentId=${allBannedComments.id}">
+	   		 <spring:message code="customer.comment.disBanComment"/>
+	  	 	</a>
+	  	</display:column>
 		<spring:message code="customer.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
 	      <a href="customer/view.do?customerId=${allBannedComments.commentable.id}">
