@@ -61,8 +61,8 @@
 		
 		<security:intercept-url pattern="/trip/view.do" access="isAuthenticated()" />
 		
-		<security:intercept-url pattern="/actor/myProfile.do" access="hasAnyRole('CUSTOMER','ADMINISTRATOR')" />
-		<security:intercept-url pattern="/actor/view.do" access="hasAnyRole('ADMINISTRATOR','CUSTOMER')" />
+		<security:intercept-url pattern="/actor/myProfile.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actor/view.do" access="isAuthenticated()" />
 				
 		<!-- Administrator -->
 		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
@@ -70,6 +70,7 @@
 		<security:intercept-url pattern="/trip/administrator/list/offers.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/trip/administrator/list/requests.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/trip/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/trip/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
 		
 		<!-- Customer -->
 				

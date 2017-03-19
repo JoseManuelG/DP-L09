@@ -6,6 +6,8 @@
 
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
 
+-banear trip peta, y no hay unban trip
+
 
 ------------------------------ARREGLADO------------------------------
 

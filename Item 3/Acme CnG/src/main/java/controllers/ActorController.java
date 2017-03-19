@@ -46,7 +46,7 @@ public class ActorController extends AbstractController {
 
 		actor = this.actorService.findOne(actorId);
 
-		result = new ModelAndView("customer/view");
+		result = new ModelAndView("actor/view");
 		result.addObject("actor", actor);
 		result.addObject("unBannedComments", unBannedComments);
 		result.addObject("bannedComments", bannedComments);

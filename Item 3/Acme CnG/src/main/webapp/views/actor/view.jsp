@@ -51,7 +51,7 @@
 	    </jstl:if>
 		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="actor/view.do?actorId=${unBannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${unBannedComments.actor.id}">
 	   	  <jstl:out value="${unBannedComments.actor.name}"/>
 	   	  <jstl:out value="${unBannedComments.actor.surname}"/>
 	   	  </a>
@@ -84,7 +84,7 @@
 		<!-- Action links -->
 		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="actor/view.do?actorId=${bannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${bannedComments.actor.id}">
 	   	  <jstl:out value="${bannedComments.actor.name}"/>
 	   	  <jstl:out value="${bannedComments.actor.surname}"/>
 	   	  </a>
@@ -115,7 +115,7 @@
 	  	</display:column>
 		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="actor/view.do?actorId=${allBannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${allBannedComments.actor.id}">
 	   	  <jstl:out value="${allBannedComments.actor.name}"/>
 	   	  <jstl:out value="${allBannedComments.actor.surname}"/>
 	   	  </a>

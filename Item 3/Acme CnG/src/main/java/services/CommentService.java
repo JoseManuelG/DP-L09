@@ -138,7 +138,15 @@ public class CommentService {
 	public Comment disbanComment(final int commentId) {
 		Comment comment, result;
 
+		Actor actor;
+
+		actor = this.actorService.findActorByPrincipal();
+
+		Assert.isTrue(actor instanceof Administrator, "Solo el administrador puede quitar bans de comentarios");
+
 		comment = this.commentRepository.findOne(commentId);
+
+		Assert.isTrue(comment.getBanned(), "No puedes desbanear un comentario que no está baneado");
 
 		comment.setBanned(false);
 

@@ -76,7 +76,7 @@ public class TripController extends AbstractController {
 		applications = this.applicationService.findAllApplicationsByTrip(tripId);
 		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(tripId);
 		bannedComments = this.commentService.findBannedCommentsByCommentable(tripId, this.actorService.findActorByPrincipal().getId());
-		allBannedComments = this.commentService.findUnbannedCommentsByCommentable(tripId);
+		allBannedComments = this.commentService.findBannedCommentsByCommentable(tripId);
 		isOwner = false;
 		try {
 			isOwner = this.customerService.findCustomerByPrincipal().equals(trip.getCustomer());

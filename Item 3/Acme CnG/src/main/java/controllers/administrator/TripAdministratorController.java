@@ -65,6 +65,19 @@ public class TripAdministratorController extends AbstractController {
 		return result;
 
 	}
+
+	@RequestMapping(value = "/unban", method = RequestMethod.GET)
+	public ModelAndView unban(final int tripId) {
+		ModelAndView result;
+		String type;
+
+		type = this.tripService.findOne(tripId).getType().toLowerCase();
+		this.tripService.unbanTrip(tripId);
+		result = new ModelAndView("redirect:/trip/administrator/list/" + type + "s.do");
+
+		return result;
+
+	}
 	// Ancillary methods --------------------------------------------------------
 	protected ModelAndView createEditModelAndView(final Trip trip) {
 		ModelAndView result;

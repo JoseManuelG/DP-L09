@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -13,6 +14,8 @@ import org.springframework.validation.Validator;
 
 import repositories.TripRepository;
 import security.LoginService;
+import domain.Actor;
+import domain.Administrator;
 import domain.Customer;
 import domain.Trip;
 
@@ -28,6 +31,9 @@ public class TripService {
 
 	@Autowired
 	private CustomerService	customerService;
+
+	@Autowired
+	private ActorService	actorService;
 
 	@Autowired
 	private LoginService	loginService;
@@ -195,9 +201,31 @@ public class TripService {
 	}
 
 	public void banTrip(final int tripId) {
+		Actor actor;
+
+		actor = this.actorService.findActorByPrincipal();
+		Assert.isTrue(actor instanceof Administrator, "Solo el administrador puede banear ofertas o peticiones");
+
 		final Trip aux = this.tripRepository.findOne(tripId);
+		Assert.isTrue(!aux.getBanned(), "no puedes banear una oferta/petición ya baneada");
+
 		aux.setBanned(true);
-		this.save(aux);
+
+		this.tripRepository.save(aux);
+	}
+
+	public void unbanTrip(final int tripId) {
+		Actor actor;
+
+		actor = this.actorService.findActorByPrincipal();
+		Assert.isTrue(actor instanceof Administrator, "Solo el administrador puede desbanear ofertas o peticiones");
+
+		final Trip aux = this.tripRepository.findOne(tripId);
+		Assert.isTrue(aux.getBanned(), "no puedes desbanear una oferta/petición sin banear");
+
+		aux.setBanned(false);
+
+		this.tripRepository.save(aux);
 	}
 
 	public Collection<Trip> findAllOffers() {
@@ -275,4 +303,15 @@ public class TripService {
 		return this.tripRepository.countAllRequests();
 	}
 
+	public void deleteCustomer(final Customer customer) {
+		final Collection<Trip> trips = new ArrayList<Trip>();
+		final Collection<Trip> trips2 = new ArrayList<Trip>();
+		trips.addAll(this.tripRepository.findAllRequestsByPrincipalId(customer.getId()));
+		trips.addAll(this.tripRepository.findAllOffersByPrincipalId(customer.getId()));
+		for (final Trip trip : trips) {
+			trip.setCustomer(null);
+			trips2.add(trip);
+		}
+		this.tripRepository.save(trips2);
+	}
 }
