@@ -2,6 +2,8 @@
 
 -El search de trip solo busca request independientemente si eliges offers o resquests
 
+-En view de customer en las tablas de comments poner los autores y añadir columna de banear y de desbanear comment
+
 -Añadir al view de trip la tabla con los commentarios correspondientes y añadir comment
 
 -Crear display de adminsitrator

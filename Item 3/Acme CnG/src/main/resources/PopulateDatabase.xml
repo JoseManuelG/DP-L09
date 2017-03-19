@@ -3599,7 +3599,7 @@
 		<property name="postMoment" value="01/22/2017 17:30"/>
 		<property name="text" value="first!"/>
 		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
+		<property name="banned" value="true"/>
 		<property name="actor" ref="customer1"/>
 		<property name="commentable" ref="customer3"/>
 	</bean>	

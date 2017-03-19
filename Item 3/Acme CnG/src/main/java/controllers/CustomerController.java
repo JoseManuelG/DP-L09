@@ -41,11 +41,11 @@ public class CustomerController extends AbstractController {
 		Collection<Comment> bannedComments;
 		Collection<Comment> allBannedComments;
 		Boolean isAdmin = false;
-		if (this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().equals("ADMINISTRATOR"))
+		if (this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().getAuthority().equals("ADMINISTRATOR"))
 			isAdmin = true;
 
 		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(customerId);
-		bannedComments = this.commentService.findBannedCommentsByCommentable(customerId, this.customerService.findCustomerByPrincipal().getId());
+		bannedComments = this.commentService.findBannedCommentsByCommentable(customerId, this.actorService.findActorByPrincipal().getId());
 		allBannedComments = this.commentService.findBannedCommentsByCommentable(customerId);
 
 		customer = this.customerService.findOne(customerId);
@@ -56,6 +56,7 @@ public class CustomerController extends AbstractController {
 		result.addObject("bannedComments", bannedComments);
 		result.addObject("allBannedComments", allBannedComments);
 		result.addObject("isAdmin", isAdmin);
+		result.addObject("requestURI", "customer/view.do");
 
 		return result;
 	}
