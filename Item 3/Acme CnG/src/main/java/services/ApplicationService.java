@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -134,6 +135,16 @@ public class ApplicationService {
 		customers = this.applicationRepository.customerWithMoreApplicationsDenied();
 		result = customers.iterator().next();
 		return result;
+	}
+	public void deleteCustomer(final Customer customer) {
+		final Collection<Application> applications = new ArrayList<Application>();
+		final Collection<Application> applications2 = new ArrayList<Application>();
+		applications.addAll(this.applicationRepository.findAllApplicationByCustomer(customer.getId()));
+		for (final Application application : applications) {
+			application.setCustomer(null);
+			applications2.add(application);
+		}
+		this.applicationRepository.save(applications2);
 	}
 
 }

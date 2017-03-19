@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -273,6 +274,17 @@ public class TripService {
 
 	public Double requestsAmount() {
 		return this.tripRepository.countAllRequests();
+	}
+
+	public void deleteCustomer(final Customer customer) {
+		final Collection<Trip> trips = new ArrayList<Trip>();
+		final Collection<Trip> trips2 = new ArrayList<Trip>();
+		trips.addAll(this.tripRepository.findAllRequestsByPrincipalId(customer.getId()));
+		trips.addAll(this.tripRepository.findAllOffersByPrincipalId(customer.getId()));
+		for (final Trip trip : trips) {
+			trip.setCustomer(null);
+			trips2.add(trip);
+		}
 	}
 
 }
