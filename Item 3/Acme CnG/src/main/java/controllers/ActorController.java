@@ -12,18 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.CommentService;
-import services.CustomerService;
+import domain.Actor;
 import domain.Comment;
-import domain.Customer;
 
 @Controller
-@RequestMapping("/customer")
-public class CustomerController extends AbstractController {
+@RequestMapping("/actor")
+public class ActorController extends AbstractController {
 
 	// Services -------------------------------------------------------------
-
-	@Autowired
-	private CustomerService	customerService;
 
 	@Autowired
 	private ActorService	actorService;
@@ -34,9 +30,9 @@ public class CustomerController extends AbstractController {
 
 	// List ---------------------------------------------------------------
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public ModelAndView view(@RequestParam final int customerId) {
+	public ModelAndView view(@RequestParam final int actorId) {
 		ModelAndView result;
-		Customer customer;
+		Actor actor;
 		Collection<Comment> unBannedComments;
 		Collection<Comment> bannedComments;
 		Collection<Comment> allBannedComments;
@@ -44,26 +40,26 @@ public class CustomerController extends AbstractController {
 		if (this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().getAuthority().equals("ADMINISTRATOR"))
 			isAdmin = true;
 
-		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(customerId);
-		bannedComments = this.commentService.findBannedCommentsByCommentable(customerId, this.actorService.findActorByPrincipal().getId());
-		allBannedComments = this.commentService.findBannedCommentsByCommentable(customerId);
+		unBannedComments = this.commentService.findUnbannedCommentsByCommentable(actorId);
+		bannedComments = this.commentService.findBannedCommentsByCommentable(actorId, this.actorService.findActorByPrincipal().getId());
+		allBannedComments = this.commentService.findBannedCommentsByCommentable(actorId);
 
-		customer = this.customerService.findOne(customerId);
+		actor = this.actorService.findOne(actorId);
 
 		result = new ModelAndView("customer/view");
-		result.addObject("customer", customer);
+		result.addObject("actor", actor);
 		result.addObject("unBannedComments", unBannedComments);
 		result.addObject("bannedComments", bannedComments);
 		result.addObject("allBannedComments", allBannedComments);
 		result.addObject("isAdmin", isAdmin);
-		result.addObject("requestURI", "customer/view.do");
+		result.addObject("requestURI", "actor/view.do");
 
 		return result;
 	}
 	@RequestMapping(value = "/myProfile", method = RequestMethod.GET)
 	public ModelAndView myProfile() {
 		ModelAndView result;
-		result = this.view(this.customerService.findCustomerByPrincipal().getId());
+		result = this.view(this.actorService.findActorByPrincipal().getId());
 		return result;
 	}
 

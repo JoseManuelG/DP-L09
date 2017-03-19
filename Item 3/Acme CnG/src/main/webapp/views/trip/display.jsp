@@ -23,7 +23,7 @@
 	<br>
 </jstl:if>
 <jstl:if test="${trip.customer != null}">
-	<a href="customer/view.do?customerId=${trip.customer.id}">
+	<a href="actor/view.do?actorId=${trip.customer.id}">
 	<jstl:out value="${trip.customer.name}"/>&nbsp;<jstl:out value="${trip.customer.surname}"/>
 	</a>
 </jstl:if>
@@ -67,7 +67,7 @@
 	name="applications" uid="apptable" requestURI="${requestURI}">
 		
 		<display:column>
-		    <a href="customer/view.do?customerId=${application.customer.id}">
+		    <a href="actor/view.do?actorId=${application.customer.id}">
 		    <spring:message code="trip.view" /></a>
 	   	</display:column>
 		<acme:column sorteable="false" code="trip.application.status" path="status"/>
@@ -84,7 +84,7 @@
 	</display:table>
 </jstl:if>
 
-<h2><spring:message  code="customer.comments" />:</h2>
+<h2><spring:message  code="actor.comments" />:</h2>
 <jstl:if test="${!unBannedComments.isEmpty()}">
 	<display:table pagesize="5" class="displaytag1" name="unBannedComments"
 		requestURI="${requestURI}" id="row" uid="unBannedComments">
@@ -93,27 +93,27 @@
 		<jstl:if test="${isAdmin}">
 	   	  <display:column title=" ">
 	    	  <a href="comment/ban.do?commentId=${unBannedComments.id}">
-	   		  <spring:message code="customer.comment.banComment"/>
+	   		  <spring:message code="actor.comment.banComment"/>
 	  	 	  </a>
 	  	  </display:column>
 	    </jstl:if>
-		<spring:message code="customer.comment.name" var="actorName" />
+		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="customer/view.do?customerId=${unBannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${unBannedComments.commentable.id}">
 	   	  <jstl:out value="${unBannedComments.actor.name}"/>
 	   	  <jstl:out value="${unBannedComments.actor.surname}"/>
 	   	  </a>
 	    </display:column>
 		<!-- Attributes -->
 
-		<acme:column sorteable="true" code="customer.comment.title" path="title" />
+		<acme:column sorteable="true" code="actor.comment.title" path="title" />
 
-		<acme:column sorteable="true" code="customer.comment.text"
+		<acme:column sorteable="true" code="actor.comment.text"
 			path="text" />
 
-		<acme:column sorteable="true" code="customer.comment.stars"
+		<acme:column sorteable="true" code="actor.comment.stars"
 			path="stars" />
-		<acme:column sorteable="true" code="customer.comment.postMoment"
+		<acme:column sorteable="true" code="actor.comment.postMoment"
 			path="postMoment" />
 
 
@@ -125,58 +125,58 @@
 	
 
 <jstl:if test="${!bannedComments.isEmpty()&& !isAdmin}">
-<h2><spring:message  code="customer.bannedComments" />:</h2>
+<h2><spring:message  code="actor.bannedComments" />:</h2>
 	<display:table pagesize="5" class="displaytag1" name="bannedComments"
 		requestURI="${requestURI}" id="row" uid="bannedComments">
 
 		<!-- Action links -->
-		<spring:message code="customer.comment.name" var="actorName" />
+		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="customer/view.do?customerId=${bannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${bannedComments.commentable.id}">
 	   	  <jstl:out value="${bannedComments.actor.name}"/>
 	   	  <jstl:out value="${bannedComments.actor.surname}"/>
 	   	  </a>
 	    </display:column>
 		<!-- Attributes -->
-		<acme:column sorteable="true" code="customer.comment.title" path="title" />
+		<acme:column sorteable="true" code="actor.comment.title" path="title" />
 
-		<acme:column sorteable="true" code="customer.comment.text"
+		<acme:column sorteable="true" code="actor.comment.text"
 			path="text" />
 
-		<acme:column sorteable="true" code="customer.comment.stars"
+		<acme:column sorteable="true" code="actor.comment.stars"
 			path="stars" />
-		<acme:column sorteable="true" code="customer.comment.postMoment"
+		<acme:column sorteable="true" code="actor.comment.postMoment"
 			path="postMoment" />
 
 	</display:table>
 </jstl:if>
 <jstl:if test="${!allBannedComments.isEmpty()&& isAdmin}">
-<h2><spring:message  code="customer.bannedComments" />:</h2>
+<h2><spring:message  code="actor.bannedComments" />:</h2>
 	<display:table pagesize="5" class="displaytag1" name="allBannedComments"
 		requestURI="${requestURI}" id="row" uid="allBannedComments">
 
 		<!-- Action links -->
 		<display:column title=" ">
 	   		<a href="comment/disBan.do?commentId=${allBannedComments.id}">
-	   		 <spring:message code="customer.comment.disBanComment"/>
+	   		 <spring:message code="actor.comment.disBanComment"/>
 	  	 	</a>
 	  	</display:column>
-		<spring:message code="customer.comment.name" var="actorName" />
+		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="customer/view.do?customerId=${allBannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${allBannedComments.commentable.id}">
 	   	  <jstl:out value="${allBannedComments.actor.name}"/>
 	   	  <jstl:out value="${allBannedComments.actor.surname}"/>
 	   	  </a>
 	    </display:column>
 		<!-- Attributes -->
-		<acme:column sorteable="true" code="customer.comment.title" path="title" />
+		<acme:column sorteable="true" code="actor.comment.title" path="title" />
 
-		<acme:column sorteable="true" code="customer.comment.text"
+		<acme:column sorteable="true" code="actor.comment.text"
 			path="text" />
 
-		<acme:column sorteable="true" code="customer.comment.stars"
+		<acme:column sorteable="true" code="actor.comment.stars"
 			path="stars" />
-		<acme:column sorteable="true" code="customer.comment.postMoment"
+		<acme:column sorteable="true" code="actor.comment.postMoment"
 			path="postMoment" />
 
 	</display:table>

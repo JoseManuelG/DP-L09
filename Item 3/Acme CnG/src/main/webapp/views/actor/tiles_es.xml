@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- 
- * tiles.xml
+ * tiles_es.xml
  *
  * Copyright (C) 2016 Universidad de Sevilla
  * 
@@ -13,16 +13,17 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-       
+      
 <tiles-definitions>
 
-	<definition name="customer/view" extends="master.page">	
-		<put-attribute name="title" value="Customer's profile" />
-		<put-attribute name="body" value="/views/customer/view.jsp" />
+	<definition name="actor/view" extends="master.page">	
+		<put-attribute name="title" value="Perfil" />
+		<put-attribute name="body" value="/views/actor/view.jsp" />
 	</definition>
-	<definition name="customer/myProfile" extends="master.page">	
-		<put-attribute name="title" value="Your's profile" />
-		<put-attribute name="body" value="/views/customer/view.jsp" />
+	
+	<definition name="actor/myProfile" extends="master.page">	
+		<put-attribute name="title" value="Su Perfil" />
+		<put-attribute name="body" value="/views/actor/view.jsp" />
 	</definition>
 
 </tiles-definitions>

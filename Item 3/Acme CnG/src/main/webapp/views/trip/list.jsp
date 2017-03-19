@@ -27,7 +27,7 @@
 <%-- 	<jstl:if test="${requestURI == 'trip/list.do'}"> --%>
 	    <spring:message code="trip.view.customer" var="viewTitleHeader" />
 	    <display:column title="${viewTitleHeader}">
-	      <a href="customer/view.do?customerId=${row.customer.id}">
+	      <a href="actor/view.do?actorId=${row.customer.id}">
 	      <spring:message  code="trip.view" />
 	   	  </a>
 	    </display:column>
