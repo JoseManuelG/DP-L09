@@ -1,11 +1,17 @@
-- Crear comentarios en el populate hasta que la media (query dashborad) de mayor o igual que 10.
+-B+ tree de todos los servicios
+
+-El search de trip solo busca request independientemente si eliges offers o resquests
+
+-Añadir al view de trip la tabla con los commentarios correspondientes y añadir comment
+
+-Crear display de adminsitrator
 
 
--Cambiar populate para que haya messages con 1 attachment
-- Problema: en message/write no se pude meter (a priori) los attachments porque es modelattribute messageForm y el path para el nombre del attachment deberia de ser algo asi como path="attachments[0].name" etc, pero no funciona
 ------------------------------ARREGLADO------------------------------
 
- 
+ - Crear comentarios en el populate hasta que la media (query dashborad) de mayor o igual que 10.(ARREGLADO)
+-Cambiar populate para que haya messages con 1 attachment(ARREGLADO)
+- Problema: en message/write no se pude meter (a priori) los attachments porque es modelattribute messageForm y el path para el nombre del attachment deberia de ser algo asi como path="attachments[0].name" etc, pero no funciona(ARREGLADO)
 -Añadir asserts en view emssage, reply y forward para no poder usar mensajes de otros(Dani) (ARREGLADO)
 - Cambiar queries de mensaje para que consideren el boolean, de forma que no se repitan (ya que cada mensaje consta de dos copias) (ARREGLADO)
  

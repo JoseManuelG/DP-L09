@@ -64,7 +64,7 @@
 
 <h2><spring:message  code="trip.applications" />:</h2>
 	<display:table pagesize="5" excludedParams="*" class="displaytag" 
-	name="applications" uid="application" requestURI="${requestURI}">
+	name="applications" uid="apptable" requestURI="${requestURI}">
 		
 		<display:column>
 		    <a href="customer/view.do?customerId=${application.customer.id}">
