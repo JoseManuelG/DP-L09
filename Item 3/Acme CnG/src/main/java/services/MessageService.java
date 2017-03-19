@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -16,6 +17,7 @@ import org.springframework.validation.Validator;
 import repositories.MessageRepository;
 import domain.Actor;
 import domain.Attachment;
+import domain.Customer;
 import domain.Message;
 import forms.MessageForm;
 
@@ -128,6 +130,9 @@ public class MessageService {
 		this.attachmentService.deleteAttachmentsOfMessage(message);
 		this.messageRepository.delete(message);
 
+	}
+	public void delete(final Collection<Message> Messages) {
+		this.delete(Messages);
 	}
 	//Other Bussnisnes methods------------------------------------------------------------
 	//Devuelve los mensajes que ha enviado el actor
@@ -256,6 +261,14 @@ public class MessageService {
 		actors = this.messageRepository.actorSentMoreMessages();
 		result = actors.iterator().next();
 		return result;
+	}
+
+	public void deleteCustomer(final Customer customer) {
+		final Collection<Message> messages = new ArrayList<Message>();
+		messages.addAll(this.messageRepository.findSentMessageOfActor(customer.getId()));
+		messages.addAll(this.messageRepository.findReceivedMessageOfActor(customer.getId()));
+		this.messageRepository.delete(messages);
+
 	}
 
 }

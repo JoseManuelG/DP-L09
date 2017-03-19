@@ -28,4 +28,8 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	//05 - The customer who has more applications denied.
 	@Query("select a.customer from Application a where a.status='DENIED' group by a.customer order by count(a) desc")
 	List<Customer> customerWithMoreApplicationsDenied();
+
+	//Applications from Customer c.
+	@Query("select a from Application a where a.customer.id=?1")
+	Collection<Application> findAllApplicationByCustomer(int id);
 }

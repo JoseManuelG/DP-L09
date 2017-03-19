@@ -38,6 +38,15 @@ public class CustomerService {
 	@Autowired
 	private Validator				validator;
 
+	@Autowired
+	private MessageService			messageService;
+
+	@Autowired
+	private TripService				tripService;
+
+	@Autowired
+	private ApplicationService		applicationService;
+
 
 	//Simple CRUD methods-------------------------------------------------------------------
 	public Customer create() {
@@ -66,6 +75,15 @@ public class CustomerService {
 		return this.customerRepository.count();
 	}
 
+	public void delete() {
+		final Customer customer = this.findCustomerByPrincipal();
+		this.applicationService.deleteCustomer(customer);
+		this.tripService.deleteCustomer(customer);
+		this.messageService.deleteCustomer(customer);
+
+		this.customerRepository.delete(customer);
+
+	}
 	//Other Business methods-------------------------------------------------------------------
 
 	public Customer findCustomerByPrincipal() {
