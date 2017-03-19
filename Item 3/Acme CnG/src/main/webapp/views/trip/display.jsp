@@ -83,4 +83,71 @@
 		
 	</display:table>
 </jstl:if>
+
+<h2><spring:message  code="customer.comments" />:</h2>
+<jstl:if test="${!unBannedComments.isEmpty()}">
+	<display:table pagesize="5" class="displaytag1" name="unBannedComments"
+		requestURI="${requestURI}" id="row" uid="unBannedComments">
+
+		<!-- Action links -->
+
+		<!-- Attributes -->
+
+		<acme:column sorteable="true" code="customer.comment.title" path="title" />
+
+		<acme:column sorteable="true" code="customer.comment.text"
+			path="text" />
+
+		<acme:column sorteable="true" code="customer.comment.stars"
+			path="stars" />
+		<acme:column sorteable="true" code="customer.comment.postMoment"
+			path="postMoment" />
+
+
+	</display:table>
+</jstl:if>
+	<a href="comment/create.do?commentableId=${trip.id }">
+	      <spring:message  code="comment.create" />
+	</a>
 	
+
+<jstl:if test="${!bannedComments.isEmpty()&& !isAdmin}">
+<h2><spring:message  code="customer.bannedComments" />:</h2>
+	<display:table pagesize="5" class="displaytag1" name="bannedComments"
+		requestURI="${requestURI}" id="row" uid="bannedComments">
+
+		<!-- Action links -->
+
+		<!-- Attributes -->
+		<acme:column sorteable="true" code="customer.comment.title" path="title" />
+
+		<acme:column sorteable="true" code="customer.comment.text"
+			path="text" />
+
+		<acme:column sorteable="true" code="customer.comment.stars"
+			path="stars" />
+		<acme:column sorteable="true" code="customer.comment.postMoment"
+			path="postMoment" />
+
+	</display:table>
+</jstl:if>
+<jstl:if test="${!allBannedComments.isEmpty()&& isAdmin}">
+<h2><spring:message  code="customer.bannedComments" />:</h2>
+	<display:table pagesize="5" class="displaytag1" name="allBannedComments"
+		requestURI="${requestURI}" id="row" uid="allBannedComments">
+
+		<!-- Action links -->
+
+		<!-- Attributes -->
+		<acme:column sorteable="true" code="customer.comment.title" path="title" />
+
+		<acme:column sorteable="true" code="customer.comment.text"
+			path="text" />
+
+		<acme:column sorteable="true" code="customer.comment.stars"
+			path="stars" />
+		<acme:column sorteable="true" code="customer.comment.postMoment"
+			path="postMoment" />
+
+	</display:table>
+</jstl:if>
