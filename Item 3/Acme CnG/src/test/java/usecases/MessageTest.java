@@ -61,6 +61,8 @@ public class MessageTest extends AbstractTest {
 
 		this.messageService.save(message, attachments);
 
+		this.unauthenticate();
+
 	}
 
 	//	@Test
@@ -96,6 +98,7 @@ public class MessageTest extends AbstractTest {
 	//		try {
 	//			this.authenticate(username);
 	//			this.customerService.registerPrincipal(announcementId);
+	//			unauthenticate();
 	//		} catch (final Throwable oops) {
 	//			caught = oops.getClass();
 	//		}
