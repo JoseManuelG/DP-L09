@@ -40,9 +40,11 @@ public class MessageService {
 
 
 	//Simple CRUD methods------------------------------------------------------------------
-	public Message create(final Actor recipient) {
+	public Message create(final int recipientId) {
 		final Message result = new Message();
+		final Actor recipient;
 
+		recipient = this.actorService.findOne(recipientId);
 		result.setRecipient(recipient);
 		result.setRecipientName(recipient.getName());
 		final Actor sender = this.actorService.findActorByPrincipal();
@@ -150,7 +152,7 @@ public class MessageService {
 	}
 
 	public Message reconstruct(final MessageForm messageForm, final BindingResult binding) {
-		final Message result = this.create(messageForm.getRecipient());
+		final Message result = this.create(messageForm.getRecipient().getId());
 		result.setText(messageForm.getText());
 		result.setTitle(messageForm.getTitle());
 		this.validator.validate(result, binding);
