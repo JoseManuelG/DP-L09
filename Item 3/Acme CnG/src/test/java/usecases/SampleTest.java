@@ -14,10 +14,12 @@ import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import services.CustomerService;
 import utilities.AbstractTest;
 
 @ContextConfiguration(locations = {
@@ -28,6 +30,10 @@ import utilities.AbstractTest;
 public class SampleTest extends AbstractTest {
 
 	// System under test ------------------------------------------------------
+
+	@Autowired
+	private CustomerService	customerService;
+
 
 	// Tests ------------------------------------------------------------------
 
@@ -45,6 +51,32 @@ public class SampleTest extends AbstractTest {
 		Assert.isTrue(false);
 	}
 
+	@Test
+	public void driver() {
+		final Object testingData[][] = {
+			{
+				"customer1", 33, null
+			}, {
+				null, 33, IllegalArgumentException.class
+			}
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.template((String) testingData[i][0], (int) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
+	protected void template(final String username, final int announcementId, final Class<?> expected) {
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.authenticate(username);
+			this.customerService.registerPrincipal(announcementId);
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
 }
