@@ -359,25 +359,25 @@
 		<property name="isSender" value="true" />
 	</bean>
 	
-	<bean id="message5Customer5" class="domain.Message">
+	<bean id="messageNoSender" class="domain.Message">
 		<property name="senderName" value="Henry Winton" />
 		<property name="recipientName" value="Layne Ozzie" />
 		<property name="sendingMoment" value="06/12/2015 10:22" />
 		<property name="title" value="Li Europan lingues" />
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
-		<property name="sender" ref="customer5" />
+		<property name="sender" ><null/></property>
 		<property name="recipient" ref="administrator1" />
-		<property name="isSender" value="true" />
+		<property name="isSender" value="false" />
 	</bean>
 	
-	<bean id="message6Customer5" class="domain.Message">
+	<bean id="messageNoRecipient" class="domain.Message">
 		<property name="senderName" value="Henry Winton" />
 		<property name="recipientName" value="Hubert Harding" />
 		<property name="sendingMoment" value="06/12/2016 10:22" />
 		<property name="title" value="Li Europan lingues" />
 		<property name="text" value="At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. " />
 		<property name="sender" ref="customer5" />
-		<property name="recipient" ref="customer6" />
+		<property name="recipient"><null/></property>
 		<property name="isSender" value="true" />
 	</bean>
 	
@@ -1594,73 +1594,73 @@
 	<bean id="attachment1Message5Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName1" />
 		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment2Message5Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName2" />
 		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment3Message5Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName3" />
 		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment4Message5Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName4" />
 		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment5Message5Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName5" />
 		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment6Message5Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName6" />
 		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment1Message6Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName1" />
 		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment2Message6Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName2" />
 		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment3Message6Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName3" />
 		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment4Message6Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName4" />
 		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment5Message6Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName5" />
 		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment6Message6Customer5" class="domain.Attachment">
 		<property name="name" value="AttachmentName6" />
 		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment1Message1Customer6" class="domain.Attachment">
@@ -2713,73 +2713,73 @@
 	<bean id="attachment1Message5Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName1" />
 		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment2Message5Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName2" />
 		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment3Message5Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName3" />
 		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment4Message5Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName4" />
 		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment5Message5Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName5" />
 		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment6Message5Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName6" />
 		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message5Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment1Message6Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName1" />
 		<property name="url" value="http://www.attachmentName1.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment2Message6Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName2" />
 		<property name="url" value="http://www.attachmentName2.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment3Message6Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName3" />
 		<property name="url" value="http://www.attachmentName3.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment4Message6Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName4" />
 		<property name="url" value="http://www.attachmentName4.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment5Message6Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName5" />
 		<property name="url" value="http://www.attachmentName5.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment6Message6Customer5Copy" class="domain.Attachment">
 		<property name="name" value="AttachmentName6" />
 		<property name="url" value="http://www.attachmentName6.com" />
-		<property name="message" ref="message6Customer5" />
+		<property name="message" ref="message4Customer5" />
 	</bean>
 	
 	<bean id="attachment1Message1Customer6Copy" class="domain.Attachment">

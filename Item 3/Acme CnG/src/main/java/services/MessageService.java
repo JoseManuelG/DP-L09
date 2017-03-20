@@ -45,6 +45,7 @@ public class MessageService {
 		final Actor recipient;
 
 		recipient = this.actorService.findOne(recipientId);
+		Assert.notNull(recipient);
 		result.setRecipient(recipient);
 		result.setRecipientName(recipient.getName());
 		final Actor sender = this.actorService.findActorByPrincipal();
@@ -65,7 +66,15 @@ public class MessageService {
 		//añadido  assert para comprobar que el mensaje es suyo,
 		//su copia ya sea la de enviado cuando eres el que envia o al recibido
 		//el findOne se usa en view, reply, forward... etc asi que cubre todo
-		Assert.isTrue((result.getSender().equals(this.actorService.findActorByPrincipal()) && result.getIsSender()) || result.getRecipient().equals(this.actorService.findActorByPrincipal()) && !result.getIsSender());
+
+		Assert.notNull(result);
+
+		if (result.getSender() == null && result.getRecipient() != null)
+			Assert.isTrue(result.getRecipient().equals(this.actorService.findActorByPrincipal()) && !result.getIsSender());
+		else if (result.getSender() != null && result.getRecipient() == null)
+			Assert.isTrue(result.getSender().equals(this.actorService.findActorByPrincipal()) && result.getIsSender());
+		else
+			Assert.isTrue((result.getSender().equals(this.actorService.findActorByPrincipal()) && result.getIsSender()) || result.getRecipient().equals(this.actorService.findActorByPrincipal()) && !result.getIsSender());
 
 		return result;
 	}
@@ -194,6 +203,7 @@ public class MessageService {
 		//hacer en controlador cosas de servicios
 		final MessageForm result = new MessageForm();
 		final Message message = this.findOne(messageId);
+		Assert.notNull(message.getSender());
 		final Actor recipient = this.actorService.findOne(message.getSender().getId());
 		result.setRecipient(recipient);
 		return result;
