@@ -48,6 +48,8 @@
 					<li><a href="trip/administrator/list/offers.do"><spring:message code="master.page.trip.offers" /></a></li>
 					<li><a href="trip/administrator/list/requests.do"><spring:message code="master.page.trip.requests" /></a></li>
 					<li><a href="configuration/administrator/edit.do"><spring:message code="master.page.configuration.banner" /></a></li>
+					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
+					
 					</security:authorize>
 					<li><a href="actor/myProfile.do"><spring:message code="master.page.customer.my.profile" /></a></li>
 					<li><a href="message/actor/received.do"><spring:message code="master.page.message.received" /></a></li>

@@ -40,11 +40,11 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 
 	//09 - The minimum, the average, and the maximum number of messages sent per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null")
-	List<Double> minMessagesSentPerActor();
+	List<Long> minMessagesSentPerActor();
 
 	//09 - The minimum, the average, and the maximum number of messages sent per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null group by m.sender.id order by count(m) desc")
-	List<Double> maxMessagesSentPerActor();
+	List<Long> maxMessagesSentPerActor();
 
 	//10 - The minimum, the average, and the maximum number of messages received per actor. Part1
 	@Query("select count(m) from Message m where m.isSender=false and m.recipient is not null")
@@ -52,11 +52,11 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 
 	//10 - The minimum, the average, and the maximum number of messages received per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=false and m.recipient is not null group by m.recipient.id order by count(m) asc")
-	List<Double> minMessagesReceivedPerActor();
+	List<Long> minMessagesReceivedPerActor();
 
 	//10 - The minimum, the average, and the maximum number of messages received per actor. Part2
 	@Query("select count(m) from Message m where m.isSender=false and m.recipient is not null group by m.recipient.id order by count(m) desc")
-	List<Double> maxMessagesReceivedPerActor();
+	List<Long> maxMessagesReceivedPerActor();
 
 	//11 - The actors who have sent more messages.
 	@Query("select m.sender from Message m where m.isSender=true and m.sender is not null group by m.sender order by count(m) desc")

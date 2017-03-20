@@ -223,9 +223,9 @@ public class CommentService {
 		return result;
 	}
 
-	public Collection<Actor> averageActorWritingComments() {
+	public Collection<Actor> avgActorWritingComments() {
 		Collection<Actor> result;
-		result = this.commentRepository.averageActorWritingComments();
+		result = this.commentRepository.averageActorWritingComments(this.avgCommentsByActors());
 		return result;
 	}
 }

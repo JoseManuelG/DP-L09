@@ -36,5 +36,5 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
 	//08 - The actors who have posted ±10% the average number of comments per actor.
 	@Query("select c.actor from Comment c where (select count(c2) from Comment c2 where c.actor.id=c2.actor.id)>=?1*0.9 and (select count(c3) from Comment c3 where c.actor.id=c3.actor.id)<=?1*1.1 group by c.actor.id")
-	Collection<Actor> averageActorWritingComments();
+	Collection<Actor> averageActorWritingComments(Double double1);
 }

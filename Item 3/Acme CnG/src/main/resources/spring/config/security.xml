@@ -72,6 +72,9 @@
 		<security:intercept-url pattern="/trip/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/trip/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
 		
+			<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />  
+		
+		
 		<!-- Customer -->
 				
 		<security:intercept-url pattern="/application/customer/apply.do" access="hasRole('CUSTOMER')" />

@@ -203,24 +203,24 @@ public class MessageService {
 
 	//09 - The min of messages sent per actor. 
 
-	public Double minMessagesSentPerActor() {
-		List<Double> messages;
-		final Double result;
+	public Long minMessagesSentPerActor() {
+		List<Long> messages;
+		final Long result;
 		messages = this.messageRepository.minMessagesSentPerActor();
 		result = messages.iterator().next();
 		return result;
 	}
 
 	//09 - The maximum number of messages sent per actor
-	public Double maxMessagesSentPerActor() {
-		List<Double> messages;
-		final Double result;
+	public Long maxMessagesSentPerActor() {
+		List<Long> messages;
+		final Long result;
 		messages = this.messageRepository.maxMessagesSentPerActor();
 		result = messages.iterator().next();
 		return result;
 	}
 
-	//10 - The average of messages sent per actor.
+	//10 - The average of messages received per actor.
 
 	public Double avgMessagesReceivedPerActor() {
 		Double result;
@@ -228,18 +228,18 @@ public class MessageService {
 		return result;
 	}
 
-	//10 - The minimum of messages sent per actor.
-	public Double minMessagesReceivedPerActor() {
-		List<Double> messages;
-		final Double result;
+	//10 - The minimum of messages received per actor.
+	public Long minMessagesReceivedPerActor() {
+		List<Long> messages;
+		final Long result;
 		messages = this.messageRepository.minMessagesReceivedPerActor();
 		result = messages.iterator().next();
 		return result;
 	}
-	//10 - The maximum number of messages sent per actor. Part2
-	public Double maxMessagesReceivedPerActor() {
-		List<Double> messages;
-		final Double result;
+	//10 - The maximum number of messages received per actor. Part2
+	public Long maxMessagesReceivedPerActor() {
+		List<Long> messages;
+		final Long result;
 		messages = this.messageRepository.maxMessagesReceivedPerActor();
 		result = messages.iterator().next();
 		return result;

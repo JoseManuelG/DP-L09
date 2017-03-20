@@ -107,7 +107,7 @@ public class ApplicationService {
 	}
 
 	//03 - Average number of applications per offer or request.
-	public Double avgRequestsPerCustomer() {
+	public Double avgApplicationVsCustomerAndRequest() {
 		Double result;
 		Long res1, res2;
 		res1 = this.count();
@@ -128,7 +128,7 @@ public class ApplicationService {
 		result = customers.iterator().next();
 		return result;
 	}
-
+	//05 - The customer who has more applications denied
 	public Customer customerWithMoreApplicationsDenied() {
 		List<Customer> customers;
 		final Customer result;
