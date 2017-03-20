@@ -136,6 +136,10 @@ public class MessageService {
 	public void delete(final Collection<Message> Messages) {
 		this.delete(Messages);
 	}
+	public void flush() {
+		this.messageRepository.flush();
+	}
+
 	//Other Bussnisnes methods------------------------------------------------------------
 	//Devuelve los mensajes que ha enviado el actor
 	public List<Message> findSentMessageOfPrincipal() {
