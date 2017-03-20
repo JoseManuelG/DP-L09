@@ -7,6 +7,8 @@
 -Cuando comento me manda a index no al perfil del que comento(atencion tener cuidado que tbn podria comentar en admin asique no poner la URL literal)
 
 -Me sale el link de borrar perfil al ver el perfil de otro.
+
+-Cuando respondo a un mensaje puede mandar el mensaje a otra persona, pienso que no deberia darme la opción. (By:Roldán)
 ------------------------------ARREGLADO------------------------------
 -Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
 -banear trip peta, y no hay unban trip(ARREGLADO)
