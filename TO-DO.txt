@@ -17,6 +17,7 @@
 -Si mando un mensaje y luego borro mi cuenta, salta un nullPointerException cuando el receptor vaya a ver el mensaje
 
 -No controlamos cuando es null el dueño de un trip vamos cuando el customer ha brrado su cuenta, saltan nullpointers por doquier.
+-Poder aceptar applys de una offer y request
 ------------------------------ARREGLADO------------------------------
 -Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
 -banear trip peta, y no hay unban trip(ARREGLADO)
