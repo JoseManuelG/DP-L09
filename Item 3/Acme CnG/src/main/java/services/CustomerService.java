@@ -84,6 +84,9 @@ public class CustomerService {
 		this.userAccountRepository.delete(customer.getUserAccount().getId());
 
 	}
+	public void flush() {
+		this.customerRepository.flush();
+	}
 	//Other Business methods-------------------------------------------------------------------
 
 	public Customer findCustomerByPrincipal() {

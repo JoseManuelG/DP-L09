@@ -74,6 +74,7 @@ public class SampleTest extends AbstractTest {
 		try {
 			this.authenticate(username);
 			this.customerService.registerPrincipal(announcementId);
+			this.customerService.flush();
 			this.unauthenticate();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();

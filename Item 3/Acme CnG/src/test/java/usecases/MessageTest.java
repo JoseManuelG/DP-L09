@@ -45,7 +45,6 @@ public class MessageTest extends AbstractTest {
 	// JUnit works well in this project.  Just righ-click this class and run 
 	// it using JUnit.
 
-	//Caso de uso positivo de escribir un mensaje
 	@Test
 	public void writeMessagePositiveTest() {
 		Message message;
@@ -61,8 +60,6 @@ public class MessageTest extends AbstractTest {
 		message.setText("correct test text");
 
 		this.messageService.save(message, attachments);
-
-		this.messageService.flush();
 
 		this.unauthenticate();
 
@@ -101,6 +98,7 @@ public class MessageTest extends AbstractTest {
 	//		try {
 	//			this.authenticate(username);
 	//			this.customerService.registerPrincipal(announcementId);
+	//			this.customerService.flush();
 	//			unauthenticate();
 	//		} catch (final Throwable oops) {
 	//			caught = oops.getClass();
