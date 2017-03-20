@@ -272,6 +272,7 @@ public class MessageService {
 		this.messageRepository.delete(messages);
 		messages.clear();
 		messages2.addAll(this.messageRepository.findReceivedMessageOfActor2(customer.getId()));
+		//TODO: Se deberia vaciar la colleccion messages2 entre un for y otro porque el segundo tambien afecta la primera parte.
 		for (final Message message : messages2) {
 			message.setRecipient(null);
 			messages.add(message);

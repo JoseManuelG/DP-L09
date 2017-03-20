@@ -1,6 +1,7 @@
 -B+ tree de todos los servicios
 
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
+-DeleteCustomer en messageService, vaciar la collecion messages2 entre un for y otro
 
 ------------------------------ARREGLADO------------------------------
 -Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
