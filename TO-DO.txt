@@ -5,6 +5,8 @@
 -DeleteCustomer en messageService, vaciar la collecion messages2 entre un for y otro
 
 -Cuando comento me manda a index no al perfil del que comento(atencion tener cuidado que tbn podria comentar en admin asique no poner la URL literal)
+
+-Me sale el link de borrar perfil al ver el perfil de otro.
 ------------------------------ARREGLADO------------------------------
 -Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
 -banear trip peta, y no hay unban trip(ARREGLADO)
