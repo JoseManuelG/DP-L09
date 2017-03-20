@@ -17,8 +17,8 @@
 	<spring:message code="AvgOfferPerCustomer" />: <jstl:out value="${AvgOfferPerCustomer}"/><br/>
 	<spring:message code="AvgApplicationVsCustomerAndRequest" />: <jstl:out value="${AvgApplicationVsCustomerAndRequest}"/><br/>
 	
-	<spring:message code="CustomerWithMoreApplicationsAccepted" />: <jstl:out value="${CustomerWithMoreApplicationsAccepted}"/><br/>
-	<spring:message code="CustomerWithMoreApplicationsDenied" />: <jstl:out value="${CustomerWithMoreApplicationsDenied}"/><br/>
+	<spring:message code="CustomerWithMoreApplicationsAccepted" />: <jstl:out value="${CustomerWithMoreApplicationsAccepted.name}"/> <jstl:out value="${CustomerWithMoreApplicationsAccepted.surname}"/><br/>
+	<spring:message code="CustomerWithMoreApplicationsDenied" />: <jstl:out value="${CustomerWithMoreApplicationsDenied.name}"/> <jstl:out value="${CustomerWithMoreApplicationsDenied.surname}"/><br/>
 	<spring:message code="AvgCommentsPerActor" />: <jstl:out value="${AvgCommentsPerActor}"/><br/>
 	
 	<spring:message code="AvgCommentsPerOffer" />: <jstl:out value="${AvgCommentsPerOffer}"/><br/>
