@@ -12,7 +12,7 @@
 
 -En la vista de mis solicitudes y mis ofertas me sale el boton de solicitar, no tiene mucho sentido que solicite hueco en mi coche no?
 
--Al ver las peticiones de una offer me salta un panic
+-Al ver las peticiones de una offer o request me salta un panic
 ------------------------------ARREGLADO------------------------------
 -Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
 -banear trip peta, y no hay unban trip(ARREGLADO)
