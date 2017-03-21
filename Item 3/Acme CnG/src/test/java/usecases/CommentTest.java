@@ -67,28 +67,28 @@ public class CommentTest extends AbstractTest {
 				"admin", 1000, "test", 3, "test", null
 			}, {
 
-				"customer1", 946, "test", 3, "test", null
+				"customer1", 995, "test", 3, "test", null
 			}, {
 
-				"admin", 946, "test", 3, "test", null
+				"admin", 995, "test", 3, "test", null
 			}, {
 				//Negativos
-				"", 946, "test", 3, "test", IllegalArgumentException.class
+				"", 995, "test", 3, "test", IllegalArgumentException.class
 			}, {
 
 				"customer1", 0, "test", 3, "test", ConstraintViolationException.class
 			}, {
 
-				"customer1", 946, "", 3, "test", ConstraintViolationException.class
+				"customer1", 995, "", 3, "test", ConstraintViolationException.class
 			}, {
 
-				"customer1", 946, "test", -1, "test", ConstraintViolationException.class
+				"customer1", 995, "test", -1, "test", ConstraintViolationException.class
 			}, {
 
-				"customer1", 946, "test", 6, "test", ConstraintViolationException.class
+				"customer1", 995, "test", 6, "test", ConstraintViolationException.class
 			}, {
 
-				"customer1", 946, "test", 3, "", ConstraintViolationException.class
+				"customer1", 995, "test", 3, "", ConstraintViolationException.class
 			}
 		};
 
