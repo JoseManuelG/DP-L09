@@ -98,6 +98,9 @@ public class CommentService {
 		return this.commentRepository.count();
 	}
 
+	public void flush() {
+		this.commentRepository.flush();
+	}
 	//Other Business methods-------------------------------------------------------------------
 
 	public Collection<Comment> findUnbannedCommentsByCommentable(final int commentableId) {
