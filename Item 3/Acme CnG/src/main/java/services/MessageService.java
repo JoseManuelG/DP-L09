@@ -288,11 +288,13 @@ public class MessageService {
 		this.messageRepository.delete(messages);
 		messages.clear();
 		messages2.addAll(this.messageRepository.findReceivedMessageOfActor2(customer.getId()));
-		//TODO: Se deberia vaciar la colleccion messages2 entre un for y otro porque el segundo tambien afecta la primera parte.
 		for (final Message message : messages2) {
 			message.setRecipient(null);
 			messages.add(message);
 		}
+		//Vaciado de la colleción para pasar al segundo for
+		messages2.clear();
+		//------------------------------------------------
 		messages2.addAll(this.messageRepository.findSentMessageOfActor2(customer.getId()));
 		for (final Message message : messages2) {
 			message.setSender(null);

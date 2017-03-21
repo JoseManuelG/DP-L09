@@ -2,7 +2,6 @@
 
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
 
--DeleteCustomer en messageService, vaciar la collecion messages2 entre un for y otro
 
 -Cuando comento me manda a index no al perfil del que comento(atencion tener cuidado que tbn podria comentar en admin asique no poner la URL literal)
 
@@ -20,6 +19,7 @@
 
 -Faltan por fijar tests para dashboard, cambiar banner, y alguno que se pueda pasar más
 ------------------------------ARREGLADO------------------------------
+-DeleteCustomer en messageService, vaciar la collecion messages2 entre un for y otro(ARREGLADO)
 -Desde Trip ir hacia el autor de comentarios(ARREGLADO)
 -Poder aceptar applys de una offer y request y el link al autor no funcionan porque el uid de la tabla se cambio y dentro no(ARREGLADO)
 -Crear display de administrator o cambiar al vista de view customer a view actor y acabamos antes(ARREGLADO)
