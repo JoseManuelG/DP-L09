@@ -31,15 +31,17 @@ import domain.Trip;
 @Transactional
 public class TripTest extends AbstractTest {
 
+	// Beans for teasting propouses
+	public static final int	PAST_REQUEST	= 999;
+	public static final int	PAST_OFFER		= 1000;
+	public static final int	BANNED_REQUEST	= 1001;
+	public static final int	FUTURE_REQUEST	= 1002;
+	public static final int	BANNED_OFFER	= 1003;
+	public static final int	FUTURE_OFFER	= 1004;
+
 	// System under test ------------------------------------------------------
 	@Autowired
-	private TripService	tripService;
-	private final int	PAST_OFFER		= 1000;
-	private final int	PAST_REQUEST	= 999;
-	private final int	FUTURE_OFFER	= 1004;
-	private final int	FUTURE_REQUEST	= 1002;
-	private final int	BANNED_OFFER	= 1003;
-	private final int	BANNED_REQUEST	= 1001;
+	private TripService		tripService;
 
 
 	// Tests ------------------------------------------------------------------
@@ -192,7 +194,7 @@ public class TripTest extends AbstractTest {
 
 		this.tripService.findAllOffers();
 
-		this.tripService.banTrip(this.PAST_OFFER);
+		this.tripService.banTrip(TripTest.PAST_OFFER);
 
 		this.unauthenticate();
 	}
@@ -205,7 +207,7 @@ public class TripTest extends AbstractTest {
 
 		this.tripService.findAllOffers();
 
-		this.tripService.banTrip(this.PAST_OFFER);
+		this.tripService.banTrip(TripTest.PAST_OFFER);
 
 		this.unauthenticate();
 	}
@@ -218,7 +220,7 @@ public class TripTest extends AbstractTest {
 
 		this.tripService.findAllRequests();
 
-		this.tripService.banTrip(this.PAST_REQUEST);
+		this.tripService.banTrip(TripTest.PAST_REQUEST);
 
 		this.unauthenticate();
 	}
@@ -231,7 +233,7 @@ public class TripTest extends AbstractTest {
 
 		this.tripService.findAllRequests();
 
-		this.tripService.banTrip(this.PAST_REQUEST);
+		this.tripService.banTrip(TripTest.PAST_REQUEST);
 
 		this.unauthenticate();
 	}
