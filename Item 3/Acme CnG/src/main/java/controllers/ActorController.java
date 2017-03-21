@@ -41,6 +41,11 @@ public class ActorController extends AbstractController {
 		Collection<Comment> bannedComments;
 		Collection<Comment> allBannedComments;
 		Boolean isAdmin = false;
+		//Para quitar el boton de borrar al ver los perfiles de otros----------------
+		Boolean myProfile = false;
+		if (this.actorService.findActorByPrincipal().getId() == actorId)
+			myProfile = true;
+		//--------------------------------------------------------------------------
 		if (this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().getAuthority().equals("ADMINISTRATOR"))
 			isAdmin = true;
 
@@ -56,6 +61,7 @@ public class ActorController extends AbstractController {
 		result.addObject("bannedComments", bannedComments);
 		result.addObject("allBannedComments", allBannedComments);
 		result.addObject("isAdmin", isAdmin);
+		result.addObject("myProfile", myProfile);
 		result.addObject("requestURI", "actor/view.do");
 
 		return result;

@@ -99,7 +99,7 @@
 	    </jstl:if>
 		<spring:message code="actor.comment.name" var="actorName" />
 	    <display:column title="${actorName}">
-	      <a href="actor/view.do?actorId=${unBannedComments.commentable.id}">
+	      <a href="actor/view.do?actorId=${unBannedComments.actor.id}">
 	   	  <jstl:out value="${unBannedComments.actor.name}"/>
 	   	  <jstl:out value="${unBannedComments.actor.surname}"/>
 	   	  </a>

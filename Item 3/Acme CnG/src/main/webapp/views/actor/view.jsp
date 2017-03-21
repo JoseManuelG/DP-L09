@@ -36,7 +36,7 @@
 :
 <jstl:out value="${actor.phone}" />
 <br>
-<jstl:if test="${!isAdmin }">
+<jstl:if test="${!isAdmin and myProfile}">
 	<a href="actor/delete.do"><spring:message code="actor.delete"/></a>
 </jstl:if>
 <h2><spring:message  code="actor.comments" />:</h2>
