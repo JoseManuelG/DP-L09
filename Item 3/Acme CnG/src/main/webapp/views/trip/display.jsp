@@ -67,16 +67,16 @@
 	name="applications" uid="apptable" requestURI="${requestURI}">
 		
 		<display:column>
-		    <a href="actor/view.do?actorId=${application.customer.id}">
+		    <a href="actor/view.do?actorId=${apptable.customer.id}">
 		    <spring:message code="trip.view" /></a>
 	   	</display:column>
 		<acme:column sorteable="false" code="trip.application.status" path="status"/>
 		
 		<display:column>
-			<jstl:if test="${application.status eq 'PENDING'}">
-				<a href="application/customer/accept.do?applicationId=${application.id}">
+			<jstl:if test="${apptable.status eq 'PENDING'}">
+				<a href="application/customer/accept.do?applicationId=${apptable.id}">
 				<spring:message	code="trip.application.accept" /></a> |
-				<a href="application/customer/deny.do?applicationId=${application.id}">
+				<a href="application/customer/deny.do?applicationId=${apptable.id}">
 				<spring:message	code="trip.application.deny" /></a>
 			</jstl:if>
 		</display:column>
