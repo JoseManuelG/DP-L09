@@ -26,6 +26,9 @@ public class ConfigurationService {
 	@Autowired
 	private Validator				validator;
 
+	@Autowired
+	private ActorService			actorService;
+
 
 	//Simple CRUD methods-------------------------------------------------------------------
 	public Configuration create() {
@@ -54,9 +57,12 @@ public class ConfigurationService {
 		Configuration result;
 
 		Assert.notNull(configuration, "La soicitud no puede ser nula");
-
+		Assert.isTrue(this.actorService.findActorByPrincipal().getUserAccount().getAuthorities().iterator().next().getAuthority().equals("ADMINISTRATOR"), "Solo el administrador podra modificar la configurcion");
 		result = this.configurationRepository.save(configuration);
 		return result;
+	}
+	public void flush() {
+		this.configurationRepository.flush();
 	}
 
 	//Other Business methods-------------------------------------------------------------------

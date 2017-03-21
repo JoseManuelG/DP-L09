@@ -96,6 +96,25 @@ public class CommentTest extends AbstractTest {
 			this.template((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (int) testingData[i][3], (String) testingData[i][4], (Class<?>) testingData[i][5]);
 	}
 
+	//Ban a comment that he or she finds inappropriate. 
+	@Test
+	public void driver2() {
+		final Object testingData[][] = {
+			{
+				"admin", 1049, true, null
+			}, {
+				"admin", 1050, false, null
+			}, {
+				"customer1", 1049, true, IllegalArgumentException.class
+			}, {
+				"customer1", 1050, false, IllegalArgumentException.class
+			}
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.template2((String) testingData[i][0], (int) testingData[i][1], (boolean) testingData[i][2], (Class<?>) testingData[i][3]);
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected void template(final String username, final int commentableId, final String title, final int stars, final String text, final Class<?> expected) {
@@ -111,6 +130,26 @@ public class CommentTest extends AbstractTest {
 			comment.setText(text);
 			this.commentService.save(comment);
 			this.commentService.flush();
+			this.unauthenticate();
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
+
+	protected void template2(final String username, final int commentId, final boolean banned, final Class<?> expected) {
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.authenticate(username);
+			if (banned)
+				this.commentService.banComment(commentId);
+			else
+				this.commentService.disbanComment(commentId);
+
+			this.commentService.flush();
+			this.unauthenticate();
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
