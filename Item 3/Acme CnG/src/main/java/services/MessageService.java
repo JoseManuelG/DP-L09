@@ -190,7 +190,7 @@ public class MessageService {
 		final Message message = this.findOne(messageId);
 		final MessageForm result = new MessageForm();
 		final LinkedList<Attachment> attachments = new LinkedList<Attachment>();
-
+		result.setAction(2);
 		attachments.addAll(this.attachmentService.copyAttachments(message));
 		result.setText(message.getText());
 		result.setTitle(message.getTitle());
@@ -202,6 +202,7 @@ public class MessageService {
 		//Lo he cambiado para que pida messageId en vez de actorId para no tener que 
 		//hacer en controlador cosas de servicios
 		final MessageForm result = new MessageForm();
+		result.setAction(1);
 		final Message message = this.findOne(messageId);
 		Assert.notNull(message.getSender());
 		final Actor recipient = this.actorService.findOne(message.getSender().getId());

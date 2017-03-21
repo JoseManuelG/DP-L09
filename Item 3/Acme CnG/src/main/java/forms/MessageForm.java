@@ -13,6 +13,9 @@ public class MessageForm {
 	private String					text;
 	private Actor					recipient;
 	private LinkedList<Attachment>	attachments;
+	//Para saber si escribes nuevo, respondes o reenvias;
+	//0= escribir, 1= responder, 2= reenviar
+	private Integer					action;
 
 
 	public String getTitle() {
@@ -39,10 +42,18 @@ public class MessageForm {
 	public void setAttachments(final LinkedList<Attachment> attachments) {
 		this.attachments = attachments;
 	}
+
+	public Integer getAction() {
+		return this.action;
+	}
+	public void setAction(final Integer action) {
+		this.action = action;
+	}
 	//----Metodos de uso del formulario----
 	//Contructor para que la lista no sea nula
 	public MessageForm() {
 		this.attachments = new LinkedList<Attachment>();
+		this.action = 0;
 	}
 	//Metodo para añadir un nuevo espacio que rellenar el formulario
 	public void addAttachmentSpace() {
@@ -54,4 +65,5 @@ public class MessageForm {
 	public void removeAttachmentSpace() {
 		this.attachments.removeLast();
 	}
+
 }
