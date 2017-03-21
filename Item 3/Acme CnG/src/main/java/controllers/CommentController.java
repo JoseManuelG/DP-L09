@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CommentService;
+import domain.Actor;
 import domain.Comment;
+import domain.Trip;
 
 @Controller
 @RequestMapping("/comment")
@@ -49,13 +51,19 @@ public class CommentController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(final Comment comment, final BindingResult binding) {
 		ModelAndView result;
+		String aux = null;
 		final Comment comment2 = this.commentService.reconstruct(comment, binding);
 		if (binding.hasErrors())
 			result = this.createCommentModelAndView(comment);
 		else
 			try {
 				this.commentService.save(comment2);
-				result = new ModelAndView("redirect:/");
+				if (comment2.getCommentable() instanceof Trip)
+					aux = "trip";
+				if (comment2.getCommentable() instanceof Actor)
+					aux = "actor";
+
+				result = new ModelAndView("redirect:../" + aux + "/view.do?" + aux + "Id=" + comment2.getCommentable().getId());
 
 			} catch (final Throwable oops) {
 				result = this.createCommentModelAndView(comment, "comment.commit.error");

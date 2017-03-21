@@ -27,9 +27,14 @@
 <%-- 	<jstl:if test="${requestURI == 'trip/list.do'}"> --%>
 	    <spring:message code="trip.view.customer" var="viewTitleHeader" />
 	    <display:column title="${viewTitleHeader}">
-	      <a href="actor/view.do?actorId=${row.customer.id}">
+	    <jstl:if test="${ row.customer.id ne null}">
+		<a href="actor/view.do?actorId=${row.customer.id}">
 	      <spring:message  code="trip.view" />
 	   	  </a>
+	   	 </jstl:if>
+		<jstl:if test="${ row.customer.id eq null}"> 
+		<spring:message  code="trip.customer.noAvalaible" />
+		</jstl:if>
 	    </display:column>
 <%--   	</jstl:if> --%>
 
