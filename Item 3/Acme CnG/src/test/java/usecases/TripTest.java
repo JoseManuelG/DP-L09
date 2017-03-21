@@ -34,16 +34,21 @@ public class TripTest extends AbstractTest {
 	// System under test ------------------------------------------------------
 	@Autowired
 	private TripService	tripService;
+	private final int	PAST_OFFER		= 1000;
+	private final int	PAST_REQUEST	= 999;
+	private final int	FUTURE_OFFER	= 1004;
+	private final int	FUTURE_REQUEST	= 1002;
+	private final int	BANNED_OFFER	= 1003;
+	private final int	BANNED_REQUEST	= 1001;
 
 
 	// Tests ------------------------------------------------------------------
 
-	// The following are fictitious test cases that are intended to check that 
-	// JUnit works well in this project.  Just righ-click this class and run 
-	// it using JUnit.
+	// Test para los casos de uso en los que interviene TripService.
 
 	@Test
-	public void postPositiveTest() {
+	public void postOfferPositiveTest() {
+		// Caso de uso en el que un usuario intenta crear una nueva oferta correctamente.
 		Trip trip;
 		long day;
 
@@ -64,11 +69,11 @@ public class TripTest extends AbstractTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void postNegativeTest1() {
+	public void postOfferNegativeTest() {
 		Trip trip;
 		long day;
 
-		this.authenticate("administrator1");
+		this.authenticate("admin");
 
 		day = 24 * 60 * 60 * 100;
 		trip = this.tripService.createOffer();
@@ -80,6 +85,153 @@ public class TripTest extends AbstractTest {
 		trip.setTitle("Test");
 
 		this.tripService.save(trip);
+
+		this.unauthenticate();
+	}
+
+	@Test
+	public void postRequestPositiveTest() {
+		//
+		Trip trip;
+		long day;
+
+		this.authenticate("customer1");
+
+		day = 24 * 60 * 60 * 100;
+		trip = this.tripService.createRequest();
+
+		trip.setDepartureTime(new Date(System.currentTimeMillis() + 5 * day));
+		trip.setDescription("Test");
+		trip.setDestination("Test");
+		trip.setOrigin("Test");
+		trip.setTitle("Test");
+
+		this.tripService.save(trip);
+
+		this.unauthenticate();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void postRequestNegativeTest() {
+		Trip trip;
+		long day;
+
+		this.authenticate("admin");
+
+		day = 24 * 60 * 60 * 100;
+		trip = this.tripService.createRequest();
+
+		trip.setDepartureTime(new Date(System.currentTimeMillis() + 5 * day));
+		trip.setDescription("Test");
+		trip.setDestination("Test");
+		trip.setOrigin("Test");
+		trip.setTitle("Test");
+
+		this.tripService.save(trip);
+
+		this.unauthenticate();
+	}
+
+	@Test
+	public void searchOfferPositiveTest() {
+		//
+		String keyword;
+
+		this.authenticate("customer1");
+
+		keyword = "cuervo";
+		this.tripService.findAllValidOffersByKeyWord(keyword);
+
+		this.unauthenticate();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void searchOfferNegativeTest() {
+		//
+		String keyword;
+
+		this.authenticate("admin");
+
+		keyword = "cuervo";
+		this.tripService.findAllValidOffersByKeyWord(keyword);
+
+		this.unauthenticate();
+	}
+
+	@Test
+	public void searchRequestPositiveTest() {
+		//
+		String keyword;
+
+		this.authenticate("customer1");
+
+		keyword = "cuervo";
+		this.tripService.findAllValidRequestsByKeyWord(keyword);
+
+		this.unauthenticate();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void searchRequestNegativeTest() {
+		//
+		String keyword;
+
+		this.authenticate("admin");
+
+		keyword = "cuervo";
+		this.tripService.findAllValidRequestsByKeyWord(keyword);
+
+		this.unauthenticate();
+	}
+
+	@Test
+	public void banOfferPositiveTest() {
+		//
+
+		this.authenticate("admin");
+
+		this.tripService.findAllOffers();
+
+		this.tripService.banTrip(this.PAST_OFFER);
+
+		this.unauthenticate();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void banOfferNegativeTest() {
+		//
+
+		this.authenticate("customer1");
+
+		this.tripService.findAllOffers();
+
+		this.tripService.banTrip(this.PAST_OFFER);
+
+		this.unauthenticate();
+	}
+
+	@Test
+	public void banRequestPositiveTest() {
+		//
+
+		this.authenticate("admin");
+
+		this.tripService.findAllRequests();
+
+		this.tripService.banTrip(this.PAST_REQUEST);
+
+		this.unauthenticate();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void banRequestNegativeTest() {
+		//
+
+		this.authenticate("customer1");
+
+		this.tripService.findAllRequests();
+
+		this.tripService.banTrip(this.PAST_REQUEST);
 
 		this.unauthenticate();
 	}

@@ -3113,7 +3113,7 @@
 		<property name="origin" value="Estepa" />
 		<property name="destination" value="Arahal" />
 		<property name="type" value="OFFER" />
-		<property name="banned" value="false" />
+		<property name="banned" value="true" />
 		<property name="customer" ref="customer1" />
 	</bean>
 	

@@ -44,23 +44,23 @@ public class TripService {
 
 	//Simple CRUD methods-------------------------------------------------------------------
 	public Trip create() {
+		Customer customer;
 		final Trip result = new Trip();
 		result.setBanned(false);
-		result.setCustomer(this.customerService.findCustomerByPrincipal());
+		customer = this.customerService.findCustomerByPrincipal();
+		Assert.notNull(customer);
+		result.setCustomer(customer);
 
 		return result;
 	}
 
 	public Trip create(final String type) {
-		final Trip result = new Trip();
-		result.setType(type);
-		result.setBanned(false);
-		result.setCustomer(this.customerService.findCustomerByPrincipal());
-		return result;
-	}
+		Trip result;
 
-	public Collection<Trip> findAll() {
-		return this.tripRepository.findAll();
+		result = this.create();
+		result.setType(type);
+
+		return result;
 	}
 
 	@SuppressWarnings("static-access")
@@ -102,13 +102,6 @@ public class TripService {
 		Assert.isTrue(trip.getDepartureTime().after(actualDate), "trip.date.error");
 		result = this.tripRepository.save(trip);
 		return result;
-	}
-
-	public void delete(final Trip trip) {
-		Assert.notNull(trip, "trip.error.null");
-		Assert.isTrue(this.tripRepository.exists(trip.getId()), "trip.error.id.notsaved");
-
-		this.tripRepository.delete(trip);
 	}
 
 	public Long count() {
@@ -167,25 +160,9 @@ public class TripService {
 		return result;
 	}
 
-	public Collection<Trip> findAllOffersByKeyWord(final String keyword) {
-		Collection<Trip> result;
-
-		result = this.tripRepository.findAllOffersByKeyWord(keyword);
-
-		return result;
-
-	}
-	public Collection<Trip> findAllRequestsByKeyWord(final String keyword) {
-		Collection<Trip> result;
-
-		result = this.tripRepository.findAllRequestsByKeyWord(keyword);
-
-		return result;
-
-	}
-
 	public Collection<Trip> findAllValidOffersByKeyWord(final String keyword) {
 		Collection<Trip> result;
+		Assert.notNull(this.customerService.findCustomerByPrincipal());
 		result = this.tripRepository.findAllValidOffersByKeyWord(keyword);
 
 		return result;
@@ -194,6 +171,7 @@ public class TripService {
 
 	public Collection<Trip> findAllValidRequestsByKeyWord(final String keyword) {
 		Collection<Trip> result;
+		Assert.notNull(this.customerService.findCustomerByPrincipal());
 		result = this.tripRepository.findAllValidRequestsByKeyWord(keyword);
 
 		return result;
