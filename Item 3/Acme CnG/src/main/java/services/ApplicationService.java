@@ -34,9 +34,16 @@ public class ApplicationService {
 	//Simple CRUD methods-------------------------------------------------------------------
 	public Application create(final int tripId) {
 		final Application aux = new Application();
+		Customer customer;
+
+		customer = this.customerService.findCustomerByPrincipal();
+		Assert.notNull(customer);
+
 		aux.setTrip(this.tripService.findOne(tripId));
-		aux.setCustomer(this.customerService.findCustomerByPrincipal());
+		aux.setCustomer(customer);
 		aux.setStatus("PENDING");
+		Assert.isTrue(!this.checkOwner(aux));
+
 		final Application result = this.save(aux);
 		return result;
 	}
@@ -82,22 +89,32 @@ public class ApplicationService {
 		Application aux, result;
 
 		aux = this.applicationRepository.findOne(applyId);
+		Assert.isTrue(this.checkOwner(aux));
 
 		aux.setStatus("ACCEPTED");
 		result = this.save(aux);
 		return result;
 
 	}
-
 	public Application denyApply(final int applyId) {
 		Application aux, result;
 
 		aux = this.applicationRepository.findOne(applyId);
+		Assert.isTrue(this.checkOwner(aux));
 
 		aux.setStatus("DENIED");
 		result = this.save(aux);
 		return result;
 
+	}
+
+	private Boolean checkOwner(final Application application) {
+		Customer customer;
+
+		customer = this.customerService.findCustomerByPrincipal();
+		Assert.notNull(customer);
+
+		return application.getTrip().getCustomer().equals(customer);
 	}
 
 	public Collection<Application> findAllApplicationsByTrip(final int tripId) {
