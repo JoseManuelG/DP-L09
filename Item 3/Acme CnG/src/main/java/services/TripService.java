@@ -89,12 +89,12 @@ public class TripService {
 		Assert.notNull(trip, "trip.error.null");
 		////////No necesario: nunca se va a llegar al save si las etiquetas
 		////////tienen errores, y si llegara, fallaria el repo.save
-		Assert.hasText(trip.getTitle(), "trip.error.title.notext");
-		Assert.hasText(trip.getDescription(), "trip.error.description.notext");
-		Assert.notNull(trip.getDepartureTime(), "trip.error.departureTime.null");
-		Assert.hasText(trip.getOrigin(), "trip.error.origin.notext");
-		Assert.hasText(trip.getDestination(), "trip.error.destination.notext");
-		Assert.notNull(trip.getType(), "trip.error.type.null");
+		//		Assert.hasText(trip.getTitle(), "trip.error.title.notext");
+		//		Assert.hasText(trip.getDescription(), "trip.error.description.notext");
+		//		Assert.notNull(trip.getDepartureTime(), "trip.error.departureTime.null");
+		//		Assert.hasText(trip.getOrigin(), "trip.error.origin.notext");
+		//		Assert.hasText(trip.getDestination(), "trip.error.destination.notext");
+		//		Assert.notNull(trip.getType(), "trip.error.type.null");
 		//////////////////////////////////////////////////////////
 		Assert.isTrue((trip.getOriginLat() == null && trip.getOriginLon() == null) || ((!(trip.getOriginLat() == null) && !(trip.getOriginLon() == null))), "trip.error.originCoords");
 		Assert.isTrue((trip.getDestinationLat() == null && trip.getDestinationLon() == null) || ((!(trip.getDestinationLat() == null) && !(trip.getDestinationLon() == null))), "trip.error.destinationCoords");
@@ -106,6 +106,10 @@ public class TripService {
 
 	public Long count() {
 		return this.tripRepository.count();
+	}
+
+	public void flush() {
+		this.tripRepository.flush();
 	}
 
 	//Other Business methods-------------------------------------------------------------------

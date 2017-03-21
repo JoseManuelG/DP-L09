@@ -29,7 +29,7 @@ import utilities.AbstractTest;
 @Transactional
 public class ApplicationTest extends AbstractTest {
 
-	// Beans for teasting propouses
+	// Beans for testing proposes
 	public static final int		PAST_TRIP				= 999;	// OWNER TRIP: CUSTOMER 1
 	public static final int		TRIP1_INVALID_APPLY		= 1032;
 	public static final int		FUTURE_TRIP				= 1005; // OWNER TRIP: CUSTOMER 2

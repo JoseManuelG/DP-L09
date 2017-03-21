@@ -13,6 +13,7 @@ package usecases;
 import java.util.Date;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ import domain.Trip;
 @Transactional
 public class TripTest extends AbstractTest {
 
-	// Beans for teasting propouses
+	// Beans for testing proposes
 	public static final int	PAST_REQUEST	= 999;
 	public static final int	PAST_OFFER		= 1000;
 	public static final int	BANNED_REQUEST	= 1001;
@@ -49,89 +50,70 @@ public class TripTest extends AbstractTest {
 	// Test para los casos de uso en los que interviene TripService.
 
 	@Test
-	public void postOfferPositiveTest() {
-		// Caso de uso en el que un usuario intenta crear una nueva oferta correctamente.
-		Trip trip;
-		long day;
+	public void drivePost() {
+		final Object testingData[][] = {
+			{
+				true, "customer1", 1, "test", "test", null, null, "test", null, null, "test", null
+			}, {
+				false, "customer1", 1, "test", "test", null, null, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, 50.18, "test", null, null, "test", null
+			}, {
+				false, "customer1", 1, "test", "test", null, null, "test", 54.23, 15.95, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, 50.18, "test", 54.23, 15.95, "test", null
+			}, {
+				true, "admin", 1, "test", "test", null, null, "test", null, null, "test", IllegalArgumentException.class
+			}, {
+				true, "customer1", -5, "test", "test", null, null, "test", null, null, "test", IllegalArgumentException.class
+			}, {
+				true, "customer1", 1, "", "test", null, null, "test", null, null, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "", null, null, "test", null, null, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", 20.15, null, "test", null, null, "test", IllegalArgumentException.class
+			}, {
+				true, "customer1", 1, "test", "test", null, 19.14, "test", null, null, "test", IllegalArgumentException.class
+			}, {
+				true, "customer1", 1, "test", "test", null, null, "", null, null, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", null, null, "test", 20.15, null, "test", IllegalArgumentException.class
+			}, {
+				true, "customer1", 1, "test", "test", null, null, "test", null, 40.75, "test", IllegalArgumentException.class
+			}, {
+				true, "customer1", 1, "test", "test", null, null, "test", null, null, "", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", -90. - 0.01, 50.18, "test", null, null, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", -90., 50.18, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", -90. + 0.01, 50.18, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 90. - 0.01, 50.18, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 90., 50.18, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 90. + 0.01, 50.18, "test", null, null, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, -180. - 0.01, "test", null, null, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, -180., "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, -180. + 0.01, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, 180. - 0.01, "test", null, null, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, 180., "test", 54.23, 15.95, "test", null
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, 180. + 0.01, "test", 54.23, 15.95, "test", ConstraintViolationException.class
+			}, {
+				true, "customer1", 1, "test", "test", 10.30, 50.18, "test", 54.23, 15.95, "test", null
+			}
+		};
 
-		this.authenticate("customer1");
-
-		day = 24 * 60 * 60 * 100;
-		trip = this.tripService.createOffer();
-
-		trip.setDepartureTime(new Date(System.currentTimeMillis() + 5 * day));
-		trip.setDescription("Test");
-		trip.setDestination("Test");
-		trip.setOrigin("Test");
-		trip.setTitle("Test");
-
-		this.tripService.save(trip);
-
-		this.unauthenticate();
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void postOfferNegativeTest() {
-		Trip trip;
-		long day;
-
-		this.authenticate("admin");
-
-		day = 24 * 60 * 60 * 100;
-		trip = this.tripService.createOffer();
-
-		trip.setDepartureTime(new Date(System.currentTimeMillis() + 5 * day));
-		trip.setDescription("Test");
-		trip.setDestination("Test");
-		trip.setOrigin("Test");
-		trip.setTitle("Test");
-
-		this.tripService.save(trip);
-
-		this.unauthenticate();
-	}
-
-	@Test
-	public void postRequestPositiveTest() {
-		//
-		Trip trip;
-		long day;
-
-		this.authenticate("customer1");
-
-		day = 24 * 60 * 60 * 100;
-		trip = this.tripService.createRequest();
-
-		trip.setDepartureTime(new Date(System.currentTimeMillis() + 5 * day));
-		trip.setDescription("Test");
-		trip.setDestination("Test");
-		trip.setOrigin("Test");
-		trip.setTitle("Test");
-
-		this.tripService.save(trip);
-
-		this.unauthenticate();
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void postRequestNegativeTest() {
-		Trip trip;
-		long day;
-
-		this.authenticate("admin");
-
-		day = 24 * 60 * 60 * 100;
-		trip = this.tripService.createRequest();
-
-		trip.setDepartureTime(new Date(System.currentTimeMillis() + 5 * day));
-		trip.setDescription("Test");
-		trip.setDestination("Test");
-		trip.setOrigin("Test");
-		trip.setTitle("Test");
-
-		this.tripService.save(trip);
-
-		this.unauthenticate();
+		for (int i = 0; i < testingData.length; i++)
+			this.templatePost((Boolean) testingData[i][0], (String) testingData[i][1], (Integer) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (Double) testingData[i][5], (Double) testingData[i][6], (String) testingData[i][7],
+				(Double) testingData[i][8], (Double) testingData[i][9], (String) testingData[i][10], (Class<?>) testingData[i][11]);
 	}
 
 	@Test
@@ -239,5 +221,49 @@ public class TripTest extends AbstractTest {
 	}
 
 	// Ancillary methods ------------------------------------------------------
+
+	protected void templatePost(final Boolean offer, final String username, final Integer days, final String description, final String destination, final Double destinationLat, final Double destinationLon, final String origin, final Double originLat,
+		final Double originLon, final String title, final Class<?> expected) {
+		/*
+		 * Plantilla para testear por de offers y requests.
+		 * username -> usuario que se autentica para hacer el post.
+		 * offer -> true es offer y false es request
+		 * days -> dias a partir de hoy (0 es hoy, -1 ayer, 1 mañana).
+		 */
+		Class<?> caught;
+
+		caught = null;
+		try {
+			Trip trip;
+			long day;
+
+			this.authenticate(username);
+
+			day = 24 * 60 * 60 * 100;
+			if (offer)
+				trip = this.tripService.createOffer();
+			else
+				trip = this.tripService.createRequest();
+
+			trip.setDepartureTime(new Date(System.currentTimeMillis() + days * day));
+			trip.setDescription(description);
+			trip.setDestination(destination);
+			trip.setDestinationLat(destinationLat);
+			trip.setDestinationLon(destinationLon);
+			trip.setOrigin(origin);
+			trip.setOriginLat(originLat);
+			trip.setOriginLon(originLon);
+			trip.setTitle(title);
+
+			this.tripService.save(trip);
+			this.tripService.flush();
+
+			this.unauthenticate();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+		this.checkExceptions(expected, caught);
+	}
 
 }
