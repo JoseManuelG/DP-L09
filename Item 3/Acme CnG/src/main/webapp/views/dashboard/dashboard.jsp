@@ -27,14 +27,14 @@
 	<display:table pagesize="5" class="displaytag1" name="AvgeActorWritingComments"
 		requestURI="${requestURI}" id="row" uid="AvgeActorWritingComments">
 		
-		<spring:message code="actor.comment.name" var="actorName" />
+		<spring:message code="actor.name.AvgeActorWritingComments" var="actorName" />
 	    <display:column title="${actorName}">
 	   	  <jstl:out value="${AvgeActorWritingComments.name}"/>
 	   	  <jstl:out value="${AvgeActorWritingComments.surname}"/>
 	   	  
 	    </display:column>
 	</display:table>
-	<spring:message code="AvgeActorWritingComments" />: <jstl:out value="${AvgeActorWritingComments}"/><br/>
+
 	
 	
 	<spring:message code="AvgMessagesSentPerActor" />: <jstl:out value="${AvgMessagesSentPerActor}"/><br/>	
