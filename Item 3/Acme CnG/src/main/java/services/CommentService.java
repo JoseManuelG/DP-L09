@@ -102,6 +102,18 @@ public class CommentService {
 		this.commentRepository.flush();
 	}
 	//Other Business methods-------------------------------------------------------------------
+	//Devuelve todos los comentarios por de un Commentable
+	public Collection<Comment> findAllCommentsByCommentable(final int commentableId) {
+		Collection<Comment> result;
+		result = this.commentRepository.findAllCommentsByCommentableId(commentableId);
+		return result;
+	}
+
+	public Collection<Comment> findAllCommentsByActor(final int actorId) {
+		Collection<Comment> result;
+		result = this.commentRepository.findAllCommentsByActorId(actorId);
+		return result;
+	}
 
 	public Collection<Comment> findUnbannedCommentsByCommentable(final int commentableId) {
 		Collection<Comment> result;
@@ -156,6 +168,12 @@ public class CommentService {
 		result = this.commentRepository.save(comment);
 
 		return result;
+
+	}
+
+	public void deleteAllCommentsOfActor(final Actor actor) {
+		this.commentRepository.delete(this.findAllCommentsByActor(actor.getId()));
+		this.commentRepository.delete(this.findAllCommentsByCommentable(actor.getId()));
 
 	}
 	public Comment reconstruct(final Comment comment, final BindingResult binding) {

@@ -33,7 +33,7 @@
 	   	  </a>
 	   	 </jstl:if>
 		<jstl:if test="${ row.customer.id eq null}"> 
-		<spring:message  code="trip.customer.noAvalaible" />
+		<spring:message  code="trip.customer.deleted" />
 		</jstl:if>
 	    </display:column>
 <%--   	</jstl:if> --%>

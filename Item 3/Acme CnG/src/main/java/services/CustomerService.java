@@ -46,6 +46,8 @@ public class CustomerService {
 
 	@Autowired
 	private ApplicationService		applicationService;
+	@Autowired
+	private CommentService			commentService;
 
 
 	//Simple CRUD methods-------------------------------------------------------------------
@@ -80,6 +82,7 @@ public class CustomerService {
 		this.applicationService.deleteCustomer(customer);
 		this.tripService.deleteCustomer(customer);
 		this.messageService.deleteCustomer(customer);
+		this.commentService.deleteAllCommentsOfActor(customer);
 		this.customerRepository.delete(customer);
 		this.userAccountRepository.delete(customer.getUserAccount().getId());
 
