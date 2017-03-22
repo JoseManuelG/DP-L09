@@ -56,6 +56,7 @@ public class ApplicationTest extends AbstractTest {
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
 		this.applicationService.create(ApplicationTest.FUTURE_TRIP);
+		this.applicationService.flush();
 
 		this.unauthenticate();
 	}
@@ -67,6 +68,7 @@ public class ApplicationTest extends AbstractTest {
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
 		this.applicationService.create(ApplicationTest.FUTURE_TRIP);
+		this.applicationService.flush();
 
 		this.unauthenticate();
 	}
@@ -78,6 +80,7 @@ public class ApplicationTest extends AbstractTest {
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
 		this.applicationService.acceptApply(ApplicationTest.TRIP2_VALID_APPLY);
+		this.applicationService.flush();
 
 		this.unauthenticate();
 	}
@@ -89,6 +92,7 @@ public class ApplicationTest extends AbstractTest {
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
 		this.applicationService.acceptApply(ApplicationTest.TRIP2_VALID_APPLY);
+		this.applicationService.flush();
 
 		this.unauthenticate();
 	}
@@ -100,6 +104,7 @@ public class ApplicationTest extends AbstractTest {
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
 		this.applicationService.denyApply(ApplicationTest.TRIP2_VALID_APPLY);
+		this.applicationService.flush();
 
 		this.unauthenticate();
 	}
@@ -111,6 +116,7 @@ public class ApplicationTest extends AbstractTest {
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
 		this.applicationService.denyApply(ApplicationTest.TRIP2_VALID_APPLY);
+		this.applicationService.flush();
 
 		this.unauthenticate();
 	}

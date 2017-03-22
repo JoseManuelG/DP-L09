@@ -55,9 +55,11 @@
 <br>
 
 <security:authorize access="hasRole('CUSTOMER')">	
+	<jstl:if test="${!isOwner}">
 	<a href="application/customer/apply.do?tripId=${trip.id}">
 		<spring:message	code="trip.apply" />
 	</a>
+	</jstl:if>
 </security:authorize>
 			
 <jstl:if test="${isOwner && !aplications.isEmpty()}">

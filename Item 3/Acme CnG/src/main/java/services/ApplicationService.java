@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import repositories.ApplicationRepository;
 import domain.Application;
 import domain.Customer;
+import domain.Trip;
 
 @Service
 @Transactional
@@ -35,14 +36,18 @@ public class ApplicationService {
 	public Application create(final int tripId) {
 		final Application aux = new Application();
 		Customer customer;
+		Trip trip;
 
 		customer = this.customerService.findCustomerByPrincipal();
-		Assert.notNull(customer);
+		Assert.notNull(customer, "application.error.customer");
 
-		aux.setTrip(this.tripService.findOne(tripId));
+		trip = this.tripService.findOne(tripId);
+		Assert.notNull(trip.getCustomer(), "application.error.deleted.owner");
+
+		aux.setTrip(trip);
 		aux.setCustomer(customer);
 		aux.setStatus("PENDING");
-		Assert.isTrue(!this.checkOwner(aux));
+		Assert.isTrue(!this.checkOwner(aux), "application.error.own.trip");
 
 		final Application result = this.save(aux);
 		return result;
@@ -162,6 +167,10 @@ public class ApplicationService {
 			applications2.add(application);
 		}
 		this.applicationRepository.save(applications2);
+	}
+
+	public void flush() {
+		this.applicationRepository.flush();
 	}
 
 }

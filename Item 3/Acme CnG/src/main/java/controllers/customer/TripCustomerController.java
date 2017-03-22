@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.TripService;
 import controllers.AbstractController;
+import domain.Actor;
 import domain.Trip;
 import forms.SearchForm;
 
@@ -23,7 +25,10 @@ public class TripCustomerController extends AbstractController {
 	// Services -------------------------------------------------------------
 
 	@Autowired
-	private TripService	tripService;
+	private TripService		tripService;
+
+	@Autowired
+	private ActorService	actorService;
 
 
 	// List ---------------------------------------------------------------
@@ -31,11 +36,14 @@ public class TripCustomerController extends AbstractController {
 	public ModelAndView listOffers() {
 		ModelAndView result;
 		Collection<Trip> trips;
+		Actor principal;
 
 		trips = this.tripService.findAllOffersByPrincipal();
+		principal = this.actorService.findActorByPrincipal();
 
 		result = new ModelAndView("trip/list/my/offers");
 		result.addObject("trips", trips);
+		result.addObject("principal", principal);
 		result.addObject("requestURI", "trip/customer/list/my/offers.do");
 
 		return result;
@@ -44,11 +52,14 @@ public class TripCustomerController extends AbstractController {
 	public ModelAndView listRequests() {
 		ModelAndView result;
 		Collection<Trip> trips;
+		Actor princpal;
 
 		trips = this.tripService.findAllRequestsByPrincipal();
+		princpal = this.actorService.findActorByPrincipal();
 
 		result = new ModelAndView("trip/list/my/requests");
 		result.addObject("trips", trips);
+		result.addObject("princpal", princpal);
 		result.addObject("requestURI", "trip/customer/list/my/requests.do");
 
 		return result;
@@ -84,11 +95,14 @@ public class TripCustomerController extends AbstractController {
 	public ModelAndView listOffers(@RequestParam final String keyword) {
 		ModelAndView result;
 		Collection<Trip> trips;
+		Actor principal;
 
 		trips = this.tripService.findAllValidOffersByKeyWord(keyword);
+		principal = this.actorService.findActorByPrincipal();
 
 		result = new ModelAndView("trip/search/list");
 		result.addObject("trips", trips);
+		result.addObject("principal", principal);
 		result.addObject("requestURI", "trip/customer/search/offers.do");
 
 		return result;
@@ -98,11 +112,14 @@ public class TripCustomerController extends AbstractController {
 	public ModelAndView listRequests(@RequestParam final String keyword) {
 		ModelAndView result;
 		Collection<Trip> trips;
+		Actor principal;
 
 		trips = this.tripService.findAllValidRequestsByKeyWord(keyword);
+		principal = this.actorService.findActorByPrincipal();
 
 		result = new ModelAndView("trip/search/list");
 		result.addObject("trips", trips);
+		result.addObject("principal", principal);
 		result.addObject("requestURI", "trip/customer/search/requests.do");
 
 		return result;

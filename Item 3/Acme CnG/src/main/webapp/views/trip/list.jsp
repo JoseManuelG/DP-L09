@@ -46,11 +46,14 @@
 	<acme:column sorteable="false" code="trip.departureTime" path="departureTime" highlight="${row.banned}"/>
 	
 	<security:authorize access="hasRole('CUSTOMER')">	
+		
 		<spring:message code="trip.apply.title" var="applyTitleHeader" />
 		<display:column title="${applyTitleHeader}">
+			<jstl:if test="${!(row.customer eq principal)}">
 			<a href="application/customer/apply.do?tripId=${row.id}">
 				<spring:message	code="trip.apply" />
 			</a>
+			</jstl:if>
 		</display:column>
 	</security:authorize>
 	
