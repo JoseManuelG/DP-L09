@@ -19,20 +19,32 @@
 	
 	<spring:message code="CustomerWithMoreApplicationsAccepted" />: <jstl:out value="${CustomerWithMoreApplicationsAccepted.name}"/> <jstl:out value="${CustomerWithMoreApplicationsAccepted.surname}"/><br/>
 	<spring:message code="CustomerWithMoreApplicationsDenied" />: <jstl:out value="${CustomerWithMoreApplicationsDenied.name}"/> <jstl:out value="${CustomerWithMoreApplicationsDenied.surname}"/><br/>
-	<spring:message code="AvgCommentsPerActor" />: <jstl:out value="${AvgCommentsPerActor}"/><br/>
 	
+	<spring:message code="AvgCommentsPerActor" />: <jstl:out value="${AvgCommentsPerActor}"/><br/>	
 	<spring:message code="AvgCommentsPerOffer" />: <jstl:out value="${AvgCommentsPerOffer}"/><br/>
 	<spring:message code="AvgCommentsPerRequest" />: <jstl:out value="${AvgCommentsPerRequest}"/><br/>
-	<spring:message code="AvgeActorWritingComments" />: <jstl:out value="${AvgeActorWritingComments}"/><br/>
-	<spring:message code="AvgMessagesSentPerActor" />: <jstl:out value="${AvgMessagesSentPerActor}"/><br/>
 	
+	<display:table pagesize="5" class="displaytag1" name="AvgeActorWritingComments"
+		requestURI="${requestURI}" id="row" uid="AvgeActorWritingComments">
+		
+		<spring:message code="actor.comment.name" var="actorName" />
+	    <display:column title="${actorName}">
+	   	  <jstl:out value="${AvgeActorWritingComments.name}"/>
+	   	  <jstl:out value="${AvgeActorWritingComments.surname}"/>
+	   	  
+	    </display:column>
+	</display:table>
+	<spring:message code="AvgeActorWritingComments" />: <jstl:out value="${AvgeActorWritingComments}"/><br/>
+	
+	
+	<spring:message code="AvgMessagesSentPerActor" />: <jstl:out value="${AvgMessagesSentPerActor}"/><br/>	
 	<spring:message code="MinMessagesSentPerActor" />: <jstl:out value="${MinMessagesSentPerActor}"/><br/>
 	<spring:message code="MaxMessagesSentPerActor" />: <jstl:out value="${MaxMessagesSentPerActor}"/><br/>	
 	<spring:message code="AvgMessagesReceivedPerActor" />: <jstl:out value="${AvgMessagesReceivedPerActor}"/><br/>
 	<spring:message code="MinMessagesReceivedPerActor" />: <jstl:out value="${MinMessagesReceivedPerActor}"/><br/>
 	<spring:message code="MaxMessagesReceivedPerActor" />: <jstl:out value="${MaxMessagesReceivedPerActor}"/><br/>
-	<spring:message code="ActorSentMoreMessages" />: <jstl:out value="${ActorSentMoreMessages}"/><br/>
-	<spring:message code="ActorReceivedMoreMessages" />: <jstl:out value="${ActorReceivedMoreMessages}"/><br/>
+	<spring:message code="ActorSentMoreMessages" />: <jstl:out value="${ActorSentMoreMessages.name}"/> <jstl:out value="${ActorSentMoreMessages.surname}"/><br/>
+	<spring:message code="ActorReceivedMoreMessages" />: <jstl:out value="${ActorReceivedMoreMessages.name}"/> <jstl:out value="${ActorReceivedMoreMessages.surname}"/> <br/>
 	
 	
 	
