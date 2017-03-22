@@ -76,6 +76,7 @@
 		
 		
 		<!-- Customer -->
+		<security:intercept-url pattern="/application/customer/list.do" access="hasRole('CUSTOMER')" />
 				
 		<security:intercept-url pattern="/application/customer/apply.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/application/customer/accept.do" access="hasRole('CUSTOMER')" />

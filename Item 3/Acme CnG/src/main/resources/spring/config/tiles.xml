@@ -25,6 +25,7 @@
 		
 		<value>/views/about/tiles.xml</value>
 		<value>/views/actor/tiles.xml</value>
+		<value>/views/application/tiles.xml</value>
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/configuration/tiles.xml</value>
 		<value>/views/law/tiles.xml</value>
