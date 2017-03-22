@@ -25,8 +25,6 @@
 
 PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 
-DANI: plantilla
-
 ------------------------------ARREGLADO------------------------------
 -En la vista de mis solicitudes y mis ofertas me sale el boton de solicitar, no tiene mucho sentido que solicite hueco en mi coche no?(ARREGLADO)
 -Hacer un metodo deleteCustomer en commentsService para poner a null los creados por un actor cuando se borra(ARREGLADO)

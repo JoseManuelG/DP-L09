@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccountAdministrator1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Other domain beans come here -->
+	
+	<!-- Message -->
+	
+	<bean id="message1Administrator1" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Layne Ozzie" />
+		<property name="sendingMoment" value="04/04/2016 11:45" />
+		<property name="title" value="Sed ut perspiciatis" />
+		<property name="text" value="Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="true" />
+	</bean>
+	
+	<bean id="message1Administrator1Copy" class="domain.Message">
+		<property name="senderName" value="Layne Ozzie" />
+		<property name="recipientName" value="Layne Ozzie" />
+		<property name="sendingMoment" value="04/04/2016 11:45" />
+		<property name="title" value="Sed ut perspiciatis" />
+		<property name="text" value="Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="administrator1" />
+		<property name="isSender" value="false" />
+	</bean>
+	
+	
+<!-- Attachment -->
+	
+	<bean id="attachment1Message1Administrator1" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment2Message1Administrator1" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment3Message1Administrator1" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment4Message1Administrator1" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment5Message1Administrator1" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment6Message1Administrator1" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Administrator1" />
+	</bean>
+	
+	<bean id="attachment1Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName1" />
+		<property name="url" value="http://www.attachmentName1.com" />
+		<property name="message" ref="message1Administrator1Copy" />
+	</bean>
+	
+	<bean id="attachment2Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName2" />
+		<property name="url" value="http://www.attachmentName2.com" />
+		<property name="message" ref="message1Administrator1Copy" />
+	</bean>
+	
+	<bean id="attachment3Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName3" />
+		<property name="url" value="http://www.attachmentName3.com" />
+		<property name="message" ref="message1Administrator1Copy" />
+	</bean>
+	
+	<bean id="attachment4Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName4" />
+		<property name="url" value="http://www.attachmentName4.com" />
+		<property name="message" ref="message1Administrator1Copy" />
+	</bean>
+	
+	<bean id="attachment5Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName5" />
+		<property name="url" value="http://www.attachmentName5.com" />
+		<property name="message" ref="message1Administrator1Copy" />
+	</bean>
+	
+	<bean id="attachment6Message1Administrator1Copy" class="domain.Attachment">
+		<property name="name" value="AttachmentName6" />
+		<property name="url" value="http://www.attachmentName6.com" />
+		<property name="message" ref="message1Administrator1Copy" />
+	</bean>
+	
+	
+	<!-- Administrator -->
+	
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Layne" />
+		<property name="surname" value="Ozzie" />
+		<property name="email" value="admin@gmail.com" />
+		<property name="phone" value="+34666666666" />
+		<property name="userAccount" ref="userAccountAdministrator1" />
+	</bean>	
+	
+	<!-- Comment -->
+
+	<bean id="comment1Administrator1" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="administrator1"/>
+		<property name="commentable" ref="administrator1"/>
+	</bean>	
+	
+</beans>
