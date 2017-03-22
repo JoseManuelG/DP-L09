@@ -146,7 +146,7 @@ public class CommentTest extends AbstractTest {
 			if (banned)
 				this.commentService.banComment(commentId);
 			else
-				this.commentService.disbanComment(commentId);
+				this.commentService.unbanComment(commentId);
 
 			this.commentService.flush();
 			this.unauthenticate();

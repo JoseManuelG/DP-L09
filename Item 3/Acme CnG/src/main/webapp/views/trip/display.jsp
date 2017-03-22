@@ -94,7 +94,7 @@
 		<!-- Action links -->
 		<jstl:if test="${isAdmin}">
 	   	  <display:column title=" ">
-	    	  <a href="comment/ban.do?commentId=${unBannedComments.id}">
+	    	  <a href="comment/administrator/ban.do?commentId=${unBannedComments.id}">
 	   		  <spring:message code="actor.comment.banComment"/>
 	  	 	  </a>
 	  	  </display:column>
@@ -159,7 +159,7 @@
 
 		<!-- Action links -->
 		<display:column title=" ">
-	   		<a href="comment/disBan.do?commentId=${allBannedComments.id}">
+	   		<a href="comment/administrator/unban.do?commentId=${allBannedComments.id}">
 	   		 <spring:message code="actor.comment.disBanComment"/>
 	  	 	</a>
 	  	</display:column>

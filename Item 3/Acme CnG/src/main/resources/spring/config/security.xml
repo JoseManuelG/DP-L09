@@ -63,6 +63,8 @@
 		
 		<security:intercept-url pattern="/actor/myProfile.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/actor/view.do" access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
 				
 		<!-- Administrator -->
 		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMINISTRATOR')" />
@@ -72,7 +74,10 @@
 		<security:intercept-url pattern="/trip/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/trip/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
 		
-			<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />  
+		<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')" />  
+		
+		<security:intercept-url pattern="/comment/administrator/ban.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/comment/administrator/unban.do" access="hasRole('ADMINISTRATOR')" />
 		
 		
 		<!-- Customer -->
@@ -93,14 +98,6 @@
 		
 		<security:intercept-url pattern="/actor/delete.do" access="hasRole('CUSTOMER')" />
 		
-		
-		
-		
-		<!-- Comment -->
-		
-		<security:intercept-url pattern="/comment/create.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/comment/ban.do" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/comment/disBan.do" access="hasRole('ADMINISTRATOR')" />
 		
 		
 		

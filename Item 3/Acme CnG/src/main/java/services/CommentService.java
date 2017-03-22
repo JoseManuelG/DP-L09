@@ -150,7 +150,7 @@ public class CommentService {
 		return result;
 
 	}
-	public Comment disbanComment(final int commentId) {
+	public Comment unbanComment(final int commentId) {
 		Comment comment, result;
 
 		Actor actor;
