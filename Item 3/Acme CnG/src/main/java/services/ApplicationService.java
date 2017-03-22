@@ -147,7 +147,11 @@ public class ApplicationService {
 		List<Customer> customers;
 		final Customer result;
 		customers = this.applicationRepository.customerWithMoreApplicationsAccepted();
-		result = customers.iterator().next();
+		if (!customers.isEmpty())
+			result = customers.iterator().next();
+		else
+			result = this.customerService.create();
+
 		return result;
 	}
 	//05 - The customer who has more applications denied
@@ -155,7 +159,10 @@ public class ApplicationService {
 		List<Customer> customers;
 		final Customer result;
 		customers = this.applicationRepository.customerWithMoreApplicationsDenied();
-		result = customers.iterator().next();
+		if (!customers.isEmpty())
+			result = customers.iterator().next();
+		else
+			result = this.customerService.create();
 		return result;
 	}
 	public void deleteCustomer(final Customer customer) {

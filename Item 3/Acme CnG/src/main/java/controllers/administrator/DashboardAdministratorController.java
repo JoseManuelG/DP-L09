@@ -57,7 +57,7 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("AvgCommentsPerActor", this.commentService.avgCommentsPerActor());
 		result.addObject("AvgCommentsPerOffer", this.commentService.avgCommentsPerOffer());
 		result.addObject("AvgCommentsPerRequest", this.commentService.avgCommentsPerRequest());
-		result.addObject("avgCommentsByActors", this.commentService.avgCommentsByActors());
+		result.addObject("AvgCommentsByActors", this.commentService.avgCommentsByActors());
 		result.addObject("AvgeActorWritingComments", this.commentService.avgActorWritingComments());
 		//Queries CommentService
 		result.addObject("AvgMessagesSentPerActor", this.messageService.avgMessagesSentPerActor());

@@ -15,15 +15,20 @@
 
 	<spring:message code="RatioOffersVsRequests" />: <jstl:out value="${RatioOffersVsRequests}"/><br/>
 	<spring:message code="AvgOfferPerCustomer" />: <jstl:out value="${AvgOfferPerCustomer}"/><br/>
-	<spring:message code="AvgApplicationVsCustomerAndRequest" />: <jstl:out value="${AvgApplicationVsCustomerAndRequest}"/><br/>
+	<spring:message code="AvgRequestsPerCustomer" />: <jstl:out value="${AvgRequestsPerCustomer}"/><br/>
 	
+	
+	<spring:message code="AvgApplicationVsCustomerAndRequest" />: <jstl:out value="${AvgApplicationVsCustomerAndRequest}"/><br/>
 	<spring:message code="CustomerWithMoreApplicationsAccepted" />: <jstl:out value="${CustomerWithMoreApplicationsAccepted.name}"/> <jstl:out value="${CustomerWithMoreApplicationsAccepted.surname}"/><br/>
 	<spring:message code="CustomerWithMoreApplicationsDenied" />: <jstl:out value="${CustomerWithMoreApplicationsDenied.name}"/> <jstl:out value="${CustomerWithMoreApplicationsDenied.surname}"/><br/>
 	
 	<spring:message code="AvgCommentsPerActor" />: <jstl:out value="${AvgCommentsPerActor}"/><br/>	
 	<spring:message code="AvgCommentsPerOffer" />: <jstl:out value="${AvgCommentsPerOffer}"/><br/>
 	<spring:message code="AvgCommentsPerRequest" />: <jstl:out value="${AvgCommentsPerRequest}"/><br/>
+	<spring:message code="AvgCommentsByActors" />: <jstl:out value="${AvgCommentsByActors}"/><br/>
 	
+	
+	<spring:message code="actor.name.AvgeActorWritingComments" />:
 	<display:table pagesize="5" class="displaytag1" name="AvgeActorWritingComments"
 		requestURI="${requestURI}" id="row" uid="AvgeActorWritingComments">
 		

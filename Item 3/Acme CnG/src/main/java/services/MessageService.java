@@ -231,9 +231,12 @@ public class MessageService {
 	//09 - The maximum number of messages sent per actor
 	public Long maxMessagesSentPerActor() {
 		List<Long> messages;
-		final Long result;
+		Long result;
 		messages = this.messageRepository.maxMessagesSentPerActor();
-		result = messages.iterator().next();
+		if (!messages.isEmpty())
+			result = messages.iterator().next();
+		else
+			result = (long) 0;
 		return result;
 	}
 
@@ -250,7 +253,11 @@ public class MessageService {
 		List<Long> messages;
 		final Long result;
 		messages = this.messageRepository.minMessagesReceivedPerActor();
-		result = messages.iterator().next();
+		if (!messages.isEmpty())
+			result = messages.iterator().next();
+		else
+			result = (long) 0;
+
 		return result;
 	}
 	//10 - The maximum number of messages received per actor. Part2
@@ -258,7 +265,10 @@ public class MessageService {
 		List<Long> messages;
 		final Long result;
 		messages = this.messageRepository.maxMessagesReceivedPerActor();
-		result = messages.iterator().next();
+		if (!messages.isEmpty())
+			result = messages.iterator().next();
+		else
+			result = (long) 0;
 		return result;
 	}
 
@@ -267,7 +277,10 @@ public class MessageService {
 		List<Actor> actors;
 		final Actor result;
 		actors = this.messageRepository.actorSentMoreMessages();
-		result = actors.iterator().next();
+		if (!actors.isEmpty())
+			result = actors.iterator().next();
+		else
+			result = null;
 		return result;
 	}
 
@@ -276,7 +289,10 @@ public class MessageService {
 		List<Actor> actors;
 		final Actor result;
 		actors = this.messageRepository.actorSentMoreMessages();
-		result = actors.iterator().next();
+		if (!actors.isEmpty())
+			result = actors.iterator().next();
+		else
+			result = null;
 		return result;
 	}
 
