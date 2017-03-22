@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.TripRepository;
-import security.LoginService;
 import domain.Actor;
 import domain.Administrator;
 import domain.Customer;
@@ -34,9 +33,6 @@ public class TripService {
 
 	@Autowired
 	private ActorService	actorService;
-
-	@Autowired
-	private LoginService	loginService;
 
 	@Autowired
 	private Validator		validator;
@@ -63,21 +59,24 @@ public class TripService {
 		return result;
 	}
 
-	@SuppressWarnings("static-access")
 	public Trip findOne(final Integer tripId) {
+		Trip result, aux;
+		Actor actor;
 
 		Assert.notNull(tripId, "trip.error.id.null");
 		Assert.isTrue(tripId > 0, "trip.error.id.invalid");
 
-		Trip result = null;
+		result = null;
+		aux = this.tripRepository.findOne(tripId);
+		actor = this.actorService.findActorByPrincipal();
 
-		final Trip aux = this.tripRepository.findOne(tripId);
-		final String loggedAuthority = this.loginService.getPrincipal().getAuthorities().iterator().next().getAuthority();
-		if ((aux.getBanned() == true && loggedAuthority == "ADMINISTRATOR"))
+		Assert.notNull(actor);
+
+		if ((aux.getBanned() && actor instanceof Administrator))
 			result = aux;
-		else if (aux.getBanned() == true && this.customerService.findCustomerByPrincipal().equals(aux.getCustomer()))
+		else if (aux.getBanned() && actor.equals(aux.getCustomer()))
 			result = aux;
-		else if (aux.getBanned() == false)
+		else if (!aux.getBanned())
 			result = aux;
 
 		return result;

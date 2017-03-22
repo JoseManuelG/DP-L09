@@ -10,11 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -88,7 +89,8 @@ public class Trip extends Commentable {
 		this.destination = destination;
 	}
 
-	@Range(min = -90, max = 90)
+	@DecimalMin(value = "-90.0")
+	@DecimalMax(value = "90.0")
 	public Double getOriginLat() {
 		return this.originLat;
 	}
@@ -97,7 +99,8 @@ public class Trip extends Commentable {
 		this.originLat = originLat;
 	}
 
-	@Range(min = -180, max = 180)
+	@DecimalMin(value = "-180.0")
+	@DecimalMax(value = "180.0")
 	public Double getOriginLon() {
 		return this.originLon;
 	}
@@ -106,7 +109,8 @@ public class Trip extends Commentable {
 		this.originLon = originLon;
 	}
 
-	@Range(min = -90, max = 90)
+	@DecimalMin(value = "-90.0")
+	@DecimalMax(value = "90.0")
 	public Double getDestinationLat() {
 		return this.destinationLat;
 	}
@@ -115,7 +119,8 @@ public class Trip extends Commentable {
 		this.destinationLat = destinationLat;
 	}
 
-	@Range(min = -180, max = 180)
+	@DecimalMin(value = "-180.0")
+	@DecimalMax(value = "180.0")
 	public Double getDestinationLon() {
 		return this.destinationLon;
 	}
