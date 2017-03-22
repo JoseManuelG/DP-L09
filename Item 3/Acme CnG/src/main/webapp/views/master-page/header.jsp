@@ -42,6 +42,7 @@
 					<security:authorize access="hasRole('CUSTOMER')">
 					<li><a href="trip/customer/list/my/offers.do"><spring:message code="master.page.trip.my.offers" /></a></li>
 					<li><a href="trip/customer/list/my/requests.do"><spring:message code="master.page.trip.my.requests" /></a></li>
+					<li><a href="application/customer/list.do"><spring:message code="master.page.my.applications" /></a></li>
 					<li><a href="trip/customer/search.do"><spring:message code="master.page.trip.search" /></a></li>
 					</security:authorize>	
 					<security:authorize access="hasRole('ADMINISTRATOR')">

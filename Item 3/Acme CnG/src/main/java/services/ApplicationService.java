@@ -172,5 +172,13 @@ public class ApplicationService {
 	public void flush() {
 		this.applicationRepository.flush();
 	}
+	public Collection<Application> findAllByPrincipal() {
+		Customer customer;
+
+		customer = this.customerService.findCustomerByPrincipal();
+		Assert.notNull(customer, "application.error.customer.null");
+
+		return this.applicationRepository.findAllApplicationByCustomer(customer.getId());
+	}
 
 }
