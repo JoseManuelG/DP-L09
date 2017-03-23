@@ -15,11 +15,12 @@
 
 - Revisar todas las requestURI de las tablas
 
--Parameterized JUnit
-
 - Poner tachado los baneados
 
+- Al hacer cancel en nuevo comment va a la pagina principal en vez de al commentable tanto para trip como para profile.
+
 PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
+PARA JAVI: Parameterized JUnit
 
 ------------------------------ARREGLADO------------------------------
 -Falta confirmación al borrar cuenta y redirigir al link de deslogueo.(ARREGLADO)
