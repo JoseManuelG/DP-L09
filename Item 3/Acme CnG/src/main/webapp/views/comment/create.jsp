@@ -29,6 +29,6 @@
 	
 	<acme:submit code="comment.save" name="save"/>
 	
-	<acme:cancel url="" code="comment.cancel"/>
+	<acme:cancel url="${cancelURL }" code="comment.cancel"/>
 	
 </form:form>
