@@ -13,7 +13,6 @@
 
 - Cambiar findOne de configuration.
 
-- Revisar todas las requestURI de las tablas
 
 - Poner tachado los baneados
 
@@ -23,6 +22,7 @@ PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 PARA JAVI: Parameterized JUnit
 
 ------------------------------ARREGLADO------------------------------
+- Revisar todas las requestURI de las tablas(ARREGLADO)
 -Falta confirmación al borrar cuenta y redirigir al link de deslogueo.(ARREGLADO)
 -No controlamos cuando es null el dueño de un trip vamos cuando el customer ha borrado su cuenta, saltan nullpointers por doquier.
 (ARREGLADO)

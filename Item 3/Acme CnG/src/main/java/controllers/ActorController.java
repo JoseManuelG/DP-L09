@@ -62,7 +62,7 @@ public class ActorController extends AbstractController {
 		result.addObject("allBannedComments", allBannedComments);
 		result.addObject("isAdmin", isAdmin);
 		result.addObject("myProfile", myProfile);
-		result.addObject("requestURI", "actor/view.do");
+		result.addObject("requestURI", "actor/view.do?actorId=" + actor.getId());
 
 		return result;
 	}
