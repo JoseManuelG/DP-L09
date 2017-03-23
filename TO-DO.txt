@@ -13,8 +13,7 @@
 
 - Cambiar findOne de configuration.
 
-
-- Poner tachado los baneados
+-Poner texto para explicar que tachado y rojo es baneado
 
 - Al hacer cancel en nuevo comment va a la pagina principal en vez de al commentable tanto para trip como para profile.
 
@@ -22,6 +21,7 @@ PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 PARA JAVI: Parameterized JUnit
 
 ------------------------------ARREGLADO------------------------------
+- Poner tachado los baneados(ARREGLADO)
 - Revisar todas las requestURI de las tablas(ARREGLADO)
 -Falta confirmación al borrar cuenta y redirigir al link de deslogueo.(ARREGLADO)
 -No controlamos cuando es null el dueño de un trip vamos cuando el customer ha borrado su cuenta, saltan nullpointers por doquier.

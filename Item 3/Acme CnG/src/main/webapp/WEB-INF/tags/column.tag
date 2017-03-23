@@ -29,7 +29,7 @@
 </jstl:if>
 
 <jstl:if test="${highlight}">
-	<jstl:set var="style" value="color: red" />
+	<jstl:set var="style" value="color: red;text-decoration:line-through " />
 </jstl:if>
 
 <jstl:if test="${!highlight}">
