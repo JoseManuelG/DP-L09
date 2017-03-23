@@ -1,0 +1,56 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{shadecolor}{RGB}{220,220,220}
+
+\title{Informe de configuración https}
+
+\date{}
+
+\begin{document}
+\setlength{\voffset}{-5em}
+\pagenumbering{gobble}
+\maketitle
+
+\section{Motivación}
+
+Teniendo el proyecto prácticamente terminado, a falta de corregir ciertos matices, y al haber planteado una discusión sobre los problemas que causa la plantilla dada para realizar los test y una posible solución, se planteó en la revisión del día 22/03/2017 realizar un segundo A+ para este proyecto. Este A+ consiste en la inclusión de test parametrizados usando la herramienta parameterized del paquete JUnit.
+
+\section{Objetivo}
+
+Nuestro objetivo es la reutilización de código en los test, de forma que una vez planteado el caso de test basado en un caso de uso en concreto, podamos modificar ciertos parámetros para realizar nuevos casos de test sobre la misma plantilla. Además, queremos que cada uno de estos test se realice por separado, de forma transaccional y, a ser posible, en diferentes test JUnit para poder identificarlos más rápidamente.
+
+\section{Implementación}
+
+La forma en la que implementamos la plantilla del caso de uso y comprobamos en esta el resultado del test es la misma que la sugerida en teoría. En cambio, utilizaremos Parameterized de JUnit (org.junit.runners.Parameterized) realizar las llamadas a esta plantilla, en vez de hacerlas mediante un for en un mismo @Test, con lo que conseguiremos que todos los test se hagan de forma transaccional. 
+
+Para poder usar esto, necesitamos cargar el contexto de Parameterized, al igual que lo haciamos en spring. Esto causa un problema en su implementación: no podemos usar @RunWith para cargar dos contextos diferentes. Hemos encontrados dos formas diferentes para arreglarlos, de los cuales uno solo esta disponible a partir de la versión 4.2.0 RELEASE de spring-test. Como nosotros estamos trabajando con la versión 3.2.4.RELEASE descartamos esta primera opción, llegando a la que explicamos a continuación.
+
+Para poder inicializar tanto el contexto de spring como el de Parameterized, lo que hemos realizado es la inicialización con @RunWith de Parameterized, y la inicialización de spring manualmente en cada @Test. Para ello hemos incluido un par en el before. [[EN CONSTRUCCION]]
+
+\section{Configuración de Tomcat}
+
+Ahora que tenemos el certificado tenemos que configurar Tomcat para que acepte conexiones seguras. Para ello debemos abrir el archivo server.xml que se encuentra en el directorio C:\textbackslash Program Files\textbackslash Apache Software Foundation\textbackslash Tomcat 7.0\textbackslash conf. Si nos fijamos, ya existen unas lineas comentadas para dar soporte a una conexión https. Sin embargo, por un lado dejar la variable protocol=``HTTP/1.1'' hace que tomcat elija automáticamente la implementación SSL, algo que según la documentación se debe evitar, y por otro lado, le falta la información sobre el certificado que se va a usar. Eligiendo una de las posibles implementaciones que se dan en la documentación, añadimos el siguiente código al archivo:
+
+\noindent\colorbox{shadecolor}{\textless Connector protocol=``org.apache.coyote.http11.Http11NioProtocol''}
+
+\noindent\colorbox{shadecolor}{port=``443'' maxThreads=``200'' scheme=``https'' secure=``true''}
+
+\noindent\colorbox{shadecolor}{SSLEnabled=``true'' keystoreFile=``C:\textbackslash Certificados\textbackslash sample.jks''}
+
+\noindent\colorbox{shadecolor}{keystorePass=``samplePassword'' clientAuth=``false'' sslProtocol=``TLS''/\textgreater }
+
+Nótese que tanto el directorio indicado en keystoreFile como la contraseña usada en keystorePass son las que le hemos dado a nuestro certificado. Por otro lado, hemos cambiado el puerto por defecto 8433 al 433, que es el puerto por defecto de https, de forma que en el navegador podamos entrar a través de ``https://www.acme.com'', ya que tenemos esa dirección puenteada en nuestro archivo de DNS.
+
+Con estas configuraciones, y una vez desplegada nuestra aplicación como de costumbre, ya podemos entrar en ella através del protocolo https.
+
+\section{Otras consideraciones}
+Ya que lo único que hemos modificado o añadido son archivos que no pertenecen al proyecto o la plantilla, la plantilla expuesta en este item, 1.10, y su proyecto correspondiente, apenas sufre modificaciones con respecto a los de otros items. Lo único que se ha modificado en estos son los términos y condiciones, para exponer que se usa conexión segura.
+
+Por otro lado teníamos la posibilidad de quitar la entrada por http, pero hemos decidido dejarla por simplicidad. Otra opción algo más compleja hubiera sido redirigirla siempre a la https, y lo óptimo hubiera sido que se usara https en ciertas páginas, como cada vez que se establece una conexión con otro usuario, y http en páginas que no requirieran una conexión segura. No hemos explorado estas opciones por falta de tiempo, ya que hemos decidido invertir el tiempo que nos ha sobrado al terminar el proyecto en mejorar este en vez de mejorar este apartado.
+
+\section{Bibliografía}
+http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html
+\end{document}
