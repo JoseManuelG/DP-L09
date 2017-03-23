@@ -77,7 +77,7 @@ public class ActorController extends AbstractController {
 	public ModelAndView delete() {
 		ModelAndView result;
 		this.customerService.delete();
-		result = new ModelAndView("redirect:/");
+		result = new ModelAndView("redirect:/j_spring_security_logout");
 		return result;
 	}
 

@@ -2,14 +2,10 @@
 
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
 
-
--No controlamos cuando es null el dueño de un trip vamos cuando el customer ha borrado su cuenta, saltan nullpointers por doquier.
-
 -Cambiar el nombre de la compañia y el vat predeterminados del about
 
 -No se controla que no se pueda hacer apply/accept/deny de trips que se han pasado de fecha. 
 
--Falta confirmación al borrar cuenta y redirigir al link de deslogueo.
 
 -Faltan por fijar tests para dashboard, y alguno que se pueda pasar más
 
@@ -26,6 +22,9 @@
 PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 
 ------------------------------ARREGLADO------------------------------
+-Falta confirmación al borrar cuenta y redirigir al link de deslogueo.(ARREGLADO)
+-No controlamos cuando es null el dueño de un trip vamos cuando el customer ha borrado su cuenta, saltan nullpointers por doquier.
+(ARREGLADO)
 -En la vista de mis solicitudes y mis ofertas me sale el boton de solicitar, no tiene mucho sentido que solicite hueco en mi coche no?(ARREGLADO)
 -Hacer un metodo deleteCustomer en commentsService para poner a null los creados por un actor cuando se borra(ARREGLADO)
 -Cuando respondo a un mensaje puede mandar el mensaje a otra persona, pienso que no deberia darme la opción. (ARREGLADO)
