@@ -1,0 +1,1 @@
+Como necesitamos usar Parameterized.class en runwith, tenemos que inicializar el contexto de spring manualmente. Usamos el before de abstract test.
