@@ -8,7 +8,6 @@
 
 -Faltan por fijar tests para dashboard, y alguno que se pueda pasar más
 
-- Cambiar banner (logo)
 
 - Cambiar findOne de configuration.
 
@@ -19,6 +18,7 @@ PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 PARA JAVI: Parameterized JUnit
 
 ------------------------------ARREGLADO------------------------------
+- Cambiar banner (logo)(ARREGLADO)
 - Al hacer cancel en nuevo comment va a la pagina principal en vez de al commentable tanto para trip como para profile.(ARREGLADO)
 - Poner tachado los baneados(ARREGLADO)
 - Revisar todas las requestURI de las tablas(ARREGLADO)
