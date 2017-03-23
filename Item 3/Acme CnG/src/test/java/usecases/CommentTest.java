@@ -45,75 +45,155 @@ public class CommentTest extends AbstractTest {
 	//Post a comment on another actor, on an offer, or a request.
 
 	@Test(expected = IllegalArgumentException.class)
-	public void sampleNegativeTest() {
+	public void CommentNegativeTest() {
 		final Comment comment = null;
 		this.commentService.save(comment);
 	}
 
 	@Test
-	public void driver() {
-		final Object testingData[][] = {
-			{
-				//Positivos
-				"customer1", 999, "test", 3, "test", null
-			}, {
-
-				"admin", 999, "test", 3, "test", null
-			}, {
-
-				"customer1", 1000, "test", 3, "test", null
-			}, {
-
-				"admin", 1000, "test", 3, "test", null
-			}, {
-
-				"customer1", 995, "test", 3, "test", null
-			}, {
-
-				"admin", 995, "test", 3, "test", null
-			}, {
-				//Negativos
-				"", 995, "test", 3, "test", IllegalArgumentException.class
-			}, {
-
-				"customer1", 0, "test", 3, "test", ConstraintViolationException.class
-			}, {
-
-				"customer1", 995, "", 3, "test", ConstraintViolationException.class
-			}, {
-
-				"customer1", 995, "test", -1, "test", ConstraintViolationException.class
-			}, {
-
-				"customer1", 995, "test", 6, "test", ConstraintViolationException.class
-			}, {
-
-				"customer1", 995, "test", 3, "", ConstraintViolationException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.template((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (int) testingData[i][3], (String) testingData[i][4], (Class<?>) testingData[i][5]);
+	public void CommentPositiveTest() {
+		this.template("customer1", 999, "test", 3, "test", null);
 	}
+
+	@Test
+	public void CommentPositiveTest2() {
+		this.template("admin", 999, "test", 3, "test", null);
+	}
+
+	@Test
+	public void CommentPositiveTest3() {
+		this.template("customer1", 1000, "test", 3, "test", null);
+	}
+
+	@Test
+	public void CommentPositiveTest4() {
+		this.template("admin", 1000, "test", 3, "test", null);
+	}
+
+	@Test
+	public void CommentPositiveTest5() {
+		this.template("customer1", 995, "test", 3, "test", null);
+	}
+
+	@Test
+	public void CommentPositiveTest6() {
+		this.template("admin", 995, "test", 3, "test", null);
+	}
+
+	@Test
+	public void CommentNegativeTest2() {
+		this.template("", 995, "test", 3, "test", IllegalArgumentException.class);
+	}
+
+	@Test
+	public void CommentNegativeTest3() {
+		this.template("customer1", 0, "test", 3, "test", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void CommentNegativeTest4() {
+		this.template("customer1", 995, "", 3, "test", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void CommentNegativeTest5() {
+		this.template("customer1", 995, "test", -1, "test", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void CommentNegativeTest6() {
+		this.template("customer1", 995, "test", 6, "test", ConstraintViolationException.class);
+	}
+	@Test
+	public void CommentNegativeTest7() {
+		this.template("customer1", 995, "test", 3, "", ConstraintViolationException.class);
+	}
+
+	//	@Test
+	//	public void driver() {
+	//		final Object testingData[][] = {
+	//			{
+	//				//Positivos
+	//				"customer1", 999, "test", 3, "test", null
+	//			}, {
+	//
+	//				"admin", 999, "test", 3, "test", null
+	//			}, {
+	//
+	//				"customer1", 1000, "test", 3, "test", null
+	//			}, {
+	//
+	//				"admin", 1000, "test", 3, "test", null
+	//			}, {
+	//
+	//				"customer1", 995, "test", 3, "test", null
+	//			}, {
+	//
+	//				"admin", 995, "test", 3, "test", null
+	//			}, {
+	//				//Negativos
+	//				"", 995, "test", 3, "test", IllegalArgumentException.class
+	//			}, {
+	//
+	//				"customer1", 0, "test", 3, "test", ConstraintViolationException.class
+	//			}, {
+	//
+	//				"customer1", 995, "", 3, "test", ConstraintViolationException.class
+	//			}, {
+	//
+	//				"customer1", 995, "test", -1, "test", ConstraintViolationException.class
+	//			}, {
+	//
+	//				"customer1", 995, "test", 6, "test", ConstraintViolationException.class
+	//			}, {
+	//
+	//				"customer1", 995, "test", 3, "", ConstraintViolationException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.template((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (int) testingData[i][3], (String) testingData[i][4], (Class<?>) testingData[i][5]);
+	//	}
 
 	//Ban a comment that he or she finds inappropriate. 
-	@Test
-	public void driver2() {
-		final Object testingData[][] = {
-			{
-				"admin", 1049, true, null
-			}, {
-				"admin", 1050, false, null
-			}, {
-				"customer1", 1049, true, IllegalArgumentException.class
-			}, {
-				"customer1", 1050, false, IllegalArgumentException.class
-			}
-		};
 
-		for (int i = 0; i < testingData.length; i++)
-			this.template2((String) testingData[i][0], (int) testingData[i][1], (boolean) testingData[i][2], (Class<?>) testingData[i][3]);
+	@Test
+	public void BanCommentPositiveTest() {
+		this.template2("admin", 1049, true, null);
 	}
+
+	@Test
+	public void BanCommentPositiveTest2() {
+		this.template2("admin", 1050, false, null);
+	}
+
+	@Test
+	public void BanCommentNegativeTest() {
+		this.template2("customer1", 1049, true, IllegalArgumentException.class);
+	}
+
+	@Test
+	public void BanCommentNegativeTest2() {
+		this.template2("customer1", 1050, false, IllegalArgumentException.class);
+	}
+
+	//	@Test
+	//	public void driver2() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"admin", 1049, true, null
+	//			}, {
+	//				"admin", 1050, false, null
+	//			}, {
+	//				"customer1", 1049, true, IllegalArgumentException.class
+	//			}, {
+	//				"customer1", 1050, false, IllegalArgumentException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.template2((String) testingData[i][0], (int) testingData[i][1], (boolean) testingData[i][2], (Class<?>) testingData[i][3]);
+	//	}
 
 	// Ancillary methods ------------------------------------------------------
 

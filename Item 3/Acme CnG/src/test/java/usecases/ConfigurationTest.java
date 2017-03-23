@@ -45,24 +45,49 @@ public class ConfigurationTest extends AbstractTest {
 	//Change the banner that the system shows on the welcome page.
 
 	@Test
-	public void driver() {
-		final Object testingData[][] = {
-			{
-				"admin", "http://www.test.com", null
-			}, {
-				"customer1", "http://www.test.com", IllegalArgumentException.class
-			}, {
-				"admin", "", ConstraintViolationException.class
-			}, {
-				"admin", "noSoyUnaURL", ConstraintViolationException.class
-			}, {
-				null, "http://www.test.com", IllegalArgumentException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.template((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
+	public void ConfigurationPositiveTest() {
+		this.template("admin", "http://www.test.com", null);
 	}
+
+	@Test
+	public void ConfigurationNegativeTest() {
+		this.template("customer1", "http://www.test.com", IllegalArgumentException.class);
+	}
+
+	@Test
+	public void ConfigurationNegativeTest2() {
+		this.template("admin", "", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void ConfigurationNegativeTest3() {
+		this.template("admin", "noSoyUnaURL", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void ConfigurationNegativeTest4() {
+		this.template(null, "http://www.test.com", IllegalArgumentException.class);
+	}
+
+	//	@Test
+	//	public void driver() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"admin", "http://www.test.com", null
+	//			}, {
+	//				"customer1", "http://www.test.com", IllegalArgumentException.class
+	//			}, {
+	//				"admin", "", ConstraintViolationException.class
+	//			}, {
+	//				"admin", "noSoyUnaURL", ConstraintViolationException.class
+	//			}, {
+	//				null, "http://www.test.com", IllegalArgumentException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.template((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
+	//	}
 
 	// Ancillary methods ------------------------------------------------------
 

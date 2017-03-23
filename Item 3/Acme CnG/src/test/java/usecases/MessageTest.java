@@ -41,103 +41,179 @@ public class MessageTest extends AbstractTest {
 
 	// Tests ------------------------------------------------------------------
 
-	//Driver para el caso de uso de escribir un mensaje:
+	//Caso de uso de escribir un mensaje:
 	//test positivo
+	@Test
+	public void WriteMessageTest1() {
+		this.templateWriteMessage("customer1", 994, "test title", "test text", null);
+	}
 	//sin loguearse
+	@Test
+	public void WriteMessageTest2() {
+		this.templateWriteMessage(null, 994, "test title", "test text", IllegalArgumentException.class);
+	}
 	//recipient no válido
+	@Test
+	public void WriteMessageTest3() {
+		this.templateWriteMessage("customer1", 1, "test title", "test text", IllegalArgumentException.class);
+	}
 	//title blank
+	@Test
+	public void WriteMessageTest4() {
+		this.templateWriteMessage("customer1", 994, "", "test text", ConstraintViolationException.class);
+	}
 	//text blank
 	@Test
-	public void driverWriteMessage() {
-		final Object testingData[][] = {
-			{
-				"customer1", 994, "test title", "test text", null
-			}, {
-				null, 994, "test title", "test text", IllegalArgumentException.class
-			}, {
-				"customer1", 1, "test title", "test text", IllegalArgumentException.class
-			}, {
-				"customer1", 994, "", "test text", ConstraintViolationException.class
-			}, {
-				"customer1", 994, "test title", "", ConstraintViolationException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.templateWriteMessage((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+	public void WriteMessageTest5() {
+		this.templateWriteMessage("customer1", 994, "test title", "", ConstraintViolationException.class);
 	}
 
-	//Driver para el caso de uso de responder a un mensaje:
+	//	@Test
+	//	public void driverWriteMessage() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"customer1", 994, "test title", "test text", null
+	//			}, {
+	//				null, 994, "test title", "test text", IllegalArgumentException.class
+	//			}, {
+	//				"customer1", 1, "test title", "test text", IllegalArgumentException.class
+	//			}, {
+	//				"customer1", 994, "", "test text", ConstraintViolationException.class
+	//			}, {
+	//				"customer1", 994, "test title", "", ConstraintViolationException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.templateWriteMessage((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+	//	}
+
+	//Caso de uso de responder a un mensaje:
 	//test positivo
+	@Test
+	public void ReplyMessageTest1() {
+		this.templateReplyMessage("admin", 564, "test title", "test text", null);
+	}
 	//mensaje sin sender(cuenta borrada del sender)
+	@Test
+	public void ReplyMessageTest2() {
+		this.templateReplyMessage("admin", 587, "test title", "test text", IllegalArgumentException.class);
+	}
 	//mensaje que no es suyo
+	@Test
+	public void ReplyMessageTest3() {
+		this.templateReplyMessage("admin", 605, "test title", "test text", IllegalArgumentException.class);
+	}
 	//sin loguearse
+	@Test
+	public void ReplyMessageTest4() {
+		this.templateReplyMessage(null, 564, "test title", "test text", IllegalArgumentException.class);
+	}
 	//titulo blank
+	@Test
+	public void ReplyMessageTest5() {
+		this.templateReplyMessage("admin", 564, "", "test text", ConstraintViolationException.class);
+	}
 	//texto blank
 	@Test
-	public void driveReplyMessage() {
-		final Object testingData[][] = {
-			{
-				"admin", 564, "test title", "test text", null
-			}, {
-				"admin", 587, "test title", "test text", IllegalArgumentException.class
-			}, {
-				"admin", 605, "test title", "test text", IllegalArgumentException.class
-			}, {
-				null, 564, "test title", "test text", IllegalArgumentException.class
-			}, {
-				"admin", 564, "", "test text", ConstraintViolationException.class
-			}, {
-				"admin", 564, "test title", "", ConstraintViolationException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.templateReplyMessage((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+	public void ReplyMessageTest6() {
+		this.templateReplyMessage("admin", 564, "test title", "", ConstraintViolationException.class);
 	}
 
-	//Driver para el caso de uso de reenviar un mensaje:
+	//	@Test
+	//	public void driveReplyMessage() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"admin", 564, "test title", "test text", null
+	//			}, {
+	//				"admin", 587, "test title", "test text", IllegalArgumentException.class
+	//			}, {
+	//				"admin", 605, "test title", "test text", IllegalArgumentException.class
+	//			}, {
+	//				null, 564, "test title", "test text", IllegalArgumentException.class
+	//			}, {
+	//				"admin", 564, "", "test text", ConstraintViolationException.class
+	//			}, {
+	//				"admin", 564, "test title", "", ConstraintViolationException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.templateReplyMessage((String) testingData[i][0], (int) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Class<?>) testingData[i][4]);
+	//	}
+
+	//Caso de uso de reenviar un mensaje:
 	//test positivo
+	@Test
+	public void ForwardMessageTest1() {
+		this.templateForwardMessage("admin", 564, 993, null);
+	}
 	//sin loguearse
+	@Test
+	public void ForwardMessageTest2() {
+		this.templateForwardMessage(null, 564, 993, IllegalArgumentException.class);
+	}
 	//mensaje que no es suyo
+	@Test
+	public void ForwardMessageTest3() {
+		this.templateForwardMessage("admin", 605, 993, IllegalArgumentException.class);
+	}
 	//recipient no válido
 	@Test
-	public void driveForwardMessage() {
-		final Object testingData[][] = {
-			{
-				"admin", 564, 993, null
-			}, {
-				null, 564, 993, IllegalArgumentException.class
-			}, {
-				"admin", 605, 993, IllegalArgumentException.class
-			}, {
-				"admin", 564, 1, IllegalArgumentException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.templateForwardMessage((String) testingData[i][0], (int) testingData[i][1], (int) testingData[i][2], (Class<?>) testingData[i][3]);
+	public void ForwardMessageTest4() {
+		this.templateForwardMessage("admin", 564, 1, IllegalArgumentException.class);
 	}
 
-	//Driver para el caso de uso de borrar un mensaje:
+	//	@Test
+	//	public void driveForwardMessage() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"admin", 564, 993, null
+	//			}, {
+	//				null, 564, 993, IllegalArgumentException.class
+	//			}, {
+	//				"admin", 605, 993, IllegalArgumentException.class
+	//			}, {
+	//				"admin", 564, 1, IllegalArgumentException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.templateForwardMessage((String) testingData[i][0], (int) testingData[i][1], (int) testingData[i][2], (Class<?>) testingData[i][3]);
+	//	}
+
+	//Caso de uso de borrar un mensaje:
 	//test positivo
+	@Test
+	public void DeleteMessageTest1() {
+		this.templateDeleteMessage("admin", 564, null);
+	}
 	//sin loguearse
+	@Test
+	public void DeleteMessageTest2() {
+		this.templateDeleteMessage(null, 564, IllegalArgumentException.class);
+	}
 	//mensaje que no es suyo
 	@Test
-	public void driveDeleteMessage() {
-		final Object testingData[][] = {
-			{
-				"admin", 564, null
-			}, {
-				null, 564, IllegalArgumentException.class
-			}, {
-				"admin", 605, IllegalArgumentException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.templateDeleteMessage((String) testingData[i][0], (int) testingData[i][1], (Class<?>) testingData[i][2]);
+	public void DeleteMessageTest3() {
+		this.templateDeleteMessage("admin", 605, IllegalArgumentException.class);
 	}
+
+	//	@Test
+	//	public void driveDeleteMessage() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"admin", 564, null
+	//			}, {
+	//				null, 564, IllegalArgumentException.class
+	//			}, {
+	//				"admin", 605, IllegalArgumentException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.templateDeleteMessage((String) testingData[i][0], (int) testingData[i][1], (Class<?>) testingData[i][2]);
+	//	}
 
 	// Ancillary methods ------------------------------------------------------
 

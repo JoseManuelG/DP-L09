@@ -60,69 +60,63 @@ public class ActorTest extends AbstractTest {
 
 	@Test
 	public void RegisterPositiveTest() {
-		final Customer customer = this.customerService.create();
-		Customer savedCustomer = null;
-		final UserAccount userAccount = new UserAccount();
-		final Collection<Authority> authorities = new ArrayList<Authority>();
-		final Authority authority = new Authority();
-		authority.setAuthority("CUSTOMER");
-		authorities.add(authority);
-		userAccount.setAuthorities(authorities);
-		customer.setUserAccount(userAccount);
-		customer.getUserAccount().setUsername("test");
-		customer.getUserAccount().setPassword("test");
-		customer.setEmail("test@acme.com");
-		customer.setName("test");
-		customer.setSurname("tested");
-		customer.setPhone("testPhone");
-		savedCustomer = this.customerService.save(customer);
-		Assert.notNull(savedCustomer);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void RegisterNegativeTest() {
-		final Customer customer = this.customerService.create();
-		Customer savedCustomer = null;
-		final UserAccount userAccount = new UserAccount();
-		final Collection<Authority> authorities = new ArrayList<Authority>();
-		final Authority authority = new Authority();
-		authority.setAuthority("CUSTOMER");
-		authorities.add(authority);
-		userAccount.setAuthorities(authorities);
-		customer.setUserAccount(userAccount);
-		customer.getUserAccount().setUsername("");
-		customer.getUserAccount().setPassword("");
-		customer.setEmail("");
-		customer.setName("");
-		customer.setSurname("");
-		customer.setPhone("");
-		savedCustomer = this.customerService.save(customer);
-		Assert.isNull(savedCustomer);
+		this.template("test1", "test1", "test@acme.com", "test1", "tested", "testPhone", null);
 	}
 
 	@Test
-	public void driver() {
-		final Object testingData[][] = {
-			{
-				"test1", "test1", "test@acme.com", "test1", "tested", "testPhone", null
-			}, {
-				"", "test1", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class
-			}, {
-				"test1", "", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class
-			}, {
-				"test1", "test1", "", "test1", "tested", "testPhone", ConstraintViolationException.class
-			}, {
-				"test1", "test1", "test@acme.com", "", "tested", "testPhone", ConstraintViolationException.class
-			}, {
-				"test1", "test1", "test@acme.com", "test1", "", "testPhone", ConstraintViolationException.class
-			}, {
-				"test1", "test1", "test@acme.com", "test1", "tested", "", ConstraintViolationException.class
-			}
-		};
-
-		for (int i = 0; i < testingData.length; i++)
-			this.template((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
+	public void RegisterNegativeTest2() {
+		this.template("", "test1", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class);
 	}
+
+	@Test
+	public void RegisterNegativeTest3() {
+		this.template("test1", "", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void RegisterNegativeTest4() {
+		this.template("test1", "test1", "", "test1", "tested", "testPhone", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void RegisterNegativeTest5() {
+		this.template("test1", "test1", "test@acme.com", "", "tested", "testPhone", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void RegisterNegativeTest6() {
+		this.template("test1", "test1", "test@acme.com", "test1", "", "testPhone", ConstraintViolationException.class);
+	}
+
+	@Test
+	public void RegisterNegativeTest7() {
+		this.template("test1", "test1", "test@acme.com", "test1", "tested", "", ConstraintViolationException.class);
+	}
+
+	//	@Test
+	//	public void driver() {
+	//		final Object testingData[][] = {
+	//			{
+	//				"test1", "test1", "test@acme.com", "test1", "tested", "testPhone", null
+	//			}, {
+	//				"", "test1", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class
+	//			}, {
+	//				"test1", "", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class
+	//			}, {
+	//				"test1", "test1", "", "test1", "tested", "testPhone", ConstraintViolationException.class
+	//			}, {
+	//				"test1", "test1", "test@acme.com", "", "tested", "testPhone", ConstraintViolationException.class
+	//			}, {
+	//				"test1", "test1", "test@acme.com", "test1", "", "testPhone", ConstraintViolationException.class
+	//			}, {
+	//				"test1", "test1", "test@acme.com", "test1", "tested", "", ConstraintViolationException.class
+	//			}
+	//		};
+	//
+	//		for (int i = 0; i < testingData.length; i++)
+	//			this.template((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
+	//	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected void template(final String userName, final String password, final String email, final String name, final String surname, final String phone, final Class<?> expected) {
