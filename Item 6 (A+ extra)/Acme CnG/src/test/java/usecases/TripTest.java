@@ -313,19 +313,6 @@ public class TripTest extends AbstractTest {
 
 	@Test
 	public void parameterizedTestPost() {
-		this.templatePost(this.offer, this.username, this.days, this.description, this.destination, this.destinationLat, this.destinationLon, this.origin, this.originLat, this.originLon, this.title, this.expected);
-	}
-
-	// Ancillary methods ------------------------------------------------------
-
-	protected void templatePost(final Boolean offer, final String username, final Integer days, final String description, final String destination, final Double destinationLat, final Double destinationLon, final String origin, final Double originLat,
-		final Double originLon, final String title, final Class<?> expected) {
-		/*
-		 * Plantilla para testear post de offers y requests.
-		 * username -> usuario que se autentica para hacer el post.
-		 * offer -> true es offer y false es request
-		 * days -> dias a partir de hoy (0 es hoy, -1 ayer, 1 mañana).
-		 */
 		Class<?> caught;
 		Trip trip;
 		long day;
@@ -333,23 +320,23 @@ public class TripTest extends AbstractTest {
 		caught = null;
 		try {
 
-			this.authenticate(username);
+			this.authenticate(this.username);
 
 			day = 24 * 60 * 60 * 100;
-			if (offer)
+			if (this.offer)
 				trip = this.tripService.createOffer();
 			else
 				trip = this.tripService.createRequest();
 
-			trip.setDepartureTime(new Date(System.currentTimeMillis() + days * day));
-			trip.setDescription(description);
-			trip.setDestination(destination);
-			trip.setDestinationLat(destinationLat);
-			trip.setDestinationLon(destinationLon);
-			trip.setOrigin(origin);
-			trip.setOriginLat(originLat);
-			trip.setOriginLon(originLon);
-			trip.setTitle(title);
+			trip.setDepartureTime(new Date(System.currentTimeMillis() + this.days * day));
+			trip.setDescription(this.description);
+			trip.setDestination(this.destination);
+			trip.setDestinationLat(this.destinationLat);
+			trip.setDestinationLon(this.destinationLon);
+			trip.setOrigin(this.origin);
+			trip.setOriginLat(this.originLat);
+			trip.setOriginLon(this.originLon);
+			trip.setTitle(this.title);
 
 			this.tripService.save(trip);
 			this.tripService.flush();
@@ -359,6 +346,6 @@ public class TripTest extends AbstractTest {
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-		this.checkExceptions(expected, caught);
+		this.checkExceptions(this.expected, caught);
 	}
 }
