@@ -44,10 +44,11 @@
 	<acme:column sorteable="false" code="trip.origin" path="origin" highlight="${row.banned}"/>
 	<acme:column sorteable="false" code="trip.destination" path="destination" highlight="${row.banned}"/>
 	<acme:column sorteable="false" code="trip.departureTime" path="departureTime" highlight="${row.banned}"/>
-	
+		<jstl:if test="${!(requestURI eq 'trip/customer/list/my/offers.do' or requestURI eq  'trip/customer/list/my/requests.do')}">
 	<security:authorize access="hasRole('CUSTOMER')">	
 		
 		<spring:message code="trip.apply.title" var="applyTitleHeader" />
+			
 		<display:column title="${applyTitleHeader}">
 			<jstl:if test="${!(row.customer eq principal)}">
 			<a href="application/customer/apply.do?tripId=${row.id}">
@@ -55,8 +56,9 @@
 			</a>
 			</jstl:if>
 		</display:column>
+			
 	</security:authorize>
-	
+	</jstl:if>
 	<security:authorize access="hasRole('ADMINISTRATOR')">	
 		<display:column>
 			<jstl:choose>

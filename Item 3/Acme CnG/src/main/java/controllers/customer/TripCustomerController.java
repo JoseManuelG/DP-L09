@@ -52,14 +52,14 @@ public class TripCustomerController extends AbstractController {
 	public ModelAndView listRequests() {
 		ModelAndView result;
 		Collection<Trip> trips;
-		Actor princpal;
+		Actor principal;
 
 		trips = this.tripService.findAllRequestsByPrincipal();
-		princpal = this.actorService.findActorByPrincipal();
+		principal = this.actorService.findActorByPrincipal();
 
 		result = new ModelAndView("trip/list/my/requests");
 		result.addObject("trips", trips);
-		result.addObject("princpal", princpal);
+		result.addObject("principal", principal);
 		result.addObject("requestURI", "trip/customer/list/my/requests.do");
 
 		return result;

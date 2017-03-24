@@ -43,7 +43,7 @@ public class ApplicationService {
 
 		trip = this.tripService.findOne(tripId);
 		Assert.notNull(trip.getCustomer(), "application.error.deleted.owner");
-
+		Assert.isTrue(aux.getTrip().getDepartureTime().getTime() > System.currentTimeMillis(), "application.error.time.create");
 		aux.setTrip(trip);
 		aux.setCustomer(customer);
 		aux.setStatus("PENDING");
@@ -72,7 +72,6 @@ public class ApplicationService {
 
 		Assert.notNull(application, "application.error.null");
 		Assert.isTrue(application.getStatus().equals("PENDING") || application.getStatus().equals("ACCEPTED") || application.getStatus().equals("DENIED"), "application.error.status.invalid");
-
 		result = this.applicationRepository.save(application);
 		return result;
 	}
@@ -95,6 +94,7 @@ public class ApplicationService {
 
 		aux = this.applicationRepository.findOne(applyId);
 		Assert.isTrue(this.checkOwner(aux));
+		Assert.isTrue(aux.getTrip().getDepartureTime().getTime() > System.currentTimeMillis(), "application.error.time.accept");
 
 		aux.setStatus("ACCEPTED");
 		result = this.save(aux);
@@ -106,6 +106,7 @@ public class ApplicationService {
 
 		aux = this.applicationRepository.findOne(applyId);
 		Assert.isTrue(this.checkOwner(aux));
+		Assert.isTrue(aux.getTrip().getDepartureTime().getTime() > System.currentTimeMillis(), "application.error.time.deny");
 
 		aux.setStatus("DENIED");
 		result = this.save(aux);

@@ -3,20 +3,17 @@
 
 -Cambiar el nombre de la compañia y el vat predeterminados del about
 
--No se controla que no se pueda hacer apply/accept/deny de trips que se han pasado de fecha. 
-
 -Faltan por fijar tests para dashboard, y alguno que se pueda pasar más
-
 
 - Cambiar findOne de configuration.
 
 -Poner texto para explicar que tachado y rojo es baneado
 
-
 PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 PARA JAVI: Parameterized JUnit
 
 ------------------------------ARREGLADO------------------------------
+-No se controla que no se pueda hacer apply/accept/deny de trips que se han pasado de fecha. (ARREGLADO)
 -B+ tree de todos los servicios(ARREGLADO)
 - Cambiar banner (logo)(ARREGLADO)
 - Al hacer cancel en nuevo comment va a la pagina principal en vez de al commentable tanto para trip como para profile.(ARREGLADO)
