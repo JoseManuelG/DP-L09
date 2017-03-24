@@ -10,6 +10,8 @@
 
 package utilities;
 
+import javax.transaction.Transactional;
+
 import org.junit.After;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,7 @@ public abstract class AbstractTest {
 	// Set up and tear down -------------------------------
 
 	@Before
+	@Transactional
 	public void setUp() throws Exception {
 		this.testContextManager = new TestContextManager(this.getClass());
 		this.testContextManager.prepareTestInstance(this);

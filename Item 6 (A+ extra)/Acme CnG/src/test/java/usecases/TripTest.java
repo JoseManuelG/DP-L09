@@ -33,7 +33,6 @@ import domain.Trip;
 	"classpath:spring/junit.xml"
 })
 @RunWith(Parameterized.class)
-@Transactional
 public class TripTest extends AbstractTest {
 
 	// System under test ------------------------------------------------------
@@ -312,6 +311,7 @@ public class TripTest extends AbstractTest {
 	 */
 
 	@Test
+	@Transactional
 	public void parameterizedTestPost() {
 		Class<?> caught;
 		Trip trip;

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.ActorService;
 import services.ApplicationService;
 import services.CommentService;
 import services.MessageService;
@@ -20,9 +19,6 @@ public class DashboardAdministratorController extends AbstractController {
 
 	@Autowired
 	private ApplicationService	applicationService;
-
-	@Autowired
-	private ActorService		actorService;
 
 	@Autowired
 	private CommentService		commentService;

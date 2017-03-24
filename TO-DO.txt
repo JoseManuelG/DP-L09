@@ -1,18 +1,21 @@
+-Decimales de la dashboard
 
-- cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
+-Media de comentarios
 
 -Cambiar el nombre de la compañia y el vat predeterminados del about
 
 -Faltan por fijar tests para dashboard, y alguno que se pueda pasar más
 
-- Cambiar findOne de configuration.
+-Cambiar findOne de configuration.
 
 -Poner texto para explicar que tachado y rojo es baneado
 
-PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
-PARA JAVI: Parameterized JUnit
+-JAVI: transactional de test A+ extra 
 
 ------------------------------ARREGLADO------------------------------
+- cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro (ARREGLADO)
+PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item (ARREGLADO)
+PARA JAVI: Parameterized JUnit (ARREGLADO)
 -No se controla que no se pueda hacer apply/accept/deny de trips que se han pasado de fecha. (ARREGLADO)
 -B+ tree de todos los servicios(ARREGLADO)
 - Cambiar banner (logo)(ARREGLADO)
