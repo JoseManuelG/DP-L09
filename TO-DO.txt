@@ -1,4 +1,3 @@
--B+ tree de todos los servicios
 
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro
 
@@ -18,6 +17,7 @@ PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item
 PARA JAVI: Parameterized JUnit
 
 ------------------------------ARREGLADO------------------------------
+-B+ tree de todos los servicios(ARREGLADO)
 - Cambiar banner (logo)(ARREGLADO)
 - Al hacer cancel en nuevo comment va a la pagina principal en vez de al commentable tanto para trip como para profile.(ARREGLADO)
 - Poner tachado los baneados(ARREGLADO)
