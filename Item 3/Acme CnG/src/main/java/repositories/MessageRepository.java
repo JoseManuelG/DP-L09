@@ -39,7 +39,7 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 	Double avgMessagesSentPerActor();
 
 	//09 - The minimum, the average, and the maximum number of messages sent per actor. Part2
-	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null")
+	@Query("select count(m) from Message m where m.isSender=true and m.sender is not null group by m.sender.id order by count(m) asc")
 	List<Long> minMessagesSentPerActor();
 
 	//09 - The minimum, the average, and the maximum number of messages sent per actor. Part2
