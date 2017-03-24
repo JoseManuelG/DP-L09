@@ -3,6 +3,9 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{xcolor}
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true, urlcolor=black]{hyperref}
+
 \definecolor{shadecolor}{RGB}{220,220,220}
 
 \title{Informe de configuración https}
@@ -22,35 +25,35 @@ Teniendo el proyecto prácticamente terminado, a falta de corregir ciertos matic
 
 Nuestro objetivo es la reutilización de código en los test, de forma que una vez planteado el caso de test basado en un caso de uso en concreto, podamos modificar ciertos parámetros para realizar nuevos casos de test sobre la misma plantilla. Además, queremos que cada uno de estos test se realice por separado, de forma transaccional y, a ser posible, en diferentes test JUnit para poder identificarlos más rápidamente.
 
-\section{Implementación}
+\section{Inicialización del contexto de Spring}
 
-La forma en la que implementamos la plantilla del caso de uso y comprobamos en esta el resultado del test es la misma que la sugerida en teoría. En cambio, utilizaremos Parameterized de JUnit (org.junit.runners.Parameterized) realizar las llamadas a esta plantilla, en vez de hacerlas mediante un for en un mismo @Test, con lo que conseguiremos que todos los test se hagan de forma transaccional. 
+Utilizaremos Parameterized de JUnit (org.junit.runners.Parameterized) realizar las llamadas a nuestro @Test con distintos parámetros, en vez de hacerlas a una plantilla mediante un for contenido en un @Test, con lo que conseguiremos que todos los test se hagan de forma transaccional. 
 
 Para poder usar esto, necesitamos cargar el contexto de Parameterized, al igual que lo haciamos en spring. Esto causa un problema en su implementación: no podemos usar @RunWith para cargar dos contextos diferentes. Hemos encontrados dos formas diferentes para arreglarlos, de los cuales uno solo esta disponible a partir de la versión 4.2.0 RELEASE de spring-test. Como nosotros estamos trabajando con la versión 3.2.4.RELEASE descartamos esta primera opción, llegando a la que explicamos a continuación.
 
-Para poder inicializar tanto el contexto de spring como el de Parameterized, lo que hemos realizado es la inicialización con @RunWith de Parameterized, y la inicialización de spring manualmente en cada @Test. Para ello hemos incluido un par en el before. [[EN CONSTRUCCION]]
+Para poder inicializar tanto el contexto de spring como el de Parameterized, lo que hemos realizado es la inicialización con @RunWith de Parameterized, y la inicialización de spring manualmente en cada @Test. Para hacerlo hemos agregado un nuevo atrubito privado a la clase AbstractTest, llamado TestContextManager, clase del paquete org.springframework.test.context.TestContextManager de Spring. Como dice en su documentación, esta clase es el punto de entrada del framework Spring TestContext. En el método before de esta clase le damos valor al atributo testContextManager, simplemente llamando al constructor de su clase y pasandole la clase del test como parámetro. Una vez que este atributo sabe a que clase hace referencia el test, solo tenemos que usar su método prepareTestInstance. Este metodo es el que se encarga de de cargar todo el contexto de spring, por ejemplo inyectando las dependencias (con etiquetas autowired). Si se usara, por algún motivo, algún artefacto del framework Spring en el método before, debería ser después de este par de lineas que hemos comentado, para que el contexto este cargado.
 
-\section{Configuración de Tomcat}
+\section{Implementación de test con Parameterized}
 
-Ahora que tenemos el certificado tenemos que configurar Tomcat para que acepte conexiones seguras. Para ello debemos abrir el archivo server.xml que se encuentra en el directorio C:\textbackslash Program Files\textbackslash Apache Software Foundation\textbackslash Tomcat 7.0\textbackslash conf. Si nos fijamos, ya existen unas lineas comentadas para dar soporte a una conexión https. Sin embargo, por un lado dejar la variable protocol=``HTTP/1.1'' hace que tomcat elija automáticamente la implementación SSL, algo que según la documentación se debe evitar, y por otro lado, le falta la información sobre el certificado que se va a usar. Eligiendo una de las posibles implementaciones que se dan en la documentación, añadimos el siguiente código al archivo:
+Una vez hecho lo anterior, lo que queda por hacer es muy parecido a la implementación propuesta en clase. La estructura que se seguía en la plantilla se desplegará dentro del @Test, ya que en una misma clase no vamos a poder probar más de un caso de test parametrizado. Los parámetros que queramos pasarle a nuestro test lo definiremos como atributos de la clase, pero con la etiqueta @Parameter. Esta etiqueta cuenta con un parámetro value que sirve para definir que posición va a ocupar el atributo que estamos definiendo en el array que se le pasará al test. Si no lo definimos toma por defecto "value = 0".
 
-\noindent\colorbox{shadecolor}{\textless Connector protocol=``org.apache.coyote.http11.Http11NioProtocol''}
+Una vez hemos definido todos los atributos, debemos definir un método que vaya inyectando los valores de cada caso de test en los atributos que estamos usando como parámetros. Para esto hay que definir un método con la etiqueta @Parameters. Este método debe ser público y estático, según dice su documentación, pero no dice nada acerca de que debe devolver. Intuimos que debe ser un iterable que contenga un array de objetos, siendo el array de igual tamaño que el número de atributos definidos con @Parameter. En todos los ejemplos que nos hemos encontrado se usa un Collection<Object[]>. Nosotros hemos implementado este método para que devuelva también este Collection. En este método se definen todos los casos de test ha probar, cambiando los valores de los parámetros. Para ellos simplemente añadimos distintos arrays a la colección que se va a devolver, respetando el orden que hemos impuesto por los value de los @Parameter. El tamaño de la colección devuelta será el número de test que se probarán.
 
-\noindent\colorbox{shadecolor}{port=``443'' maxThreads=``200'' scheme=``https'' secure=``true''}
-
-\noindent\colorbox{shadecolor}{SSLEnabled=``true'' keystoreFile=``C:\textbackslash Certificados\textbackslash sample.jks''}
-
-\noindent\colorbox{shadecolor}{keystorePass=``samplePassword'' clientAuth=``false'' sslProtocol=``TLS''/\textgreater }
-
-Nótese que tanto el directorio indicado en keystoreFile como la contraseña usada en keystorePass son las que le hemos dado a nuestro certificado. Por otro lado, hemos cambiado el puerto por defecto 8433 al 433, que es el puerto por defecto de https, de forma que en el navegador podamos entrar a través de ``https://www.acme.com'', ya que tenemos esa dirección puenteada en nuestro archivo de DNS.
-
-Con estas configuraciones, y una vez desplegada nuestra aplicación como de costumbre, ya podemos entrar en ella através del protocolo https.
+La etiqueta @Parameters cuenta además con un parámetro opcional llamado name, que sirve para definir un identificador a cada test concreto que se esta lanzando. Podriamos parar un primer atributo, por ejemplo, con el nombre del test concreto que estamos probando y usar name={0} para que se mostrara este string que estamos usando. En nuestro caso lo hemos dejado con su valor por defecto, que es {index}, un parámetro especial que usa el framework para ir numerando de 0 hasta n-1 todos los test realizados, siendo n el tamaño del collection comentado anteriormente. 
 
 \section{Otras consideraciones}
-Ya que lo único que hemos modificado o añadido son archivos que no pertenecen al proyecto o la plantilla, la plantilla expuesta en este item, 1.10, y su proyecto correspondiente, apenas sufre modificaciones con respecto a los de otros items. Lo único que se ha modificado en estos son los términos y condiciones, para exponer que se usa conexión segura.
 
-Por otro lado teníamos la posibilidad de quitar la entrada por http, pero hemos decidido dejarla por simplicidad. Otra opción algo más compleja hubiera sido redirigirla siempre a la https, y lo óptimo hubiera sido que se usara https en ciertas páginas, como cada vez que se establece una conexión con otro usuario, y http en páginas que no requirieran una conexión segura. No hemos explorado estas opciones por falta de tiempo, ya que hemos decidido invertir el tiempo que nos ha sobrado al terminar el proyecto en mejorar este en vez de mejorar este apartado.
+En los test que definimos en el proyecto base, sin usar esta herramienta de JUnit, incluiamos varios casos de uso en una misma clase de test. Esto ya no es posible con la nueva implementación. Cada caso de uso parametrizado debe ir en una clase distinta, ya que hace uso de los atributos de la clase para ir inyectando los parámetros a probar. No podemos definir unos cuantos atributos para que se inyecten en un @Test y otros para que se inyecten en un segundo @Test, y aun si lo intentaramos (definiendo, por ejemplo, a partir de cierto número del array para el segundo caso de uso), no podemos definir dos Collections de parametros para probar, tendríamos que definir en un mismo array los parámetros para un test y para el otro, teniendo mezclados los test. En definitiva, sería una mala práctica y la solución es tan fácil como la que hemos comentado, definir una clase de test para cada caso de test parametrizado.
+
+No se puede ejecutar un test por separado en esta versión de eclipse. Para ejecutar o debugear un test en concreto tendríamos el mismo problema que teníamos en la implementación sin Parameterized: tendríamos que ejecutarlos todos e ir saltandolos hasta llegar al que nos interesa. Esto se ha corregido en la versión Mars M4 release de eclipse, siendo un problema del IDE y no de la librería JUnit.
 
 \section{Bibliografía}
-http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html
+\url{https://github.com/junit-team/junit4/wiki/parameterized-tests}
+
+\url{http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/TestContextManager.html}
+
+\url{http://stackoverflow.com/a/28561473}
+
+\url{https://raymondhlee.wordpress.com/2016/02/13/writing-parameterized-tests-with-spring-and-junit-4/}
+
 \end{document}
