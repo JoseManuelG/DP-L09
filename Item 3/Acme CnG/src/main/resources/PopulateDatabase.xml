@@ -3704,37 +3704,78 @@
 		<property name="commentable" ref="trip1Customer1"/>
 	</bean>	
 
-	<bean id="comment9Customer2" class="domain.Comment">
-		<property name="title" value="My first comment"/>
-		<property name="postMoment" value="01/22/2017 17:30"/>
-		<property name="text" value="first!"/>
-		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
-		<property name="actor" ref="customer2"/>
-		<property name="commentable" ref="trip1Customer1"/>
-	</bean>	
-
-	<bean id="comment10Customer2" class="domain.Comment">
-		<property name="title" value="My first comment"/>
-		<property name="postMoment" value="01/22/2017 17:30"/>
-		<property name="text" value="first!"/>
-		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
-		<property name="actor" ref="customer2"/>
-		<property name="commentable" ref="trip1Customer1"/>
-	</bean>	
-
 	<bean id="comment11Customer2" class="domain.Comment">
 		<property name="title" value="My first comment"/>
 		<property name="postMoment" value="01/22/2017 17:30"/>
 		<property name="text" value="first!"/>
 		<property name="stars" value="5"/>
 		<property name="banned" value="false"/>
-		<property name="actor" ref="customer2"/>
+		<property name="actor" ref="customer4"/>
 		<property name="commentable" ref="trip1Customer1"/>
 	</bean>	
 
 	<bean id="comment1Customer3" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+	
+	
+	<bean id="comment2Customer3" class="domain.Comment">
+		<property name="title" value="Comentario de prueba"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="Prueba"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="customer4"/>
+	</bean>	
+	
+	<bean id="comment3Customer3" class="domain.Comment">
+		<property name="title" value="Comentario de prueba"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="Prueba"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="customer4"/>
+	</bean>	
+	
+	<bean id="comment4Customer3" class="domain.Comment">
+		<property name="title" value="Comentario de prueba"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="Prueba"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="customer4"/>
+	</bean>	
+	
+	<bean id="comment5Customer3" class="domain.Comment">
+		<property name="title" value="Comentario de prueba"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="Prueba"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="customer4"/>
+	</bean>	
+	
+	<bean id="comment6Customer3" class="domain.Comment">
+		<property name="title" value="My first comment"/>
+		<property name="postMoment" value="01/22/2017 17:30"/>
+		<property name="text" value="first!"/>
+		<property name="stars" value="5"/>
+		<property name="banned" value="false"/>
+		<property name="actor" ref="customer3"/>
+		<property name="commentable" ref="trip1Customer1"/>
+	</bean>	
+
+	<bean id="comment7Customer3" class="domain.Comment">
 		<property name="title" value="My first comment"/>
 		<property name="postMoment" value="01/22/2017 17:30"/>
 		<property name="text" value="first!"/>
@@ -4075,46 +4116,6 @@
 	</bean>	
 	
 	<bean id="comment34Customer4" class="domain.Comment">
-		<property name="title" value="Comentario de prueba"/>
-		<property name="postMoment" value="01/22/2017 17:30"/>
-		<property name="text" value="Prueba"/>
-		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
-		<property name="actor" ref="customer4"/>
-		<property name="commentable" ref="customer4"/>
-	</bean>	
-	
-	<bean id="comment35Customer4" class="domain.Comment">
-		<property name="title" value="Comentario de prueba"/>
-		<property name="postMoment" value="01/22/2017 17:30"/>
-		<property name="text" value="Prueba"/>
-		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
-		<property name="actor" ref="customer4"/>
-		<property name="commentable" ref="customer4"/>
-	</bean>	
-	
-	<bean id="comment36Customer4" class="domain.Comment">
-		<property name="title" value="Comentario de prueba"/>
-		<property name="postMoment" value="01/22/2017 17:30"/>
-		<property name="text" value="Prueba"/>
-		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
-		<property name="actor" ref="customer4"/>
-		<property name="commentable" ref="customer4"/>
-	</bean>	
-	
-	<bean id="comment37Customer4" class="domain.Comment">
-		<property name="title" value="Comentario de prueba"/>
-		<property name="postMoment" value="01/22/2017 17:30"/>
-		<property name="text" value="Prueba"/>
-		<property name="stars" value="5"/>
-		<property name="banned" value="false"/>
-		<property name="actor" ref="customer4"/>
-		<property name="commentable" ref="customer4"/>
-	</bean>	
-	
-	<bean id="comment38Customer4" class="domain.Comment">
 		<property name="title" value="Comentario de prueba"/>
 		<property name="postMoment" value="01/22/2017 17:30"/>
 		<property name="text" value="Prueba"/>

@@ -31,8 +31,8 @@ public class AboutController extends AbstractController {
 		ModelAndView result;
 		String name, vat;
 
-		name = "name sample";
-		vat = "vat sample";
+		name = "Acme CnG";
+		vat = "ESB123456789";
 
 		result = new ModelAndView("about/about");
 
