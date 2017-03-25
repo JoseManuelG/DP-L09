@@ -8,12 +8,14 @@
 
 \definecolor{shadecolor}{RGB}{220,220,220}
 
-\title{Informe de configuración https}
+\title{Informe de Parameterized Tests}
 
 \date{}
 
 \begin{document}
-\setlength{\voffset}{-5em}
+\setlength{\voffset}{-1in}
+\setlength{\textheight}{680px}
+\setlength{\headsep}{30px}
 \pagenumbering{gobble}
 \maketitle
 
@@ -29,9 +31,21 @@ Nuestro objetivo es la reutilización de código en los test, de forma que una v
 
 Utilizaremos Parameterized de JUnit (org.junit.runners.Parameterized) realizar las llamadas a nuestro @Test con distintos parámetros, en vez de hacerlas a una plantilla mediante un for contenido en un @Test, con lo que conseguiremos que todos los test se hagan de forma transaccional. 
 
-Para poder usar esto, necesitamos cargar el contexto de Parameterized, al igual que lo haciamos en spring. Esto causa un problema en su implementación: no podemos usar @RunWith para cargar dos contextos diferentes. Hemos encontrados dos formas diferentes para arreglarlos, de los cuales uno solo esta disponible a partir de la versión 4.2.0 RELEASE de spring-test. Como nosotros estamos trabajando con la versión 3.2.4.RELEASE descartamos esta primera opción, llegando a la que explicamos a continuación.
+Para poder usar esto, necesitamos cargar el contexto de Parameterized, al igual que lo haciamos en spring. Esto causa un problema en su implementación: no podemos usar @RunWith para cargar dos contextos diferentes. Hemos encontrados dos formas diferentes para arreglarlo, de las cuales una solo esta disponible a partir de la versión 4.2.0 RELEASE de spring-test. La forma que es compatible con nuestra versión (3.2.4.RELEASE) no proporciona, desgraciadamente, manejo de transacciones, por lo que los objetos creados correctamente quedan persistidos. 
 
-Para poder inicializar tanto el contexto de spring como el de Parameterized, lo que hemos realizado es la inicialización con @RunWith de Parameterized, y la inicialización de spring manualmente en cada @Test. Para hacerlo hemos agregado un nuevo atrubito privado a la clase AbstractTest, llamado TestContextManager, clase del paquete org.springframework.test.context.TestContextManager de Spring. Como dice en su documentación, esta clase es el punto de entrada del framework Spring TestContext. En el método before de esta clase le damos valor al atributo testContextManager, simplemente llamando al constructor de su clase y pasandole la clase del test como parámetro. Una vez que este atributo sabe a que clase hace referencia el test, solo tenemos que usar su método prepareTestInstance. Este metodo es el que se encarga de de cargar todo el contexto de spring, por ejemplo inyectando las dependencias (con etiquetas autowired). Si se usara, por algún motivo, algún artefacto del framework Spring en el método before, debería ser después de este par de lineas que hemos comentado, para que el contexto este cargado.
+\subsection{Clase TestContextManager (v. 3.2.4.RELEASE)}
+
+Para poder inicializar tanto el contexto de spring como el de Parameterized, lo que hemos realizado es la inicialización con @RunWith de Parameterized, y la inicialización de spring manualmente en cada @Test. Para hacerlo hemos agregado un nuevo atrubito privado a la clase AbstractTest, llamado TestContextManager, clase del paquete org.springframework.test.context.TestContextManager de Spring. Como dice en su documentación, esta clase es el punto de entrada del framework Spring TestContext. En el método before de la clase AbstractTest le damos valor al atributo testContextManager, simplemente llamando al constructor de su clase y pasandole la clase del test como parámetro. Una vez que este atributo sabe a que clase hace referencia el test, solo tenemos que usar su método prepareTestInstance. Este metodo es el que se encarga de de cargar todo el contexto de spring, por ejemplo inyectando las dependencias (con etiquetas autowired). Si se usara, por algún motivo, algún artefacto del framework Spring en el método before, debería ser después de este par de lineas que hemos comentado, para que el contexto este cargado.
+
+Como comentabamos, esto no nos permite el uso de la etiqueta @Transactional (aún poniendo la etiqueta, no funcionará), dejando persistidos en base de datos los objetos creados. 
+
+\subsection{Clases SpringClassRule y SpringMethodRule \\ (v. 4.2.0.RELEASE)}
+
+A partir de esta versión de spring, el framework da soporte mediante etiquetas de JUnit @ClassRule y @Rule para cargar su contexto a nivel de clase de forma alternativa. Lo hace precisamente, como dice en la documentación de las clases necesarias, para dar soporte a otros frameworks que necesitan el uso de runners, de forma que estos puedan usar la etiqueta @RunWith de JUnit. Al cargarse el contexto a nivel de clase y no de test como haciamos en el apartado anterior, si que que se permite el uso de la etiqueta @Transactional, por lo que optamos por dejar implementado esta opción.
+
+Para hacerlo basta con añadir a la clase AbstractTest un par de atributos públicos y finales inicializados con constructores vacíos: uno estático de la clase SpringClassRule y otro de la clase SpringMethodRule, con etiquetas de JUnit @ClassRule y @Rule respectivamente.
+
+También tenemos que actualizar nuestra versión de spring. Si solo actualizamos el artefacto spring-test no funcionará por un problema de compatibilidad, ya que las clases mencionadas se apoyan en otras que en nuestra versión del artefacto spring-context no estaban aún implementadas. Por tanto tenemos que actualizar nuestro spring-context también a la versión 4.2.0.RELEASE.
 
 \section{Implementación de test con Parameterized}
 
@@ -55,5 +69,9 @@ No se puede ejecutar un test por separado en esta versión de eclipse. Para ejec
 \url{http://stackoverflow.com/a/28561473}
 
 \url{https://raymondhlee.wordpress.com/2016/02/13/writing-parameterized-tests-with-spring-and-junit-4/}
+
+\url{https://www.javadoc.io/doc/org.springframework/spring-test/4.2.0.RELEASE}
+
+\url{http://stackoverflow.com/questions/23789271/java-lang-nosuchmethoderror-org-springframework-core-annotation-annotationutils}
 
 \end{document}
