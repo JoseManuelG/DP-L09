@@ -1,5 +1,7 @@
 -Cambiar findOne de configuration.
 
+-Añadir documento con credenciales de git/redmine
+
 -Poner texto para explicar que tachado y rojo es baneado
 
 
