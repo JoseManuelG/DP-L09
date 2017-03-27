@@ -78,6 +78,16 @@
 	
 </display:table>
 
+<jstl:choose>
+		<jstl:when test="${requestURI eq 'trip/customer/list/my/offers.do' or requestURI eq 'trip/administrator/list/offers.do'}">
+			<p class="bantip"><spring:message  code="trip.offer.bantip" /></p>
+		</jstl:when>
+		<jstl:when test="${requestURI eq 'trip/customer/list/my/requests.do' or requestURI eq 'trip/administrator/list/requests.do'}">
+			<p class="bantip"><spring:message code="trip.request.bantip" /></p>
+		</jstl:when>
+</jstl:choose>
+
+
 <security:authorize access="hasRole('CUSTOMER')">
 	<a href="trip/customer/create/offer.do">
 	      <spring:message  code="trip.new.offer" />

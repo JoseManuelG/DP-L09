@@ -26,6 +26,11 @@
     background: white;
 }
 
+.bantip {
+	color: red;
+	text-decoration: line-through;
+}
+
 p.link {
     display: inline-block;
     -webkit-margin-before: 0;
