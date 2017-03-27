@@ -60,36 +60,57 @@ public class ActorTest extends AbstractTest {
 
 	@Test
 	public void RegisterPositiveTest() {
+
+		// Registro completo sin errores
+
 		this.template("test1", "test1", "test@acme.com", "test1", "tested", "testPhone", null);
 	}
 
 	@Test
 	public void RegisterNegativeTest2() {
+
+		// Registro sin username
+
 		this.template("", "test1", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void RegisterNegativeTest3() {
+
+		// Registro sin password
+
 		this.template("test1", "", "test@acme.com", "test1", "tested", "testPhone", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void RegisterNegativeTest4() {
+
+		// Registro sin email
+
 		this.template("test1", "test1", "", "test1", "tested", "testPhone", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void RegisterNegativeTest5() {
+
+		// Registro sin nombre
+
 		this.template("test1", "test1", "test@acme.com", "", "tested", "testPhone", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void RegisterNegativeTest6() {
+
+		// Registro sin apellidos
+
 		this.template("test1", "test1", "test@acme.com", "test1", "", "testPhone", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void RegisterNegativeTest7() {
+
+		// Registro sin telefono
+
 		this.template("test1", "test1", "test@acme.com", "test1", "tested", "", ConstraintViolationException.class);
 	}
 

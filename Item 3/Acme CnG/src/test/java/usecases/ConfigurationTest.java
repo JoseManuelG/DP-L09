@@ -46,26 +46,41 @@ public class ConfigurationTest extends AbstractTest {
 
 	@Test
 	public void ConfigurationPositiveTest() {
+
+		// Como aministrador sin errores
+
 		this.template("admin", "http://www.test.com", null);
 	}
 
 	@Test
 	public void ConfigurationNegativeTest() {
+
+		// Como customer
+
 		this.template("customer1", "http://www.test.com", IllegalArgumentException.class);
 	}
 
 	@Test
 	public void ConfigurationNegativeTest2() {
+
+		// Sin url
+
 		this.template("admin", "", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void ConfigurationNegativeTest3() {
+
+		// url no valida
+
 		this.template("admin", "noSoyUnaURL", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void ConfigurationNegativeTest4() {
+
+		// sin estar registrado
+
 		this.template(null, "http://www.test.com", IllegalArgumentException.class);
 	}
 

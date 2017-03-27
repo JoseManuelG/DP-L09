@@ -52,60 +52,96 @@ public class CommentTest extends AbstractTest {
 
 	@Test
 	public void CommentPositiveTest() {
+
+		// Como customer y datos correctos en una request
+
 		this.template("customer1", 999, "test", 3, "test", null);
 	}
 
 	@Test
 	public void CommentPositiveTest2() {
+
+		// Como admin y datos correctos en una request
+
 		this.template("admin", 999, "test", 3, "test", null);
 	}
 
 	@Test
 	public void CommentPositiveTest3() {
+
+		// Como customer y datos correctos en una offer
+
 		this.template("customer1", 1000, "test", 3, "test", null);
 	}
 
 	@Test
 	public void CommentPositiveTest4() {
+
+		// Como admin y datos correctos en una offer
+
 		this.template("admin", 1000, "test", 3, "test", null);
 	}
 
 	@Test
 	public void CommentPositiveTest5() {
+
+		// Como customer y datos correctos en un actor
+
 		this.template("customer1", 995, "test", 3, "test", null);
 	}
 
 	@Test
 	public void CommentPositiveTest6() {
+
+		// Como admin y datos correctos en un actor
+
 		this.template("admin", 995, "test", 3, "test", null);
 	}
 
 	@Test
 	public void CommentNegativeTest2() {
+
+		// Sin estar registrado
+
 		this.template("", 995, "test", 3, "test", IllegalArgumentException.class);
 	}
 
 	@Test
 	public void CommentNegativeTest3() {
+
+		// En un objeto no comentable
+
 		this.template("customer1", 0, "test", 3, "test", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void CommentNegativeTest4() {
+
+		// titulo vacio
+
 		this.template("customer1", 995, "", 3, "test", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void CommentNegativeTest5() {
+
+		// estrellas negativas
+
 		this.template("customer1", 995, "test", -1, "test", ConstraintViolationException.class);
 	}
 
 	@Test
 	public void CommentNegativeTest6() {
+
+		// estrellas por encima del maximo
+
 		this.template("customer1", 995, "test", 6, "test", ConstraintViolationException.class);
 	}
 	@Test
 	public void CommentNegativeTest7() {
+
+		// texto vacio
+
 		this.template("customer1", 995, "test", 3, "", ConstraintViolationException.class);
 	}
 
@@ -159,21 +195,33 @@ public class CommentTest extends AbstractTest {
 
 	@Test
 	public void BanCommentPositiveTest() {
+
+		// Como administrador sin errores en un actor
+
 		this.template2("admin", 1049, true, null);
 	}
 
 	@Test
 	public void BanCommentPositiveTest2() {
+
+		// Como administrador sin errores en un trip
+
 		this.template2("admin", 1050, false, null);
 	}
 
 	@Test
 	public void BanCommentNegativeTest() {
+
+		// Como customer en un actor
+
 		this.template2("customer1", 1049, true, IllegalArgumentException.class);
 	}
 
 	@Test
 	public void BanCommentNegativeTest2() {
+
+		// Como customer en un trip
+
 		this.template2("customer1", 1050, false, IllegalArgumentException.class);
 	}
 
