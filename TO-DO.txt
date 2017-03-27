@@ -2,9 +2,9 @@
 
 -Poner texto para explicar que tachado y rojo es baneado
 
--JAVI: transactional de test A+ extra 
 
 ------------------------------ARREGLADO------------------------------
+-JAVI: transactional de test A+ extra  (ARREGLADO)
 -Decimales de la dashboard (ARREGLADO)
 -Cambiar el nombre de la compañia y el vat predeterminados del about
 -Media de comentarios(ARREGLADO)

@@ -51,7 +51,7 @@ public class ApplicationTest extends AbstractTest {
 
 	@Test
 	public void applyPositiveTest() {
-
+		// En este test se crea un apply para un viaje válido.
 		this.authenticate("customer1");
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
@@ -63,7 +63,7 @@ public class ApplicationTest extends AbstractTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void applyNegativeTest() {
-
+		// En este test se intenta crear un apply para un viaje propio.
 		this.authenticate("customer2");
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
@@ -75,7 +75,7 @@ public class ApplicationTest extends AbstractTest {
 
 	@Test
 	public void acceptPositiveTest() {
-
+		// En este test se acepta un apply correctamente.
 		this.authenticate("customer2");
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
@@ -87,7 +87,7 @@ public class ApplicationTest extends AbstractTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void acceptNegativeTest() {
-
+		// En este test se intenta aceptar un apply del viaje de otro customer.
 		this.authenticate("customer1");
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
@@ -99,7 +99,7 @@ public class ApplicationTest extends AbstractTest {
 
 	@Test
 	public void denyPositiveTest() {
-
+		// En este test se rechaza un apply correctamente.
 		this.authenticate("customer2");
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
@@ -111,7 +111,7 @@ public class ApplicationTest extends AbstractTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void denyNegativeTest() {
-
+		// En este test se intenta rechazar un apply del viaje de otro customer.
 		this.authenticate("customer1");
 
 		this.tripService.findOne(ApplicationTest.FUTURE_TRIP);
