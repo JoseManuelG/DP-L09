@@ -84,15 +84,6 @@ public class MessageService {
 		Message copyMessage;
 		Message savedCopyMessage;
 
-		//TODO: el assert de getSender sobra porque se pone el principal desde el servicio,
-		// y no lo puede modificar de ninguna forma el usuario, y los dos del final igual,
-		// no pueden ser modificados por el usuario, los hace el servicio, el que si que hace
-		// falta es el de notNull recipient porque eso es lo que se puede cambiar en la vista
-
-		//Respuesta:
-		//Igualmente no puedes saber desde donde se va a llamar al metodo, 
-		//es por lo que no veo mal revisarlo.
-
 		Assert.notNull(message.getRecipient(), "El mensaje debe tener un destinatario");
 
 		Assert.notNull(message.getSender(), "El mensaje debe tener un remitente");

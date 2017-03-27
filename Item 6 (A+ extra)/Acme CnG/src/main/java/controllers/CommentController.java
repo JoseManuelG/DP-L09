@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CommentService;
+import services.CommentableService;
 import domain.Actor;
 import domain.Comment;
+import domain.Commentable;
 import domain.Trip;
 
 @Controller
@@ -28,7 +30,9 @@ import domain.Trip;
 public class CommentController extends AbstractController {
 
 	@Autowired
-	private CommentService	commentService;
+	private CommentService		commentService;
+	@Autowired
+	private CommentableService	commentableService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -45,9 +49,14 @@ public class CommentController extends AbstractController {
 		final Comment comment = this.commentService.create(commentableId);
 		result = new ModelAndView("comment/create");
 		result.addObject("comment", comment);
+		this.commentableService.findAll();
+		final Commentable commentable = this.commentableService.findOne(commentableId);
+		if (commentable instanceof Actor)
+			result.addObject("cancelURL", "actor/view.do?actorId=" + commentableId);
+		else if (commentable instanceof Trip)
+			result.addObject("cancelURL", "trip/view.do?tripId=" + commentableId);
 		return result;
 	}
-
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(final Comment comment, final BindingResult binding) {
 		ModelAndView result;

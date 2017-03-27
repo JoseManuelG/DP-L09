@@ -28,7 +28,7 @@
 	<spring:message code="AvgCommentsByActors" />: <jstl:out value="${AvgCommentsByActors}"/><br/>
 	
 	
-	<spring:message code="actor.name.AvgeActorWritingComments" />:
+	<spring:message code="actor.name.AvgeActorWritingComments" />:<br>
 	<display:table pagesize="5" class="displaytag1" name="AvgeActorWritingComments"
 		requestURI="${requestURI}" id="row" uid="AvgeActorWritingComments">
 		
@@ -39,6 +39,7 @@
 	   	  
 	    </display:column>
 	</display:table>
+	<br>
 
 	
 	

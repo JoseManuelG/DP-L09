@@ -62,7 +62,7 @@ public class ActorController extends AbstractController {
 		result.addObject("allBannedComments", allBannedComments);
 		result.addObject("isAdmin", isAdmin);
 		result.addObject("myProfile", myProfile);
-		result.addObject("requestURI", "actor/view.do");
+		result.addObject("requestURI", "actor/view.do?actorId=" + actor.getId());
 
 		return result;
 	}
@@ -77,7 +77,7 @@ public class ActorController extends AbstractController {
 	public ModelAndView delete() {
 		ModelAndView result;
 		this.customerService.delete();
-		result = new ModelAndView("redirect:/");
+		result = new ModelAndView("redirect:/j_spring_security_logout");
 		return result;
 	}
 
