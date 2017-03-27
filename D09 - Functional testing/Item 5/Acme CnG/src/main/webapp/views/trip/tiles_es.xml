@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="trip/create/offer" extends="master.page">
+		<put-attribute name="title" value="Nueva oferta" />
+		<put-attribute name="body" value="/views/trip/edit.jsp" />
+	</definition>
+
+	<definition name="trip/create/request" extends="master.page">
+		<put-attribute name="title" value="Nueva petición" />
+		<put-attribute name="body" value="/views/trip/edit.jsp" />
+	</definition>
+
+	<definition name="trip/list/my/offers" extends="master.page">
+		<put-attribute name="title" value="Mis ofertas" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/list/my/requests" extends="master.page">
+		<put-attribute name="title" value="Mis peticiones" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/list/offers" extends="master.page">
+		<put-attribute name="title" value="Todas las ofertas" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/list/requests" extends="master.page">
+		<put-attribute name="title" value="Todas las peticiones" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/search" extends="master.page">
+		<put-attribute name="title" value="Búsqueda" />
+		<put-attribute name="body" value="/views/trip/search.jsp" />
+	</definition>
+
+	<definition name="trip/search/list" extends="master.page">
+		<put-attribute name="title" value="Resultados de la búsqueda" />
+		<put-attribute name="body" value="/views/trip/list.jsp" />
+	</definition>
+
+	<definition name="trip/view/offer" extends="master.page">
+		<put-attribute name="title" value="Ver oferta" />
+		<put-attribute name="body" value="/views/trip/display.jsp" />
+	</definition>
+
+	<definition name="trip/view/request" extends="master.page">
+		<put-attribute name="title" value="Ver petición" />
+		<put-attribute name="body" value="/views/trip/display.jsp" />
+	</definition>
+
+</tiles-definitions>
