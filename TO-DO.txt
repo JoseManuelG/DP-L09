@@ -1,5 +1,3 @@
--Decimales de la dashboard
-
 -Cambiar findOne de configuration.
 
 -Poner texto para explicar que tachado y rojo es baneado
@@ -7,7 +5,8 @@
 -JAVI: transactional de test A+ extra 
 
 ------------------------------ARREGLADO------------------------------
--Cambiar el nombre de la compañia y el vat predeterminados del about(ARREGLADO)
+-Decimales de la dashboard (ARREGLADO)
+-Cambiar el nombre de la compañia y el vat predeterminados del about
 -Media de comentarios(ARREGLADO)
 - cuando este hecha la dashboard comprobar que funciona con populate normal y el de prepro (ARREGLADO)
 PARA GAVIRA: cambiar el proyecto A+ a una carpeta del item (ARREGLADO)
