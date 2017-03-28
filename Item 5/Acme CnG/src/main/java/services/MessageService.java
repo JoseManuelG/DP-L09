@@ -213,9 +213,10 @@ public class MessageService {
 
 	public Long minMessagesSentPerActor() {
 		List<Long> messages;
-		final Long result;
+		Long result = 0L;
 		messages = this.messageRepository.minMessagesSentPerActor();
-		result = messages.iterator().next();
+		if (!messages.isEmpty())
+			result = messages.iterator().next();
 		return result;
 	}
 
