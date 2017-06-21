@@ -33,5 +33,5 @@
 	
 	<acme:submit code="trip.save" name="save" />
 	
-	<acme:cancel code="trip.cancel" url="/" />
+	<acme:cancel code="trip.cancel" url="${url}" />
 </form:form>

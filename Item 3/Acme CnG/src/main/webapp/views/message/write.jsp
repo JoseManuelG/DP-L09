@@ -88,5 +88,5 @@
 		<acme:submit code="message.removeAttachment" name="removeAttachment" />
 	</jstl:if>
 
-	<acme:cancel code="message.cancel" url="" />
+	<acme:cancel code="message.cancel" url="message/actor/sent.do" />
 </form:form>

@@ -20,9 +20,16 @@
 	
 	<spring:message code="application.trip.title" var="viewTitleHeader" />
 	<display:column title="${viewTitleHeader}">
+		<jstl:if test="${!row.trip.getBanned()}">
 			<a href="trip/view.do?tripId=${row.trip.id}">
 				<jstl:out value="${row.trip.title}"/>
 			</a>
+		</jstl:if>
+		<jstl:if test="${row.trip.getBanned() }">
+				<spring:message code="application.trip.banned" />
+			
+		</jstl:if>
+		
 	</display:column>
 	
 	<!-- Attributes -->

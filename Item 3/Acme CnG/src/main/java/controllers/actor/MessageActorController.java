@@ -101,11 +101,13 @@ public class MessageActorController extends AbstractController {
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int messageId) {
 		ModelAndView result;
-
+		final boolean sender = this.messageService.findOne(messageId).getIsSender();
 		this.messageService.delete(messageId);
 
-		result = new ModelAndView("redirect:/");
-
+		if (sender)
+			result = this.sent();
+		else
+			result = this.received();
 		return result;
 	}
 
