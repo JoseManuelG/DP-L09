@@ -189,5 +189,11 @@ public class ApplicationService {
 
 		return this.applicationRepository.findAllApplicationByCustomer(customer.getId());
 	}
+	public boolean checkExistentApplication(final int tripId) {
+		final int customerId = this.customerService.findCustomerByPrincipal().getId();
+		final int aux = this.applicationRepository.checkExistentApplication(tripId, customerId);
+		return aux < 1;
+
+	}
 
 }

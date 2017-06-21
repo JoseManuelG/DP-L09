@@ -17,6 +17,9 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("select distinct a from Application a where a.trip.id=?1")
 	Collection<Application> findAllApplicationsByTripId(int tripId);
 
+	@Query("select count(a) from Application a where a.trip.id=?1 and a.customer.id=?2")
+	int checkExistentApplication(int tripId, int customerId);
+
 	//03 - Average number of applications per offer or request.
 	@Query("select count(a) from Application a")
 	Double countAllApplications();
