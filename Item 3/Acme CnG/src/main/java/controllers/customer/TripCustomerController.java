@@ -133,6 +133,7 @@ public class TripCustomerController extends AbstractController {
 
 		trip = this.tripService.createOffer();
 		result = this.createEditModelAndView(trip);
+		result.addObject("url", "trip/customer/list/my/offers.do");
 
 		return result;
 	}
@@ -143,6 +144,7 @@ public class TripCustomerController extends AbstractController {
 
 		trip = this.tripService.createRequest();
 		result = this.createEditModelAndView(trip);
+		result.addObject("url", "trip/customer/list/my/requests.do");
 
 		return result;
 	}
